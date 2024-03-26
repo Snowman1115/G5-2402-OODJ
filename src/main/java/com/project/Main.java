@@ -7,11 +7,13 @@
 
 package com.project;
 
+import com.project.ui.authentication.LoginGui;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-        System.out.println("HELLO WORLD!");
+        new LoginGui().setVisible(true);
     }
+
 }

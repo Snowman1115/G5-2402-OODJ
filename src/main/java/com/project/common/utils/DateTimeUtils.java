@@ -5,9 +5,7 @@
  * @since 2024-03-26
  */
 
-package com.project.common.utils.date;
-
-import com.project.common.utils.properties.PropertiesReader;
+package com.project.common.utils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

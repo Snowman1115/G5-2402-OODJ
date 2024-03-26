@@ -5,7 +5,7 @@
  * @since 2024-03-26
  */
 
-package com.project.common.utils.properties;
+package com.project.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ import java.util.*;
 public class PropertiesReader {
 
     private static final String FILEPATH = "src/main/resources/application.properties";
-    private static final Map<String, String> properties = new HashMap<>();
+    private static final Map<Object, String> properties = new HashMap<>();
 
     static {
         try {

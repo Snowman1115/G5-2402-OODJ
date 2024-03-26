@@ -62,7 +62,7 @@ public class Dialog {
     /**
      * Prompt Confirmation Dialog
      * @param message
-     * @return
+     * @return Boolean result of user selection
      */
     public static boolean ConfirmationDialog(String message){
         ImageIcon aicon = new ImageIcon(ALERTICON);
@@ -78,7 +78,7 @@ public class Dialog {
      * Prompt Confirmation Dialog
      * @param title
      * @param message
-     * @return
+     * @return Boolean result of user selection
      */
     public static boolean ConfirmationDialog(String title, String message){
         ImageIcon aicon = new ImageIcon(ALERTICON);

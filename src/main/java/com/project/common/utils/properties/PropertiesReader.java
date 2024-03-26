@@ -21,11 +21,8 @@ public class PropertiesReader {
 
     static {
         try {
-            // log.info("Reading application.properties.....");
             loadProperties();
-            // log.info("PropertiesReader load successfully.");
         } catch (IOException e){
-            // log.info("PropertiesReader load failed.");
             e.printStackTrace();
         }
     }
@@ -33,7 +30,7 @@ public class PropertiesReader {
     /**
      * Get Property Value
      * @param key
-     * @return
+     * @return Selected property key value
      */
     public static String getProperty(String key) {
         return properties.get(key);

@@ -31,6 +31,11 @@ public class UserAccountDAO {
         System.out.println(users.get(9));
     }
 
+    /**
+     * Get user account by username / email
+     * @param account
+     * @return user account
+     */
     public UserAccount getUserAccount(String account) {
         for (UserAccount user:users) {
             if (user.getUsername().equals(account)) {

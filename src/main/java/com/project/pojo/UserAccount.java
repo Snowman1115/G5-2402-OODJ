@@ -14,6 +14,6 @@ public class UserAccount {
     private String username;
     private String firstName;
     private String lastName;
-    private LocalDateTime createTime;
-    private LocalDateTime lastModified;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 }

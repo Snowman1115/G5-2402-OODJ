@@ -23,13 +23,79 @@ public class json_handler {
     public json_handler(Object object) {
         json_object = (JSONObject) object;
     }
-    // JSON array methods
+    // ======== JSON array methods ========
+    /**
+     * Get json array
+     * @return json array
+     */
     public JSONArray getAll() {
         return json_array;
     }
-    public Object getArrayEle(int index) {
+
+    /**
+     * Get specific object from json array
+     * @return object
+     */
+    public Object getObject(int index) {
         return  json_array.get(index);
     }
 
-    // JSON object methods
+    // ======== JSON object methods ========
+    /**
+     * Get value of an attribute in an object in String data type
+     * @return attribute value (String)
+     */
+    public String get(String attribute) {
+        String val = json_object.get(attribute).toString();
+
+        if (!val.equals("null")) {
+            return val;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Get value of an attribute in an object in Integer data type
+     * @return attribute value (Integer)
+     */
+    public Integer getInt(String attribute) {
+        String val = json_object.get(attribute).toString();
+
+        if (val.equalsIgnoreCase("null")) {
+            return null;
+        } else {
+            // Check if value contains non-numeric characters, return null if true
+            try {
+                return Integer.parseInt(val);
+            } catch (NumberFormatException e) {
+                System.out.println("************************************************************************\n\n" +
+                        "Invalid method getInt(), Value contains non-numeric characters: " + val +
+                        "\n\n************************************************************************");
+                return null;
+            }
+        }
+    }
+
+    /**
+     * Parse String Date To LocalDate
+     * @return attribute value (Double)
+     */
+    public Double getDouble(String attribute) {
+        String val = json_object.get(attribute).toString();
+
+        if (val.equalsIgnoreCase("null")) {
+            return null;
+        } else {
+            // Check if value contains non-numeric characters, return null if true
+            try {
+                return Double.parseDouble(val);
+            } catch (NumberFormatException e) {
+                System.out.println("************************************************************************\n\n" +
+                        "Invalid method getDouble(), Value contains non-numeric characters: " + val +
+                        "\n\n************************************************************************");
+                return null;
+            }
+        }
+    }
 }

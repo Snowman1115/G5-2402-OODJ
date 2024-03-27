@@ -1,6 +1,5 @@
 package com.project.dao;
 
-import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.json_handler;
 import com.project.pojo.UserAccount;
@@ -76,4 +75,29 @@ public class UserAccountDAO {
 //        return true;
 //    }
 
-// JSON UPDATEFILE
+    public static void main(String[] args) throws IOException {
+        String json_txt = new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine();
+        json_handler j_handler = new json_handler(json_txt);
+
+//        System.out.println(j_handler.getAll().size());
+
+        for (int i=0; i<(j_handler.getAll().size() - 1); i++) {
+            json_handler obj = new json_handler(j_handler.getArrayEle(i));
+
+            UserAccount ua = new UserAccount();
+//            ua.setUserId();
+        }
+    }
+
+    // JSON UPDATEFILE
+
+
+
+
+
+
+
+
+
+
+}

@@ -22,12 +22,12 @@ public class UserAccountDAO {
     }
 
     public static void main(String[] args) throws IOException {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter id: ");
-//        int targetID = sc.nextInt();
-//        System.out.println("Enter new name: ");
-//        String newName = sc.nextLine();
-//        updateUsername(targetID, newName);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter id: ");
+        int targetID = sc.nextInt();
+        System.out.println("Enter new username: ");
+        String newName = sc.next();
+        updateUsername(targetID, newName);
         System.out.println(users.get(9));
     }
 
@@ -37,6 +37,7 @@ public class UserAccountDAO {
      * @return user account
      */
     public UserAccount getUserAccount(String account) {
+        log.info("DAO implemented");
         for (UserAccount user:users) {
             if (user.getUsername().equals(account)) {
                 return user;
@@ -75,8 +76,10 @@ public class UserAccountDAO {
         for (UserAccount user : users) {
             if (user.getUserId() == userId) {
                 user.setUsername(name);
-                JsonHandler userJson = new JsonHandler(new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine());
 
+                // update into text file
+                JsonHandler userJson = new JsonHandler(new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine());
+                userJson.update(userId, "username", name);
             }
         }
     }

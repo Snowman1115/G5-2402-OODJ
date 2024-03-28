@@ -49,34 +49,50 @@ public class JsonHandler {
      * @param value
      */
     public void update(int objectId, String attribute, String value) {
-        for (Object o : json_array) {
-            JSONObject uo = (JSONObject) o;
+        JSONObject obj = null;
+
+        for (int i=0; i<(json_array.size()); i++) {
+            JSONObject uo = (JSONObject) json_array.get(i);
             int uoId = Integer.parseInt(uo.get("id").toString());
             if (uoId == objectId) {
-                json_array.remove(uo);
-
-                switch (attribute) {
-                    case "username" -> {
-                        uo.replace("username", value);
-                        json_array.add(uo);
-                    }
-                    case "first_name" -> {
-                        uo.replace("first_name", value);
-                        json_array.add(uo);
-                    }
-                    case "last_name" -> {
-                        uo.replace("last_name", value);
-                        json_array.add(uo);
-                    }
-                    default -> {
-                        log.info("(" + attribute + ") Attribute not found.");
-                    }
-                }
-
-                break;
+                obj = uo;
+                json_array.remove(json_array.get(i));
             }
         }
 
+        if (obj != null) {
+            boolean updateSuccess = switch (attribute) {
+                case "username" -> {
+                    obj.replace("username", value);
+                    json_array.add(obj);
+
+                    yield true;
+                }
+                case "first_name" -> {
+                    obj.replace("first_name", value);
+                    json_array.add(obj);
+
+                    yield true;
+                }
+                case "last_name" -> {
+                    obj.replace("last_name", value);
+                    json_array.add(obj);
+
+                    yield true;
+                }
+                default -> {
+                    log.info("Error: (" + attribute + ") Attribute does not exist in object");
+                    yield false;
+                }
+            };
+
+            if (updateSuccess) {
+                String json_text = json_array.toJSONString();
+                System.out.println(json_text);
+            }
+        } else {
+            log.info("Error: Object not found");
+        }
 
     }
 

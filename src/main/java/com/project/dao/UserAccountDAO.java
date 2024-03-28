@@ -21,14 +21,16 @@ public class UserAccountDAO {
         loadUserData();
     }
 
+    // test run
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter id: ");
-        int targetID = sc.nextInt();
-        System.out.println("Enter new username: ");
-        String newName = sc.next();
-        updateUsername(targetID, newName);
-        System.out.println(users.get(9));
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Enter id: ");
+//        int targetID = sc.nextInt();
+//        System.out.println("Enter new username: ");
+//        String newName = sc.next();
+//        updateUsername(targetID, newName);
+//        System.out.println(users.get(9));
+        System.out.println(users.getClass());
     }
 
     /**
@@ -48,14 +50,8 @@ public class UserAccountDAO {
 
     // Load user data
     private static void loadUserData() {
-        String json_txt = null;
-        try {
-            json_txt = new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        JsonHandler j_handler = new JsonHandler(json_txt);
+        JsonHandler j_handler = new JsonHandler(readFile(USER_ACCOUNT));
 
         for (int i=0; i<(j_handler.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler(j_handler.getObject(i));
@@ -72,13 +68,13 @@ public class UserAccountDAO {
     }
 
 
-    public static void updateUsername(Integer userId,  String name) throws IOException {
+    public static void updateUsername(Integer userId,  String name) {
         for (UserAccount user : users) {
             if (user.getUserId() == userId) {
                 user.setUsername(name);
 
                 // update into text file
-                JsonHandler userJson = new JsonHandler(new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine());
+                JsonHandler userJson = new JsonHandler(readFile(USER_ACCOUNT));
                 userJson.update(userId, "username", name);
             }
         }
@@ -94,5 +90,11 @@ public class UserAccountDAO {
 
 
 
-
+    private static String readFile(String filePath) {
+        try {
+            return new BufferedReader(new FileReader(filePath)).readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

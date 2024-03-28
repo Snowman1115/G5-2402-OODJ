@@ -1,7 +1,7 @@
 /**
  * Utils - JSON Object handler
  * @author AU YIK HOE
- * @version 1.0, Last edited on 2024-03-28
+ * @version 1.0, Last edited on 2024-03-29
  * @since 2024-03-27
  */
 package com.project.common.utils;
@@ -14,9 +14,12 @@ import org.json.simple.parser.ParseException;
 public class JsonHandler {
     private JSONArray json_array;
     private JSONObject json_object;
-    public JsonHandler(String json_text) {
+    public JsonHandler() {
+
+    }
+    public JsonHandler(String string) {
         try {
-            json_array = (JSONArray) new JSONParser().parse(json_text);
+            json_array = (JSONArray) new JSONParser().parse(string);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -24,7 +27,24 @@ public class JsonHandler {
     public JsonHandler(Object object) {
         json_object = (JSONObject) object;
     }
-    // ======== JSON array methods ========
+
+    // ====================== //
+    //    General methods     //
+    // ====================== //
+
+    public void encode() {
+
+    }
+
+    // ====================== //
+    //  General methods ends  //
+    // ====================== //
+
+
+    // ======================= //
+    //    JSON array methods   //
+    // ======================= //
+
     /**
      * Get json array
      * @return json array
@@ -96,9 +116,19 @@ public class JsonHandler {
 
     }
 
-    // ======== JSON object methods ========
+
+    // ======================= //
+    // JSON array methods ends //
+    // ======================= //
+
+
+    // ======================= //
+    //   JSON object methods   //
+    // ======================= //
+
     /**
      * Get value of an attribute in an object in String data type
+     * @param attribute
      * @return attribute value (String)
      */
     public String get(String attribute) {
@@ -113,6 +143,7 @@ public class JsonHandler {
 
     /**
      * Get value of an attribute in an object in Integer data type
+     * @param attribute
      * @return attribute value (Integer)
      */
     public Integer getInt(String attribute) {
@@ -132,7 +163,8 @@ public class JsonHandler {
     }
 
     /**
-     * Parse String Date To LocalDate
+     * Get value of an attribute in an object in Double data type
+     * @param attribute
      * @return attribute value (Double)
      */
     public Double getDouble(String attribute) {
@@ -150,4 +182,8 @@ public class JsonHandler {
             }
         }
     }
+
+    // ======================== //
+    // JSON object methods ends //
+    // ======================== //
 }

@@ -5,6 +5,7 @@ import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class UserAccountDAO {
     }
 
     // test run
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Enter id: ");
 //        int targetID = sc.nextInt();
@@ -30,7 +31,7 @@ public class UserAccountDAO {
 //        String newName = sc.next();
 //        updateUsername(targetID, newName);
 //        System.out.println(users.get(9));
-        System.out.println(users.getClass());
+        updateUsername(10, "ChaoCheeBye");
     }
 
     /**
@@ -51,10 +52,12 @@ public class UserAccountDAO {
     // Load user data
     private static void loadUserData() {
 
-        JsonHandler j_handler = new JsonHandler(readFile(USER_ACCOUNT));
+        JsonHandler userData = new JsonHandler();
+        userData.encode(readFile(USER_ACCOUNT));
 
-        for (int i=0; i<(j_handler.getAll().size()); i++) {
-            JsonHandler obj = new JsonHandler(j_handler.getObject(i));
+        for (int i=0; i<(userData.getAll().size()); i++) {
+            JsonHandler obj = new JsonHandler();
+            obj.setObject(userData.getObject(i));
 
             UserAccount ua = new UserAccount();
             ua.setUserId(obj.getInt("id"));
@@ -67,20 +70,19 @@ public class UserAccountDAO {
         }
     }
 
-
+    // test store data (JSON)
     public static void updateUsername(Integer userId,  String name) {
         for (UserAccount user : users) {
             if (user.getUserId() == userId) {
                 user.setUsername(name);
 
                 // update into text file
-                JsonHandler userJson = new JsonHandler(readFile(USER_ACCOUNT));
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(readFile(USER_ACCOUNT));
                 userJson.update(userId, "username", name);
             }
         }
     }
-
-    // JSON UPDATEFILE
 
 
 

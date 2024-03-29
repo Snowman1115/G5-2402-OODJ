@@ -10,6 +10,7 @@ public class MessageConstant {
 
     /* SUCCESS */
 
+
     /* ERROR */
     public static final String ERROR_FIELD_EMPTY = "Please fill in all the fields.";
     public static final String ERROR_USERNAME_INCORRECT = "Username/Email invalid, please try again.";

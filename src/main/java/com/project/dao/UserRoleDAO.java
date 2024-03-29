@@ -24,6 +24,34 @@ public class UserRoleDAO {
     }
 
     /**
+     * Check User Account Status (isActive/deActivated)
+     * @param userId
+     * @return account status
+     */
+    public AccountStatus checkAccountStatus(Integer userId) {
+        for (UserRole user_role:user_roles) {
+            if (user_role.getUserId() == userId) {
+                return user_role.getAccountStatus();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Check User Role Type
+     * @param userId
+     * @return user role type
+     */
+    public UserRoleType checkRoleType(Integer userId) {
+        for (UserRole user_role:user_roles) {
+            if (user_role.getUserId() == userId) {
+                return user_role.getUserRoleType();
+            }
+        }
+        return null;
+    }
+
+    /**
      * Pre-load User Role Data
      */
     private static void loadUserRoleData() {
@@ -38,14 +66,14 @@ public class UserRoleDAO {
             UserRole ur = new UserRole();
             ur.setUserId(obj.getInt("id"));
 
-            switch (obj.get("user_role")) {
+            switch (obj.get("roleType")) {
                 case "ADMIN" -> { ur.setUserRoleType(UserRoleType.ADMIN); }
                 case "PROJECT_MANAGER" -> { ur.setUserRoleType(UserRoleType.PROJECT_MANAGER); }
                 case "LECTURER" -> { ur.setUserRoleType(UserRoleType.LECTURER); }
                 case "STUDENT" -> { ur.setUserRoleType(UserRoleType.STUDENT); }
             };
 
-            switch (obj.get("account_status")) {
+            switch (obj.get("status")) {
                 case "isActive" -> { ur.setAccountStatus(AccountStatus.isActive); }
                 case "deActivated" -> { ur.setAccountStatus(AccountStatus.deActivated); }
             };
@@ -54,8 +82,7 @@ public class UserRoleDAO {
         }
     }
 
-
-
+    // todo create a file reader
     private static String readFile(String filePath) {
         try {
             return new BufferedReader(new FileReader(filePath)).readLine();
@@ -63,6 +90,5 @@ public class UserRoleDAO {
             throw new RuntimeException(e);
         }
     }
-
 
 }

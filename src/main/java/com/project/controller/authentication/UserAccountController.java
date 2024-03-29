@@ -1,3 +1,9 @@
+/**
+ * User Account Controller
+ * @author CHAN HOONG JIAN
+ * @version 1.0, Last edited on 2024-03-29
+ * @since 2024-03-29
+ */
 package com.project.controller.authentication;
 
 import com.project.pojo.UserAccount;
@@ -12,6 +18,7 @@ public class UserAccountController {
 
     /**
      * Login Authentication
+     * @author CHAN HOONG JIAN
      * @param account
      * @param password
      * @return boolean result

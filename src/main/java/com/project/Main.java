@@ -7,6 +7,8 @@
 
 package com.project;
 
+import com.project.common.constants.MessageConstant;
+import com.project.common.utils.Dialog;
 import com.project.pojo.UserAccount;
 import com.project.ui.authentication.LoginGui;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +18,9 @@ import java.util.List;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-       //  new LoginGui();
+        Dialog.ErrorDialog(MessageConstant.ERROR_USERNAME_INCORRECT);
+        log.info(MessageConstant.ERROR_USERNAME_INCORRECT);
+        //  new LoginGui();
     }
 
 }

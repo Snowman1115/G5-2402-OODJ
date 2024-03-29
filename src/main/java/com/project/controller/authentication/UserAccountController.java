@@ -27,13 +27,14 @@ public class UserAccountController {
         log.info("Controller Implemented");
         if(userAccountService.loginAuthentication(account,password)) {
             log.info("Login Success");
+            return true;
         }
         log.info("Login Failed");
         return false;
     }
 
     public static void main(String[] args) {
-        System.out.println(loginAuthentication("rlanston0", "xxx"));
+        System.out.println(loginAuthentication("xxx", "xxx"));
     }
 
 }

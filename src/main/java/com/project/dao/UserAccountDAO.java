@@ -5,6 +5,7 @@ import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,14 +22,16 @@ public class UserAccountDAO {
         loadUserData();
     }
 
-    public static void main(String[] args) throws IOException {
+    // test run
+    public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Enter id: ");
 //        int targetID = sc.nextInt();
-//        System.out.println("Enter new name: ");
-//        String newName = sc.nextLine();
+//        System.out.println("Enter new username: ");
+//        String newName = sc.next();
 //        updateUsername(targetID, newName);
-        System.out.println(users.get(9));
+//        System.out.println(users.get(9));
+        updateUsername(10, "ChaoCheeBye");
     }
 
     /**
@@ -37,6 +40,7 @@ public class UserAccountDAO {
      * @return user account
      */
     public UserAccount getUserAccount(String account) {
+        log.info("DAO implemented");
         for (UserAccount user:users) {
             if (user.getUsername().equals(account)) {
                 return user;
@@ -47,17 +51,13 @@ public class UserAccountDAO {
 
     // Load user data
     private static void loadUserData() {
-        String json_txt = null;
-        try {
-            json_txt = new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        JsonHandler j_handler = new JsonHandler(json_txt);
+        JsonHandler userData = new JsonHandler();
+        userData.encode(readFile(USER_ACCOUNT));
 
-        for (int i=0; i<(j_handler.getAll().size()); i++) {
-            JsonHandler obj = new JsonHandler(j_handler.getObject(i));
+        for (int i=0; i<(userData.getAll().size()); i++) {
+            JsonHandler obj = new JsonHandler();
+            obj.setObject(userData.getObject(i));
 
             UserAccount ua = new UserAccount();
             ua.setUserId(obj.getInt("id"));
@@ -70,18 +70,20 @@ public class UserAccountDAO {
         }
     }
 
-
-    public static void updateUsername(Integer userId,  String name) throws IOException {
+    // test store data (JSON)
+    public static void updateUsername(Integer userId,  String name) {
         for (UserAccount user : users) {
             if (user.getUserId() == userId) {
                 user.setUsername(name);
-                JsonHandler userJson = new JsonHandler(new BufferedReader(new FileReader(new File(USER_ACCOUNT))).readLine());
 
+                // update into text file
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(readFile(USER_ACCOUNT));
+                userJson.update(userId, "username", name);
             }
         }
     }
 
-    // JSON UPDATEFILE
 
 
 
@@ -90,6 +92,11 @@ public class UserAccountDAO {
 
 
 
-
-
+    private static String readFile(String filePath) {
+        try {
+            return new BufferedReader(new FileReader(filePath)).readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

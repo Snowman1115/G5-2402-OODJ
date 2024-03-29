@@ -24,14 +24,7 @@ public class UserAccountDAO {
 
     // test run
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter id: ");
-//        int targetID = sc.nextInt();
-//        System.out.println("Enter new username: ");
-//        String newName = sc.next();
-//        updateUsername(targetID, newName);
-//        System.out.println(users.get(9));
-        updateUsername(10, "ChaoCheeBye");
+        System.out.println(users.get(0));
     }
 
     /**
@@ -64,6 +57,9 @@ public class UserAccountDAO {
             ua.setUsername(obj.get("username"));
             ua.setFirstName(obj.get("first_name"));
             ua.setLastName(obj.get("last_name"));
+            ua.setEmail(obj.get("email"));
+            ua.setPassword(obj.get("password"));
+            ua.setSecurityPhrase(obj.get("safeWord"));
             ua.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
             ua.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
             users.add(ua);

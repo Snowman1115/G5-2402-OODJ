@@ -24,12 +24,10 @@ public class UserAccountController {
      * @return boolean result
      */
     public static Boolean loginAuthentication(String account, String password) {
-        log.info("Controller Implemented");
+        log.info("User login : " + account);
         if(userAccountService.loginAuthentication(account,password)) {
-            log.info("Login Success");
             return true;
         }
-        log.info("Login Failed");
         return false;
     }
 

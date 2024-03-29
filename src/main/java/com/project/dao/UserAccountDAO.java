@@ -33,13 +33,27 @@ public class UserAccountDAO {
      * @return user account
      */
     public UserAccount getUserAccount(String account) {
-        log.info("DAO implemented");
         for (UserAccount user:users) {
-            if (user.getUsername().equals(account)) {
+            if (user.getUsername().equals(account) || user.getEmail().equals(account)) {
                 return user;
             }
         }
         return null;
+    }
+
+    /**
+     * Verify account and password
+     * @param account
+     * @param password
+     * @return boolean
+     */
+    public Boolean verifyPassword(String account, String password) {
+        for (UserAccount user: users) {
+            if ((user.getUsername().equals(account) || user.getEmail().equals(account)) && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // Load user data
@@ -95,4 +109,6 @@ public class UserAccountDAO {
             throw new RuntimeException(e);
         }
     }
+
+
 }

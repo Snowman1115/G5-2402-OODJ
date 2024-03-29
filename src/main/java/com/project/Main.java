@@ -18,9 +18,7 @@ import java.util.List;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-        Dialog.ErrorDialog(MessageConstant.ERROR_USERNAME_INCORRECT);
-        log.info(MessageConstant.ERROR_USERNAME_INCORRECT);
-        //  new LoginGui();
+        new LoginGui();
     }
 
 }

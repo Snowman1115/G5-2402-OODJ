@@ -6,6 +6,7 @@
  */
 package com.project.controller.authentication;
 
+import com.project.common.constants.UserRoleType;
 import com.project.pojo.UserAccount;
 import com.project.service.Impl.UserAccountServiceImpl;
 import com.project.service.UserAccountService;
@@ -23,16 +24,9 @@ public class UserAccountController {
      * @param password
      * @return boolean result
      */
-    public static Boolean loginAuthentication(String account, String password) {
+    public static UserRoleType loginAuthentication(String account, String password) {
         log.info("User login : " + account);
-        if(userAccountService.loginAuthentication(account,password)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(loginAuthentication("xxx", "xxx"));
+        return userAccountService.loginAuthentication(account,password);
     }
 
 }

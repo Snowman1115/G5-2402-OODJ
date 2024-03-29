@@ -1,6 +1,8 @@
 package com.project.ui.authentication;
 
+import com.project.common.constants.UserRoleType;
 import com.project.common.utils.PropertiesReader;
+import com.project.controller.authentication.UserAccountController;
 
 /**
  *
@@ -353,9 +355,16 @@ public class LoginGui extends javax.swing.JFrame {
     }//GEN-LAST:event_showPasswordBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        // if (LoginAuthentication.accountVerification(usernameField.getText(), passwordField.getText())){
-        //     this.dispose();
-        // }
+        UserRoleType userRoleType = UserAccountController.loginAuthentication(usernameField.getText(), passwordField.getText());
+        if(userRoleType != null) {
+            switch (userRoleType) {
+                // todo Create ALl User's GUI
+                case ADMIN -> { /*new AdminGui();*/ this.dispose(); }
+                case PROJECT_MANAGER -> { /*new ProjectManagerGui();*/ this.dispose(); }
+                case LECTURER -> { /*new LecturerGui();*/ this.dispose(); }
+                case STUDENT -> { /*new StudentGui();*/ this.dispose(); }
+            }
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBtnActionPerformed

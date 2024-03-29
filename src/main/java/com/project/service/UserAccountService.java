@@ -1,5 +1,7 @@
 package com.project.service;
 
+import com.project.common.constants.UserRoleType;
+
 public interface UserAccountService {
 
     /**
@@ -8,6 +10,6 @@ public interface UserAccountService {
      * @param password
      * @return boolean result
      */
-    public Boolean loginAuthentication(String account, String password);
+    public UserRoleType loginAuthentication(String account, String password);
 
 }

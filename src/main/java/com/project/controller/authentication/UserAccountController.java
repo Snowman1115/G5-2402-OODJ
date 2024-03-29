@@ -17,6 +17,12 @@ public class UserAccountController {
 
     private static UserAccountService userAccountService = new UserAccountServiceImpl();
 
+    // Testing
+//    public static void main(String[] args) {
+//        UserRoleType ut = loginAuthentication("admin", "1234");
+//        System.out.println(ut);
+//    }
+
     /**
      * Login Authentication
      * @author CHAN HOONG JIAN

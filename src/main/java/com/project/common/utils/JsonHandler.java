@@ -5,11 +5,17 @@
  * @since 2024-03-27
  */
 package com.project.common.utils;
+import com.project.common.constants.MessageConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 @Slf4j
 public class JsonHandler {
     private JSONArray json_array;
@@ -20,7 +26,7 @@ public class JsonHandler {
     // ====================== //
 
     /**
-     * Encode string json to JSONArray or JSONObject
+     * Object constructor and encode text json into JSONObject or JSONArray
      * @param jsonData
      */
     public void encode(String jsonData) {
@@ -31,10 +37,40 @@ public class JsonHandler {
             } else if (parser.parse(jsonData) instanceof JSONArray) {
                 json_array = (JSONArray) parser.parse(jsonData);
             } else {
-                log.info("Error: String is not in JSON format");
+                log.info("Error: " + MessageConstant.ERROR_INVALID_JSON_FORMAT_STRING);
             }
         } catch (ParseException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Decode json array or json object to json string
+     * @param decodeType
+     * @return
+     */
+    public String decode(String decodeType) {
+        if (decodeType.equals("array")) {
+            return json_array.toJSONString();
+        } else if (decodeType.equals("object")) {
+            return json_object.toJSONString();
+        } else {
+            log.info("Error: Invalid type");
+            return null;
+        }
+    }
+
+    /**
+     * Store json string data into text file
+     * @param JSONString
+     */
+    private void store(String JSONString) {
+        try {
+            FileWriter fw = new FileWriter(new File(PropertiesReader.getProperty("UserFile")));
+            fw.write(JSONString);
+            fw.close();
+        } catch (Exception e) {
+            log.info(e.toString());
         }
     }
 
@@ -64,7 +100,7 @@ public class JsonHandler {
         try {
             return json_array.get(index);
         } catch (IndexOutOfBoundsException e) {
-            log.info("Error: Array index out of bound");
+            log.info("Error: " + MessageConstant.ERROR_INDEX_OUT_OF_BOUND);
             return null;
         }
     }
@@ -82,8 +118,9 @@ public class JsonHandler {
      * @param objectId
      * @param attribute
      * @param value
+     * @return boolean
      */
-    public void update(int objectId, String attribute, String value) {
+    public boolean update(Integer objectId, String attribute, String value) {
         JSONObject obj = null;
 
         for (int i=0; i<(json_array.size()); i++) {
@@ -134,19 +171,27 @@ public class JsonHandler {
                     yield true;
                 }
                 default -> {
-                    log.info("Error: (" + attribute + ") Attribute does not exist in object");
+                    log.info("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
                     yield false;
                 }
             };
 
+            // store updated data into text file
             if (updateSuccess) {
-                String json_text = json_array.toJSONString();
-                System.out.println(json_text);
+                String jsonString = decode("array");
+                if (!jsonString.isEmpty()) {
+                    store(jsonString);
+                } else {
+                    log.info("Error: " + MessageConstant.ERROR_JSON_STORE_DATA);
+                    return false;
+                }
             }
-        } else {
-            log.info("Error: Object not found");
-        }
 
+            return updateSuccess;
+        } else {
+            log.info("Error: " + MessageConstant.ERROR_JSON_OBJECT_NOT_FOUND);
+            return false;
+        }
     }
 
 
@@ -158,6 +203,14 @@ public class JsonHandler {
     // ======================= //
     //   JSON object methods   //
     // ======================= //
+
+    /**
+     * Return the json object
+     * @return JSONObject
+     */
+    public JSONObject object() {
+        return json_object;
+    }
 
     /**
      * Get value of an attribute in an object in String data type
@@ -174,7 +227,7 @@ public class JsonHandler {
                 return null;
             }
         } catch (NullPointerException e) {
-            log.info("Error: Attribute => [" + attribute + "] is not found in object");
+            log.info("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
             return null;
         }
     }
@@ -201,7 +254,7 @@ public class JsonHandler {
             try {
                 return Integer.parseInt(val);
             } catch (NumberFormatException e) {
-                log.info("Error: Invalid method getInt(), Value contains non-numeric characters: " + val);
+                log.info("Error: " + MessageConstant.ERROR_JSON_NUM_VALUE_PARSER + val);
                 return null;
             }
         }
@@ -222,7 +275,7 @@ public class JsonHandler {
             try {
                 return Double.parseDouble(val);
             } catch (NumberFormatException e) {
-                log.info("Error: Invalid method getDouble(), Value contains non-numeric characters: " + val);
+                log.info("Error: " + MessageConstant.ERROR_JSON_NUM_VALUE_PARSER + val);
                 return null;
             }
         }

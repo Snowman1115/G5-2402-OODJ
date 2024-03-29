@@ -1,16 +1,16 @@
 package com.project.dao;
 
+import com.project.common.constants.MessageConstant;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONObject;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Slf4j
 public class UserAccountDAO {
@@ -24,7 +24,7 @@ public class UserAccountDAO {
 
     // test run
     public static void main(String[] args) {
-        System.out.println(users.get(0));
+        System.out.println(BCrypt.checkpw("1234", users.get(6).getPassword()));
     }
 
     /**
@@ -49,7 +49,7 @@ public class UserAccountDAO {
      */
     public Boolean verifyPassword(String account, String password) {
         for (UserAccount user: users) {
-            if ((user.getUsername().equals(account) || user.getEmail().equals(account)) && user.getPassword().equals(password)) {
+            if ((user.getUsername().equals(account) || user.getEmail().equals(account)) && BCrypt.checkpw(password, user.getPassword())) {
                 return true;
             }
         }
@@ -80,28 +80,77 @@ public class UserAccountDAO {
         }
     }
 
-    // test store data (JSON)
-    public static void updateUsername(Integer userId,  String name) {
+    // Update user data
+    public static boolean update(Integer userId, String field, String value) {
+        // find user object in arraylist
         for (UserAccount user : users) {
             if (user.getUserId() == userId) {
-                user.setUsername(name);
-
-                // update into text file
-                JsonHandler userJson = new JsonHandler();
-                userJson.encode(readFile(USER_ACCOUNT));
-                userJson.update(userId, "username", name);
+                try {
+                    switch (field) {
+                        case "username" -> {
+                            user.setUsername(value);
+                            return store(userId, "username", value);
+                        }
+                        case "firstName" -> {
+                            user.setFirstName(value);
+                            return store(userId, "first_name", value);
+                        }
+                        case "lastName" -> {
+                            user.setLastName(value);
+                            return store(userId, "last_name", value);
+                        }
+                        case "password" -> {
+                            String encryptedPassword = BCrypt.hashpw(value, BCrypt.gensalt());
+                            user.setPassword(encryptedPassword);
+                            return store(userId, "password", encryptedPassword);
+                        }
+                        case "email" -> {
+                            user.setEmail(value);
+                            return store(userId, "email", value);
+                        }
+                        case "securityPhrase" -> {
+                            user.setPassword(value);
+                            return store(userId, "safeWord", value);
+                        }
+                        default -> {
+                            log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
+                            return false;
+                        }
+                    }
+                } catch (Exception e) {
+                    return false;
+                }
             }
         }
+
+        log.info("Error: " + MessageConstant.ERROR_OBJECT_NOT_FOUND);
+        return false;
     }
 
+    /**
+     * Store updated data into text file
+     * @param userId
+     * @param attribute
+     * @param value
+     * @return
+     */
+    private static boolean store(Integer userId, String attribute, String value) {
+        JsonHandler userJson = new JsonHandler();
+        userJson.encode(readFile(USER_ACCOUNT));
+        return userJson.update(userId, attribute, value);
+    }
+
+    // testings
 
 
 
 
 
-
-
-
+    /**
+     * Read text file
+     * @param filePath
+     * @return String
+     */
     private static String readFile(String filePath) {
         try {
             return new BufferedReader(new FileReader(filePath)).readLine();

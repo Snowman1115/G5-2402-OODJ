@@ -17,7 +17,6 @@ public class UserAccountServiceImpl implements UserAccountService {
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
 
     private UserRoleDAO userRoleDAO = new UserRoleDAO();
-
     /**
      * Login Authentication
      * @param account

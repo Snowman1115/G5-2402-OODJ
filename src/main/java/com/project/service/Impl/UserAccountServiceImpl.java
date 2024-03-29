@@ -33,8 +33,10 @@ public class UserAccountServiceImpl implements UserAccountService {
             return false;
         }
 
+
         // TODO: 28-Mar-24 To Addon Verify Account Status function
         log.info("User Info: "+ user);
         return true;
     }
+
 }

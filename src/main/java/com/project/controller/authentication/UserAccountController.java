@@ -48,4 +48,8 @@ public class UserAccountController {
         return userAuthenticationService.checkUserAuthorization(userRoleType);
     }
 
+    public static void logout() {
+        userAuthenticationService.destroy();
+    }
+
 }

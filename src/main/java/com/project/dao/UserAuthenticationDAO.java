@@ -27,4 +27,8 @@ public class UserAuthenticationDAO {
         return userAuthentication;
     }
 
+    public static void destroy() {
+        userAuthentication = null;
+    }
+
 }

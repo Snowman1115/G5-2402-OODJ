@@ -1,7 +1,6 @@
 package com.project.service;
 
 import com.project.common.constants.UserRoleType;
-import com.project.pojo.UserAuthentication;
 
 public interface UserAuthenticationService {
 
@@ -11,5 +10,10 @@ public interface UserAuthenticationService {
      * @return User Authentication
      */
     public Boolean checkUserAuthorization(UserRoleType userRoleType);
+
+    /**
+     * Destroy User Authentication
+     */
+    public void destroy();
 
 }

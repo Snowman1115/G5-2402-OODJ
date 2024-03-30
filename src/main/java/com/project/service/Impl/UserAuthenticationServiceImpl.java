@@ -34,4 +34,12 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         return true;
     }
 
+    /**
+     * Destroy User Authentication
+     */
+    @Override
+    public void destroy() {
+        userAuthenticationDAO.destroy();
+    }
+
 }

@@ -12,6 +12,8 @@ public class MessageConstant {
 
 
     /* ERROR */
+    public static final String ERROR_NOT_LOGIN = "Unusual activities detected, please login.";
+    public static final String ERROR_UNAUTHORIZED_ACCESS = "Unauthorized access attempt detected, redirected to login page.";
     public static final String ERROR_FIELD_EMPTY = "Please fill in all the fields.";
     public static final String ERROR_USERNAME_INCORRECT = "Username/Email invalid, please try again.";
     public static final String ERROR_PASSWORD_INCORRECT = "Password invalid, please try again.";

@@ -3,6 +3,7 @@ package com.project.ui.authentication;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.PropertiesReader;
 import com.project.controller.authentication.UserAccountController;
+import com.project.ui.administrator.AdminGui;
 
 /**
  *
@@ -57,6 +58,7 @@ public class LoginGui extends javax.swing.JFrame {
         MainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LeftPanel.setBackground(new java.awt.Color(164, 196, 181));
@@ -359,7 +361,7 @@ public class LoginGui extends javax.swing.JFrame {
         if(userRoleType != null) {
             switch (userRoleType) {
                 // todo Create ALl User's GUI
-                case ADMIN -> { /*new AdminGui();*/ this.dispose(); }
+                case ADMIN -> { new AdminGui(); this.dispose(); }
                 case PROJECT_MANAGER -> { /*new ProjectManagerGui();*/ this.dispose(); }
                 case LECTURER -> { /*new LecturerGui();*/ this.dispose(); }
                 case STUDENT -> { /*new StudentGui();*/ this.dispose(); }

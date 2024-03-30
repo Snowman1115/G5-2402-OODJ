@@ -5,6 +5,7 @@ import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.Dialog;
 import com.project.dao.UserAccountDAO;
+import com.project.dao.UserAuthenticationDAO;
 import com.project.dao.UserRoleDAO;
 import com.project.pojo.UserAccount;
 import com.project.pojo.UserAuthentication;
@@ -15,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 public class UserAccountServiceImpl implements UserAccountService {
 
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
+
+    private UserAuthenticationDAO userAuthenticationDAO = new UserAuthenticationDAO();
 
     private UserRoleDAO userRoleDAO = new UserRoleDAO();
     /**
@@ -36,13 +39,18 @@ public class UserAccountServiceImpl implements UserAccountService {
             Dialog.ErrorDialog(MessageConstant.ERROR_PASSWORD_INCORRECT);
             return null;
         }
-        if(userRoleDAO.checkAccountStatus(user.getUserId()) == AccountStatus.deActivated) {
+
+        AccountStatus accountStatus = userRoleDAO.checkAccountStatus(user.getUserId());
+        if(accountStatus == AccountStatus.deActivated) {
             Dialog.ErrorDialog(MessageConstant.ERROR_ACCOUNT_DEACTIVATED);
             return null;
         }
 
-        // todo insert user authentication details
-        switch (userRoleDAO.checkRoleType(user.getUserId())) {
+        UserRoleType userRoleType = userRoleDAO.checkRoleType(user.getUserId());
+
+        userAuthenticationDAO.insertAuthenticatedUser(user.getUserId(),user.getUsername(),userRoleType,accountStatus);
+
+        switch (userRoleType) {
             case ADMIN -> { return UserRoleType.ADMIN; }
             case PROJECT_MANAGER -> { return UserRoleType.PROJECT_MANAGER; }
             case LECTURER -> { return UserRoleType.LECTURER; }

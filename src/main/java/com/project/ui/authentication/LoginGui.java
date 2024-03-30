@@ -4,6 +4,9 @@ import com.project.common.constants.UserRoleType;
 import com.project.common.utils.PropertiesReader;
 import com.project.controller.authentication.UserAccountController;
 import com.project.ui.administrator.AdminGui;
+import com.project.ui.lecturer.LecturerGui;
+import com.project.ui.project_manager.ProjectManagerGui;
+import com.project.ui.student.StudentGui;
 
 /**
  *
@@ -35,10 +38,6 @@ public class LoginGui extends javax.swing.JFrame {
         LogoTitle_2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         RightPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Salesperson = new javax.swing.JLabel();
         RoyaleLabel = new javax.swing.JLabel();
         WelcomeToRoyalelHotelLabel = new javax.swing.JLabel();
         InputFieldPanel = new javax.swing.JPanel();
@@ -49,6 +48,10 @@ public class LoginGui extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         passwordSeparator = new javax.swing.JSeparator();
         showPasswordBtn = new javax.swing.JCheckBox();
+        Salesperson = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         loginBtn = new javax.swing.JButton();
         loginBtnSeperator = new javax.swing.JSeparator();
@@ -79,49 +82,18 @@ public class LoginGui extends javax.swing.JFrame {
         LeftPanel.add(LogoTitle_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 700, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LeftPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 700, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/PMS Logo Large.png"))); // NOI18N
+        LeftPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 700, -1));
 
         getContentPane().add(LeftPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 720));
 
         RightPanel.setBackground(new java.awt.Color(255, 255, 255));
         RightPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Admin");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        RightPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-
-        jLabel3.setText("Superadmin");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        RightPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jLabel4.setText("Officer");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-        RightPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        Salesperson.setText("Salesperson");
-        Salesperson.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SalespersonMouseClicked(evt);
-            }
-        });
-        RightPanel.add(Salesperson, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
         RoyaleLabel.setBackground(new java.awt.Color(105, 105, 105));
-        RoyaleLabel.setFont(new java.awt.Font("Tempus Sans ITC", 1, 48)); // NOI18N
+        RoyaleLabel.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
         RoyaleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        RoyaleLabel.setText("XXX");
+        RoyaleLabel.setText("Academic Guidance Hub");
         RightPanel.add(RoyaleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 580, -1));
 
         WelcomeToRoyalelHotelLabel.setBackground(new java.awt.Color(105, 105, 105));
@@ -176,36 +148,83 @@ public class LoginGui extends javax.swing.JFrame {
             }
         });
 
+        Salesperson.setText("Student");
+        Salesperson.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SalespersonMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("Lecturer");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Project Manager");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setText("Admin");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout InputFieldPanelLayout = new javax.swing.GroupLayout(InputFieldPanel);
         InputFieldPanel.setLayout(InputFieldPanelLayout);
         InputFieldPanelLayout.setHorizontalGroup(
             InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InputFieldPanelLayout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
                 .addGroup(InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(showPasswordBtn)
-                    .addGroup(InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(passwordSeparator)
-                        .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                        .addComponent(passwordLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(usernameSeparator)
-                        .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)))
+                    .addGroup(InputFieldPanelLayout.createSequentialGroup()
+                        .addContainerGap(327, Short.MAX_VALUE)
+                        .addComponent(showPasswordBtn))
+                    .addGroup(InputFieldPanelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(Salesperson))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(passwordSeparator)
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(passwordLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameSeparator)
+                            .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))))
                 .addGap(140, 140, 140))
         );
         InputFieldPanelLayout.setVerticalGroup(
             InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InputFieldPanelLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addComponent(usernameLabel)
-                .addGap(0, 0, 0)
-                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(usernameSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(passwordLabel)
-                .addGap(0, 0, 0)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(InputFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InputFieldPanelLayout.createSequentialGroup()
+                        .addComponent(usernameLabel)
+                        .addGap(0, 0, 0)
+                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(usernameSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(passwordLabel)
+                        .addGap(0, 0, 0)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InputFieldPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel2)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel4)
+                        .addGap(14, 14, 14)
+                        .addComponent(Salesperson)))
                 .addGap(0, 0, 0)
                 .addComponent(passwordSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -290,7 +309,7 @@ public class LoginGui extends javax.swing.JFrame {
                 .addComponent(loginBtnSeperator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(forgetPasswordBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(pmsVersionLabel)
                 .addGap(15, 15, 15))
         );
@@ -319,23 +338,23 @@ public class LoginGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        usernameField.setText("user4");
-        passwordField.setText("password");
+        usernameField.setText("project_manager");
+        passwordField.setText("1234");
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        usernameField.setText("user1");
-        passwordField.setText("password");
+        usernameField.setText("admin");
+        passwordField.setText("1234");
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        usernameField.setText("user2");
-        passwordField.setText("password");
+        usernameField.setText("lecturer");
+        passwordField.setText("1234");
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void SalespersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalespersonMouseClicked
-        usernameField.setText("user3");
-        passwordField.setText("password");
+        usernameField.setText("amos1212");
+        passwordField.setText("1234");
     }//GEN-LAST:event_SalespersonMouseClicked
 
     private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
@@ -360,11 +379,10 @@ public class LoginGui extends javax.swing.JFrame {
         UserRoleType userRoleType = UserAccountController.loginAuthentication(usernameField.getText(), passwordField.getText());
         if(userRoleType != null) {
             switch (userRoleType) {
-                // todo Create ALl User's GUI
                 case ADMIN -> { new AdminGui(); this.dispose(); }
-                case PROJECT_MANAGER -> { /*new ProjectManagerGui();*/ this.dispose(); }
-                case LECTURER -> { /*new LecturerGui();*/ this.dispose(); }
-                case STUDENT -> { /*new StudentGui();*/ this.dispose(); }
+                case PROJECT_MANAGER -> { new ProjectManagerGui(); this.dispose(); }
+                case LECTURER -> { new LecturerGui(); this.dispose(); }
+                case STUDENT -> { new StudentGui(); this.dispose(); }
             }
         }
     }//GEN-LAST:event_loginBtnActionPerformed

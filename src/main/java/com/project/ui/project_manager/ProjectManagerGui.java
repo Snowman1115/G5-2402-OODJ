@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.project.ui.administrator;
+package com.project.ui.project_manager;
 
+import com.project.ui.administrator.*;
 import com.project.common.constants.UserRoleType;
 import com.project.controller.authentication.UserAccountController;
 import com.project.ui.authentication.LoginGui;
@@ -13,7 +14,7 @@ import java.awt.Color;
  *
  * @author chanh
  */
-public class AdminGui extends javax.swing.JFrame {
+public class ProjectManagerGui extends javax.swing.JFrame {
 
     private static Color DefaultBtnColor = new Color(245,245,245);
     private static Color ClickedBtnColor = new Color(230,230,230);
@@ -21,8 +22,8 @@ public class AdminGui extends javax.swing.JFrame {
     /**
      * Creates new form AdminGui
      */
-    public AdminGui() {
-        if (!UserAccountController.checkUserAuthorization(UserRoleType.ADMIN)) {
+    public ProjectManagerGui() {
+        if (!UserAccountController.checkUserAuthorization(UserRoleType.PROJECT_MANAGER)) {
             new LoginGui();
             this.dispose();
         } else {
@@ -47,7 +48,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
-                WindowsPane.add(new AdminDashboard()).setVisible(true);
+                WindowsPane.add(new ProjectManagerDashboard()).setVisible(true);
             } 
             case "menuBtn2" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
@@ -381,7 +382,7 @@ public class AdminGui extends javax.swing.JFrame {
         jLabel3.setText("  User Management");
 
         jLabel4.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel4.setText("  Admin Home");
+        jLabel4.setText("  Project Manager Home");
 
         jSeparator5.setForeground(new java.awt.Color(230, 230, 230));
 
@@ -533,20 +534,21 @@ public class AdminGui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProjectManagerGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProjectManagerGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProjectManagerGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProjectManagerGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminGui().setVisible(true);
+                new ProjectManagerGui().setVisible(true);
             }
         });
     }

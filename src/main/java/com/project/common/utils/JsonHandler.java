@@ -1,7 +1,7 @@
 /**
  * Utils - JSON Object handler
  * @author AU YIK HOE
- * @version 1.0, Last edited on 2024-03-29
+ * @version 1.0, Last edited on 2024-03-31
  * @since 2024-03-27
  */
 package com.project.common.utils;
@@ -50,12 +50,20 @@ public class JsonHandler {
      * @return
      */
     public String decode(String decodeType) {
-        if (decodeType.equals("array")) {
-            return json_array.toJSONString();
-        } else if (decodeType.equals("object")) {
-            return json_object.toJSONString();
-        } else {
-            log.info("Error: Invalid type");
+        try {
+            if (decodeType.equals("array")) {
+                return json_array.toJSONString();
+            } else if (decodeType.equals("object")) {
+                return json_object.toJSONString();
+            } else {
+                log.info("Error: Invalid type");
+                return null;
+            }
+        } catch (NullPointerException e) {
+            switch (decodeType) {
+                case "array" -> { log.info("Error: JSON Array is null"); }
+                case "object" -> { log.info("Error: JSON Object is null"); }
+            }
             return null;
         }
     }
@@ -96,11 +104,14 @@ public class JsonHandler {
      * @param index
      * @return object
      */
-    public Object getObject(int index) {
+    public JSONObject getObject(int index) {
         try {
-            return json_array.get(index);
+            return (JSONObject) json_array.get(index);
         } catch (IndexOutOfBoundsException e) {
             log.info("Error: " + MessageConstant.ERROR_INDEX_OUT_OF_BOUND);
+            return null;
+        } catch (NullPointerException e) {
+            log.info("Error: JSON Array is null");
             return null;
         }
     }
@@ -132,62 +143,20 @@ public class JsonHandler {
             }
         }
 
-        if (obj != null) {
-            boolean updateSuccess = switch (attribute) {
-                case "username" -> {
-                    obj.replace("username", value);
-                    json_array.add(obj);
-
-                    yield true;
-                }
-                case "first_name" -> {
-                    obj.replace("first_name", value);
-                    json_array.add(obj);
-
-                    yield true;
-                }
-                case "last_name" -> {
-                    obj.replace("last_name", value);
-                    json_array.add(obj);
-
-                    yield true;
-                }
-                case "password" -> {
-                    obj.replace("password", value);
-                    json_array.add(obj);
-
-                    yield true;
-                }
-                case "email" -> {
-                    obj.replace("email", value);
-                    json_array.add(obj);
-
-                    yield true;
-                }
-                case "safeWord" -> {
-                    obj.replace("safeWord", value);
-                    json_array.add(obj);
-
-                    yield true;
-                }
-                default -> {
-                    log.info("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
-                    yield false;
-                }
-            };
-
-            // store updated data into text file
-            if (updateSuccess) {
-                String jsonString = decode("array");
-                if (!jsonString.isEmpty()) {
-                    store(jsonString);
-                } else {
-                    log.info("Error: " + MessageConstant.ERROR_JSON_STORE_DATA);
-                    return false;
-                }
+        if (obj != null && obj.containsKey(attribute)) {
+            obj.replace(attribute, value);
+            json_array.add(obj);
+            String jsonString = decode("array");
+            if (!jsonString.isEmpty()) {
+                store(jsonString);
+                return true;
+            } else {
+                log.info("Error: " + MessageConstant.ERROR_JSON_STORE_DATA);
+                return false;
             }
-
-            return updateSuccess;
+        } else if (obj != null && !obj.containsKey(attribute)) {
+            log.info("Error: " + '"' + attribute + '"' + " " + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
+            return false;
         } else {
             log.info("Error: " + MessageConstant.ERROR_JSON_OBJECT_NOT_FOUND);
             return false;
@@ -213,6 +182,14 @@ public class JsonHandler {
     }
 
     /**
+     * Get set json object
+     * @param object
+     */
+    public void cloneObject(JSONObject object) {
+        json_object = object;
+    }
+
+    /**
      * Get value of an attribute in an object in String data type
      * @param attribute
      * @return attribute value (String)
@@ -230,14 +207,6 @@ public class JsonHandler {
             log.info("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
             return null;
         }
-    }
-
-    /**
-     * Get set json object
-     * @param object
-     */
-    public void setObject(Object object) {
-        json_object = (JSONObject) object;
     }
 
     /**

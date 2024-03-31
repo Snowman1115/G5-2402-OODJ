@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.simple.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Slf4j
@@ -23,7 +25,10 @@ public class UserAccountDAO {
 
     // test run
     public static void main(String[] args) {
-        System.out.println(BCrypt.checkpw("1234", users.get(6).getPassword()));
+        JsonHandler jh = new JsonHandler();
+        jh.encode(readFile(USER_ACCOUNT));
+        jh.update(10, "testing", "testing");
+//        System.out.println(test);
     }
 
     /**
@@ -63,7 +68,7 @@ public class UserAccountDAO {
 
         for (int i=0; i<(userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.setObject(userData.getObject(i));
+            obj.cloneObject(userData.getObject(i));
 
             UserAccount ua = new UserAccount();
             ua.setUserId(obj.getInt("id"));

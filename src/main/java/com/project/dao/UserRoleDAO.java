@@ -61,7 +61,7 @@ public class UserRoleDAO {
 
         for (int i=0; i<(userRole.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.setObject(userRole.getObject(i));
+            obj.cloneObject(userRole.getObject(i));
 
             UserRole ur = new UserRole();
             ur.setUserId(obj.getInt("id"));

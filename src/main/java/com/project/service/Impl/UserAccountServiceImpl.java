@@ -33,16 +33,19 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         if(user == null){
             Dialog.ErrorDialog(MessageConstant.ERROR_USERNAME_INCORRECT);
+            log.info("User (" + account + ") login fail error: " + MessageConstant.ERROR_USERNAME_INCORRECT);
             return null;
         }
         if (!userAccountDAO.verifyPassword(account,password)) {
             Dialog.ErrorDialog(MessageConstant.ERROR_PASSWORD_INCORRECT);
+            log.info("User (" + account + ") login fail error: " + MessageConstant.ERROR_PASSWORD_INCORRECT);
             return null;
         }
 
         AccountStatus accountStatus = userRoleDAO.checkAccountStatus(user.getUserId());
         if(accountStatus == AccountStatus.deActivated) {
             Dialog.ErrorDialog(MessageConstant.ERROR_ACCOUNT_DEACTIVATED);
+            log.info("User (" + account + ") login fail error: " + MessageConstant.ERROR_ACCOUNT_DEACTIVATED);
             return null;
         }
 
@@ -50,11 +53,14 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         userAuthenticationDAO.insertAuthenticatedUser(user.getUserId(),user.getUsername(),userRoleType,accountStatus);
 
+
+        log.info("User: (" + account + ") ,Role: (" + userRoleType + ") login successful.");
+
         switch (userRoleType) {
-            case ADMIN -> { return UserRoleType.ADMIN; }
-            case PROJECT_MANAGER -> { return UserRoleType.PROJECT_MANAGER; }
-            case LECTURER -> { return UserRoleType.LECTURER; }
-            case STUDENT -> { return UserRoleType.STUDENT; }
+            case ADMIN -> { log.info("Redirecting (" + account + ") to Admin Panel."); return UserRoleType.ADMIN; }
+            case PROJECT_MANAGER -> { log.info("Redirecting (" + account + ") to Project Manager Panel."); return UserRoleType.PROJECT_MANAGER; }
+            case LECTURER -> { log.info("Redirecting (" + account + ") to Lecturer Panel."); return UserRoleType.LECTURER; }
+            case STUDENT -> { log.info("Redirecting (" + account + ") to Student Panel."); return UserRoleType.STUDENT; }
             default -> { return null; }
         }
 

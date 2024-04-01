@@ -1,0 +1,31 @@
+2024-04-01 10:40:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : Enter Your User Name
+2024-04-01 10:40:47 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (Enter Your User Name) login fail error: Username/Email invalid, please try again.
+2024-04-01 10:40:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : Enter Your User Name
+2024-04-01 10:40:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (Enter Your User Name) login fail error: Username/Email invalid, please try again.
+2024-04-01 10:41:03 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : Enter Your User Name
+2024-04-01 10:41:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (Enter Your User Name) login fail error: Username/Email invalid, please try again.
+2024-04-01 10:41:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : 
+2024-04-01 10:41:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User () login fail error: Username/Email invalid, please try again.
+2024-04-01 10:41:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-01 10:41:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-01 10:41:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-01 10:41:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-01 10:41:07 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-01 10:41:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-01 10:41:13 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-01 10:42:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-01 10:42:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-01 10:42:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-01 10:42:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-01 10:42:17 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-01 10:42:29 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-01 10:42:29 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-01 10:49:01 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : project_manager
+2024-04-01 10:49:01 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (project_manager) ,Role: (PROJECT_MANAGER) login successful.
+2024-04-01 10:49:01 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (project_manager) to Project Manager Panel.
+2024-04-01 10:49:01 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-01 10:49:01 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (project_manager) authorization passed.
+2024-04-01 10:49:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-01 10:49:05 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-01 10:49:08 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : lecturer
+2024-04-01 10:49:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (lecturer) login fail error: Password invalid, please try again.

@@ -45,10 +45,12 @@ public class UserAccountController {
      * @return User Authentication
      */
     public static Boolean checkUserAuthorization(UserRoleType userRoleType) {
+        log.info("Verify user authorization status.");
         return userAuthenticationService.checkUserAuthorization(userRoleType);
     }
 
     public static void logout() {
+        log.info("User logout.");
         userAuthenticationService.destroy();
     }
 

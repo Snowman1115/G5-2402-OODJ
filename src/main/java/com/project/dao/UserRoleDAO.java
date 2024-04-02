@@ -2,15 +2,11 @@ package com.project.dao;
 
 import com.project.common.constants.AccountStatus;
 import com.project.common.constants.UserRoleType;
-import com.project.common.utils.DateTimeUtils;
+import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
-import com.project.pojo.UserAccount;
 import com.project.pojo.UserRole;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +53,7 @@ public class UserRoleDAO {
     private static void loadUserRoleData() {
 
         JsonHandler userRole = new JsonHandler();
-        userRole.encode(readFile(USER_ACCOUNT));
+        userRole.encode(FileHandler.readFile(USER_ACCOUNT));
 
         for (int i=0; i<(userRole.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
@@ -79,15 +75,6 @@ public class UserRoleDAO {
             };
 
             user_roles.add(ur);
-        }
-    }
-
-    // todo create a file reader
-    private static String readFile(String filePath) {
-        try {
-            return new BufferedReader(new FileReader(filePath)).readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 

@@ -29,3 +29,17 @@
 2024-04-01 10:49:05 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
 2024-04-01 10:49:08 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : lecturer
 2024-04-01 10:49:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (lecturer) login fail error: Password invalid, please try again.
+2024-04-02 12:11:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-02 12:11:35 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-02 12:11:35 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-02 12:11:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-02 12:11:35 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-02 12:11:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-02 12:11:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-02 12:15:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : project_manager
+2024-04-02 12:15:20 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (project_manager) ,Role: (PROJECT_MANAGER) login successful.
+2024-04-02 12:15:20 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (project_manager) to Project Manager Panel.
+2024-04-02 12:15:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-02 12:15:20 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (project_manager) authorization passed.
+2024-04-02 12:15:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-02 12:15:30 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.

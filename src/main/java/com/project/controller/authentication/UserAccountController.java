@@ -7,8 +7,6 @@
 package com.project.controller.authentication;
 
 import com.project.common.constants.UserRoleType;
-import com.project.pojo.UserAccount;
-import com.project.pojo.UserAuthentication;
 import com.project.service.Impl.UserAccountServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.UserAccountService;

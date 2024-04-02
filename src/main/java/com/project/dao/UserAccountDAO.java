@@ -2,6 +2,7 @@ package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
 import com.project.common.utils.DateTimeUtils;
+import com.project.common.utils.FileHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
@@ -26,7 +27,7 @@ public class UserAccountDAO {
     // test run
     public static void main(String[] args) {
         JsonHandler jh = new JsonHandler();
-        jh.encode(readFile(USER_ACCOUNT));
+        jh.encode(FileHandler.readFile(USER_ACCOUNT));
         jh.update(10, "testing", "testing");
 //        System.out.println(test);
     }
@@ -64,7 +65,7 @@ public class UserAccountDAO {
     private static void loadUserData() {
 
         JsonHandler userData = new JsonHandler();
-        userData.encode(readFile(USER_ACCOUNT));
+        userData.encode(FileHandler.readFile(USER_ACCOUNT));
 
         for (int i=0; i<(userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
@@ -140,28 +141,8 @@ public class UserAccountDAO {
      */
     private static boolean store(Integer userId, String attribute, String value) {
         JsonHandler userJson = new JsonHandler();
-        userJson.encode(readFile(USER_ACCOUNT));
+        userJson.encode(FileHandler.readFile(USER_ACCOUNT));
         return userJson.update(userId, attribute, value);
     }
-
-    // testings
-
-
-
-
-
-    /**
-     * Read text file
-     * @param filePath
-     * @return String
-     */
-    private static String readFile(String filePath) {
-        try {
-            return new BufferedReader(new FileReader(filePath)).readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
 }

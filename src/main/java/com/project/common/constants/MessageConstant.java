@@ -27,6 +27,14 @@ public class MessageConstant {
     public static final String ERROR_INDEX_OUT_OF_BOUND = "Index out of bound";
     public static final String ERROR_JSON_NUM_VALUE_PARSER = "Value contains non-numeric characters: ";
     public static final String ERROR_JSON_STORE_DATA = "Unable to save data into text file";
+    public static final String ERROR_EMAIL_FORMAT_INCORRECT = "Email format incorrect, Please Try Again";
+    public static final String ERROR_PHONE_NUMBER_FORMAT_INCORRECT = "Phone number format incorrect, Please Try Again";
+    public static final String ERROR_USERNAME_FORMAT_INCORRECT = "Username length must be in 4-16, Please Try Again";
+    public static final String ERROR_PASSWORD_FORMAT_INCORRECT = "Password format incorrect, \nplease involved at least one special character, \nnumber and Capital Letter.";
+    public static final String ERROR_DATE_FORMAT_INCORRECT = "Date format incorrect. Format: 'yyyy-MM-dd'";
+    public static final String ERROR_POSTCODE_FORMAT_INCORRECT = "Postcode format incorrect. Please try again";
+    public static final String ERROR_STATE_INCORRECT = "Entered state invalid. Please try again";
+
 
     /* WARNING */
 }

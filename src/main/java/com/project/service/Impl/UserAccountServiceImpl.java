@@ -3,6 +3,7 @@ package com.project.service.Impl;
 import com.project.common.constants.AccountStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
+import com.project.common.utils.DataValidator;
 import com.project.common.utils.Dialog;
 import com.project.dao.UserAccountDAO;
 import com.project.dao.UserAuthenticationDAO;
@@ -20,13 +21,13 @@ public class UserAccountServiceImpl implements UserAccountService {
     private UserAuthenticationDAO userAuthenticationDAO = new UserAuthenticationDAO();
 
     private UserRoleDAO userRoleDAO = new UserRoleDAO();
+
     /**
      * Login Authentication
      * @param account
      * @param password
      * @return boolean result
      */
-
     @Override
     public UserRoleType loginAuthentication(String account, String password) {
         UserAccount user = userAccountDAO.getUserAccount(account);
@@ -63,7 +64,13 @@ public class UserAccountServiceImpl implements UserAccountService {
             case STUDENT -> { log.info("Redirecting (" + account + ") to Student Panel."); return UserRoleType.STUDENT; }
             default -> { return null; }
         }
-
     }
 
+    @Override
+    public boolean updateProfile(UserAccount userAccount) {
+        /* Input Validation Check */
+        /*if (DataValidator.validateUsername(userAccount.getUsername()))
+*/
+        return false;
+    }
 }

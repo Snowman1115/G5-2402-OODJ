@@ -7,6 +7,7 @@
 package com.project.controller.authentication;
 
 import com.project.common.constants.UserRoleType;
+import com.project.pojo.UserAccount;
 import com.project.service.Impl.UserAccountServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.UserAccountService;
@@ -19,15 +20,9 @@ public class UserAccountController {
     private static UserAccountService userAccountService = new UserAccountServiceImpl();
 
     private static UserAuthenticationService userAuthenticationService = new UserAuthenticationServiceImpl();
-    // Testing
-//    public static void main(String[] args) {
-//        UserRoleType ut = loginAuthentication("admin", "1234");
-//        System.out.println(ut);
-//    }
 
     /**
      * Login Authentication
-     * @author CHAN HOONG JIAN
      * @param account
      * @param password
      * @return boolean result
@@ -47,6 +42,19 @@ public class UserAccountController {
         return userAuthenticationService.checkUserAuthorization(userRoleType);
     }
 
+    /**
+     * Update User Profile
+     * @param userAccount
+     * @return boolean result
+     */
+    public static boolean updateProfile(UserAccount userAccount) {
+        log.info("Update Profile: " + userAccount);
+        return userAccountService.updateProfile(userAccount);
+    }
+
+    /**
+     * Logout Function
+     */
     public static void logout() {
         log.info("User logout.");
         userAuthenticationService.destroy();

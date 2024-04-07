@@ -650,7 +650,7 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
 
     private void menuBtn16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn16MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn7");
+        LecturerGui.ButtonClicked("menuBtn7");
     }//GEN-LAST:event_menuBtn16MouseClicked
 
     private void menuBtn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn6MouseClicked
@@ -659,37 +659,37 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
 
     private void menuBtn17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn17MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn7");
+        LecturerGui.ButtonClicked("menuBtn7");
     }//GEN-LAST:event_menuBtn17MouseClicked
 
     private void menuBtn18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn18MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn7");
+        LecturerGui.ButtonClicked("menuBtn7");
     }//GEN-LAST:event_menuBtn18MouseClicked
 
     private void menuBtn14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn14MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn8");
+        LecturerGui.ButtonClicked("menuBtn8");
     }//GEN-LAST:event_menuBtn14MouseClicked
 
     private void menuBtn12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn12MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn2");
+        LecturerGui.ButtonClicked("menuBtn2");
     }//GEN-LAST:event_menuBtn12MouseClicked
 
     private void menuBtn15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn15MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn8");
+        LecturerGui.ButtonClicked("menuBtn8");
     }//GEN-LAST:event_menuBtn15MouseClicked
 
     private void menuBtn13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn13MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn3");
+        LecturerGui.ButtonClicked("menuBtn3");
     }//GEN-LAST:event_menuBtn13MouseClicked
 
     private void menuBtn19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn19MouseClicked
         this.dispose();
-        AdminGui.ButtonClicked("menuBtn7");
+        LecturerGui.ButtonClicked("menuBtn7");
     }//GEN-LAST:event_menuBtn19MouseClicked
 
     private void menuBtn27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn27MouseClicked

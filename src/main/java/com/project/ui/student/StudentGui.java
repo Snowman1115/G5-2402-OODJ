@@ -125,7 +125,7 @@ public class StudentGui extends javax.swing.JFrame {
                 menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new SalesGui()).setVisible(true);
+                WindowsPane.add(new StudentPresentationGui()).setVisible(true);
             } 
             case "menuBtn8" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
@@ -138,7 +138,7 @@ public class StudentGui extends javax.swing.JFrame {
                 menuBtn8.setBackground(ClickedBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new FurnitureGui()).setVisible(true);
+                WindowsPane.add(new StudentAssignmentGui()).setVisible(true);
             } 
             case "menuBtn9" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
@@ -164,7 +164,7 @@ public class StudentGui extends javax.swing.JFrame {
                 menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(ClickedBtnColor);
-                // WindowsPane.add(new OrderGui()).setVisible(true);
+                WindowsPane.add(new StudentResultGui()).setVisible(true);
             } 
         }
     }
@@ -197,7 +197,6 @@ public class StudentGui extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -319,7 +318,7 @@ public class StudentGui extends javax.swing.JFrame {
         menuBtn7.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn7.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn7.setText("XXXXX");
+        menuBtn7.setText("PRESENTATION");
         menuBtn7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn7.setOpaque(true);
         menuBtn7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -331,7 +330,7 @@ public class StudentGui extends javax.swing.JFrame {
         menuBtn8.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn8.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn8.setText("XXXXX");
+        menuBtn8.setText("ASSIGNMENT");
         menuBtn8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn8.setOpaque(true);
         menuBtn8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -355,7 +354,7 @@ public class StudentGui extends javax.swing.JFrame {
         menuBtn10.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn10.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn10.setText("XXXXXX");
+        menuBtn10.setText("RESULT");
         menuBtn10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn10.setOpaque(true);
         menuBtn10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -372,14 +371,11 @@ public class StudentGui extends javax.swing.JFrame {
 
         jSeparator4.setForeground(new java.awt.Color(230, 230, 230));
 
-        jLabel1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel1.setText("  Sales Management");
-
         jLabel2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel2.setText("  Furniture Management");
+        jLabel2.setText(" Project Management");
 
         jLabel3.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel3.setText("  User Management");
+        jLabel3.setText(" Result Management");
 
         jLabel4.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         jLabel4.setText("  Student Home");
@@ -401,14 +397,16 @@ public class StudentGui extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator2)
             .addComponent(menuBtn7, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
             .addComponent(jSeparator3)
             .addComponent(jSeparator4)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator5)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(menuBtn10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,17 +424,13 @@ public class StudentGui extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(menuBtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(menuBtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -445,7 +439,9 @@ public class StudentGui extends javax.swing.JFrame {
                 .addComponent(menuBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -561,7 +557,6 @@ public class StudentGui extends javax.swing.JFrame {
     private javax.swing.JLabel LogoTitle_1;
     private javax.swing.JPanel MenuPanel;
     private static javax.swing.JDesktopPane WindowsPane;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

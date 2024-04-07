@@ -34,7 +34,9 @@ public class MessageConstant {
     public static final String ERROR_DATE_FORMAT_INCORRECT = "Date format incorrect. Format: 'yyyy-MM-dd'";
     public static final String ERROR_POSTCODE_FORMAT_INCORRECT = "Postcode format incorrect. Please try again";
     public static final String ERROR_STATE_INCORRECT = "Entered state invalid. Please try again";
-
+    public static final String ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT = "Entered Username/SecurityPhrase Incorrect, Please Try Again.";
+    public static final String ERROR_PASSWORD_N_CPASSWORD_NOT_MATCH = "Entered Password & Confirm Password Not Match, Please Try Again.";
 
     /* WARNING */
+    public static final String SUCCESS_RESET_PASSWORD = "Password Reset Successful.";
 }

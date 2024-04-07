@@ -7,18 +7,19 @@
 
 package com.project;
 
-import com.project.common.constants.MessageConstant;
-import com.project.common.utils.Dialog;
-import com.project.pojo.UserAccount;
 import com.project.ui.authentication.LoginGui;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
-
 @Slf4j
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        start();
+    }
+
+    public static void start() {
+        log.info("Project Management System Starting...");
         new LoginGui();
+        log.info("Project Management System Ready.");
     }
 
 }

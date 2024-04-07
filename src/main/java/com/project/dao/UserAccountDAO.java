@@ -61,6 +61,40 @@ public class UserAccountDAO {
         return false;
     }
 
+    /**
+     * Verify account and password
+     * @param account
+     * @param securityPhrase
+     * @return userId
+     */
+    public UserAccount verifySecurityPhrase(String account, String securityPhrase) {
+        for (UserAccount user: users) {
+            if ((user.getUsername().equals(account) || user.getEmail().equals(account)) && user.getSecurityPhrase().equals(securityPhrase)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Reset password By securityPhrase
+     * @param account
+     * @param securityPhrase
+     * @param password
+     * @return boolean
+     */
+    //todo update data into txt file
+    public Boolean resetPasswordBySecurityPhrase(String account, String securityPhrase, String password) {
+        UserAccount u = verifySecurityPhrase(account,securityPhrase);
+        for (UserAccount user:users) {
+            if (u.getUserId().equals(user.getUserId())) {
+                user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Load user data
     private static void loadUserData() {
 

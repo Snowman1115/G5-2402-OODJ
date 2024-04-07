@@ -14,10 +14,10 @@
     </encoder>
   </appender>
 
-
   <!-- Set root logger level and its appender -->
   <root level="INFO">
     <appender-ref ref="FILE"/>
     <appender-ref ref="STDOUT"/>
   </root>
+
 </configuration>

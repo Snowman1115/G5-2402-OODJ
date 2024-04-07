@@ -7,13 +7,17 @@ import com.project.ui.administrator.AdminGui;
 import com.project.ui.lecturer.LecturerGui;
 import com.project.ui.project_manager.ProjectManagerGui;
 import com.project.ui.student.StudentGui;
+import java.awt.Color;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  *
  * @author chanh
  */
+@Slf4j
 public class LoginGui extends javax.swing.JFrame {
 
+    public static boolean isEnabled;
     /**
      * Creates new form LoginGui
      */
@@ -21,6 +25,7 @@ public class LoginGui extends javax.swing.JFrame {
         setTitle("Project Management System - Login");
         setVisible(true);
         initComponents();
+        MainPanel.setVisible(false);
         pmsVersionLabel.setText(PropertiesReader.getProperty("PMSVersion"));
     }
 
@@ -33,6 +38,7 @@ public class LoginGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        MainPanel = new javax.swing.JPanel();
         LeftPanel = new javax.swing.JPanel();
         LogoTitle_1 = new javax.swing.JLabel();
         LogoTitle_2 = new javax.swing.JLabel();
@@ -58,11 +64,25 @@ public class LoginGui extends javax.swing.JFrame {
         ExitBtn = new javax.swing.JButton();
         forgetPasswordBtn = new javax.swing.JLabel();
         pmsVersionLabel = new javax.swing.JLabel();
-        MainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        MainPanel.setBackground(new Color(0, 0, 0, 128));
+
+        javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
+        MainPanel.setLayout(MainPanelLayout);
+        MainPanelLayout.setHorizontalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
+        );
+        MainPanelLayout.setVerticalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         LeftPanel.setBackground(new java.awt.Color(164, 196, 181));
         LeftPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -318,21 +338,6 @@ public class LoginGui extends javax.swing.JFrame {
 
         getContentPane().add(RightPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 580, 720));
 
-        MainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
-
-        javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
-        MainPanel.setLayout(MainPanelLayout);
-        MainPanelLayout.setHorizontalGroup(
-            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1278, Short.MAX_VALUE)
-        );
-        MainPanelLayout.setVerticalGroup(
-            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -388,13 +393,37 @@ public class LoginGui extends javax.swing.JFrame {
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBtnActionPerformed
+        log.info("Project Management System Destroy Successful.");
         System.exit(0);
     }//GEN-LAST:event_ExitBtnActionPerformed
 
     private void forgetPasswordBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgetPasswordBtnMouseClicked
-        // new ForgetPasswordGui();
+        isEnabled = false;
+        MainPanel.setVisible(true);
+        RightPanel.setEnabled(isEnabled);
+        LeftPanel.setEnabled(isEnabled);
+        usernameField.setEnabled(isEnabled);
+        passwordField.setEnabled(isEnabled);
+        showPasswordBtn.setEnabled(isEnabled);
+        forgetPasswordBtn.setEnabled(isEnabled);
+        loginBtn.setEnabled(isEnabled);
+        ExitBtn.setEnabled(isEnabled);
+        new ForgetPasswordGui();
     }//GEN-LAST:event_forgetPasswordBtnMouseClicked
 
+    public static void unFreeze() {
+        isEnabled = true;
+        MainPanel.setVisible(false);
+        RightPanel.setEnabled(isEnabled);
+        LeftPanel.setEnabled(isEnabled);
+        usernameField.setEnabled(isEnabled);
+        passwordField.setEnabled(isEnabled);
+        showPasswordBtn.setEnabled(isEnabled);
+        forgetPasswordBtn.setEnabled(isEnabled);
+        loginBtn.setEnabled(isEnabled);
+        ExitBtn.setEnabled(isEnabled);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -431,30 +460,30 @@ public class LoginGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ExitBtn;
+    private static javax.swing.JButton ExitBtn;
     private javax.swing.JPanel InputFieldPanel;
-    private javax.swing.JPanel LeftPanel;
+    private static javax.swing.JPanel LeftPanel;
     private javax.swing.JLabel LogoTitle_1;
     private javax.swing.JLabel LogoTitle_2;
-    private javax.swing.JPanel MainPanel;
-    private javax.swing.JPanel RightPanel;
+    private static javax.swing.JPanel MainPanel;
+    private static javax.swing.JPanel RightPanel;
     private javax.swing.JLabel RoyaleLabel;
     private javax.swing.JLabel Salesperson;
     private javax.swing.JLabel WelcomeToRoyalelHotelLabel;
-    private javax.swing.JLabel forgetPasswordBtn;
+    private static javax.swing.JLabel forgetPasswordBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton loginBtn;
+    private static javax.swing.JButton loginBtn;
     private javax.swing.JSeparator loginBtnSeperator;
-    private javax.swing.JPasswordField passwordField;
+    private static javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JSeparator passwordSeparator;
     private javax.swing.JLabel pmsVersionLabel;
-    private javax.swing.JCheckBox showPasswordBtn;
-    private javax.swing.JTextField usernameField;
+    private static javax.swing.JCheckBox showPasswordBtn;
+    private static javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JSeparator usernameSeparator;
     // End of variables declaration//GEN-END:variables

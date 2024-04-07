@@ -125,4 +125,32 @@ public class DataValidator {
         return true;
     }
 
+    /**
+     * Validate Password N ConfirmPassword
+     * @param password
+     * @param confirmPassword
+     * @return boolean result
+     */
+    public static boolean validatePasswordNConfirmPassword(String password, String confirmPassword) {
+        if (!password.equals(confirmPassword)) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_PASSWORD_N_CPASSWORD_NOT_MATCH);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Validate Entered Data isEmpty
+     * @param data
+     * @return boolean result
+     */
+    public static boolean validateEmptyInput(String data) {
+        if (data == null || data.trim().isEmpty()) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_FIELD_EMPTY);
+            return false;
+        }
+        return true;
+    }
+
+
 }

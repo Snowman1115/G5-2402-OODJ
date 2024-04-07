@@ -66,6 +66,41 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
     }
 
+    /**
+     * Verify User Security Phrase
+     * @param account
+     * @param securityPhrase
+     * @return boolean result
+     */
+    @Override
+    public String verifyUserSecurityPhrase(String account, String securityPhrase) {
+        UserAccount user = userAccountDAO.verifySecurityPhrase(account,securityPhrase);
+        if (user == null) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT);
+            log.info("User (" + account + ") verify fail error: " + MessageConstant.ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT);
+            return null;
+        }
+        return user.getUsername();
+    }
+
+    /**
+     * Reset User Password - FORGET PASSWORD
+     * @param account
+     * @param securityPhrase
+     * @return boolean result
+     */
+    @Override
+    public boolean resetUserPasswordBySecurityPhrase(String account, String securityPhrase, String password) {
+        if (!userAccountDAO.resetPasswordBySecurityPhrase(account,securityPhrase,password)) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT);
+            log.info("User (" + account + ") reset password fail error: " + MessageConstant.ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT);
+            return false;
+        }
+        Dialog.SuccessDialog(MessageConstant.SUCCESS_RESET_PASSWORD);
+        log.info("User (" + account + ") reset password successful");
+        return true;
+    }
+
     @Override
     public boolean updateProfile(UserAccount userAccount) {
         /* Input Validation Check */

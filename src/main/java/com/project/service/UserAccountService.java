@@ -15,11 +15,15 @@ public interface UserAccountService {
     public UserRoleType loginAuthentication(String account, String password);
 
     /**
-     * Login Authentication
-     * @param userAccount
+     * Update User Profile
+     * @param userId
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param email
      * @return boolean result
      */
-    boolean updateProfile(UserAccount userAccount);
+    boolean updateProfileById(Integer userId, String username, String firstName, String lastName, String email);
 
     /**
      * Verify User Security Phrase
@@ -37,5 +41,30 @@ public interface UserAccountService {
      * @return boolean result
      */
     boolean resetUserPasswordBySecurityPhrase(String account, String securityPhrase, String password);
+
+    /**
+     * Get user account by userID
+     * @param userId
+     * @return user account
+     */
+    UserAccount getUserDetailsByUserId(Integer userId);
+
+    /**
+     * Change Password
+     * @param userId
+     * @param oldPassword
+     * @param newPassword
+     * @return boolean result
+     */
+    public Boolean changePasswordById(Integer userId, String oldPassword, String newPassword);
+
+    /**
+     * Change Security Phrase
+     * @param userId
+     * @param oldSecurityPhrase
+     * @param confirmSecurityPhrase
+     * @return boolean result
+     */
+    boolean changeSecurityPhraseById(Integer userId, String oldSecurityPhrase, String confirmSecurityPhrase);
 
 }

@@ -8,6 +8,8 @@ import com.project.ui.administrator.*;
 import com.project.common.constants.UserRoleType;
 import com.project.controller.authentication.UserAccountController;
 import com.project.ui.authentication.LoginGui;
+import com.project.ui.authentication.UserProfileGui;
+
 import java.awt.Color;
 
 /**
@@ -100,7 +102,7 @@ public class LecturerGui extends javax.swing.JFrame {
                 menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new UserProfile()).setVisible(true);
+                WindowsPane.add(new UserProfileGui()).setVisible(true);
             } 
             case "menuBtn6" -> {
                 menuBtn1.setBackground(DefaultBtnColor);

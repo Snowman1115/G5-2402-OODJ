@@ -9,7 +9,10 @@ package com.project.common.constants;
 public class MessageConstant {
 
     /* SUCCESS */
-
+    public static final String SUCCESS_RESET_PASSWORD = "Password Reset Successful.";
+    public static final String SUCCESS_PROFILE_UPDATE_SUCCESSFUL = "Profile Update Successful.";
+    public static final String SUCCESS_PASSWORD_UPDATE_SUCCESSFUL = "Password Update Successful.";
+    public static final String SUCCESS_SECURITY_PHRASE_UPDATE_SUCCESSFUL = "Security Phrase Update Successful.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activities detected, please login.";
@@ -36,7 +39,12 @@ public class MessageConstant {
     public static final String ERROR_STATE_INCORRECT = "Entered state invalid. Please try again";
     public static final String ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT = "Entered Username/SecurityPhrase Incorrect, Please Try Again.";
     public static final String ERROR_PASSWORD_N_CPASSWORD_NOT_MATCH = "Entered Password & Confirm Password Not Match, Please Try Again.";
+    public static final String ERROR_USER_NOT_FOUND = "User Not Found. Please Try Again.";
+    public static final String ERROR_USERNAME_ALREADY_EXIST = "Entered username already exist, please try another one.";
+    public static final String ERROR_EMAIL_ALREADY_EXIST = "Entered email already exist, please try another one.";
+    public static final String UNEXPECTED_ERROR = "Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.";
+    public static final String ERROR_SECURITY_PHRASE_INCORRECT = "Entered SecurityPhrase Incorrect, Please Try Again.";
 
     /* WARNING */
-    public static final String SUCCESS_RESET_PASSWORD = "Password Reset Successful.";
+
 }

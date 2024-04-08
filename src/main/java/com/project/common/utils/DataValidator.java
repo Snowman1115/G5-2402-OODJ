@@ -144,8 +144,8 @@ public class DataValidator {
      * @param data
      * @return boolean result
      */
-    public static boolean validateEmptyInput(String data) {
-        if (data == null || data.trim().isEmpty()) {
+    public static boolean validateEmptyInput(Object data) {
+        if (data == null || data.toString().isEmpty()) {
             Dialog.ErrorDialog(MessageConstant.ERROR_FIELD_EMPTY);
             return false;
         }

@@ -8,7 +8,9 @@ import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -25,12 +27,12 @@ public class UserAccountDAO {
     }
 
     // test run
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         JsonHandler jh = new JsonHandler();
         jh.encode(FileHandler.readFile(USER_ACCOUNT));
         jh.update(10, "testing", "testing");
 //        System.out.println(test);
-    }
+    }*/
 
     /**
      * Get user account by username / email
@@ -40,6 +42,20 @@ public class UserAccountDAO {
     public UserAccount getUserAccount(String account) {
         for (UserAccount user:users) {
             if (user.getUsername().equals(account) || user.getEmail().equals(account)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get user account by userID
+     * @param userId
+     * @return user account
+     */
+    public UserAccount getUserAccountById(Integer userId) {
+        for (UserAccount user:users) {
+            if (user.getUserId() == userId) {
                 return user;
             }
         }
@@ -62,7 +78,22 @@ public class UserAccountDAO {
     }
 
     /**
-     * Verify account and password
+     * Verify userId and password
+     * @param userId
+     * @param password
+     * @return boolean
+     */
+    public Boolean verifyPasswordById(Integer userId, String password) {
+        for (UserAccount user: users) {
+            if (user.getUserId().equals(userId) && BCrypt.checkpw(password, user.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Verify account and securityPhrase
      * @param account
      * @param securityPhrase
      * @return userId
@@ -77,18 +108,114 @@ public class UserAccountDAO {
     }
 
     /**
+     * Verify userId and securityPhrase
+     * @param userId
+     * @param securityPhrase
+     * @return userId
+     */
+    public Boolean verifySecurityPhraseById(Integer userId, String securityPhrase) {
+        for (UserAccount user: users) {
+            if (user.getUserId().equals(userId) && user.getSecurityPhrase().equals(securityPhrase)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Verify username/email usability
+     * @param userId
+     * @param account
+     * @return string value
+     */
+    public Boolean checkUsernameOrEmailUsability(Integer userId, String account) {
+        List<UserAccount> tempUser = new ArrayList<>(users);
+        tempUser.removeIf(user -> user.getUserId().equals(userId));
+        for (UserAccount user : tempUser) {
+            if (user.getUsername().equals(account)) {
+                return false;
+            }
+            if (user.getEmail().equals(account)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Update User Profile
+     * @param userId
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @return boolean result
+     */
+    public boolean updateUserProfileById(Integer userId, String username, String firstName, String lastName, String email) {
+        for (UserAccount user:users) {
+            if (user.getUserId().equals(userId)) {
+                user.setUsername(username);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setEmail(email);
+                user.setUpdatedAt(LocalDateTime.now());
+                // todo update data into txt file
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Reset password By securityPhrase
      * @param account
      * @param securityPhrase
      * @param password
      * @return boolean
      */
-    //todo update data into txt file
+    // todo update data into txt file
     public Boolean resetPasswordBySecurityPhrase(String account, String securityPhrase, String password) {
         UserAccount u = verifySecurityPhrase(account,securityPhrase);
         for (UserAccount user:users) {
             if (u.getUserId().equals(user.getUserId())) {
                 user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+                user.setUpdatedAt(LocalDateTime.now());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Change Password
+     * @param userId
+     * @param newPassword
+     * @return boolean result
+     */
+    // todo update data into txt file
+    public Boolean resetPasswordBySecurityPhrase(Integer userId, String newPassword) {
+        for (UserAccount user:users) {
+            if (user.getUserId().equals(userId)) {
+                user.setPassword(BCrypt.hashpw(newPassword, BCrypt.gensalt()));
+                user.setUpdatedAt(LocalDateTime.now());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Change Security Phrase
+     * @param userId
+     * @param newSecurityPhrase
+     * @return boolean result
+     */
+    // todo update data into txt file
+    public Boolean changeSecurityPhraseById(Integer userId, String newSecurityPhrase) {
+        for (UserAccount user:users) {
+            if (user.getUserId().equals(userId)) {
+                user.setSecurityPhrase(newSecurityPhrase);
+                user.setUpdatedAt(LocalDateTime.now());
                 return true;
             }
         }

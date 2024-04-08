@@ -41,6 +41,15 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     /**
+     * Get User Authentication Details
+     * @return User Authentication
+     */
+    @Override
+    public UserAuthentication getAuthenticationUserDetails() {
+        return userAuthenticationDAO.checkUserAuthorization();
+    }
+
+    /**
      * Destroy User Authentication
      */
     @Override

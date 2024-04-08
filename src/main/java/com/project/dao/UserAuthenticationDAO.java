@@ -20,13 +20,16 @@ public class UserAuthenticationDAO {
     }
 
     /**
-     * Get User Authentication Status
+     * Get User Authentication Details
      * @return User Authentication
      */
     public static UserAuthentication checkUserAuthorization() {
         return userAuthentication;
     }
 
+    /**
+     * Destroy User Authentication
+     */
     public static void destroy() {
         userAuthentication = null;
     }

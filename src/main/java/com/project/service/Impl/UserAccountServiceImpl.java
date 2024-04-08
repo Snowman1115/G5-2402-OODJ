@@ -3,13 +3,11 @@ package com.project.service.Impl;
 import com.project.common.constants.AccountStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
-import com.project.common.utils.DataValidator;
 import com.project.common.utils.Dialog;
 import com.project.dao.UserAccountDAO;
 import com.project.dao.UserAuthenticationDAO;
 import com.project.dao.UserRoleDAO;
 import com.project.pojo.UserAccount;
-import com.project.pojo.UserAuthentication;
 import com.project.service.UserAccountService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -101,11 +99,82 @@ public class UserAccountServiceImpl implements UserAccountService {
         return true;
     }
 
+    /**
+     * Get user account by userID
+     * @param userId
+     * @return user account
+     */
     @Override
-    public boolean updateProfile(UserAccount userAccount) {
-        /* Input Validation Check */
-        /*if (DataValidator.validateUsername(userAccount.getUsername()))
-*/
-        return false;
+    public UserAccount getUserDetailsByUserId(Integer userId) {
+        UserAccount user = userAccountDAO.getUserAccountById(userId);
+        if (user == null) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_USER_NOT_FOUND);
+            log.info("User (" + userId + ") not found. " + MessageConstant.ERROR_USER_NOT_FOUND);
+            return null;
+        }
+        return user;
+    }
+
+    /**
+     * Update User Profile
+     * @param userId
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @return boolean result
+     */
+    @Override
+    public boolean updateProfileById(Integer userId, String username, String firstName, String lastName, String email) {
+        Boolean result;
+        result = userAccountDAO.checkUsernameOrEmailUsability(userId, username);
+        if (!result) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_USERNAME_ALREADY_EXIST); log.info("User update fail. - " + MessageConstant.ERROR_USERNAME_ALREADY_EXIST); return false;
+        }
+        result = userAccountDAO.checkUsernameOrEmailUsability(userId, email);
+        if (!result) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_EMAIL_ALREADY_EXIST); log.info("User update fail. - " + MessageConstant.ERROR_EMAIL_ALREADY_EXIST); return false;
+        }
+        Boolean isUpdated = userAccountDAO.updateUserProfileById(userId, username, firstName, lastName, email);
+        if (!isUpdated) {
+            Dialog.ErrorDialog(MessageConstant.UNEXPECTED_ERROR); log.info("User update fail. - " + MessageConstant.UNEXPECTED_ERROR); return false;
+        };
+        Dialog.SuccessDialog(MessageConstant.SUCCESS_PROFILE_UPDATE_SUCCESSFUL);
+        log.info("User {} update success", userId);
+        return true;
+    }
+
+    /**
+     * Change Password
+     * @param userId
+     * @param oldPassword
+     * @param newPassword
+     * @return boolean result
+     */
+    @Override
+    public Boolean changePasswordById(Integer userId, String oldPassword, String newPassword) {
+        if (!userAccountDAO.verifyPasswordById(userId,oldPassword)) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_PASSWORD_INCORRECT); log.info("User change password fail. - " + MessageConstant.ERROR_PASSWORD_INCORRECT); return false;
+        }
+        Dialog.SuccessDialog(MessageConstant.SUCCESS_PASSWORD_UPDATE_SUCCESSFUL);
+        log.info("User {} password update successful.", userId);
+        return userAccountDAO.resetPasswordBySecurityPhrase(userId, newPassword);
+    }
+
+    /**
+     * Change Security Phrase
+     * @param userId
+     * @param oldSecurityPhrase
+     * @param confirmSecurityPhrase
+     * @return boolean result
+     */
+    @Override
+    public boolean changeSecurityPhraseById(Integer userId, String oldSecurityPhrase, String confirmSecurityPhrase) {
+        if (!userAccountDAO.verifySecurityPhraseById(userId,oldSecurityPhrase)) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_SECURITY_PHRASE_INCORRECT); log.info("User change security phrase fail. - " + MessageConstant.ERROR_SECURITY_PHRASE_INCORRECT); return false;
+        }
+        Dialog.SuccessDialog(MessageConstant.SUCCESS_SECURITY_PHRASE_UPDATE_SUCCESSFUL);
+        log.info("User {} security phrase update successful.", userId);
+        return userAccountDAO.changeSecurityPhraseById(userId, confirmSecurityPhrase);
     }
 }

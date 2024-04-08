@@ -198,3 +198,667 @@
 2024-04-07 15:52:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
 2024-04-07 15:52:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
 2024-04-07 15:52:07 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:07:28 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:07:28 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:07:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:07:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:07:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:07:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:07:37 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:08:44 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:08:44 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:08:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:08:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:08:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:08:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:08:46 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:08:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 10:08:54 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 10:08:55 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-08 10:09:37 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:09:38 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:09:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:09:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:09:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:09:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:09:44 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:09:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:09:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:22 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:22 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:10:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:10:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:12:12 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:12:12 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:12:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:12:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:12:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:12:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:12:15 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:12:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:12:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:12:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:12:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:14:17 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:14:17 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:14:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:14:20 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:14:20 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:14:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:14:20 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:14:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:14:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:14:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 10:14:32 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 10:14:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:14:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:14:42 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:14:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:14:47 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:14:48 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:19:24 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:19:25 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:19:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:19:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:19:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:19:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:19:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:19:28 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:19:28 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:34:29 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:34:29 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:34:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:34:31 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:34:31 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:34:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:34:31 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:34:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:34:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:40:38 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:40:39 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:46:49 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:46:49 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:46:49 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:46:49 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:46:49 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:46:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:46:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:47:25 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:47:25 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:47:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:47:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:47:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:47:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:47:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:47:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:47:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:49:51 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:49:51 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:49:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:49:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:49:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:49:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:49:53 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:49:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:49:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:50:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:50:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:50:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:50:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:50:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:50:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:50:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:50:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:50:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:50:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:52:16 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:52:17 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:52:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:52:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:52:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:52:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:52:19 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:52:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:52:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:52:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:52:50 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 10:52:50 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 10:52:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 10:52:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 10:52:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 10:52:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 10:52:52 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 10:52:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 10:52:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 10:52:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:01:56 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:01:57 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 11:02:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 11:02:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 11:02:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 11:02:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 11:02:04 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 11:02:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:02:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:02:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:02:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:02:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:02:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:03:17 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:03:17 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 11:03:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 11:03:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 11:03:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 11:03:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 11:03:19 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 11:03:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:03:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:03:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:03:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:03:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:03:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:04:28 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:04:28 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 11:04:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 11:04:31 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 11:04:31 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 11:04:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 11:04:31 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 11:04:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:04:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:04:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:04:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:04:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:05:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:05:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:08:38 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:08:39 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 11:08:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 11:08:40 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 11:08:40 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 11:08:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 11:08:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 11:08:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:08:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:54:09 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:54:09 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 11:54:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 11:54:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 11:54:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 11:54:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 11:54:11 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 11:54:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:54:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:54:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: {?} - {?} {?} {?} {?}
+2024-04-08 11:54:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 11:54:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: {?} - {?} {?} {?} {?}
+2024-04-08 11:54:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 11:54:44 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:54:44 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 11:54:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 11:54:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 11:54:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 11:54:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 11:54:46 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 11:54:47 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 11:54:47 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 11:54:57 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: {?} - {?} {?} {?} {?}
+2024-04-08 11:54:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 11:57:39 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 11:57:40 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:06:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:06:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:06:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:06:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:06:14 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:06:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:06:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:06:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: {?} - {?} {?} {?} {?}
+2024-04-08 12:06:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 12:06:58 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:06:58 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:07:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:07:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:07:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:07:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:07:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:07:02 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:07:02 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:07:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:07:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 12:07:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:07:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 12:09:02 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:09:02 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:09:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:09:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:09:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:09:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:09:05 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:09:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:09:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:09:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:09:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 12:10:02 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:10:02 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:10:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:10:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:10:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:10:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:10:04 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:10:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:10:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:10:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:10:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 12:12:10 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:12:10 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:12:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:12:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:12:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:12:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:12:14 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:12:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:12:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:12:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:12:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.
+2024-04-08 12:13:30 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:13:30 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:13:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:13:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:13:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:13:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:13:32 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:13:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:13:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:13:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:13:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:13:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:13:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:13:49 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos123 Goolding goolding@gmail.com
+2024-04-08 12:13:50 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:13:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:13:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:13:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:13:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos123456 Goolding goolding@gmail.com
+2024-04-08 12:14:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:14:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 12:14:15 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 12:14:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:14:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:14:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:14:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:14:17 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:14:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:14:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:14:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:26 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:26 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - admin Amos Goolding goolding@gmail.com
+2024-04-08 12:14:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User update fail. - Entered username already exist, please try another one.
+2024-04-08 12:14:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - admin1 Amos Goolding goolding@gmail.com
+2024-04-08 12:14:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:14:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:14:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 12:14:46 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 12:14:48 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:14:49 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (amos1212) login fail error: Username/Email invalid, please try again.
+2024-04-08 12:14:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin1
+2024-04-08 12:14:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1) ,Role: (STUDENT) login successful.
+2024-04-08 12:14:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1) to Student Panel.
+2024-04-08 12:14:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:14:53 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-04-08 12:14:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:14:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:15:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - sadadsad Amos dsadsag goolding@gmail.com
+2024-04-08 12:15:20 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:15:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:15:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:15:28 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - student Amos dsadsag goolding@gmail.com
+2024-04-08 12:15:29 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:15:29 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:15:29 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:16:55 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:16:55 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:16:58 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:16:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:16:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:16:58 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:16:58 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:17:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:17:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:17:01 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:17:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:17:03 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:17:03 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:17:09 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos dasGoolding goolding@gmail.com
+2024-04-08 12:17:10 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:17:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:17:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:17:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos asdasd goolding@gmail.com
+2024-04-08 12:17:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:17:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:17:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:18:05 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:18:06 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:18:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:18:10 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:18:10 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:18:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:18:10 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:18:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:18:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:18:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:18:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:18:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:18:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:18:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:18:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:18:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:18:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:18:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:18:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:18:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:18:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:18:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - amos1212 Amos Goolding goolding@gmail.com
+2024-04-08 12:18:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-08 12:18:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:18:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:58:03 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:58:03 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:58:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:58:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:58:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:58:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:58:05 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:58:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:58:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:59:15 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 12:59:15 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 12:59:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 12:59:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 12:59:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 12:59:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 12:59:18 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 12:59:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 12:59:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 12:59:42 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 12:59:45 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 12:59:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 12:59:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 12:59:55 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 12:59:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 12:59:59 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:00:02 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 13:00:08 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:00:08 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:00:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:00:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:00:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:00:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:00:12 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:00:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:00:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:00:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:00:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 13:00:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:00:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 13:01:16 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:01:16 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:01:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:01:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:01:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:01:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:01:18 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:01:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:01:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:01:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:01:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 password update successful.
+2024-04-08 13:01:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:01:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:01:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:01:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:01:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:01:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (amos1212) login fail error: Password invalid, please try again.
+2024-04-08 13:01:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:01:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:01:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:01:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:01:44 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:01:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:01:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:02:52 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:02:52 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:02:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:02:54 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:02:54 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:02:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:02:54 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:02:55 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:02:55 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:03:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:03:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 13:03:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:03:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 password update successful.
+2024-04-08 13:03:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:03:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:04:08 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:04:08 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:05:02 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:05:03 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:05:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:05:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:05:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:05:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:05:04 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:05:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:05:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:05:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:05:29 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 password update successful.
+2024-04-08 13:05:29 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:05:29 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:05:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:05:31 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:05:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:05:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (amos1212) login fail error: Password invalid, please try again.
+2024-04-08 13:05:38 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:05:38 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:05:38 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:05:38 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:05:38 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:05:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:05:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:05:42 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-08 13:17:24 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:17:24 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:18:06 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:18:06 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:18:14 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-08 13:18:53 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:18:53 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:19:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:19:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:19:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:19:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:19:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:19:01 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:19:01 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:19:44 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Security Phrase : 4
+2024-04-08 13:19:45 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 security phrase update successful.
+2024-04-08 13:19:45 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:19:45 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:19:51 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:19:51 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:20:03 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : amos1212
+2024-04-08 13:20:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Reset Password By SecurityPhrase : amos1212
+2024-04-08 13:20:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (amos1212) reset password successful
+2024-04-08 13:20:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:20:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:20:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:20:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:20:11 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:20:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:20:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:20:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:20:17 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:20:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : amos1212
+2024-04-08 13:20:26 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (amos1212) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-08 13:20:31 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : amos1212
+2024-04-08 13:20:36 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Reset Password By SecurityPhrase : amos1212
+2024-04-08 13:20:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (amos1212) reset password successful
+2024-04-08 13:20:42 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-08 13:20:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-08 13:20:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-08 13:20:42 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:20:42 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-08 13:20:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:20:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:21:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:21:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-08 13:21:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:21:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 password update successful.
+2024-04-08 13:21:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:21:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:21:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-08 13:21:38 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 password update successful.
+2024-04-08 13:21:38 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:21:38 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:22:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:22:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-08 13:22:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:22:41 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:23:30 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-08 13:23:31 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-08 13:23:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : lecturer
+2024-04-08 13:23:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (lecturer) ,Role: (LECTURER) login successful.
+2024-04-08 13:23:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (lecturer) to Lecturer Panel.
+2024-04-08 13:23:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:23:33 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (lecturer) authorization passed.
+2024-04-08 13:23:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:23:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 3
+2024-04-08 13:23:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:23:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:23:42 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-08 13:23:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-08 13:23:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-08 13:23:42 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:23:42 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-08 13:23:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:23:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:23:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 1 - admin123 Rheta Lanston lanston@gmail.com
+2024-04-08 13:23:54 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 1 update success
+2024-04-08 13:23:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:23:54 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:24:04 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 1 - admin Rheta Lanston lanston@gmail.com
+2024-04-08 13:24:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 1 update success
+2024-04-08 13:24:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:24:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:24:18 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 1
+2024-04-08 13:24:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 1 password update successful.
+2024-04-08 13:24:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:24:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:24:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:24:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:24:28 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-08 13:24:30 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin) login fail error: Password invalid, please try again.
+2024-04-08 13:24:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-08 13:24:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-08 13:24:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-08 13:24:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:24:34 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-08 13:24:45 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:24:45 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:24:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:24:46 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:25:02 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Security Phrase : 1
+2024-04-08 13:25:02 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 1 security phrase update successful.
+2024-04-08 13:25:02 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:25:02 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:25:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:25:05 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:25:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : admin
+2024-04-08 13:25:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Reset Password By SecurityPhrase : admin
+2024-04-08 13:25:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin) reset password successful
+2024-04-08 13:25:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-08 13:25:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-08 13:25:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-08 13:25:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:25:19 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-08 13:25:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:25:20 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:25:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:25:21 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:25:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-08 13:25:23 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-08 13:25:23 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-08 13:25:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:25:23 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-08 13:25:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:25:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:25:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:25:41 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:25:43 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:25:43 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:25:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : admin
+2024-04-08 13:25:50 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin) ,Role: (ADMIN) login successful.
+2024-04-08 13:25:50 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin) to Admin Panel.
+2024-04-08 13:25:50 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:25:50 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin) authorization passed.
+2024-04-08 13:25:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:25:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 1
+2024-04-08 13:26:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:26:07 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:26:09 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : lecturer
+2024-04-08 13:26:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (lecturer) ,Role: (LECTURER) login successful.
+2024-04-08 13:26:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (lecturer) to Lecturer Panel.
+2024-04-08 13:26:09 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-08 13:26:09 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (lecturer) authorization passed.
+2024-04-08 13:26:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-08 13:26:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 3
+2024-04-08 13:26:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-08 13:26:14 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-08 13:26:15 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.

@@ -27,7 +27,7 @@ public class UserAccountDAO {
     public static void main(String[] args) {
         JsonHandler jh = new JsonHandler();
         jh.encode(readFile(USER_ACCOUNT));
-        jh.update(10, "testing", "testing");
+        jh.update(10, "username", "testing123", USER_ACCOUNT);
 //        System.out.println(test);
     }
 
@@ -141,7 +141,7 @@ public class UserAccountDAO {
     private static boolean store(Integer userId, String attribute, String value) {
         JsonHandler userJson = new JsonHandler();
         userJson.encode(readFile(USER_ACCOUNT));
-        return userJson.update(userId, attribute, value);
+        return userJson.update(userId, attribute, value, USER_ACCOUNT);
     }
 
     // testings

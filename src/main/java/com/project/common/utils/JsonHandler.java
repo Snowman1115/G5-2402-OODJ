@@ -37,7 +37,7 @@ public class JsonHandler {
             } else if (parser.parse(jsonData) instanceof JSONArray) {
                 json_array = (JSONArray) parser.parse(jsonData);
             } else {
-                log.info("Error: " + MessageConstant.ERROR_INVALID_JSON_FORMAT_STRING);
+                log.error("Error: " + MessageConstant.ERROR_INVALID_JSON_FORMAT_STRING);
             }
         } catch (ParseException e) {
             throw new RuntimeException(e);
@@ -56,13 +56,13 @@ public class JsonHandler {
             } else if (decodeType.equals("object")) {
                 return json_object.toJSONString();
             } else {
-                log.info("Error: Invalid type");
+                log.error("Error: Invalid type");
                 return null;
             }
         } catch (NullPointerException e) {
             switch (decodeType) {
-                case "array" -> { log.info("Error: JSON Array is null"); }
-                case "object" -> { log.info("Error: JSON Object is null"); }
+                case "array" -> { log.error("Error: JSON Array is null"); }
+                case "object" -> { log.error("Error: JSON Object is null"); }
             }
             return null;
         }
@@ -72,13 +72,13 @@ public class JsonHandler {
      * Store json string data into text file
      * @param JSONString
      */
-    private void store(String JSONString) {
+    private void store(String JSONString, String filePath) {
         try {
-            FileWriter fw = new FileWriter(new File(PropertiesReader.getProperty("UserFile")));
+            FileWriter fw = new FileWriter(new File(filePath));
             fw.write(JSONString);
             fw.close();
         } catch (Exception e) {
-            log.info(e.toString());
+            log.error(e.toString());
         }
     }
 
@@ -108,10 +108,10 @@ public class JsonHandler {
         try {
             return (JSONObject) json_array.get(index);
         } catch (IndexOutOfBoundsException e) {
-            log.info("Error: " + MessageConstant.ERROR_INDEX_OUT_OF_BOUND);
+            log.error("Error: " + MessageConstant.ERROR_INDEX_OUT_OF_BOUND);
             return null;
         } catch (NullPointerException e) {
-            log.info("Error: JSON Array is null");
+            log.error("Error: JSON Array is null");
             return null;
         }
     }
@@ -131,7 +131,7 @@ public class JsonHandler {
      * @param value
      * @return boolean
      */
-    public boolean update(Integer objectId, String attribute, String value) {
+    public boolean update(Integer objectId, String attribute, String value, String filePath) {
         JSONObject obj = null;
 
         for (int i=0; i<(json_array.size()); i++) {
@@ -148,7 +148,7 @@ public class JsonHandler {
             json_array.add(obj);
             String jsonString = decode("array");
             if (!jsonString.isEmpty()) {
-                store(jsonString);
+                store(jsonString, filePath);
                 return true;
             } else {
                 log.info("Error: " + MessageConstant.ERROR_JSON_STORE_DATA);
@@ -204,7 +204,7 @@ public class JsonHandler {
                 return null;
             }
         } catch (NullPointerException e) {
-            log.info("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
+            log.error("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
             return null;
         }
     }
@@ -223,7 +223,7 @@ public class JsonHandler {
             try {
                 return Integer.parseInt(val);
             } catch (NumberFormatException e) {
-                log.info("Error: " + MessageConstant.ERROR_JSON_NUM_VALUE_PARSER + val);
+                log.error("Error: " + MessageConstant.ERROR_JSON_NUM_VALUE_PARSER + val);
                 return null;
             }
         }
@@ -244,7 +244,7 @@ public class JsonHandler {
             try {
                 return Double.parseDouble(val);
             } catch (NumberFormatException e) {
-                log.info("Error: " + MessageConstant.ERROR_JSON_NUM_VALUE_PARSER + val);
+                log.error("Error: " + MessageConstant.ERROR_JSON_NUM_VALUE_PARSER + val);
                 return null;
             }
         }

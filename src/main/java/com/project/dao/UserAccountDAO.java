@@ -154,12 +154,11 @@ public class UserAccountDAO {
     public boolean updateUserProfileById(Integer userId, String username, String firstName, String lastName, String email) {
         for (UserAccount user:users) {
             if (user.getUserId().equals(userId)) {
-                user.setUsername(username);
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
-                user.setEmail(email);
-                user.setUpdatedAt(LocalDateTime.now());
-                // todo update data into txt file
+                update(userId, "username", username);
+                update(userId, "firstName", firstName);
+                update(userId, "lastName", lastName);
+                update(userId, "email", email);
+                update(user.getUserId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 return true;
             }
         }
@@ -170,16 +169,16 @@ public class UserAccountDAO {
      * Reset password By securityPhrase
      * @param account
      * @param securityPhrase
-     * @param password
+     * @param newPassword
      * @return boolean
      */
     // todo update data into txt file
-    public Boolean resetPasswordBySecurityPhrase(String account, String securityPhrase, String password) {
+    public Boolean resetPasswordBySecurityPhrase(String account, String securityPhrase, String newPassword) {
         UserAccount u = verifySecurityPhrase(account,securityPhrase);
         for (UserAccount user:users) {
             if (u.getUserId().equals(user.getUserId())) {
-                user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
-                user.setUpdatedAt(LocalDateTime.now());
+                update(user.getUserId(), "password", newPassword);
+                update(user.getUserId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 return true;
             }
         }
@@ -196,8 +195,8 @@ public class UserAccountDAO {
     public Boolean resetPasswordBySecurityPhrase(Integer userId, String newPassword) {
         for (UserAccount user:users) {
             if (user.getUserId().equals(userId)) {
-                user.setPassword(BCrypt.hashpw(newPassword, BCrypt.gensalt()));
-                user.setUpdatedAt(LocalDateTime.now());
+                update(userId, "password", newPassword);
+                update(userId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 return true;
             }
         }
@@ -210,12 +209,11 @@ public class UserAccountDAO {
      * @param newSecurityPhrase
      * @return boolean result
      */
-    // todo update data into txt file
     public Boolean changeSecurityPhraseById(Integer userId, String newSecurityPhrase) {
         for (UserAccount user:users) {
             if (user.getUserId().equals(userId)) {
-                user.setSecurityPhrase(newSecurityPhrase);
-                user.setUpdatedAt(LocalDateTime.now());
+                update(userId, "securityPhrase", newSecurityPhrase);
+                update(userId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 return true;
             }
         }
@@ -278,6 +276,14 @@ public class UserAccountDAO {
                             user.setPassword(value);
                             return store(userId, "safeWord", value);
                         }
+                        case "updated_at" -> {
+                            user.setUpdatedAt(DateTimeUtils.formatDateTime(value));
+                            return store(userId, "updated_at", value);
+                        }
+                        case "created_at" -> {
+                            user.setCreatedAt(DateTimeUtils.formatDateTime(value));
+                            return store(userId, "created_at", value);
+                        }
                         default -> {
                             log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
                             return false;
@@ -303,7 +309,7 @@ public class UserAccountDAO {
     private static boolean store(Integer userId, String attribute, String value) {
         JsonHandler userJson = new JsonHandler();
         userJson.encode(FileHandler.readFile(USER_ACCOUNT));
-        return userJson.update(userId, attribute, value);
+        return userJson.update(userId, attribute, value, USER_ACCOUNT);
     }
 
 }

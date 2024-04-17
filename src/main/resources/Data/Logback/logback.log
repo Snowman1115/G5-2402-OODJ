@@ -862,3 +862,153 @@
 2024-04-08 13:26:14 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
 2024-04-08 13:26:14 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
 2024-04-08 13:26:15 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-16 11:14:43 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-16 11:14:45 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-16 11:14:59 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : admin
+2024-04-17 14:20:02 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-17 14:20:04 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-17 14:20:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : amos1212
+2024-04-17 14:20:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (amos1212) ,Role: (STUDENT) login successful.
+2024-04-17 14:20:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (amos1212) to Student Panel.
+2024-04-17 14:20:12 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:20:12 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (amos1212) authorization passed.
+2024-04-17 14:20:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:20:13 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:20:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - student Amos Goolding goolding@gmail.com
+2024-04-17 14:20:17 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in object
+2024-04-17 14:20:17 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in object
+2024-04-17 14:20:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-17 14:20:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:20:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:22:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:22:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:22:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:22:15 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:22:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:22:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:22:17 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:22:17 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:22:22 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:22:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-17 14:22:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-17 14:22:22 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:22:22 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:22:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:22:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:22:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:22:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:22:28 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-17 14:22:32 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-17 14:22:33 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-17 14:22:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:22:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-17 14:22:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-17 14:22:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:22:37 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:22:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:22:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:22:59 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - student firstName lastName student@gmail.com
+2024-04-17 14:22:59 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in object
+2024-04-17 14:22:59 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in object
+2024-04-17 14:22:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-17 14:22:59 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:22:59 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:23:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:23:25 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:23:26 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:23:26 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:23:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:23:27 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:24:24 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-17 14:24:26 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-17 14:24:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:24:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-17 14:24:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-17 14:24:32 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:24:32 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:24:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:24:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:24:48 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Update Profile: 4 - student firstName lastName student@gmail.com
+2024-04-17 14:24:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 update success
+2024-04-17 14:24:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:24:52 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:25:05 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-17 14:25:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User change password fail. - Password invalid, please try again.
+2024-04-17 14:25:19 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Password : 4
+2024-04-17 14:25:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 password update successful.
+2024-04-17 14:25:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:25:21 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:25:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:25:23 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:26:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:26:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-17 14:26:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-17 14:26:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:26:06 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:26:08 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:26:08 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:26:35 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Security Phrase : 4
+2024-04-17 14:26:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 security phrase update successful.
+2024-04-17 14:26:37 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in object
+2024-04-17 14:26:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:26:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:26:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:26:39 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:26:55 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student@gmail.com
+2024-04-17 14:26:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student@gmail.com) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:27:01 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student@gmail.com
+2024-04-17 14:27:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student@gmail.com) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:28:55 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-17 14:28:56 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-17 14:29:07 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:29:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Password invalid, please try again.
+2024-04-17 14:29:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:29:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Password invalid, please try again.
+2024-04-17 14:29:34 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:29:36 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Password invalid, please try again.
+2024-04-17 14:29:47 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student
+2024-04-17 14:30:00 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Reset Password By SecurityPhrase : student
+2024-04-17 14:30:01 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) reset password successful
+2024-04-17 14:30:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:30:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-17 14:30:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-17 14:30:06 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:30:06 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:30:09 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:30:09 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:30:22 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User Change Security Phrase : 4
+2024-04-17 14:30:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 4 security phrase update successful.
+2024-04-17 14:30:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get Authenticated User Details.
+2024-04-17 14:30:24 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Get user details: 4
+2024-04-17 14:30:26 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:30:26 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:31:16 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student
+2024-04-17 14:31:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:31:23 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student
+2024-04-17 14:31:26 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:31:39 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student
+2024-04-17 14:31:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:31:56 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student
+2024-04-17 14:31:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:33:10 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student@gmail.com
+2024-04-17 14:33:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student@gmail.com) verify fail error: Entered Username/SecurityPhrase Incorrect, Please Try Again.
+2024-04-17 14:33:29 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student@gmail.com
+2024-04-17 14:33:40 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student@gmail.com
+2024-04-17 14:34:21 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-17 14:34:22 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-17 14:34:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student
+2024-04-17 14:34:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-17 14:34:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-17 14:34:33 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:34:33 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:34:37 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:34:37 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:34:48 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User login : student@gmail.com
+2024-04-17 14:34:48 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student@gmail.com) ,Role: (STUDENT) login successful.
+2024-04-17 14:34:48 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student@gmail.com) to Student Panel.
+2024-04-17 14:34:48 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify user authorization status.
+2024-04-17 14:34:48 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-17 14:34:53 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - User logout.
+2024-04-17 14:34:53 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-17 14:35:11 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student
+2024-04-17 14:35:30 [AWT-EventQueue-0] INFO  c.p.c.a.UserAccountController - Verify User Security Phrase : student@gmail.com

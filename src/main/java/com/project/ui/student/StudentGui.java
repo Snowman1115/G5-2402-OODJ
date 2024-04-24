@@ -138,7 +138,7 @@ public class StudentGui extends javax.swing.JFrame {
                 menuBtn8.setBackground(ClickedBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
-                WindowsPane.add(new StudentAssignmentGui()).setVisible(true);
+                WindowsPane.add(new StudentProjectGui()).setVisible(true);
             } 
             case "menuBtn9" -> {
                 menuBtn1.setBackground(DefaultBtnColor);

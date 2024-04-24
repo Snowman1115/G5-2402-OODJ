@@ -213,7 +213,6 @@ public class UserAccountDAO {
         for (UserAccount user:users) {
             if (user.getUserId().equals(userId)) {
                 update(userId, "securityPhrase", newSecurityPhrase);
-                update(userId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 return true;
             }
         }
@@ -279,10 +278,6 @@ public class UserAccountDAO {
                         case "updated_at" -> {
                             user.setUpdatedAt(DateTimeUtils.formatDateTime(value));
                             return store(userId, "updated_at", value);
-                        }
-                        case "created_at" -> {
-                            user.setCreatedAt(DateTimeUtils.formatDateTime(value));
-                            return store(userId, "created_at", value);
                         }
                         default -> {
                             log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);

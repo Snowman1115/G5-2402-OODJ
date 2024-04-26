@@ -172,7 +172,6 @@ public class UserAccountDAO {
      * @param newPassword
      * @return boolean
      */
-    // todo update data into txt file
     public Boolean resetPasswordBySecurityPhrase(String account, String securityPhrase, String newPassword) {
         UserAccount u = verifySecurityPhrase(account,securityPhrase);
         for (UserAccount user:users) {
@@ -191,7 +190,6 @@ public class UserAccountDAO {
      * @param newPassword
      * @return boolean result
      */
-    // todo update data into txt file
     public Boolean resetPasswordBySecurityPhrase(Integer userId, String newPassword) {
         for (UserAccount user:users) {
             if (user.getUserId().equals(userId)) {

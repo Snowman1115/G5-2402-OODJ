@@ -1,5 +1,7 @@
 package com.project.ui.student;
 
+import com.project.common.constants.MessageConstant;
+import com.project.common.utils.Dialog;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -28,11 +30,15 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
 
-        refreshDashboard();
-        refreshComboBox(0);
+        refresh();
 
         // salesManagementPanel.setText(PropertiesReader.getProperty("SalesManagementPanelVersion"));
         // refresh();
+    }
+
+    private void refresh() {
+        refreshDashboard();
+        refreshComboBox(0);
     }
     
     private void refreshDashboard() {
@@ -40,10 +46,45 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         menuBtn12.setText(map.get("upcoming").toString());
         menuBtn13.setText(map.get("finished").toString());
 
+        fillInJComboBox1();
         refreshTable();
-        
     }
-    
+
+    private void fillInJComboBox1() {
+        consultationComboBox1.removeAllItems();
+        consultationComboBox1.addItem("All");
+        List<String> lists = ConsultationController.getAllLecturerNProjectManagerNameForStudent();
+        for (String list : lists) {
+            consultationComboBox1.addItem(list);
+        }
+        
+        consultationComboBox1.setSelectedIndex(0);
+    }
+
+    private void refreshComboBox1(String value) {
+        DefaultTableModel dtm1 =  (DefaultTableModel)jTable4.getModel();
+        dtm1.setRowCount(0);
+        
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm1);
+        jTable4.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("".trim()));
+        
+        List<Map<String, String>> availableSlots = ConsultationController.getAllAvailableConsultationSlots();
+        if (value.equals("All")) {
+            for (Map<String,String> list : availableSlots) {
+                String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
+                dtm1.addRow(data);
+            }
+        } else {
+            for (Map<String,String> list : availableSlots) {
+                if (list.get("lecturer").equals(value)) {
+                    String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
+                    dtm1.addRow(data);
+                }
+            }
+        }
+    }
+
     private void refreshComboBox(Integer value) {
         DefaultTableModel dtm = (DefaultTableModel)jTable3.getModel();
         dtm.setRowCount(0);
@@ -89,6 +130,7 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
             String[] data = {list.get("date"), list.get("lecturer")};
             dtm.addRow(data);
         }
+
     }
 
     /**
@@ -129,6 +171,11 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         JSeparator33 = new javax.swing.JSeparator();
         jLabel36 = new javax.swing.JLabel();
         menuBtn29 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        consultationComboBox1 = new javax.swing.JComboBox<>();
+        JField13 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         Panel8 = new javax.swing.JPanel();
         menuBtn31 = new javax.swing.JLabel();
         menuBtn33 = new javax.swing.JLabel();
@@ -456,6 +503,75 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         menuBtn29.setOpaque(true);
         Panel4.add(menuBtn29, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 90, 40));
 
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Lecturer", "Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable4.setFocusable(false);
+        jTable4.setRequestFocusEnabled(false);
+        jTable4.getTableHeader().setResizingAllowed(false);
+        jTable4.getTableHeader().setReorderingAllowed(false);
+        jTable4.setUpdateSelectionOnSort(false);
+        jTable4.setVerifyInputWhenFocusTarget(false);
+        jScrollPane4.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(0).setResizable(false);
+            jTable4.getColumnModel().getColumn(1).setResizable(false);
+            jTable4.getColumnModel().getColumn(2).setResizable(false);
+            jTable4.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        Panel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1020, 390));
+
+        consultationComboBox1.setBackground(new java.awt.Color(254, 254, 254));
+        consultationComboBox1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        consultationComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Upcoming", "Completed" }));
+        consultationComboBox1.setToolTipText("d");
+        consultationComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultationComboBox1.setFocusable(false);
+        consultationComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultationComboBox1ActionPerformed(evt);
+            }
+        });
+        Panel4.add(consultationComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 510, 35));
+
+        JField13.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField13.setForeground(new java.awt.Color(1, 1, 1));
+        JField13.setText("Enter Keywords To Search");
+        JField13.setBorder(null);
+        JField13.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField13MouseClicked(evt);
+            }
+        });
+        Panel4.add(JField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 460, 35));
+
+        jLabel12.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search-24x24.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.setOpaque(true);
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        Panel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 50, 40, 35));
+
         MainTabbedPanel1.addTab("Book", Panel4);
 
         Panel8.setPreferredSize(new java.awt.Dimension(1050, 570));
@@ -648,7 +764,15 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JField18MouseClicked
 
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
-        // TODO add your handling code here:
+        int selectedRow = jTable4.getSelectedRow();
+        if (selectedRow == -1) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
+        } else {
+            Integer value = Integer.parseInt(jTable4.getValueAt(selectedRow, 0).toString());
+            if (ConsultationController.bookConsultationSlot(value)) {
+                refresh();
+            }
+        }
     }//GEN-LAST:event_jLabel36MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
@@ -664,9 +788,29 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         consultationComboBox.setSelectedIndex(2);
     }//GEN-LAST:event_menuBtn13MouseClicked
 
+    private void consultationComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationComboBox1ActionPerformed
+        if (consultationComboBox1.getSelectedItem() != null) {
+            refreshComboBox1(consultationComboBox1.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_consultationComboBox1ActionPerformed
+
+    private void JField13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField13MouseClicked
+        if (JField13.getText().equals("Enter Keywords To Search")) {
+            JField13.setText("");
+        }
+    }//GEN-LAST:event_JField13MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        DefaultTableModel dtm = (DefaultTableModel)jTable4.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        jTable4.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(JField13.getText().trim()));
+    }//GEN-LAST:event_jLabel12MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField12;
+    private javax.swing.JTextField JField13;
     private javax.swing.JTextField JField18;
     private javax.swing.JTextField JField19;
     private javax.swing.JTextField JField22;
@@ -679,7 +823,9 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Panel4;
     private javax.swing.JPanel Panel8;
     private static javax.swing.JComboBox<String> consultationComboBox;
+    private static javax.swing.JComboBox<String> consultationComboBox1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel36;
@@ -689,9 +835,11 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel menuBtn11;
     private static javax.swing.JLabel menuBtn12;

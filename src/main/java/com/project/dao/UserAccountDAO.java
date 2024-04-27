@@ -34,6 +34,16 @@ public class UserAccountDAO {
 //        System.out.println(test);
     }*/
 
+
+    /**
+     * Get All User Details
+     * @return List of User Account
+     */
+
+    public List<UserAccount> getAllUsers() {
+        return users;
+    }
+
     /**
      * Get user account by username / email
      * @param account

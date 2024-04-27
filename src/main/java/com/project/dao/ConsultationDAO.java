@@ -16,7 +16,7 @@ import java.util.*;
 
 @Slf4j
 public class ConsultationDAO {
-    private static final String CONSULTATION_DATA = PropertiesReader.getProperty("ConsultationDate");
+    private static final String CONSULTATION_DATA = PropertiesReader.getProperty("ConsultationData");
     private static List<Consultation> consultations = new ArrayList<>();
 
     static {
@@ -24,15 +24,23 @@ public class ConsultationDAO {
     }
 
     /**
-     * Return All Consultation Slots
-     * @return All Consultations Slots
+     * Return All Available Consultation Slots
+     *
+     * @return List of Available Consultation Slots
      */
-    public List<Consultation> checkAllConsultationsSlots() {
-        return consultations;
+    public List<Consultation> checkAllAvailableConsultationsSlots() {
+        List<Consultation> lists = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationStatus().equals(ConsultationStatus.AVAILABLE) && consultation.getConsultationDateTime().isAfter(LocalDateTime.now())) {
+                lists.add(consultation);
+            }
+        }
+        return lists;
     }
 
     /**
      * Get Specific Lecturer's All Available Slots
+     *
      * @param lecturerId
      * @return List of availableConsultationSlot
      */
@@ -48,6 +56,7 @@ public class ConsultationDAO {
 
     /**
      * Get All Consultation Details for Student
+     *
      * @return List
      */
     public List<Consultation> getAllEventsForStudent(Integer studentId) {
@@ -62,6 +71,7 @@ public class ConsultationDAO {
 
     /**
      * Get Total Number of Upcoming and Finished Consultation For Student
+     *
      * @param studentId
      * @return Map of Number
      */
@@ -72,7 +82,7 @@ public class ConsultationDAO {
         for (Consultation consultation : consultations) {
             if (consultation.getStudentId().equals(studentId)) {
                 if (consultation.getConsultationDateTime().isBefore(LocalDateTime.now())) {
-                   finishedSum = finishedSum + 1;
+                    finishedSum = finishedSum + 1;
                 } else if (consultation.getConsultationDateTime().isAfter(LocalDateTime.now())) {
                     upcomingSum = upcomingSum + 1;
                 }
@@ -85,6 +95,7 @@ public class ConsultationDAO {
 
     /**
      * Get Upcoming Event Details for Student
+     *
      * @return List of Map
      */
     public List<Map<String, String>> getUpcomingEventForStudent(Integer studentId) {
@@ -100,6 +111,27 @@ public class ConsultationDAO {
         return list;
     }
 
+
+    /**
+     * Book Consultation Slots by Consultation Id
+     *
+     * @param consultationId
+     * @param studentId
+     * @return boolean
+     */
+    public Boolean bookConsultationSlot(Integer consultationId, Integer studentId) {
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationId().equals(consultationId)) {
+                update(consultationId, "studentId", studentId.toString());
+                update(consultationId, "consultationStatus", "SCHEDULED");
+                update(consultationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                System.out.println(consultations);
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Preload Data into consultations Array
      */
@@ -108,7 +140,7 @@ public class ConsultationDAO {
         JsonHandler userData = new JsonHandler();
         userData.encode(FileHandler.readFile(CONSULTATION_DATA));
 
-        for (int i=0; i<(userData.getAll().size()); i++) {
+        for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
             obj.cloneObject(userData.getObject(i));
 
@@ -118,10 +150,6 @@ public class ConsultationDAO {
             consultation.setStudentId(obj.getInt("studentId"));
             consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(obj.get("consultationDateTime")));
             consultation.setConsultationStatus(ConsultationStatus.valueOf(obj.get("consultationStatus")));
-            if (consultation.getConsultationDateTime().isBefore(LocalDateTime.now())) {
-                // todo
-                // update(consultation.getConsultationId(), "consultationStatus", "COMPLETED");
-            }
             consultation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("createdAt")));
             consultation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updatedAt")));
             consultations.add(consultation);
@@ -129,41 +157,32 @@ public class ConsultationDAO {
 
     }
 
-    // Update user data
-    public static boolean update(Integer userId, String field, String value) {
-        // find user object in arraylist
-       /* for (UserAccount user : users) {
-            if (user.getUserId() == userId) {
+    // Update consultation data
+    public static boolean update(Integer consultationId, String field, String value) {
+        // System.out.println(value);
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationId() == consultationId) {
                 try {
                     switch (field) {
-                        case "username" -> {
-                            user.setUsername(value);
-                            return store(userId, "username", value);
+                        case "lecturerId" -> {
+                            consultation.setLecturerId(Integer.parseInt(value));
+                            return store(consultationId, "lecturerId", value);
                         }
-                        case "firstName" -> {
-                            user.setFirstName(value);
-                            return store(userId, "first_name", value);
+                        case "studentId" -> {
+                            consultation.setStudentId(Integer.parseInt(value));
+                            return store(consultationId, "studentId", value);
                         }
-                        case "lastName" -> {
-                            user.setLastName(value);
-                            return store(userId, "last_name", value);
+                        case "consultationDateTime" -> {
+                            consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(value));
+                            return store(consultationId, "consultationDateTime", value);
                         }
-                        case "password" -> {
-                            String encryptedPassword = BCrypt.hashpw(value, BCrypt.gensalt());
-                            user.setPassword(encryptedPassword);
-                            return store(userId, "password", encryptedPassword);
-                        }
-                        case "email" -> {
-                            user.setEmail(value);
-                            return store(userId, "email", value);
-                        }
-                        case "securityPhrase" -> {
-                            user.setPassword(value);
-                            return store(userId, "safeWord", value);
+                        case "consultationStatus" -> {
+                            consultation.setConsultationStatus(ConsultationStatus.valueOf(value));
+                            return store(consultationId, "consultationStatus", value);
                         }
                         case "updated_at" -> {
-                            user.setUpdatedAt(DateTimeUtils.formatDateTime(value));
-                            return store(userId, "updated_at", value);
+                            consultation.setUpdatedAt(DateTimeUtils.formatDateTime(value));
+                            return store(consultationId, "updated_at", value);
                         }
                         default -> {
                             log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
@@ -174,10 +193,11 @@ public class ConsultationDAO {
                     return false;
                 }
             }
-        }*/
+        }
 
-        log.info("Error: " + MessageConstant.ERROR_OBJECT_NOT_FOUND);
+        log.info("Error: " + MessageConstant.ERROR_OBJECT_NOT_FOUND + value);
         return false;
+
     }
 
     /**
@@ -188,9 +208,12 @@ public class ConsultationDAO {
      * @return
      */
     private static boolean store(Integer consultationId, String attribute, String value) {
+        // System.out.println(consultationId + attribute + value);
         JsonHandler userJson = new JsonHandler();
         userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
         return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
     }
 
 }
+
+

@@ -23,4 +23,24 @@ public interface ConsultationService {
      */
     List getAllEventsForStudent(Integer studentId);
 
+    /**
+     * Get All Available Consultation Slots for Student
+     * @return List of Map
+     */
+    public List<Map<String, String>> getAllAvailableConsultationSlots();
+
+    /**
+     * Get All Lecturer and Project Manager Name
+     * @return List
+     */
+    public List getAllLecturerName();
+
+    /**
+     * Book Consultation Slots by Consultation Id
+     * @param consultationId
+     * @param studentId
+     * @return boolean
+     */
+    boolean bookConsultationSlot(Integer consultationId, Integer studentId);
+
 }

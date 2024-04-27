@@ -17,6 +17,16 @@ public class ConsultationController {
     private static UserAuthenticationService userAuthenticationService = new UserAuthenticationServiceImpl();
     private static ConsultationService consultationService = new ConsultationServiceImpl();
 
+
+    /**
+     * Get All Available Consultation Slots for Student
+     * @return List of Map
+     */
+    public static List getAllAvailableConsultationSlots() {
+        return consultationService.getAllAvailableConsultationSlots();
+    }
+
+
     /**
      * Get Number of Student's Upcoming and Finished Consultation
      * @return Map of Integer
@@ -41,6 +51,22 @@ public class ConsultationController {
         return consultationService.getAllEventsForStudent(getAuthenticatedUserId());
     }
 
+    /**
+     * Get All Lecturer and Project Manager Name
+     * @return List
+     */
+    public static List getAllLecturerNProjectManagerNameForStudent() {
+        return consultationService.getAllLecturerName();
+    }
+
+    /**
+     * Book Consultation Slots by Consultation Id
+     * @param consultationId
+     * @return boolean
+     */
+    public static boolean bookConsultationSlot(Integer consultationId) {
+        return consultationService.bookConsultationSlot(consultationId, getAuthenticatedUserId());
+    }
 
     /**
      * Get Authenticated UserId
@@ -49,5 +75,6 @@ public class ConsultationController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
+
 
 }

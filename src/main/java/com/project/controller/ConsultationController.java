@@ -1,0 +1,53 @@
+package com.project.controller;
+
+import com.project.service.ConsultationService;
+import com.project.service.Impl.ConsultationServiceImpl;
+import com.project.service.Impl.UserAccountServiceImpl;
+import com.project.service.Impl.UserAuthenticationServiceImpl;
+import com.project.service.UserAccountService;
+import com.project.service.UserAuthenticationService;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+import java.util.Map;
+
+@Slf4j
+public class ConsultationController {
+
+    private static UserAuthenticationService userAuthenticationService = new UserAuthenticationServiceImpl();
+    private static ConsultationService consultationService = new ConsultationServiceImpl();
+
+    /**
+     * Get Number of Student's Upcoming and Finished Consultation
+     * @return Map of Integer
+     */
+    public static Map<String, Integer> getUpcomingNFinishedConsultationForStudent() {
+        return consultationService.getUpcomingNFinishedConsultationForStudent(getAuthenticatedUserId());
+    }
+
+    /**
+     * Get Upcoming Event for Student
+     * @return List of Map
+     */
+    public static List getUpcomingEventForStudent() {
+        return consultationService.getUpcomingEventForStudent(getAuthenticatedUserId());
+    }
+
+    /**
+     * Get All Consultation Details for Student
+     * @return List of Map
+     */
+    public static List getAllEventsForStudent() {
+        return consultationService.getAllEventsForStudent(getAuthenticatedUserId());
+    }
+
+
+    /**
+     * Get Authenticated UserId
+     * @return userId
+     */
+    private static Integer getAuthenticatedUserId() {
+        return userAuthenticationService.getAuthenticationUserDetails().getUserId();
+    }
+
+}

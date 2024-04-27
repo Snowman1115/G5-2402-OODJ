@@ -5,7 +5,7 @@
 
 package com.project.ui.authentication;
 
-import com.project.controller.authentication.UserAccountController;
+import com.project.controller.UserAccountController;
 
 /**
  *

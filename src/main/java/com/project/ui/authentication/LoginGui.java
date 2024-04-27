@@ -2,7 +2,7 @@ package com.project.ui.authentication;
 
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.PropertiesReader;
-import com.project.controller.authentication.UserAccountController;
+import com.project.controller.UserAccountController;
 import com.project.ui.administrator.AdminGui;
 import com.project.ui.lecturer.LecturerGui;
 import com.project.ui.project_manager.ProjectManagerGui;

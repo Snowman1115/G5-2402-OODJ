@@ -11,9 +11,8 @@ import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Slf4j
 public class ConsultationDAO {
@@ -37,7 +36,7 @@ public class ConsultationDAO {
      * @param lecturerId
      * @return List of availableConsultationSlot
      */
-    public static List<Consultation> checkAvailableConsultationsSlotsByLecturerId(Integer lecturerId) {
+    public List<Consultation> checkAvailableConsultationsSlotsByLecturerId(Integer lecturerId) {
         List<Consultation> availableConsultationSlot = new ArrayList<>();
         for (Consultation consultation : consultations) {
             if (consultation.getLecturerId().equals(lecturerId) && consultation.getConsultationStatus().equals(ConsultationStatus.AVAILABLE)) {
@@ -45,6 +44,60 @@ public class ConsultationDAO {
             }
         }
         return availableConsultationSlot;
+    }
+
+    /**
+     * Get All Consultation Details for Student
+     * @return List
+     */
+    public List<Consultation> getAllEventsForStudent(Integer studentId) {
+        List<Consultation> list = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            if (consultation.getStudentId().equals(studentId)) {
+                list.add(consultation);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Get Total Number of Upcoming and Finished Consultation For Student
+     * @param studentId
+     * @return Map of Number
+     */
+    public Map<String, Integer> getUpcomingNFinishedConsultationForStudent(Integer studentId) {
+        Map<String, Integer> map = new HashMap<>();
+        Integer upcomingSum = 0;
+        Integer finishedSum = 0;
+        for (Consultation consultation : consultations) {
+            if (consultation.getStudentId().equals(studentId)) {
+                if (consultation.getConsultationDateTime().isBefore(LocalDateTime.now())) {
+                   finishedSum = finishedSum + 1;
+                } else if (consultation.getConsultationDateTime().isAfter(LocalDateTime.now())) {
+                    upcomingSum = upcomingSum + 1;
+                }
+            }
+        }
+        map.put("upcoming", upcomingSum);
+        map.put("finished", finishedSum);
+        return map;
+    }
+
+    /**
+     * Get Upcoming Event Details for Student
+     * @return List of Map
+     */
+    public List<Map<String, String>> getUpcomingEventForStudent(Integer studentId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            if (consultation.getStudentId().equals(studentId) && consultation.getConsultationDateTime().isAfter(LocalDateTime.now())) {
+                Map<String, String> map = new HashMap<>();
+                map.put("lecturer", consultation.getLecturerId().toString());
+                map.put("date", DateTimeUtils.formatStrDateTime(consultation.getConsultationDateTime()));
+                list.add(map);
+            }
+        }
+        return list;
     }
 
     /**
@@ -65,6 +118,10 @@ public class ConsultationDAO {
             consultation.setStudentId(obj.getInt("studentId"));
             consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(obj.get("consultationDateTime")));
             consultation.setConsultationStatus(ConsultationStatus.valueOf(obj.get("consultationStatus")));
+            if (consultation.getConsultationDateTime().isBefore(LocalDateTime.now())) {
+                // todo
+                // update(consultation.getConsultationId(), "consultationStatus", "COMPLETED");
+            }
             consultation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("createdAt")));
             consultation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updatedAt")));
             consultations.add(consultation);

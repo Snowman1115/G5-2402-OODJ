@@ -1,4 +1,4 @@
-package com.project.controller.authentication;
+package com.project.controller;
 
 import lombok.extern.slf4j.Slf4j;
 

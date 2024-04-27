@@ -5,7 +5,7 @@
 package com.project.ui.administrator;
 
 import com.project.common.constants.UserRoleType;
-import com.project.controller.authentication.UserAccountController;
+import com.project.controller.UserAccountController;
 import com.project.ui.authentication.LoginGui;
 import com.project.ui.authentication.UserProfileGui;
 

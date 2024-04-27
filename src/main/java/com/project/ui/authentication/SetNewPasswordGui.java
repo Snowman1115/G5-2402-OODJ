@@ -4,7 +4,7 @@
  */
 package com.project.ui.authentication;
 
-import static com.project.controller.authentication.UserAccountController.resetUserPasswordBySecurityPhrase;
+import static com.project.controller.UserAccountController.resetUserPasswordBySecurityPhrase;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**

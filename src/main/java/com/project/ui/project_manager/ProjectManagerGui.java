@@ -4,9 +4,8 @@
  */
 package com.project.ui.project_manager;
 
-import com.project.ui.administrator.*;
 import com.project.common.constants.UserRoleType;
-import com.project.controller.authentication.UserAccountController;
+import com.project.controller.UserAccountController;
 import com.project.ui.authentication.LoginGui;
 import com.project.ui.authentication.UserProfileGui;
 

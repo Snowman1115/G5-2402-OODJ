@@ -4,7 +4,7 @@
  * @version 1.0, Last edited on 2024-03-29
  * @since 2024-03-29
  */
-package com.project.controller.authentication;
+package com.project.controller;
 
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.DataValidator;

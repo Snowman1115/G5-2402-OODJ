@@ -1,5 +1,6 @@
 package com.project.service.Impl;
 
+import com.project.common.constants.ConsultationStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.DateTimeUtils;
@@ -11,6 +12,7 @@ import com.project.pojo.Consultation;
 import com.project.pojo.UserAccount;
 import com.project.service.ConsultationService;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ConsultationServiceImpl implements ConsultationService {
@@ -112,4 +114,43 @@ public class ConsultationServiceImpl implements ConsultationService {
         };
         return false;
     }
+
+    /**
+     * Get Scheduled Consultation Details By Student Id
+     * @param studentId
+     * @return userId
+     */
+    @Override
+    public List<Map<String, String>> getAllScheduledConsultationIdByStudentId(Integer studentId) {
+        List<Map<String, String>> mappedList = new ArrayList<>();
+        List<Consultation> consultations = consultationDAO.getAllEventsForStudent(studentId);
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationStatus().equals(ConsultationStatus.SCHEDULED) && consultation.getConsultationDateTime().isAfter(LocalDateTime.now())) {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", consultation.getConsultationId().toString());
+                UserAccount userAccount = userAccountDAO.getUserAccountById(consultation.getLecturerId());
+                map.put("lecturer", userAccount.getFirstName() + " " + userAccount.getLastName());
+                map.put("date", DateTimeUtils.formatStrDateTime(consultation.getConsultationDateTime()));
+                map.put("status", consultation.getConsultationStatus().toString());
+                mappedList.add(map);
+            }
+        }
+        return mappedList;
+    }
+
+    /**
+     * Cancel Booked Consultation Details By Consultation Id
+     * @param consultationId
+     * @return boolean
+     */
+    @Override
+    public Boolean cancelBookedConsultationById(Integer consultationId) {
+        if (consultationDAO.cancelBookedConsultationById(consultationId)) {
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_CONSULTATION_CANCELLED);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

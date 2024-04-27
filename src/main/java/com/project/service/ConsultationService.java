@@ -43,4 +43,18 @@ public interface ConsultationService {
      */
     boolean bookConsultationSlot(Integer consultationId, Integer studentId);
 
+    /**
+     * Get Scheduled Consultation Details By Student Id
+     * @param studentId
+     * @return List
+     */
+    public List<Map<String, String>> getAllScheduledConsultationIdByStudentId(Integer studentId);
+
+    /**
+     * Cancel Booked Consultation Details By Consultation Id
+     * @param consultationId
+     * @return boolean
+     */
+    public Boolean cancelBookedConsultationById(Integer consultationId);
+
 }

@@ -14,6 +14,7 @@ public class MessageConstant {
     public static final String SUCCESS_PASSWORD_UPDATE_SUCCESSFUL = "Password Update Successful.";
     public static final String SUCCESS_SECURITY_PHRASE_UPDATE_SUCCESSFUL = "Security Phrase Update Successful.";
     public static final String SUCCESS_BOOKING_CONSULTATION = "Consultation Booked Successfully.";
+    public static final String SUCCESS_CONSULTATION_CANCELLED = "Consultation cancelled successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activities detected, please login.";
@@ -46,6 +47,7 @@ public class MessageConstant {
     public static final String UNEXPECTED_ERROR = "Update fail - ERROR: UNEXPECT_ERROR. PLEASE CONTACT ADMIN.";
     public static final String ERROR_SECURITY_PHRASE_INCORRECT = "Entered SecurityPhrase Incorrect, Please Try Again.";
     public static final String ERROR_SELECTION_EMPTY = "Selection are empty, Please Try Again.";
+
 
     /* WARNING */
 

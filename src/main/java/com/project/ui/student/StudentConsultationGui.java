@@ -7,6 +7,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import com.project.controller.ConsultationController;
+import org.bouncycastle.tsp.TSPUtil;
 import org.icepdf.ri.common.ComponentKeyBinding;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
@@ -46,19 +47,41 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         menuBtn12.setText(map.get("upcoming").toString());
         menuBtn13.setText(map.get("finished").toString());
 
-        fillInJComboBox1();
+        fillInJComboBox();
         refreshTable();
     }
 
-    private void fillInJComboBox1() {
+    private void refreshDetails(Object value) {
+        if (consultationComboBox2.getSelectedItem() != null) {
+            List<Map<String, String>> lists = ConsultationController.getAllScheduledConsultationIdByStudentId();
+            for (Map<String, String> list : lists) {
+                if (value.equals(list.get("id"))) {
+                    JField19.setText(list.get("lecturer"));
+                    JField18.setText(list.get("date"));
+                    JField20.setText(list.get("status"));
+                }
+            }
+        }
+    }
+
+    private void fillInJComboBox() {
         consultationComboBox1.removeAllItems();
         consultationComboBox1.addItem("All");
         List<String> lists = ConsultationController.getAllLecturerNProjectManagerNameForStudent();
         for (String list : lists) {
             consultationComboBox1.addItem(list);
         }
-        
         consultationComboBox1.setSelectedIndex(0);
+
+        consultationComboBox2.removeAllItems();
+        List<Map<String, String>> lists2 = ConsultationController.getAllScheduledConsultationIdByStudentId();
+        if (lists2.isEmpty()) {
+            consultationComboBox2.addItem("There is no scheduled consultation.");
+        }
+        for (Map<String, String> list : lists2) {
+            consultationComboBox2.addItem(list.get("id"));
+        }
+        consultationComboBox2.setSelectedIndex(0);
     }
 
     private void refreshComboBox1(String value) {
@@ -130,7 +153,6 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
             String[] data = {list.get("date"), list.get("lecturer")};
             dtm.addRow(data);
         }
-
     }
 
     /**
@@ -177,21 +199,18 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         JField13 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         Panel8 = new javax.swing.JPanel();
-        menuBtn31 = new javax.swing.JLabel();
         menuBtn33 = new javax.swing.JLabel();
         menuBtn34 = new javax.swing.JLabel();
         JField18 = new javax.swing.JTextField();
-        menuBtn35 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
         menuBtn30 = new javax.swing.JLabel();
         menuBtn32 = new javax.swing.JLabel();
         menuBtn37 = new javax.swing.JLabel();
-        projectComboBox2 = new javax.swing.JComboBox<>();
+        consultationComboBox2 = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
         JSeparator37 = new javax.swing.JSeparator();
-        JField22 = new javax.swing.JTextField();
         JField19 = new javax.swing.JTextField();
+        menuBtn36 = new javax.swing.JLabel();
+        JField20 = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -577,60 +596,35 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         Panel8.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn31.setText("INTAKE CODE");
-        menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn31.setOpaque(true);
-        Panel8.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
-
         menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
         menuBtn33.setText("LECTURER NAME");
         menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn33.setOpaque(true);
-        Panel8.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 300, 40));
+        Panel8.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
 
         menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn34.setText("DUE DATE");
+        menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
+        menuBtn34.setText("DATE");
         menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn34.setOpaque(true);
-        Panel8.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 300, 40));
+        Panel8.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
 
+        JField18.setEditable(false);
+        JField18.setBackground(new java.awt.Color(255, 255, 255));
         JField18.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField18.setForeground(new java.awt.Color(1, 1, 1));
         JField18.setText("Project Due Date");
-        JField18.setBorder(null);
+        JField18.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField18.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JField18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JField18MouseClicked(evt);
             }
         });
-        Panel8.add(JField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 300, 35));
-
-        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn35.setText("PROJECT DESCRIPTION");
-        menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn35.setOpaque(true);
-        Panel8.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 300, 40));
-
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Project Description");
-        jTextArea3.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        jScrollPane5.setViewportView(jTextArea3);
-
-        Panel8.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 300, 110));
+        Panel8.add(JField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
 
         menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -643,7 +637,7 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn32.setText("SELECT MODULE");
+        menuBtn32.setText("CONSULTATION ID");
         menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn32.setOpaque(true);
         Panel8.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
@@ -656,17 +650,17 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         menuBtn37.setOpaque(true);
         Panel8.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 90, 40));
 
-        projectComboBox2.setBackground(new java.awt.Color(254, 254, 254));
-        projectComboBox2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        projectComboBox2.setToolTipText("d");
-        projectComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        projectComboBox2.setFocusable(false);
-        projectComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        consultationComboBox2.setBackground(new java.awt.Color(254, 254, 254));
+        consultationComboBox2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        consultationComboBox2.setToolTipText("d");
+        consultationComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultationComboBox2.setFocusable(false);
+        consultationComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                projectComboBox2ActionPerformed(evt);
+                consultationComboBox2ActionPerformed(evt);
             }
         });
-        Panel8.add(projectComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
+        Panel8.add(consultationComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
         jLabel40.setBackground(new java.awt.Color(254, 254, 254));
         jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -687,29 +681,41 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         JSeparator37.setForeground(new java.awt.Color(1, 1, 1));
         Panel8.add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, 170, 10));
 
-        JField22.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField22.setForeground(new java.awt.Color(1, 1, 1));
-        JField22.setText("Module Name");
-        JField22.setBorder(null);
-        JField22.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField22MouseClicked(evt);
-            }
-        });
-        Panel8.add(JField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
-
+        JField19.setEditable(false);
+        JField19.setBackground(new java.awt.Color(255, 255, 255));
         JField19.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField19.setForeground(new java.awt.Color(1, 1, 1));
         JField19.setText("Lectuerer Name");
-        JField19.setBorder(null);
+        JField19.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField19.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JField19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JField19MouseClicked(evt);
             }
         });
-        Panel8.add(JField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 300, 35));
+        Panel8.add(JField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
+
+        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
+        menuBtn36.setText("STATUS");
+        menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn36.setOpaque(true);
+        Panel8.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
+
+        JField20.setEditable(false);
+        JField20.setBackground(new java.awt.Color(255, 255, 255));
+        JField20.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField20.setForeground(new java.awt.Color(1, 1, 1));
+        JField20.setText("Consultation Status");
+        JField20.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        JField20.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField20MouseClicked(evt);
+            }
+        });
+        Panel8.add(JField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 300, 35));
 
         MainTabbedPanel1.addTab("Edit", Panel8);
 
@@ -747,17 +753,19 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JField19MouseClicked
 
-    private void JField22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField22MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField22MouseClicked
-
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
-        // TODO add your handling code here:
+        if (consultationComboBox2.getSelectedItem().equals("There is no scheduled consultation.")) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
+        }
+
+        if (ConsultationController.cancelBookedConsultationById(Integer.parseInt((String) consultationComboBox2.getSelectedItem()))) {
+            refresh();
+        }
     }//GEN-LAST:event_jLabel40MouseClicked
 
-    private void projectComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_projectComboBox2ActionPerformed
+    private void consultationComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationComboBox2ActionPerformed
+        refreshDetails(consultationComboBox2.getSelectedItem());
+    }//GEN-LAST:event_consultationComboBox2ActionPerformed
 
     private void JField18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField18MouseClicked
         // TODO add your handling code here:
@@ -807,13 +815,17 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         tr.setRowFilter(RowFilter.regexFilter(JField13.getText().trim()));
     }//GEN-LAST:event_jLabel12MouseClicked
 
+    private void JField20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField20MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField20MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField12;
     private javax.swing.JTextField JField13;
     private javax.swing.JTextField JField18;
     private javax.swing.JTextField JField19;
-    private javax.swing.JTextField JField22;
+    private javax.swing.JTextField JField20;
     private javax.swing.JSeparator JSeparator33;
     private javax.swing.JSeparator JSeparator37;
     private javax.swing.JTabbedPane MainTabbedPanel;
@@ -824,6 +836,7 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Panel8;
     private static javax.swing.JComboBox<String> consultationComboBox;
     private static javax.swing.JComboBox<String> consultationComboBox1;
+    private static javax.swing.JComboBox<String> consultationComboBox2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -836,11 +849,9 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel menuBtn11;
     private static javax.swing.JLabel menuBtn12;
     private static javax.swing.JLabel menuBtn13;
@@ -851,13 +862,11 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn29;
     private javax.swing.JLabel menuBtn3;
     private javax.swing.JLabel menuBtn30;
-    private javax.swing.JLabel menuBtn31;
     private javax.swing.JLabel menuBtn32;
     private javax.swing.JLabel menuBtn33;
     private javax.swing.JLabel menuBtn34;
-    private javax.swing.JLabel menuBtn35;
+    private javax.swing.JLabel menuBtn36;
     private javax.swing.JLabel menuBtn37;
     private javax.swing.JLabel menuBtn4;
-    private static javax.swing.JComboBox<String> projectComboBox2;
     // End of variables declaration//GEN-END:variables
 }

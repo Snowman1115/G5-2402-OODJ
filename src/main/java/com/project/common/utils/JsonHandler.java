@@ -132,6 +132,7 @@ public class JsonHandler {
      * @return boolean
      */
     public boolean update(Integer objectId, String attribute, String value, String filePath) {
+
         JSONObject obj = null;
 
         for (int i=0; i<(json_array.size()); i++) {

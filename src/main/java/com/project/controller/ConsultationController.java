@@ -69,12 +69,29 @@ public class ConsultationController {
     }
 
     /**
+     * Get Scheduled Consultation Details By Student Id
+     * @return userId
+     */
+    public static List getAllScheduledConsultationIdByStudentId() {
+        return consultationService.getAllScheduledConsultationIdByStudentId(getAuthenticatedUserId());
+    }
+
+    /**
+     * Cancel Booked Consultation Details By Consultation Id
+     * @param consultationId
+     * @return boolean
+     */
+    public static Boolean cancelBookedConsultationById(Integer consultationId) {
+        return consultationService.cancelBookedConsultationById(consultationId);
+    }
+
+
+    /**
      * Get Authenticated UserId
      * @return userId
      */
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
-
 
 }

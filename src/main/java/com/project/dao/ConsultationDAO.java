@@ -117,7 +117,6 @@ public class ConsultationDAO {
 
     /**
      * Book Consultation Slots by Consultation Id
-     *
      * @param consultationId
      * @param studentId
      * @return boolean
@@ -128,7 +127,23 @@ public class ConsultationDAO {
                 update(consultationId, "studentId", studentId.toString());
                 update(consultationId, "consultationStatus", "SCHEDULED");
                 update(consultationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
-                System.out.println(consultations);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Cancel Booked Consultation Details By Consultation Id
+     * @param consultationId
+     * @return
+     */
+    public Boolean cancelBookedConsultationById(Integer consultationId) {
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationId().equals(consultationId)) {
+                update(consultationId, "studentId", "0");
+                update(consultationId, "consultationStatus", ConsultationStatus.AVAILABLE.toString());
+                update(consultationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 return true;
             }
         }
@@ -148,13 +163,13 @@ public class ConsultationDAO {
             obj.cloneObject(userData.getObject(i));
 
             Consultation consultation = new Consultation();
-            consultation.setConsultationId(obj.getInt("consultationId"));
+            consultation.setConsultationId(obj.getInt("id"));
             consultation.setLecturerId(obj.getInt("lecturerId"));
             consultation.setStudentId(obj.getInt("studentId"));
             consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(obj.get("consultationDateTime")));
             consultation.setConsultationStatus(ConsultationStatus.valueOf(obj.get("consultationStatus")));
-            consultation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("createdAt")));
-            consultation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updatedAt")));
+            consultation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
+            consultation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
             consultations.add(consultation);
         }
 
@@ -164,7 +179,7 @@ public class ConsultationDAO {
     public static boolean update(Integer consultationId, String field, String value) {
         // System.out.println(value);
         for (Consultation consultation : consultations) {
-            if (consultation.getConsultationId() == consultationId) {
+            if (consultation.getConsultationId().equals(consultationId)) {
                 try {
                     switch (field) {
                         case "lecturerId" -> {
@@ -193,6 +208,7 @@ public class ConsultationDAO {
                         }
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
                     return false;
                 }
             }
@@ -216,6 +232,7 @@ public class ConsultationDAO {
         userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
         return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
     }
+
 
 }
 

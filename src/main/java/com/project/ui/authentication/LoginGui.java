@@ -358,8 +358,8 @@ public class LoginGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void SalespersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalespersonMouseClicked
-        usernameField.setText("amos1212");
-        passwordField.setText("1234");
+        usernameField.setText("student");
+        passwordField.setText("Password123@");
     }//GEN-LAST:event_SalespersonMouseClicked
 
     private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained

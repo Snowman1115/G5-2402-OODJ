@@ -648,7 +648,7 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
         menuBtn37.setText("ACTION :");
         menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn37.setOpaque(true);
-        Panel8.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 90, 40));
+        Panel8.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, 90, 40));
 
         consultationComboBox2.setBackground(new java.awt.Color(254, 254, 254));
         consultationComboBox2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
@@ -756,6 +756,7 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
         if (consultationComboBox2.getSelectedItem().equals("There is no scheduled consultation.")) {
             Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
+            return;
         }
 
         if (ConsultationController.cancelBookedConsultationById(Integer.parseInt((String) consultationComboBox2.getSelectedItem()))) {

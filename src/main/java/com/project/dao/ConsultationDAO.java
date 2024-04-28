@@ -170,7 +170,13 @@ public class ConsultationDAO {
             consultation.setConsultationStatus(ConsultationStatus.valueOf(obj.get("consultationStatus")));
             consultation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
             consultation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
+
             consultations.add(consultation);
+
+            if (consultation.getConsultationDateTime().isBefore(LocalDateTime.now())) {
+                update(consultation.getConsultationId(), "consultationStatus", ConsultationStatus.COMPLETED.toString());
+                update(consultation.getConsultationId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+            }
         }
 
     }

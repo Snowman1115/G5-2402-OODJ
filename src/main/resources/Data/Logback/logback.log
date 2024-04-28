@@ -796,3 +796,61 @@
 2024-04-27 22:23:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
 2024-04-27 22:23:24 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
 2024-04-27 22:23:24 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:50:06 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:50:07 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:50:29 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:50:29 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:50:29 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:50:29 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:50:29 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:50:31 [AWT-EventQueue-0] INFO  com.project.dao.ConsultationDAO - Error: Object not foundCOMPLETED
+2024-04-28 15:50:31 [AWT-EventQueue-0] INFO  com.project.dao.ConsultationDAO - Error: Object not found2024-04-28 15:50:31
+2024-04-28 15:51:22 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:51:22 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:51:34 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:51:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:51:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:51:34 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:51:34 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:52:19 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:52:19 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:52:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:52:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:52:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:52:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:52:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:52:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-04-28 15:52:42 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-04-28 15:52:43 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-28 15:53:35 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:53:36 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:53:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:53:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:53:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:53:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:53:42 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:54:47 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:54:47 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:54:55 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:54:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:54:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:54:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:54:56 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:54:57 [AWT-EventQueue-0] INFO  com.project.dao.ConsultationDAO - Error: Object not foundCOMPLETED
+2024-04-28 15:54:57 [AWT-EventQueue-0] INFO  com.project.dao.ConsultationDAO - Error: Object not found2024-04-28 15:54:57
+2024-04-28 15:55:19 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:55:19 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:55:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:55:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:55:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:55:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:55:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 15:57:26 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:57:27 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:57:58 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 15:57:58 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.

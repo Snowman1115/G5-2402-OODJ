@@ -854,3 +854,36 @@
 2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
 2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
 2024-04-28 15:58:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 21:04:11 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 21:04:11 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 21:04:14 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 21:04:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 21:04:14 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 21:04:14 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 21:04:14 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 21:09:11 [main] ERROR c.project.common.utils.JsonHandler - Error: "consultationDateTime"Attribute does not exist in Json object
+2024-04-28 21:21:23 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 21:21:24 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 21:21:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 21:21:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 21:21:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 21:21:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 21:21:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 21:36:25 [main] ERROR c.project.common.utils.JsonHandler - Error: "presentationDateTime"Attribute does not exist in Json object
+2024-04-28 22:21:05 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 22:21:06 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 22:21:12 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 22:21:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 22:21:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 22:21:12 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 22:21:12 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-04-28 22:23:41 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 22:23:41 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 22:23:45 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-04-28 22:23:49 [main] INFO  com.project.Main - Project Management System Starting...
+2024-04-28 22:23:50 [main] INFO  com.project.Main - Project Management System Ready.
+2024-04-28 22:23:52 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-04-28 22:23:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-04-28 22:23:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-04-28 22:23:52 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-04-28 22:23:52 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.

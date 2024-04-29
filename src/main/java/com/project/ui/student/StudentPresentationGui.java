@@ -4,7 +4,10 @@
  */
 package com.project.ui.student;
 
+import com.project.controller.PresentationController;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.util.Map;
 
 /**
  *
@@ -21,7 +24,13 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);        
         // salesManagementPanel.setText(PropertiesReader.getProperty("SalesManagementPanelVersion"));
-        // refresh();
+        refresh();
+    }
+
+    private void refresh() {
+        Map<String, Integer> presentation = PresentationController.getAllPresentationStatusByStudentId();
+        menuBtn12.setText(presentation.get("pendingConfirm").toString());
+        menuBtn13.setText(presentation.get("overdue").toString());
     }
 
     /**
@@ -235,7 +244,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
         assignmentComboBox.setBackground(new java.awt.Color(254, 254, 254));
         assignmentComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        assignmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Booking", "Booked", "Finished", "Overdue" }));
+        assignmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Booking", "Booked", "Completed", "Overdue" }));
         assignmentComboBox.setToolTipText("d");
         assignmentComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         assignmentComboBox.setFocusable(false);
@@ -350,7 +359,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
                 {null, null}
             },
             new String [] {
-                "Module", "Due Date"
+                    "Data/Module", "Due Date"
             }
         ));
         jScrollPane2.setViewportView(jTable2);

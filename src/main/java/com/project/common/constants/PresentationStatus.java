@@ -1,5 +1,5 @@
 package com.project.common.constants;
 
 public enum PresentationStatus {
-    PENDING_BOOKING, BOOKED, MARKED, OVERDUE
+    PENDING_BOOKING, PENDING_CONFIRM, BOOKED, MARKED, OVERDUE
 }

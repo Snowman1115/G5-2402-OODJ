@@ -43,7 +43,6 @@ public class ConsultationDAO {
 
     /**
      * Get Specific Lecturer's All Available Slots
-     *
      * @param lecturerId
      * @return List of availableConsultationSlot
      */
@@ -74,7 +73,6 @@ public class ConsultationDAO {
 
     /**
      * Get Total Number of Upcoming and Finished Consultation For Student
-     *
      * @param studentId
      * @return Map of Number
      */

@@ -375,7 +375,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
                 {null, null}
             },
             new String [] {
-                "Module", "Due Date"
+                    "Data/Module", "Due Date"
             }
         ));
         jScrollPane2.setViewportView(jTable2);

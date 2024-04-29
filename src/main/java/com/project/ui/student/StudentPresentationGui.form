@@ -279,7 +279,7 @@
                     <StringItem index="0" value="All"/>
                     <StringItem index="1" value="Pending Booking"/>
                     <StringItem index="2" value="Booked"/>
-                    <StringItem index="3" value="Finished"/>
+                    <StringItem index="3" value="Completed"/>
                     <StringItem index="4" value="Overdue"/>
                   </StringArray>
                 </Property>

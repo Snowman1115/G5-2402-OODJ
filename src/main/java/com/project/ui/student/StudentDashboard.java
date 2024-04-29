@@ -5,6 +5,7 @@
 package com.project.ui.student;
 
 import com.project.controller.ConsultationController;
+import com.project.controller.PresentationController;
 import com.project.ui.administrator.*;
 import java.util.Map;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -31,7 +32,13 @@ public class StudentDashboard extends javax.swing.JInternalFrame {
         Map<String, Integer> map = ConsultationController.getUpcomingNFinishedConsultationForStudent();
         menuBtn18.setText(map.get("upcoming").toString());
         menuBtn19.setText(map.get("finished").toString());
-        
+
+        Map<String, Integer> presentation = PresentationController.getAllPresentationStatusByStudentId();
+        menuBtn15.setText(presentation.get("pendingBooking").toString());
+        menuBtn14.setText(presentation.get("pendingConfirm").toString());
+        menuBtn12.setText(presentation.get("confirmed").toString());
+        menuBtn13.setText(presentation.get("overdue").toString());
+
         
         // menuBtn12.setText(String.valueOf(UserAccountOperator.checkTotalActiveOfficer()));
         // menuBtn13.setText(String.valueOf(UserAccountOperator.checkTotalActiveSalesPerson()));

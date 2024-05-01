@@ -65,6 +65,7 @@ public class ConsultationController {
      * @return boolean
      */
     public static boolean bookConsultationSlot(Integer consultationId) {
+        log.info("Book Consultation: " + consultationId);
         return consultationService.bookConsultationSlot(consultationId, getAuthenticatedUserId());
     }
 
@@ -82,6 +83,7 @@ public class ConsultationController {
      * @return boolean
      */
     public static Boolean cancelBookedConsultationById(Integer consultationId) {
+        log.info("Cancel Booked Consultation: " + consultationId);
         return consultationService.cancelBookedConsultationById(consultationId);
     }
 

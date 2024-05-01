@@ -11,10 +11,12 @@ import com.project.dao.UserRoleDAO;
 import com.project.pojo.Consultation;
 import com.project.pojo.UserAccount;
 import com.project.service.ConsultationService;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
+@Slf4j
 public class ConsultationServiceImpl implements ConsultationService {
 
     private ConsultationDAO consultationDAO = new ConsultationDAO();
@@ -109,9 +111,11 @@ public class ConsultationServiceImpl implements ConsultationService {
     @Override
     public boolean bookConsultationSlot(Integer consultationId, Integer studentId) {
         if(consultationDAO.bookConsultationSlot(consultationId, studentId)) {
+            log.info("Consultation Booked Successfully: " + consultationId + " + " + studentId);
             Dialog.SuccessDialog(MessageConstant.SUCCESS_BOOKING_CONSULTATION);
             return true;
         };
+        log.info("Consultation Booked Failed: " + consultationId + " + " + studentId);
         return false;
     }
 
@@ -146,9 +150,11 @@ public class ConsultationServiceImpl implements ConsultationService {
     @Override
     public Boolean cancelBookedConsultationById(Integer consultationId) {
         if (consultationDAO.cancelBookedConsultationById(consultationId)) {
+            log.info("Consultation Cancelled Successfully: " + consultationId);
             Dialog.SuccessDialog(MessageConstant.SUCCESS_CONSULTATION_CANCELLED);
             return true;
         } else {
+            log.info("Consultation Cancelled Failed: " + consultationId);
             return false;
         }
     }

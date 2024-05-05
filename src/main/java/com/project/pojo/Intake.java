@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 public class Intake {
     private Integer intakeId;
     private String intakeCode;
-    private ArrayList<UserAccount> studentList;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private ArrayList<Integer> studentList;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

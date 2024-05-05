@@ -5,72 +5,36 @@ import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
+import com.project.pojo.Intake;
 import com.project.pojo.Presentation;
+import com.project.pojo.ProjectModule;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
-public class PresentationDAO {
+public class ModuleDAO {
 
-    private static final String PRESENTATION_DATA = PropertiesReader.getProperty("PresentationData");
-    private static List<Presentation> presentations = new ArrayList<>();
+    private static final String MODULE_DATA = PropertiesReader.getProperty("ModuleData");
+    private static List<ProjectModule> modules = new ArrayList<>();
 
     static {
         loadConsultationData();
     }
 
     /**
-     * Get All Presentaion Status By Student Id
-     * @param studentId
-     * @return Map of List
+     * Get Module by Id
+     * @param moduleId
+     * @return Module
      */
-    public Map<String, Integer> getAllPresentationStatusByStudentId(Integer studentId) {
-        int pendingBooking = 0;
-        int pendingConfirm = 0;
-        int confirmed = 0;
-        int overdue = 0;
-        for (Presentation presentation : presentations) {
-            if (presentation.getStudentId().equals(studentId)) {
-                if (presentation.getPresentationStatus().equals(PresentationStatus.PENDING_BOOKING)) {
-                    pendingBooking = pendingBooking + 1;
-                } else if (presentation.getPresentationStatus().equals(PresentationStatus.PENDING_CONFIRM)) {
-                    pendingConfirm = pendingConfirm + 1;
-                } else if (presentation.getPresentationStatus().equals(PresentationStatus.BOOKED)) {
-                    confirmed = confirmed + 1;
-                } else if (presentation.getPresentationStatus().equals(PresentationStatus.OVERDUE)) {
-                    overdue = overdue + 1;
-                }
+    public ProjectModule getModuleById(Integer moduleId) {
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(moduleId)) {
+                return module;
             }
         }
-        Map<String, Integer> map = new HashMap<>();
-        map.put("pendingBooking" , pendingBooking);
-        map.put("pendingConfirm" , pendingConfirm);
-        map.put("confirmed" , confirmed);
-        map.put("overdue" , overdue);
-        return map;
-    }
-
-    /**
-     * Get Pending Booking Presentation Module and Due Date
-     * @param studentId
-     * @return Map of List
-     */
-    public List<Map<String, String>> getAllUpcomingPendingBookingPresentation(Integer studentId) {
-        List<Map<String, String>> list = new ArrayList<>();
-        for (Presentation presentation : presentations) {
-            if (presentation.getStudentId().equals(studentId) && presentation.getPresentationStatus().equals(PresentationStatus.PENDING_BOOKING)) {
-                Map<String, String> map = new HashMap<>();
-                map.put("moduleId", presentation.getModuleId().toString());
-                map.put("dueDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDueDate()));
-                list.add(map);
-            }
-        }
-        return list;
+        return null;
     }
 
     /**
@@ -78,28 +42,26 @@ public class PresentationDAO {
      */
     private static void loadConsultationData() {
         JsonHandler userData = new JsonHandler();
-        userData.encode(FileHandler.readFile(PRESENTATION_DATA));
+        userData.encode(FileHandler.readFile(MODULE_DATA));
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
             obj.cloneObject(userData.getObject(i));
 
-            Presentation presentation = new Presentation();
-            presentation.setPresentationId(obj.getInt("id"));
-            presentation.setModuleId(obj.getInt("moduleId"));
-            presentation.setLecturerId(obj.getInt("lecturerId"));
-            presentation.setStudentId(obj.getInt("studentId"));
-            presentation.setPresentationDueDate(DateTimeUtils.formatDateTime(obj.get("presentationDueDate")));
-            presentation.setPresentationDateTime(DateTimeUtils.formatDateTime(obj.get("presentationDateTime")));
-            presentation.setPresentationStatus(PresentationStatus.valueOf(obj.get("presentationStatus")));
-            presentation.setPresentationResult(obj.getDouble("presentationResult"));
-            presentation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
-            presentation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
+            ProjectModule projectModule = new ProjectModule();
+            projectModule.setModuleId(obj.getInt("id"));
+            projectModule.setModuleCode(obj.get("moduleCode"));
+            projectModule.setSupervisorId(obj.getInt("supervisorId"));
+            projectModule.setFirstMarker(obj.getInt("firstMarkerId"));
+            projectModule.setSecondMarker(obj.getInt("secondMarkerId"));
+            projectModule.setStartDate(DateTimeUtils.formatDate(obj.get("startDate")));
+            projectModule.setEndDate(DateTimeUtils.formatDate(obj.get("endDate")));
+            projectModule.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
+            projectModule.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
 
-            presentations.add(presentation);
+            modules.add(projectModule);
         }
     }
-
 
     /*
 
@@ -161,6 +123,5 @@ public class PresentationDAO {
         return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
     }
 */
-
 
 }

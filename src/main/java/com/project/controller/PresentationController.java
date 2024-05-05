@@ -24,6 +24,14 @@ public class PresentationController {
     }
 
     /**
+     * Get All Upcoming N Pending Booking Presentation
+     * @return Map of list
+     */
+    public static List getAllUpcomingNPendingBookingPresentation() {
+        return presentationService.getAllUpcomingNPendingBookingPresentation(getAuthenticatedUserId());
+    }
+
+    /**
      * Get Authenticated UserId
      * @return userId
      */

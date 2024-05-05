@@ -4,9 +4,12 @@
  */
 package com.project.ui.student;
 
+import com.project.controller.ConsultationController;
 import com.project.controller.PresentationController;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,8 +32,20 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
     private void refresh() {
         Map<String, Integer> presentation = PresentationController.getAllPresentationStatusByStudentId();
-        menuBtn12.setText(presentation.get("pendingConfirm").toString());
+        menuBtn12.setText(presentation.get("pendingBooking").toString());
         menuBtn13.setText(presentation.get("overdue").toString());
+
+        refreshTable();
+    }
+
+    private void refreshTable() {
+        DefaultTableModel dtm =  (DefaultTableModel)jTable2.getModel();
+        dtm.setRowCount(0);
+        List<Map<String, String>> lists = PresentationController.getAllUpcomingNPendingBookingPresentation();
+        for (Map<String,String> list : lists) {
+            String[] data = {list.get("moduleName"), list.get("dueDate")};
+            dtm.addRow(data);
+        }
     }
 
     /**
@@ -258,7 +273,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn11.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
-        menuBtn11.setText("UPCOMING EVENTS");
+        menuBtn11.setText("PENDING BOOKING");
         menuBtn11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn11.setOpaque(true);
         Panel1.add(menuBtn11, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, 330, 40));
@@ -353,15 +368,20 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                    "Data/Module", "Due Date"
+                "Module", "Due Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         Panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 330, 420));
@@ -376,16 +396,27 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "MODULE", "DUE DATE", "SELECTED DATE", "STATUS"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+            jTable3.getColumnModel().getColumn(2).setResizable(false);
+            jTable3.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 670, 360));
 

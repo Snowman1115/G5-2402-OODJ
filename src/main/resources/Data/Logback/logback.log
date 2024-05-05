@@ -1186,3 +1186,139 @@
 2024-05-05 23:10:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 72921720
 2024-05-05 23:10:59 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 41916716
 2024-05-05 23:10:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 41916716
+2024-05-05 23:35:21 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:35:21 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:35:24 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : lecturer1@gmail.com
+2024-05-05 23:35:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (lecturer1@gmail.com) ,Role: (LECTURER) login successful.
+2024-05-05 23:35:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (lecturer1@gmail.com) to Lecturer Panel.
+2024-05-05 23:35:24 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:35:24 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (lecturer1) authorization passed.
+2024-05-05 23:35:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-05-05 23:35:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-05-05 23:35:28 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : projectManager1@gmail.com
+2024-05-05 23:35:28 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (projectManager1@gmail.com) ,Role: (PROJECT_MANAGER) login successful.
+2024-05-05 23:35:28 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (projectManager1@gmail.com) to Project Manager Panel.
+2024-05-05 23:35:28 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:35:28 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (projectManager1) authorization passed.
+2024-05-05 23:35:30 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-05-05 23:35:30 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-05-05 23:35:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:35:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:35:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:35:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:35:32 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:35:46 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 41916716
+2024-05-05 23:35:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 59262392
+2024-05-05 23:35:48 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 99641852
+2024-05-05 23:35:48 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 99641852 + 59262392
+2024-05-05 23:35:49 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 41916716
+2024-05-05 23:35:49 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 59262392
+2024-05-05 23:35:51 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 12977522
+2024-05-05 23:35:51 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 12977522 + 59262392
+2024-05-05 23:35:55 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 41916716
+2024-05-05 23:35:55 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 59262392
+2024-05-05 23:36:35 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 41916716
+2024-05-05 23:36:35 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 59262392
+2024-05-05 23:36:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-05-05 23:36:45 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-05-05 23:36:47 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:36:47 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:36:47 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:36:47 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:36:47 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:37:00 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 72865858
+2024-05-05 23:37:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 72865858 + 59262392
+2024-05-05 23:37:03 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 71021535
+2024-05-05 23:37:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 71021535 + 59262392
+2024-05-05 23:37:05 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 3268572
+2024-05-05 23:37:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 3268572 + 59262392
+2024-05-05 23:37:13 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-05-05 23:37:13 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-05-05 23:37:14 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-05-05 23:37:33 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:37:34 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:37:35 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:37:35 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:37:35 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:37:35 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:37:35 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:37:44 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 99641852
+2024-05-05 23:37:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 99641852
+2024-05-05 23:37:50 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 12977522
+2024-05-05 23:37:50 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 12977522
+2024-05-05 23:37:52 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 41916716
+2024-05-05 23:37:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 41916716
+2024-05-05 23:37:53 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 72865858
+2024-05-05 23:37:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 72865858
+2024-05-05 23:37:56 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 71021535
+2024-05-05 23:37:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 71021535
+2024-05-05 23:37:58 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 3268572
+2024-05-05 23:37:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 3268572
+2024-05-05 23:38:05 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 41916716
+2024-05-05 23:38:05 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 59262392
+2024-05-05 23:38:07 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 72865858
+2024-05-05 23:38:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 72865858 + 59262392
+2024-05-05 23:38:09 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 71021535
+2024-05-05 23:38:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 71021535 + 59262392
+2024-05-05 23:38:12 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 99641852
+2024-05-05 23:38:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 99641852 + 59262392
+2024-05-05 23:38:17 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 12977522
+2024-05-05 23:38:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 12977522 + 59262392
+2024-05-05 23:38:19 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 3268572
+2024-05-05 23:38:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 3268572 + 59262392
+2024-05-05 23:40:57 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:40:57 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:40:59 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:40:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:40:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:40:59 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:40:59 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:43:22 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:43:23 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:43:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:43:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:43:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:43:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:43:25 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:48:13 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:48:14 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:48:16 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:48:16 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:48:16 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:48:16 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:48:16 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:50:24 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:50:24 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:50:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 23:50:26 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-05 23:50:26 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-05 23:50:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:50:26 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-06 00:44:18 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-06 00:44:18 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-06 00:44:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-06 00:44:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-06 00:44:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-06 00:44:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-06 00:44:21 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-06 00:45:20 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-06 00:45:21 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-06 00:45:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-06 00:45:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-06 00:45:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-06 00:45:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-06 00:45:22 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-06 00:46:44 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-06 00:46:44 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-06 00:46:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-06 00:46:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-06 00:46:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-06 00:46:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-06 00:46:46 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-06 00:47:23 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-06 00:47:23 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-06 00:47:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-06 00:47:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-05-06 00:47:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-05-06 00:47:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-06 00:47:25 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.

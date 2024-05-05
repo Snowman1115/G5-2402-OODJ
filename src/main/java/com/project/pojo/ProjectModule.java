@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,11 +12,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ProjectModule {
     private Integer moduleId;
-    private Integer supervisorId;
-    private Integer secondMarker;
+    private Integer intakeId;
     private String moduleCode;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private Integer supervisorId;
+    private Integer firstMarker;
+    private Integer secondMarker;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

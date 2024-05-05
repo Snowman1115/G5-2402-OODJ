@@ -12,5 +12,10 @@ public interface PresentationService {
      */
     public Map<String, Integer> getAllPresentationStatusByStudentId(Integer studentId);
 
-
+    /**
+     * Get All Upcoming N Pending Booking Presentation
+     * @param studentId
+     * @return Map of list
+     */
+    List getAllUpcomingNPendingBookingPresentation(Integer studentId);
 }

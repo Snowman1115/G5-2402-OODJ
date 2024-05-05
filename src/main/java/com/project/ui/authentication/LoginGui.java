@@ -343,23 +343,23 @@ public class LoginGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        usernameField.setText("project_manager");
-        passwordField.setText("1234");
+        usernameField.setText("projectManager1@gmail.com");
+        passwordField.setText("Passw0rd123@");
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        usernameField.setText("admin");
-        passwordField.setText("1234");
+        usernameField.setText("admin1@gmail.com");
+        passwordField.setText("Passw0rd123@");
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        usernameField.setText("lecturer");
-        passwordField.setText("1234");
+        usernameField.setText("lecturer1@gmail.com");
+        passwordField.setText("Passw0rd123@");
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void SalespersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalespersonMouseClicked
-        usernameField.setText("student");
-        passwordField.setText("Password123@");
+        usernameField.setText("student1@gmail.com");
+        passwordField.setText("Passw0rd123@");
     }//GEN-LAST:event_SalespersonMouseClicked
 
     private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained

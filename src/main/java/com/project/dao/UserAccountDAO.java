@@ -6,6 +6,7 @@ import com.project.common.utils.FileHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
+import com.project.pojo.UserRole;
 import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.time.LocalDateTime;
@@ -65,7 +66,7 @@ public class UserAccountDAO {
      */
     public UserAccount getUserAccountById(Integer userId) {
         for (UserAccount user:users) {
-            if (user.getUserId() == userId) {
+            if (user.getUserId().equals(userId)) {
                 return user;
             }
         }
@@ -255,18 +256,18 @@ public class UserAccountDAO {
     public static boolean update(Integer userId, String field, String value) {
         // find user object in arraylist
         for (UserAccount user : users) {
-            if (user.getUserId() == userId) {
+            if (user.getUserId().equals(userId)) {
                 try {
                     switch (field) {
                         case "username" -> {
                             user.setUsername(value);
                             return store(userId, "username", value);
                         }
-                        case "firstName" -> {
+                        case "first_name" -> {
                             user.setFirstName(value);
                             return store(userId, "first_name", value);
                         }
-                        case "lastName" -> {
+                        case "last_name" -> {
                             user.setLastName(value);
                             return store(userId, "last_name", value);
                         }

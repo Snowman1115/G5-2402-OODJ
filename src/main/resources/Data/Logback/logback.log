@@ -941,3 +941,248 @@
 2024-05-02 02:57:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 1 + 4
 2024-05-02 02:57:25 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 1
 2024-05-02 02:57:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 1
+2024-05-03 17:28:19 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-03 17:28:19 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-03 17:28:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : lecturer
+2024-05-03 17:28:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (lecturer) ,Role: (LECTURER) login successful.
+2024-05-03 17:28:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (lecturer) to Lecturer Panel.
+2024-05-03 17:28:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-03 17:28:21 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (lecturer) authorization passed.
+2024-05-05 16:09:28 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 16:09:29 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 16:09:57 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 16:09:58 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 16:10:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-05-05 16:10:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-05-05 16:10:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-05-05 16:10:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 16:10:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-05-05 16:10:37 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 16:10:37 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 16:10:39 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-05-05 16:10:39 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student) ,Role: (STUDENT) login successful.
+2024-05-05 16:10:39 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student) to Student Panel.
+2024-05-05 16:10:39 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 16:10:39 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student) authorization passed.
+2024-05-05 21:38:56 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:38:57 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:39:05 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:39:06 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:39:08 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-05-05 21:39:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Username/Email invalid, please try again.
+2024-05-05 21:40:37 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:40:38 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "first_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "last_name"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:40:39 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-05-05 21:40:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Username/Email invalid, please try again.
+2024-05-05 21:41:27 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:41:27 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:41:37 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:41:37 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] ERROR c.project.common.utils.JsonHandler - Error: "password"Attribute does not exist in Json object
+2024-05-05 21:41:39 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-05-05 21:41:40 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Username/Email invalid, please try again.
+2024-05-05 21:42:12 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:42:12 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:42:27 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:42:28 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:42:30 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student
+2024-05-05 21:42:30 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student) login fail error: Username/Email invalid, please try again.
+2024-05-05 21:42:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:42:52 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:42:53 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:43:50 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:43:51 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:43:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:43:59 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:45:07 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:45:08 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:45:12 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:45:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student1) login fail error: Password invalid, please try again.
+2024-05-05 21:45:15 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:45:16 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student1) login fail error: Password invalid, please try again.
+2024-05-05 21:45:37 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-05-05 21:45:38 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student1@gmail.com) login fail error: Password invalid, please try again.
+2024-05-05 21:47:45 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:47:45 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:48:03 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:48:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 21:48:10 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:48:10 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 21:50:42 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:50:42 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:50:54 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:50:54 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 21:53:32 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 21:53:32 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 21:53:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 21:53:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:05:10 [main] INFO  c.p.s.Impl.UserAccountServiceImpl - User (stuent1) login fail error: Username/Email invalid, please try again.
+2024-05-05 22:05:18 [main] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:05:49 [main] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:06:41 [main] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:06:53 [main] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:10:52 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 22:10:52 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 22:11:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 22:11:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (STUDENT) login successful.
+2024-05-05 22:11:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1) to Student Panel.
+2024-05-05 22:11:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 22:11:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 22:16:31 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 22:16:31 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 22:16:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 22:16:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (STUDENT) login successful.
+2024-05-05 22:16:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1) to Student Panel.
+2024-05-05 22:16:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 22:16:42 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 22:17:30 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 22:17:30 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 22:17:37 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 22:17:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:19:11 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 22:19:11 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 22:19:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 22:19:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:19:41 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 22:19:41 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 22:19:47 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 22:19:47 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 22:26:34 [main] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (null) login successful.
+2024-05-05 23:06:40 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:06:40 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:06:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 23:06:47 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student1) login fail error: Password invalid, please try again.
+2024-05-05 23:06:51 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1
+2024-05-05 23:06:51 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1) ,Role: (STUDENT) login successful.
+2024-05-05 23:06:51 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1) to Student Panel.
+2024-05-05 23:06:51 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:06:51 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-05-05 23:09:58 [main] INFO  com.project.Main - Project Management System Starting...
+2024-05-05 23:09:58 [main] INFO  com.project.Main - Project Management System Ready.
+2024-05-05 23:10:06 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student2
+2024-05-05 23:10:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student2) ,Role: (STUDENT) login successful.
+2024-05-05 23:10:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student2) to Student Panel.
+2024-05-05 23:10:06 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-05-05 23:10:06 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student2) authorization passed.
+2024-05-05 23:10:46 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 41916716
+2024-05-05 23:10:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 41916716 + 72921720
+2024-05-05 23:10:59 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 41916716
+2024-05-05 23:10:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 41916716

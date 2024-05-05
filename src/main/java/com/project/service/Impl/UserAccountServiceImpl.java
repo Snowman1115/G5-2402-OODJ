@@ -52,7 +52,6 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         userAuthenticationDAO.insertAuthenticatedUser(user.getUserId(),user.getUsername(),userRoleType,accountStatus);
 
-
         log.info("User: (" + account + ") ,Role: (" + userRoleType + ") login successful.");
 
         switch (userRoleType) {
@@ -62,6 +61,11 @@ public class UserAccountServiceImpl implements UserAccountService {
             case STUDENT -> { log.info("Redirecting (" + account + ") to Student Panel."); return UserRoleType.STUDENT; }
             default -> { return null; }
         }
+    }
+
+    public static void main(String[] args) {
+        UserAccountServiceImpl userAccountService = new UserAccountServiceImpl();
+        System.out.println(userAccountService.loginAuthentication("student1", "Passw0rd123@"));
     }
 
     /**

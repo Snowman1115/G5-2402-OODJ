@@ -2,7 +2,6 @@ package com.project.service;
 
 import com.project.common.constants.UserRoleType;
 import com.project.pojo.UserAccount;
-import com.project.pojo.UserAuthentication;
 
 public interface UserAccountService {
 

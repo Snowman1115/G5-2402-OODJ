@@ -26,12 +26,13 @@ public class UserRoleDAO {
      */
     public AccountStatus checkAccountStatus(Integer userId) {
         for (UserRole user_role:user_roles) {
-            if (user_role.getUserId() == userId) {
+            if (user_role.getUserId().equals(userId)) {
                 return user_role.getAccountStatus();
             }
         }
         return null;
     }
+
 
     /**
      * Check User Role Type
@@ -40,7 +41,7 @@ public class UserRoleDAO {
      */
     public UserRoleType checkRoleType(Integer userId) {
         for (UserRole user_role:user_roles) {
-            if (user_role.getUserId() == userId) {
+            if (user_role.getUserId().equals(userId)) {
                 return user_role.getUserRoleType();
             }
         }

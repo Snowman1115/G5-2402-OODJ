@@ -23,11 +23,11 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     @Override
     public Boolean checkUserAuthorization(UserRoleType userRoleType) {
         UserAuthentication userAuthentication = userAuthenticationDAO.checkUserAuthorization();
-        if (userAuthentication == null) {
+        if (userAuthentication.equals(null)) {
             Dialog.ErrorDialog(MessageConstant.ERROR_NOT_LOGIN);
             log.warn("Authentication fail error: " + MessageConstant.ERROR_NOT_LOGIN);
             return false;
-        } else if (userAuthentication.getAccountStatus() == AccountStatus.deActivated) {
+        } else if (userAuthentication.getAccountStatus().equals(AccountStatus.deActivated)) {
             Dialog.ErrorDialog(MessageConstant.ERROR_ACCOUNT_DEACTIVATED);
             log.warn("Authentication fail error: " + MessageConstant.ERROR_ACCOUNT_DEACTIVATED);
             return false;

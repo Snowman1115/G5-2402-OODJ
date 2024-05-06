@@ -18,4 +18,12 @@ public interface PresentationService {
      * @return Map of list
      */
     List getAllUpcomingNPendingBookingPresentation(Integer studentId);
+
+    /**
+     * Get All Presentation Details for Student
+     * @param studentId
+     * @return List of Map
+     */
+    List getAllPresentationDetailsForStudent(Integer studentId);
+
 }

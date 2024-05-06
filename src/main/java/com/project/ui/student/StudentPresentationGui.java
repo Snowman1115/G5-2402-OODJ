@@ -6,11 +6,16 @@ package com.project.ui.student;
 
 import com.project.controller.ConsultationController;
 import com.project.controller.PresentationController;
+import com.project.pojo.ProjectModule;
+import com.project.pojo.UserAccount;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -36,6 +41,76 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn13.setText(presentation.get("overdue").toString());
 
         refreshTable();
+        refreshjTable3(0);
+    }
+    
+    private void refreshjTable3(Integer value) {
+        DefaultTableModel dtm = (DefaultTableModel)jTable3.getModel();
+        dtm.setRowCount(0);
+        
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        jTable3.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("".trim()));
+        
+        
+        List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
+
+        switch(value) {
+            case 0 -> {
+                for (Map<String, String> list : lists) {
+                    String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                    dtm.addRow(data);
+                }
+            }
+            case 1 -> {
+                for (Map<String, String> list : lists) {
+                    if (list.get("Status").equals("PENDING_BOOKING")) {
+                        String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+            case 2 -> {
+                for (Map<String, String> list : lists) {
+                    if (list.get("Status").equals("PENDING_CONFIRM")) {
+                        String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+            case 3 -> {
+                for (Map<String, String> list : lists) {
+                    if (list.get("Status").equals("REJECTED")) {
+                        String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+            case 4 -> {
+                for (Map<String, String> list : lists) {
+                    if (list.get("Status").equals("BOOKED")) {
+                        String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+            case 5 -> {
+                for (Map<String, String> list : lists) {
+                    if (list.get("Status").equals("MARKED")) {
+                        String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+            case 6 -> {
+                for (Map<String, String> list : lists) {
+                    if (list.get("Status").equals("OVERDUE")) {
+                        String[] data = {list.get("moduleName"), list.get("lecturerName"), list.get("dueDate"), list.get("presentationDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+        }  
     }
 
     private void refreshTable() {
@@ -68,7 +143,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn14 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         JField12 = new javax.swing.JTextField();
-        assignmentComboBox = new javax.swing.JComboBox<>();
+        presentationComboBox = new javax.swing.JComboBox<>();
         menuBtn11 = new javax.swing.JLabel();
         menuBtn15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -170,8 +245,13 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn13.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
         menuBtn13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn13.setText("0");
-        menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn13.setOpaque(true);
+        menuBtn13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn13MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -204,8 +284,13 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn12.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
         menuBtn12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn12.setText("0");
-        menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn12.setOpaque(true);
+        menuBtn12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -247,7 +332,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
         JField12.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField12.setForeground(new java.awt.Color(1, 1, 1));
-        JField12.setText("Enter Module Name To Search");
+        JField12.setText("Enter Keywords To Search");
         JField12.setBorder(null);
         JField12.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JField12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,18 +342,18 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         });
         Panel1.add(JField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 290, 35));
 
-        assignmentComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        assignmentComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        assignmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Booking", "Booked", "Completed", "Overdue" }));
-        assignmentComboBox.setToolTipText("d");
-        assignmentComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        assignmentComboBox.setFocusable(false);
-        assignmentComboBox.addActionListener(new java.awt.event.ActionListener() {
+        presentationComboBox.setBackground(new java.awt.Color(254, 254, 254));
+        presentationComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        presentationComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Booking", "Pending Confirm", "Rejcted", "Booked", "Completed", "Overdue" }));
+        presentationComboBox.setToolTipText("d");
+        presentationComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        presentationComboBox.setFocusable(false);
+        presentationComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignmentComboBoxActionPerformed(evt);
+                presentationComboBoxActionPerformed(evt);
             }
         });
-        Panel1.add(assignmentComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 330, 35));
+        Panel1.add(presentationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 330, 35));
 
         menuBtn11.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -315,7 +400,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         jLabel21.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(1, 1, 1));
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-24x24.png"))); // NOI18N
-        jLabel21.setText("CANCEL PRESENTATION");
+        jLabel21.setText("REJECTED PRESENTATION");
         jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -343,12 +428,12 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,7 +456,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Module", "Due Date"
+                "Module", "DueDate"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -382,7 +467,12 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         Panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 330, 420));
 
@@ -399,23 +489,25 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "MODULE", "DUE DATE", "SELECTED DATE", "STATUS"
+                "MODULE", "LECTURER", "DUE DATE", "SELECTED DATE", "STATUS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable3);
         if (jTable3.getColumnModel().getColumnCount() > 0) {
             jTable3.getColumnModel().getColumn(0).setResizable(false);
             jTable3.getColumnModel().getColumn(1).setResizable(false);
             jTable3.getColumnModel().getColumn(2).setResizable(false);
             jTable3.getColumnModel().getColumn(3).setResizable(false);
+            jTable3.getColumnModel().getColumn(4).setResizable(false);
         }
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 670, 360));
@@ -1000,31 +1092,39 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-
+        DefaultTableModel dtm = (DefaultTableModel)jTable3.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        jTable3.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(JField12.getText().trim()));
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void JField12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField12MouseClicked
-
+        if (JField12.getText().equals("Enter Keywords To Search")) {
+            JField12.setText("");
+        }
     }//GEN-LAST:event_JField12MouseClicked
 
-    private void assignmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignmentComboBoxActionPerformed
-
-    }//GEN-LAST:event_assignmentComboBoxActionPerformed
+    private void presentationComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentationComboBoxActionPerformed
+        refreshjTable3(presentationComboBox.getSelectedIndex());
+    }//GEN-LAST:event_presentationComboBoxActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-
+        MainTabbedPanel.setSelectedIndex(1);
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-
+        MainTabbedPanel.setSelectedIndex(1);
+        MainTabbedPanel1.setSelectedIndex(1);
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-
+        MainTabbedPanel.setSelectedIndex(1);
+        MainTabbedPanel1.setSelectedIndex(2);
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
-        // TODO add your handling code here:
+        MainTabbedPanel.setSelectedIndex(1);
+        MainTabbedPanel1.setSelectedIndex(3);
     }//GEN-LAST:event_jLabel37MouseClicked
 
     private void JField28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField28MouseClicked
@@ -1111,6 +1211,14 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JField31MouseClicked
 
+    private void menuBtn13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn13MouseClicked
+         presentationComboBox.setSelectedIndex(6);
+    }//GEN-LAST:event_menuBtn13MouseClicked
+
+    private void menuBtn12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn12MouseClicked
+        presentationComboBox.setSelectedIndex(1);
+    }//GEN-LAST:event_menuBtn12MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField12;
@@ -1139,7 +1247,6 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Panel4;
     private javax.swing.JPanel Panel6;
     private javax.swing.JPanel Panel8;
-    private static javax.swing.JComboBox<String> assignmentComboBox;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -1200,6 +1307,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn56;
     private javax.swing.JLabel menuBtn57;
     private javax.swing.JLabel menuBtn59;
+    private static javax.swing.JComboBox<String> presentationComboBox;
     private static javax.swing.JComboBox<String> projectComboBox1;
     private static javax.swing.JComboBox<String> projectComboBox2;
     private static javax.swing.JComboBox<String> projectComboBox4;

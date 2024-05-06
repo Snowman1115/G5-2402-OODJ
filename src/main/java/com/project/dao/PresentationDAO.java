@@ -74,6 +74,27 @@ public class PresentationDAO {
     }
 
     /**
+     * Get All Presentation Details By Student ID
+     * @param studentId
+     * @return Map Of List
+     */
+    public List<Map<String, String>> getAllPresentationDetailsByStudentId(Integer studentId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Presentation presentation : presentations) {
+            if (presentation.getStudentId().equals(studentId)) {
+                Map<String, String> map = new HashMap<>();
+                map.put("moduleId", presentation.getModuleId().toString());
+                map.put("lecturerId", presentation.getLecturerId().toString());
+                map.put("dueDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDueDate()));
+                map.put("presentationDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDateTime()));
+                map.put("Status", presentation.getPresentationStatus().toString());
+                list.add(map);
+            }
+        }
+        return list;
+    }
+
+    /**
      * Preload Data into presentations Array
      */
     private static void loadConsultationData() {

@@ -32,6 +32,14 @@ public class PresentationController {
     }
 
     /**
+     * Get All Presentation Details For Student
+     * @return Map of List
+     */
+    public static List getAllPresentationDetailsForStudent() {
+        return presentationService.getAllPresentationDetailsForStudent(getAuthenticatedUserId());
+    }
+
+    /**
      * Get Authenticated UserId
      * @return userId
      */

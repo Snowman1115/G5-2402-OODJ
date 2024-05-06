@@ -167,61 +167,66 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         JField13 = new javax.swing.JTextField();
         menuBtn26 = new javax.swing.JLabel();
         JField15 = new javax.swing.JTextField();
-        menuBtn28 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         JSeparator33 = new javax.swing.JSeparator();
         jLabel36 = new javax.swing.JLabel();
         menuBtn29 = new javax.swing.JLabel();
-        projectComboBox1 = new javax.swing.JComboBox<>();
+        presentationComboBox1 = new javax.swing.JComboBox<>();
+        menuBtn39 = new javax.swing.JLabel();
         menuBtn27 = new javax.swing.JLabel();
-        JField30 = new javax.swing.JTextField();
+        JField24 = new javax.swing.JTextField();
+        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
         Panel8 = new javax.swing.JPanel();
-        menuBtn49 = new javax.swing.JLabel();
-        menuBtn31 = new javax.swing.JLabel();
-        JField16 = new javax.swing.JTextField();
-        JField17 = new javax.swing.JTextField();
-        menuBtn33 = new javax.swing.JLabel();
-        menuBtn34 = new javax.swing.JLabel();
-        JField18 = new javax.swing.JTextField();
-        menuBtn35 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        menuBtn36 = new javax.swing.JLabel();
         menuBtn30 = new javax.swing.JLabel();
-        menuBtn32 = new javax.swing.JLabel();
         menuBtn37 = new javax.swing.JLabel();
-        projectComboBox2 = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
         JSeparator37 = new javax.swing.JSeparator();
-        JField22 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         JSeparator38 = new javax.swing.JSeparator();
+        menuBtn28 = new javax.swing.JLabel();
+        presentationComboBox2 = new javax.swing.JComboBox<>();
+        menuBtn43 = new javax.swing.JLabel();
+        JField20 = new javax.swing.JTextField();
+        menuBtn45 = new javax.swing.JLabel();
+        dateTimePicker2 = new com.github.lgooddatepicker.components.DateTimePicker();
+        menuBtn48 = new javax.swing.JLabel();
+        menuBtn50 = new javax.swing.JLabel();
+        JField26 = new javax.swing.JTextField();
+        JField29 = new javax.swing.JTextField();
+        menuBtn53 = new javax.swing.JLabel();
+        JField30 = new javax.swing.JTextField();
+        Panel9 = new javax.swing.JPanel();
+        menuBtn31 = new javax.swing.JLabel();
+        menuBtn49 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        JSeparator39 = new javax.swing.JSeparator();
+        jLabel43 = new javax.swing.JLabel();
+        JSeparator40 = new javax.swing.JSeparator();
+        menuBtn32 = new javax.swing.JLabel();
+        presentationComboBox3 = new javax.swing.JComboBox<>();
+        menuBtn54 = new javax.swing.JLabel();
+        JField22 = new javax.swing.JTextField();
+        menuBtn55 = new javax.swing.JLabel();
+        dateTimePicker3 = new com.github.lgooddatepicker.components.DateTimePicker();
         menuBtn56 = new javax.swing.JLabel();
-        JField19 = new javax.swing.JTextField();
+        menuBtn58 = new javax.swing.JLabel();
+        JField32 = new javax.swing.JTextField();
+        JField33 = new javax.swing.JTextField();
+        menuBtn60 = new javax.swing.JLabel();
+        JField34 = new javax.swing.JTextField();
         Panel6 = new javax.swing.JPanel();
         menuBtn38 = new javax.swing.JLabel();
-        menuBtn44 = new javax.swing.JLabel();
-        projectComboBox4 = new javax.swing.JComboBox<>();
-        JField25 = new javax.swing.JTextField();
-        menuBtn46 = new javax.swing.JLabel();
-        menuBtn47 = new javax.swing.JLabel();
-        JField27 = new javax.swing.JTextField();
-        menuBtn51 = new javax.swing.JLabel();
-        JField28 = new javax.swing.JTextField();
-        menuBtn52 = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        menuBtn57 = new javax.swing.JLabel();
-        JField21 = new javax.swing.JTextField();
-        menuBtn40 = new javax.swing.JLabel();
-        JField23 = new javax.swing.JTextField();
-        menuBtn59 = new javax.swing.JLabel();
-        JField31 = new javax.swing.JTextField();
-        menuBtn41 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        menuBtn42 = new javax.swing.JLabel();
+        JField35 = new javax.swing.JTextField();
+        menuBtn61 = new javax.swing.JLabel();
+        JField36 = new javax.swing.JTextField();
+        menuBtn62 = new javax.swing.JLabel();
+        JField37 = new javax.swing.JTextField();
+        menuBtn63 = new javax.swing.JLabel();
+        presentationComboBox4 = new javax.swing.JComboBox<>();
+        menuBtn33 = new javax.swing.JLabel();
+        menuBtn64 = new javax.swing.JLabel();
+        JField38 = new javax.swing.JTextField();
+        menuBtn65 = new javax.swing.JLabel();
+        JField39 = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -550,7 +555,7 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn25.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn25.setText("INTAKE CODE");
+        menuBtn25.setText("PRESENTATION ID");
         menuBtn25.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn25.setOpaque(true);
         Panel4.add(menuBtn25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 330, 40));
@@ -599,25 +604,6 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         });
         Panel4.add(JField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 330, 35));
 
-        menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn28.setText("PROJECT DESCRIPTION");
-        menuBtn28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn28.setOpaque(true);
-        Panel4.add(menuBtn28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 330, 40));
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Project Description");
-        jTextArea2.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        jScrollPane4.setViewportView(jTextArea2);
-
-        Panel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 330, 110));
-
         JSeparator33.setForeground(new java.awt.Color(1, 1, 1));
         Panel4.add(JSeparator33, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, 170, 10));
 
@@ -645,136 +631,51 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn29.setOpaque(true);
         Panel4.add(menuBtn29, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 90, 40));
 
-        projectComboBox1.setBackground(new java.awt.Color(254, 254, 254));
-        projectComboBox1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        projectComboBox1.setToolTipText("d");
-        projectComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        projectComboBox1.setFocusable(false);
-        projectComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        presentationComboBox1.setBackground(new java.awt.Color(254, 254, 254));
+        presentationComboBox1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        presentationComboBox1.setToolTipText("d");
+        presentationComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        presentationComboBox1.setFocusable(false);
+        presentationComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                projectComboBox1ActionPerformed(evt);
+                presentationComboBox1ActionPerformed(evt);
             }
         });
-        Panel4.add(projectComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 35));
+        Panel4.add(presentationComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 35));
+
+        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn39.setText("PRESENTATION DATE");
+        menuBtn39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn39.setOpaque(true);
+        Panel4.add(menuBtn39, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 330, 40));
 
         menuBtn27.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn27.setText("DATE & TIME");
+        menuBtn27.setText("STATUS");
         menuBtn27.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn27.setOpaque(true);
-        Panel4.add(menuBtn27, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 330, 40));
+        Panel4.add(menuBtn27, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, 40));
 
-        JField30.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField30.setForeground(new java.awt.Color(1, 1, 1));
-        JField30.setText("Please Select Your Presentation Date & Time");
-        JField30.setBorder(null);
-        JField30.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField30.addMouseListener(new java.awt.event.MouseAdapter() {
+        JField24.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField24.setForeground(new java.awt.Color(1, 1, 1));
+        JField24.setText("Module Name");
+        JField24.setBorder(null);
+        JField24.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField30MouseClicked(evt);
+                JField24MouseClicked(evt);
             }
         });
-        Panel4.add(JField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 330, 35));
+        Panel4.add(JField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 330, 35));
+        Panel4.add(dateTimePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
 
         MainTabbedPanel1.addTab("Book", Panel4);
 
         Panel8.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        menuBtn49.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 10)); // NOI18N
-        menuBtn49.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        menuBtn49.setText("Last Edited On : dd/MM/yyyy mm:HH:ss");
-        menuBtn49.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn49.setOpaque(true);
-        Panel8.add(menuBtn49, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 210, 20));
-
-        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn31.setText("INTAKE CODE");
-        menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn31.setOpaque(true);
-        Panel8.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
-
-        JField16.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField16.setForeground(new java.awt.Color(1, 1, 1));
-        JField16.setText("Submission Date");
-        JField16.setBorder(null);
-        JField16.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField16MouseClicked(evt);
-            }
-        });
-        Panel8.add(JField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 300, 35));
-
-        JField17.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField17.setForeground(new java.awt.Color(1, 1, 1));
-        JField17.setText("Project File Name");
-        JField17.setBorder(null);
-        JField17.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField17MouseClicked(evt);
-            }
-        });
-        Panel8.add(JField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 300, 35));
-
-        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn33.setText("LECTURER NAME");
-        menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn33.setOpaque(true);
-        Panel8.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 300, 40));
-
-        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn34.setText("DUE DATE");
-        menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn34.setOpaque(true);
-        Panel8.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 300, 40));
-
-        JField18.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField18.setForeground(new java.awt.Color(1, 1, 1));
-        JField18.setText("Project Due Date");
-        JField18.setBorder(null);
-        JField18.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField18MouseClicked(evt);
-            }
-        });
-        Panel8.add(JField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 300, 35));
-
-        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn35.setText("PROJECT DESCRIPTION");
-        menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn35.setOpaque(true);
-        Panel8.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 300, 40));
-
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Project Description");
-        jTextArea3.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        jScrollPane5.setViewportView(jTextArea3);
-
-        Panel8.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 300, 110));
-
-        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn36.setText("BOOKING DATE");
-        menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn36.setOpaque(true);
-        Panel8.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 300, 40));
 
         menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -784,14 +685,6 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn30.setOpaque(true);
         Panel8.add(menuBtn30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
-        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn32.setText("SELECT MODULE");
-        menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn32.setOpaque(true);
-        Panel8.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
-
         menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
@@ -799,18 +692,6 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn37.setOpaque(true);
         Panel8.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 90, 40));
-
-        projectComboBox2.setBackground(new java.awt.Color(254, 254, 254));
-        projectComboBox2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        projectComboBox2.setToolTipText("d");
-        projectComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        projectComboBox2.setFocusable(false);
-        projectComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                projectComboBox2ActionPerformed(evt);
-            }
-        });
-        Panel8.add(projectComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
         jLabel40.setBackground(new java.awt.Color(254, 254, 254));
         jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -831,18 +712,6 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         JSeparator37.setForeground(new java.awt.Color(1, 1, 1));
         Panel8.add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, 170, 10));
 
-        JField22.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField22.setForeground(new java.awt.Color(1, 1, 1));
-        JField22.setText("Module Name");
-        JField22.setBorder(null);
-        JField22.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField22MouseClicked(evt);
-            }
-        });
-        Panel8.add(JField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
-
         jLabel41.setBackground(new java.awt.Color(254, 254, 254));
         jLabel41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(1, 1, 1));
@@ -862,27 +731,284 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         JSeparator38.setForeground(new java.awt.Color(1, 1, 1));
         Panel8.add(JSeparator38, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 550, 170, 10));
 
+        menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn28.setText("SELECT MODULE");
+        menuBtn28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn28.setOpaque(true);
+        Panel8.add(menuBtn28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
+
+        presentationComboBox2.setBackground(new java.awt.Color(254, 254, 254));
+        presentationComboBox2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        presentationComboBox2.setToolTipText("d");
+        presentationComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        presentationComboBox2.setFocusable(false);
+        presentationComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                presentationComboBox2ActionPerformed(evt);
+            }
+        });
+        Panel8.add(presentationComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 35));
+
+        menuBtn43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn43.setText("PRESENTATION ID");
+        menuBtn43.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn43.setOpaque(true);
+        Panel8.add(menuBtn43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 330, 40));
+
+        JField20.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField20.setForeground(new java.awt.Color(1, 1, 1));
+        JField20.setText("Module Name");
+        JField20.setBorder(null);
+        JField20.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField20MouseClicked(evt);
+            }
+        });
+        Panel8.add(JField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 35));
+
+        menuBtn45.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn45.setText("PRESENTATION DATE");
+        menuBtn45.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn45.setOpaque(true);
+        Panel8.add(menuBtn45, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 330, 40));
+        Panel8.add(dateTimePicker2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
+
+        menuBtn48.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn48.setText("LECTURER NAME");
+        menuBtn48.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn48.setOpaque(true);
+        Panel8.add(menuBtn48, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 330, 40));
+
+        menuBtn50.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn50.setText("STATUS");
+        menuBtn50.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn50.setOpaque(true);
+        Panel8.add(menuBtn50, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, 40));
+
+        JField26.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField26.setForeground(new java.awt.Color(1, 1, 1));
+        JField26.setText("Module Name");
+        JField26.setBorder(null);
+        JField26.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField26MouseClicked(evt);
+            }
+        });
+        Panel8.add(JField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 330, 35));
+
+        JField29.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField29.setForeground(new java.awt.Color(1, 1, 1));
+        JField29.setText("Lectuerer Name");
+        JField29.setBorder(null);
+        JField29.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField29MouseClicked(evt);
+            }
+        });
+        Panel8.add(JField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 330, 35));
+
+        menuBtn53.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn53.setText("DUE DATE");
+        menuBtn53.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn53.setOpaque(true);
+        Panel8.add(menuBtn53, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 40));
+
+        JField30.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField30.setForeground(new java.awt.Color(1, 1, 1));
+        JField30.setText("Project Due Date");
+        JField30.setBorder(null);
+        JField30.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField30MouseClicked(evt);
+            }
+        });
+        Panel8.add(JField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 330, 35));
+
+        MainTabbedPanel1.addTab("Edit", Panel8);
+
+        Panel9.setPreferredSize(new java.awt.Dimension(1050, 570));
+        Panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn31.setText("RE-SCHEDULE");
+        menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn31.setOpaque(true);
+        Panel9.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
+
+        menuBtn49.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn49.setText("ACTION :");
+        menuBtn49.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn49.setOpaque(true);
+        Panel9.add(menuBtn49, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 90, 40));
+
+        jLabel42.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
+        jLabel42.setText("CANCEL");
+        jLabel42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel42.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel42.setOpaque(true);
+        jLabel42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel42MouseClicked(evt);
+            }
+        });
+        Panel9.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 510, 170, 35));
+
+        JSeparator39.setForeground(new java.awt.Color(1, 1, 1));
+        Panel9.add(JSeparator39, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, 170, 10));
+
+        jLabel43.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
+        jLabel43.setText("REBOOK");
+        jLabel43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel43.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel43.setOpaque(true);
+        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel43MouseClicked(evt);
+            }
+        });
+        Panel9.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, 170, 35));
+
+        JSeparator40.setForeground(new java.awt.Color(1, 1, 1));
+        Panel9.add(JSeparator40, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 550, 170, 10));
+
+        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn32.setText("SELECT MODULE");
+        menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn32.setOpaque(true);
+        Panel9.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
+
+        presentationComboBox3.setBackground(new java.awt.Color(254, 254, 254));
+        presentationComboBox3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        presentationComboBox3.setToolTipText("d");
+        presentationComboBox3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        presentationComboBox3.setFocusable(false);
+        presentationComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                presentationComboBox3ActionPerformed(evt);
+            }
+        });
+        Panel9.add(presentationComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 35));
+
+        menuBtn54.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn54.setText("PRESENTATION ID");
+        menuBtn54.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn54.setOpaque(true);
+        Panel9.add(menuBtn54, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 330, 40));
+
+        JField22.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField22.setForeground(new java.awt.Color(1, 1, 1));
+        JField22.setText("Module Name");
+        JField22.setBorder(null);
+        JField22.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField22MouseClicked(evt);
+            }
+        });
+        Panel9.add(JField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 35));
+
+        menuBtn55.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn55.setText("PRESENTATION DATE");
+        menuBtn55.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn55.setOpaque(true);
+        Panel9.add(menuBtn55, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 330, 40));
+        Panel9.add(dateTimePicker3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
+
         menuBtn56.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn56.setText("BOOKING STATUS");
+        menuBtn56.setText("LECTURER NAME");
         menuBtn56.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn56.setOpaque(true);
-        Panel8.add(menuBtn56, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 170, 40));
+        Panel9.add(menuBtn56, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 330, 40));
 
-        JField19.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField19.setForeground(new java.awt.Color(1, 1, 1));
-        JField19.setText("Lectuerer Name");
-        JField19.setBorder(null);
-        JField19.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField19.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuBtn58.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn58.setText("STATUS");
+        menuBtn58.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn58.setOpaque(true);
+        Panel9.add(menuBtn58, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, 40));
+
+        JField32.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField32.setForeground(new java.awt.Color(1, 1, 1));
+        JField32.setText("Module Name");
+        JField32.setBorder(null);
+        JField32.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField32.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField19MouseClicked(evt);
+                JField32MouseClicked(evt);
             }
         });
-        Panel8.add(JField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 300, 35));
+        Panel9.add(JField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 330, 35));
 
-        MainTabbedPanel1.addTab("Edit", Panel8);
+        JField33.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField33.setForeground(new java.awt.Color(1, 1, 1));
+        JField33.setText("Lectuerer Name");
+        JField33.setBorder(null);
+        JField33.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField33MouseClicked(evt);
+            }
+        });
+        Panel9.add(JField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 330, 35));
+
+        menuBtn60.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn60.setText("DUE DATE");
+        menuBtn60.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn60.setOpaque(true);
+        Panel9.add(menuBtn60, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 40));
+
+        JField34.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField34.setForeground(new java.awt.Color(1, 1, 1));
+        JField34.setText("Project Due Date");
+        JField34.setBorder(null);
+        JField34.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField34MouseClicked(evt);
+            }
+        });
+        Panel9.add(JField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 330, 35));
+
+        MainTabbedPanel1.addTab("Rejected", Panel9);
 
         Panel6.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -895,190 +1021,130 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         menuBtn38.setOpaque(true);
         Panel6.add(menuBtn38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
-        menuBtn44.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn44.setText("SELECT MODULE");
-        menuBtn44.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn44.setOpaque(true);
-        Panel6.add(menuBtn44, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
+        JField35.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField35.setForeground(new java.awt.Color(1, 1, 1));
+        JField35.setText("Project Due Date");
+        JField35.setBorder(null);
+        JField35.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField35MouseClicked(evt);
+            }
+        });
+        Panel6.add(JField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 330, 35));
 
-        projectComboBox4.setBackground(new java.awt.Color(254, 254, 254));
-        projectComboBox4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        projectComboBox4.setToolTipText("d");
-        projectComboBox4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        projectComboBox4.setFocusable(false);
-        projectComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        menuBtn61.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn61.setText("DUE DATE");
+        menuBtn61.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn61.setOpaque(true);
+        Panel6.add(menuBtn61, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 40));
+
+        JField36.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField36.setForeground(new java.awt.Color(1, 1, 1));
+        JField36.setText("Lectuerer Name");
+        JField36.setBorder(null);
+        JField36.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField36MouseClicked(evt);
+            }
+        });
+        Panel6.add(JField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 330, 35));
+
+        menuBtn62.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn62.setText("LECTURER NAME");
+        menuBtn62.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn62.setOpaque(true);
+        Panel6.add(menuBtn62, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 330, 40));
+
+        JField37.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField37.setForeground(new java.awt.Color(1, 1, 1));
+        JField37.setText("Module Name");
+        JField37.setBorder(null);
+        JField37.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField37MouseClicked(evt);
+            }
+        });
+        Panel6.add(JField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 35));
+
+        menuBtn63.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn63.setText("PRESENTATION ID");
+        menuBtn63.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn63.setOpaque(true);
+        Panel6.add(menuBtn63, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 330, 40));
+
+        presentationComboBox4.setBackground(new java.awt.Color(254, 254, 254));
+        presentationComboBox4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        presentationComboBox4.setToolTipText("d");
+        presentationComboBox4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        presentationComboBox4.setFocusable(false);
+        presentationComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                projectComboBox4ActionPerformed(evt);
+                presentationComboBox4ActionPerformed(evt);
             }
         });
-        Panel6.add(projectComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
+        Panel6.add(presentationComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 35));
 
-        JField25.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField25.setForeground(new java.awt.Color(1, 1, 1));
-        JField25.setText("Module Name");
-        JField25.setBorder(null);
-        JField25.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField25.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn33.setText("SELECT MODULE");
+        menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn33.setOpaque(true);
+        Panel6.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
+
+        menuBtn64.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn64.setText("PRESENTATION DATE");
+        menuBtn64.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn64.setOpaque(true);
+        Panel6.add(menuBtn64, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 330, 40));
+
+        JField38.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField38.setForeground(new java.awt.Color(1, 1, 1));
+        JField38.setText("Presentation Date");
+        JField38.setBorder(null);
+        JField38.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField38.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField25MouseClicked(evt);
+                JField38MouseClicked(evt);
             }
         });
-        Panel6.add(JField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
+        JField38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JField38ActionPerformed(evt);
+            }
+        });
+        Panel6.add(JField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
 
-        menuBtn46.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn46.setText("INTAKE CODE");
-        menuBtn46.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn46.setOpaque(true);
-        Panel6.add(menuBtn46, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
+        menuBtn65.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn65.setText("STATUS");
+        menuBtn65.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn65.setOpaque(true);
+        Panel6.add(menuBtn65, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, 40));
 
-        menuBtn47.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn47.setText("LECTURER NAME");
-        menuBtn47.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn47.setOpaque(true);
-        Panel6.add(menuBtn47, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 300, 40));
-
-        JField27.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField27.setForeground(new java.awt.Color(1, 1, 1));
-        JField27.setText("Lectuerer Name");
-        JField27.setBorder(null);
-        JField27.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField27.addMouseListener(new java.awt.event.MouseAdapter() {
+        JField39.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField39.setForeground(new java.awt.Color(1, 1, 1));
+        JField39.setText("Status");
+        JField39.setBorder(null);
+        JField39.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField39.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField27MouseClicked(evt);
+                JField39MouseClicked(evt);
             }
         });
-        Panel6.add(JField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 300, 35));
-
-        menuBtn51.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn51.setText("DUE DATE");
-        menuBtn51.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn51.setOpaque(true);
-        Panel6.add(menuBtn51, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 300, 40));
-
-        JField28.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField28.setForeground(new java.awt.Color(1, 1, 1));
-        JField28.setText("Project Due Date");
-        JField28.setBorder(null);
-        JField28.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField28MouseClicked(evt);
-            }
-        });
-        Panel6.add(JField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 300, 35));
-
-        menuBtn52.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn52.setText("PROJECT DESCRIPTION");
-        menuBtn52.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn52.setOpaque(true);
-        Panel6.add(menuBtn52, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 300, 40));
-
-        jTextArea5.setEditable(false);
-        jTextArea5.setColumns(20);
-        jTextArea5.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jTextArea5.setLineWrap(true);
-        jTextArea5.setRows(5);
-        jTextArea5.setText("Project Description");
-        jTextArea5.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        jScrollPane7.setViewportView(jTextArea5);
-
-        Panel6.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 300, 200));
-
-        menuBtn57.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn57.setText("BOOKING STATUS");
-        menuBtn57.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn57.setOpaque(true);
-        Panel6.add(menuBtn57, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 170, 40));
-
-        JField21.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField21.setForeground(new java.awt.Color(1, 1, 1));
-        JField21.setText("Project File Name");
-        JField21.setBorder(null);
-        JField21.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField21MouseClicked(evt);
-            }
-        });
-        Panel6.add(JField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 300, 35));
-
-        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn40.setText("BOOKING DATE");
-        menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn40.setOpaque(true);
-        Panel6.add(menuBtn40, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 300, 40));
-
-        JField23.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField23.setForeground(new java.awt.Color(1, 1, 1));
-        JField23.setText("Submission Date");
-        JField23.setBorder(null);
-        JField23.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField23MouseClicked(evt);
-            }
-        });
-        Panel6.add(JField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 300, 35));
-
-        menuBtn59.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 10)); // NOI18N
-        menuBtn59.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        menuBtn59.setText("Last Edited On : dd/MM/yyyy mm:HH:ss");
-        menuBtn59.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn59.setOpaque(true);
-        Panel6.add(menuBtn59, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 210, 20));
-
-        JField31.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField31.setForeground(new java.awt.Color(1, 1, 1));
-        JField31.setText("Submission Date");
-        JField31.setBorder(null);
-        JField31.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField31.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JField31MouseClicked(evt);
-            }
-        });
-        Panel6.add(JField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 300, 35));
-
-        menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn41.setText("LECTURER COMMENT");
-        menuBtn41.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn41.setOpaque(true);
-        Panel6.add(menuBtn41, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 300, 40));
-
-        jTextArea4.setEditable(false);
-        jTextArea4.setColumns(20);
-        jTextArea4.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jTextArea4.setLineWrap(true);
-        jTextArea4.setRows(5);
-        jTextArea4.setText("Project Description");
-        jTextArea4.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        jScrollPane6.setViewportView(jTextArea4);
-
-        Panel6.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 300, 110));
-
-        menuBtn42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn42.setText("RESULT");
-        menuBtn42.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn42.setOpaque(true);
-        Panel6.add(menuBtn42, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 300, 40));
+        Panel6.add(JField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 330, 35));
 
         MainTabbedPanel1.addTab("Result", Panel6);
 
@@ -1127,57 +1193,17 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         MainTabbedPanel1.setSelectedIndex(3);
     }//GEN-LAST:event_jLabel37MouseClicked
 
-    private void JField28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField28MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField28MouseClicked
-
-    private void JField27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField27MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField27MouseClicked
-
-    private void JField25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField25MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField25MouseClicked
-
-    private void projectComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_projectComboBox4ActionPerformed
-
-    private void JField19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField19MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField19MouseClicked
-
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel41MouseClicked
-
-    private void JField22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField22MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField22MouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel40MouseClicked
 
-    private void projectComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox2ActionPerformed
+    private void presentationComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentationComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_projectComboBox2ActionPerformed
-
-    private void JField18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField18MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField18MouseClicked
-
-    private void JField17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField17MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField17MouseClicked
-
-    private void JField16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField16MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField16MouseClicked
-
-    private void projectComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_projectComboBox1ActionPerformed
+    }//GEN-LAST:event_presentationComboBox1ActionPerformed
 
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
         // TODO add your handling code here:
@@ -1195,22 +1221,6 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JField14MouseClicked
 
-    private void JField30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField30MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField30MouseClicked
-
-    private void JField21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField21MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField21MouseClicked
-
-    private void JField23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField23MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField23MouseClicked
-
-    private void JField31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField31MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JField31MouseClicked
-
     private void menuBtn13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn13MouseClicked
          presentationComboBox.setSelectedIndex(6);
     }//GEN-LAST:event_menuBtn13MouseClicked
@@ -1219,27 +1229,111 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         presentationComboBox.setSelectedIndex(1);
     }//GEN-LAST:event_menuBtn12MouseClicked
 
+    private void JField24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField24MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField24MouseClicked
+
+    private void presentationComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentationComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_presentationComboBox2ActionPerformed
+
+    private void JField20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField20MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField20MouseClicked
+
+    private void JField26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField26MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField26MouseClicked
+
+    private void JField29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField29MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField29MouseClicked
+
+    private void JField30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField30MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField30MouseClicked
+
+    private void JField34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField34MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField34MouseClicked
+
+    private void JField33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField33MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField33MouseClicked
+
+    private void JField32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField32MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField32MouseClicked
+
+    private void JField22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField22MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField22MouseClicked
+
+    private void presentationComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentationComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_presentationComboBox3ActionPerformed
+
+    private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel43MouseClicked
+
+    private void jLabel42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel42MouseClicked
+
+    private void JField35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField35MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField35MouseClicked
+
+    private void JField36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField36MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField36MouseClicked
+
+    private void JField37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField37MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField37MouseClicked
+
+    private void presentationComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentationComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_presentationComboBox4ActionPerformed
+
+    private void JField38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField38MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField38MouseClicked
+
+    private void JField39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField39MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField39MouseClicked
+
+    private void JField38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JField38ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField38ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField12;
     private javax.swing.JTextField JField13;
     private javax.swing.JTextField JField14;
     private javax.swing.JTextField JField15;
-    private javax.swing.JTextField JField16;
-    private javax.swing.JTextField JField17;
-    private javax.swing.JTextField JField18;
-    private javax.swing.JTextField JField19;
-    private javax.swing.JTextField JField21;
+    private javax.swing.JTextField JField20;
     private javax.swing.JTextField JField22;
-    private javax.swing.JTextField JField23;
-    private javax.swing.JTextField JField25;
-    private javax.swing.JTextField JField27;
-    private javax.swing.JTextField JField28;
+    private javax.swing.JTextField JField24;
+    private javax.swing.JTextField JField26;
+    private javax.swing.JTextField JField29;
     private javax.swing.JTextField JField30;
-    private javax.swing.JTextField JField31;
+    private javax.swing.JTextField JField32;
+    private javax.swing.JTextField JField33;
+    private javax.swing.JTextField JField34;
+    private javax.swing.JTextField JField35;
+    private javax.swing.JTextField JField36;
+    private javax.swing.JTextField JField37;
+    private javax.swing.JTextField JField38;
+    private javax.swing.JTextField JField39;
     private javax.swing.JSeparator JSeparator33;
     private javax.swing.JSeparator JSeparator37;
     private javax.swing.JSeparator JSeparator38;
+    private javax.swing.JSeparator JSeparator39;
+    private javax.swing.JSeparator JSeparator40;
     private javax.swing.JTabbedPane MainTabbedPanel;
     private javax.swing.JTabbedPane MainTabbedPanel1;
     private javax.swing.JPanel Panel1;
@@ -1247,6 +1341,10 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Panel4;
     private javax.swing.JPanel Panel6;
     private javax.swing.JPanel Panel8;
+    private javax.swing.JPanel Panel9;
+    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
+    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker2;
+    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker3;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -1255,21 +1353,15 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel menuBtn11;
     private static javax.swing.JLabel menuBtn12;
     private static javax.swing.JLabel menuBtn13;
@@ -1289,27 +1381,30 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn31;
     private javax.swing.JLabel menuBtn32;
     private javax.swing.JLabel menuBtn33;
-    private javax.swing.JLabel menuBtn34;
-    private javax.swing.JLabel menuBtn35;
-    private javax.swing.JLabel menuBtn36;
     private javax.swing.JLabel menuBtn37;
     private javax.swing.JLabel menuBtn38;
+    private javax.swing.JLabel menuBtn39;
     private javax.swing.JLabel menuBtn4;
-    private javax.swing.JLabel menuBtn40;
-    private javax.swing.JLabel menuBtn41;
-    private javax.swing.JLabel menuBtn42;
-    private javax.swing.JLabel menuBtn44;
-    private javax.swing.JLabel menuBtn46;
-    private javax.swing.JLabel menuBtn47;
+    private javax.swing.JLabel menuBtn43;
+    private javax.swing.JLabel menuBtn45;
+    private javax.swing.JLabel menuBtn48;
     private javax.swing.JLabel menuBtn49;
-    private javax.swing.JLabel menuBtn51;
-    private javax.swing.JLabel menuBtn52;
+    private javax.swing.JLabel menuBtn50;
+    private javax.swing.JLabel menuBtn53;
+    private javax.swing.JLabel menuBtn54;
+    private javax.swing.JLabel menuBtn55;
     private javax.swing.JLabel menuBtn56;
-    private javax.swing.JLabel menuBtn57;
-    private javax.swing.JLabel menuBtn59;
+    private javax.swing.JLabel menuBtn58;
+    private javax.swing.JLabel menuBtn60;
+    private javax.swing.JLabel menuBtn61;
+    private javax.swing.JLabel menuBtn62;
+    private javax.swing.JLabel menuBtn63;
+    private javax.swing.JLabel menuBtn64;
+    private javax.swing.JLabel menuBtn65;
     private static javax.swing.JComboBox<String> presentationComboBox;
-    private static javax.swing.JComboBox<String> projectComboBox1;
-    private static javax.swing.JComboBox<String> projectComboBox2;
-    private static javax.swing.JComboBox<String> projectComboBox4;
+    private static javax.swing.JComboBox<String> presentationComboBox1;
+    private static javax.swing.JComboBox<String> presentationComboBox2;
+    private javax.swing.JComboBox<String> presentationComboBox3;
+    private static javax.swing.JComboBox<String> presentationComboBox4;
     // End of variables declaration//GEN-END:variables
 }

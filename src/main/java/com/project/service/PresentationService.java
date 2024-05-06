@@ -1,5 +1,6 @@
 package com.project.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -25,5 +26,14 @@ public interface PresentationService {
      * @return List of Map
      */
     List getAllPresentationDetailsForStudent(Integer studentId);
+
+    /**
+     * Book Presentation Slot By For Student
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    Boolean bookPresentationSlotByStudentId(Integer presentationId, LocalDateTime dateTime);
+
 
 }

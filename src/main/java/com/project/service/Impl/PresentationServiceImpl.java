@@ -1,19 +1,24 @@
 package com.project.service.Impl;
 
+import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.utils.DateTimeUtils;
+import com.project.common.utils.Dialog;
 import com.project.dao.ModuleDAO;
 import com.project.dao.PresentationDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.pojo.ProjectModule;
 import com.project.pojo.UserAccount;
 import com.project.service.PresentationService;
+import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class PresentationServiceImpl implements PresentationService {
 
     private PresentationDAO presentationDAO = new PresentationDAO();
@@ -62,11 +67,14 @@ public class PresentationServiceImpl implements PresentationService {
         for (Map<String, String> map : presentationDAO.getAllPresentationDetailsByStudentId(studentId)) {
             Map<String, String> mappedList = new HashMap<>();
             ProjectModule module = moduleDAO.getModuleById(Integer.valueOf(map.get("moduleId")));
+            mappedList.put("id", map.get("id"));
             mappedList.put("moduleName",module.getModuleCode().toString());
             UserAccount userAccount = userAccountDAO.getUserAccountById(Integer.valueOf(map.get("lecturerId")));
             mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
             mappedList.put("dueDate", map.get("dueDate"));
             if (map.get("Status").equals("PENDING_BOOKING")) {
+                mappedList.put("presentationDate", "EMPTY");
+            } else if (map.get("Status").equals("OVERDUE")) {
                 mappedList.put("presentationDate", "EMPTY");
             } else {
                 mappedList.put("presentationDate", map.get("presentationDate"));
@@ -75,6 +83,33 @@ public class PresentationServiceImpl implements PresentationService {
             list.add(mappedList);
         }
         return list;
+    }
+
+    /**
+     * Book Presentation Slot By For Student
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    @Override
+    public Boolean bookPresentationSlotByStudentId(Integer presentationId, LocalDateTime dateTime) {
+        // Check Slot Availability
+        if (!presentationDAO.checkAvailableSlot(presentationId,dateTime)) {
+            log.info("Presentation Slot Booked Fail : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            Dialog.ErrorDialog(MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            return false;
+        }
+
+        if (presentationDAO.bookPresentationSlot(presentationId, dateTime)) {
+            log.info("Presentation Slot Booked Successfully : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_BOOKED_PRESENTATION_SLOT);
+            return true;
+        } else {
+            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.UNEXPECTED_ERROR);
+            return false;
+        }
+
     }
 
 }

@@ -6,7 +6,9 @@ import com.project.service.PresentationService;
 import com.project.service.UserAuthenticationService;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Slf4j
@@ -37,6 +39,17 @@ public class PresentationController {
      */
     public static List getAllPresentationDetailsForStudent() {
         return presentationService.getAllPresentationDetailsForStudent(getAuthenticatedUserId());
+    }
+
+    /**
+     * Book Presentation Date Time For Student By Presentation ID and Date Time
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    public static Boolean bookPresentationSlotForStudent(Integer presentationId, LocalDateTime dateTime) {
+        log.info("Book Presentation Slot : " + presentationId);
+        return presentationService.bookPresentationSlotByStudentId(presentationId, dateTime);
     }
 
     /**

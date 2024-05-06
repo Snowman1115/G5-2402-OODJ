@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import com.project.common.constants.ConsultationStatus;
+import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
@@ -83,6 +85,7 @@ public class PresentationDAO {
         for (Presentation presentation : presentations) {
             if (presentation.getStudentId().equals(studentId)) {
                 Map<String, String> map = new HashMap<>();
+                map.put("id", presentation.getPresentationId().toString());
                 map.put("moduleId", presentation.getModuleId().toString());
                 map.put("lecturerId", presentation.getLecturerId().toString());
                 map.put("dueDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDueDate()));
@@ -92,6 +95,48 @@ public class PresentationDAO {
             }
         }
         return list;
+    }
+
+    /**
+     * Check Slot Availability
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    public Boolean checkAvailableSlot(Integer presentationId, LocalDateTime dateTime) {
+        Integer ModuleId = null;
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
+                ModuleId = presentation.getModuleId();
+            }
+        }
+
+        for (Presentation presentation : presentations) {
+            if (presentation.getModuleId().equals(ModuleId)) {
+                if (presentation.getPresentationDateTime().equals(dateTime)) {
+                    return false;
+                };
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Book Presentation Slot By Presentation Id (Student)
+     * @param presentationId
+     * @param dateTime
+     */
+    public Boolean bookPresentationSlot(Integer presentationId, LocalDateTime dateTime) {
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
+                update(presentationId, "presentationDateTime", DateTimeUtils.formatStrDateTime(dateTime));
+                update(presentationId, "presentationStatus", PresentationStatus.PENDING_CONFIRM.toString());
+                update(presentationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -112,7 +157,16 @@ public class PresentationDAO {
             presentation.setStudentId(obj.getInt("studentId"));
             presentation.setPresentationDueDate(DateTimeUtils.formatDateTime(obj.get("presentationDueDate")));
             presentation.setPresentationDateTime(DateTimeUtils.formatDateTime(obj.get("presentationDateTime")));
-            presentation.setPresentationStatus(PresentationStatus.valueOf(obj.get("presentationStatus")));
+
+            PresentationStatus presentationStatus = PresentationStatus.valueOf(obj.get("presentationStatus"));
+
+            if (presentation.getPresentationDueDate().isBefore(LocalDateTime.now()) && presentationStatus.equals(PresentationStatus.PENDING_BOOKING)) {
+                presentation.setPresentationStatus(PresentationStatus.OVERDUE);
+            } else {
+                presentation.setPresentationStatus(presentationStatus);
+            }
+
+
             presentation.setPresentationResult(obj.getDouble("presentationResult"));
             presentation.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
             presentation.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
@@ -121,35 +175,44 @@ public class PresentationDAO {
         }
     }
 
-
-    /*
-
     // Update consultation data
-    public static boolean update(Integer consultationId, String field, String value) {
+    public static boolean update(Integer presentationId, String field, String value) {
         // System.out.println(value);
-        for (Consultation consultation : consultations) {
-            if (consultation.getConsultationId().equals(consultationId)) {
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
                 try {
                     switch (field) {
+                       case "moduleId" -> {
+                            presentation.setModuleId(Integer.parseInt(value));
+                            return store(presentationId, "moduleId", value);
+                        }
                         case "lecturerId" -> {
-                            consultation.setLecturerId(Integer.parseInt(value));
-                            return store(consultationId, "lecturerId", value);
+                            presentation.setLecturerId(Integer.parseInt(value));
+                            return store(presentationId, "lecturerId", value);
                         }
                         case "studentId" -> {
-                            consultation.setStudentId(Integer.parseInt(value));
-                            return store(consultationId, "studentId", value);
+                            presentation.setStudentId(Integer.parseInt(value));
+                            return store(presentationId, "studentId", value);
                         }
-                        case "consultationDateTime" -> {
-                            consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(value));
-                            return store(consultationId, "consultationDateTime", value);
+                        case "presentationDueDate" -> {
+                            presentation.setPresentationDueDate(DateTimeUtils.formatDateTime(value));
+                            return store(presentationId, "presentationDueDate", value);
                         }
-                        case "consultationStatus" -> {
-                            consultation.setConsultationStatus(ConsultationStatus.valueOf(value));
-                            return store(consultationId, "consultationStatus", value);
+                        case "presentationDateTime" -> {
+                            presentation.setPresentationDateTime(DateTimeUtils.formatDateTime(value));
+                            return store(presentationId, "presentationDateTime", value);
+                        }
+                        case "presentationStatus" -> {
+                            presentation.setPresentationStatus(PresentationStatus.valueOf(value));
+                            return store(presentationId, "presentationStatus", value);
+                        }
+                        case "presentationResult" -> {
+                            presentation.setPresentationResult(Double.valueOf(value));
+                            return store(presentationId, "presentationResult", value);
                         }
                         case "updated_at" -> {
-                            consultation.setUpdatedAt(DateTimeUtils.formatDateTime(value));
-                            return store(consultationId, "updated_at", value);
+                            presentation.setUpdatedAt(DateTimeUtils.formatDateTime(value));
+                            return store(presentationId, "updated_at", value);
                         }
                         default -> {
                             log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
@@ -168,20 +231,19 @@ public class PresentationDAO {
 
     }
 
-    *//**
+    /**
      * Store updated data into text file
      * @param consultationId
      * @param attribute
      * @param value
      * @return
-     *//*
+     */
     private static boolean store(Integer consultationId, String attribute, String value) {
         // System.out.println(consultationId + attribute + value);
         JsonHandler userJson = new JsonHandler();
-        userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
-        return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
+        userJson.encode(FileHandler.readFile(PRESENTATION_DATA));
+        return userJson.update(consultationId, attribute, value, PRESENTATION_DATA);
     }
-*/
 
 
 }

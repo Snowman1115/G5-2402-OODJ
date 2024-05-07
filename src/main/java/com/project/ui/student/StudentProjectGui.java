@@ -274,6 +274,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn11.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
         menuBtn11.setText("UPCOMING EVENTS");
         menuBtn11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn11.setOpaque(true);
@@ -375,7 +376,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
                 {null, null}
             },
             new String [] {
-                    "Data/Module", "Due Date"
+                "Module", "Due Date"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -384,6 +385,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search-24x24.png"))); // NOI18N
         menuBtn16.setText("VIEW PROJECT DETAILS");
         menuBtn16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn16.setOpaque(true);
@@ -391,16 +393,28 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Module", "Type", "DueDate", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+            jTable3.getColumnModel().getColumn(2).setResizable(false);
+            jTable3.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 670, 360));
 

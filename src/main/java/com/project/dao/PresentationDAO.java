@@ -91,6 +91,7 @@ public class PresentationDAO {
                 map.put("dueDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDueDate()));
                 map.put("presentationDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDateTime()));
                 map.put("Status", presentation.getPresentationStatus().toString());
+                map.put("result", presentation.getPresentationResult().toString());
                 list.add(map);
             }
         }
@@ -112,14 +113,31 @@ public class PresentationDAO {
         }
 
         for (Presentation presentation : presentations) {
-            if (presentation.getModuleId().equals(ModuleId)) {
-                if (presentation.getPresentationDateTime().equals(dateTime)) {
-                    return false;
-                };
+            if (!presentation.getPresentationId().equals(presentationId)) {
+                if (presentation.getModuleId().equals(ModuleId)) {
+                    if (presentation.getPresentationDateTime().equals(dateTime)) {
+                        return false;
+                    };
+                }
             }
         }
 
         return true;
+    }
+
+    /**
+     * Cancel Presentation Slot By Presentation Id (Student)
+     *
+     */
+    public Boolean cancelPresentationSlot(Integer presentationId) {
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
+                update(presentationId, "presentationStatus", PresentationStatus.PENDING_BOOKING.toString());
+                update(presentationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

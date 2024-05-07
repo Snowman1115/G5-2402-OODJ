@@ -17,6 +17,7 @@ public class MessageConstant {
     public static final String SUCCESS_BOOKING_CONSULTATION = "Consultation Booked Successfully.";
     public static final String SUCCESS_CONSULTATION_CANCELLED = "Consultation Cancelled Successfully.";
     public static final String SUCCESS_BOOKED_PRESENTATION_SLOT = "Presentation Slot Booked Successfully.";
+    public static final String SUCCESS_CANCELLED_PRESENTATION_SLOT = "Presentation Slot Cancelled Successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";
@@ -56,6 +57,9 @@ public class MessageConstant {
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations available to book.";
+    public static final String CONDITION_EDIT_PRESENTATION_COMBOBOX = "No presentations available to edit.";
+    public static final String CONDITION_REJECT_PRESENTATION_COMBOBOX = "No rejected presentations to re-schedule.";
+    public static final String CONDITION_PRESENTATION_RESULT_COMBOBOX = "No marked presentations result to view.";
 
     /* WARNING */
 

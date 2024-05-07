@@ -80,6 +80,7 @@ public class PresentationServiceImpl implements PresentationService {
                 mappedList.put("presentationDate", map.get("presentationDate"));
             }
             mappedList.put("Status", map.get("Status"));
+            mappedList.put("result", map.get("result"));
             list.add(mappedList);
         }
         return list;
@@ -112,4 +113,48 @@ public class PresentationServiceImpl implements PresentationService {
 
     }
 
+    /**
+     * Edit Presentation Slot By For Student
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    @Override
+    public Boolean editPresentationSlotByStudentId(Integer presentationId, LocalDateTime dateTime) {
+        // Check Slot Availability
+        if (!presentationDAO.checkAvailableSlot(presentationId,dateTime)) {
+            log.info("Presentation Slot Booked Fail : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            Dialog.ErrorDialog(MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            return false;
+        }
+
+        if (presentationDAO.bookPresentationSlot(presentationId, dateTime)) {
+            log.info("Presentation Slot Booked Successfully : " + MessageConstant.SUCCESS_BOOKED_PRESENTATION_SLOT);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_BOOKED_PRESENTATION_SLOT);
+            return true;
+        } else {
+            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.UNEXPECTED_ERROR);
+            return false;
+        }
+
+    }
+
+    /**
+     * Cancel Presentation Slot For Student (Condition: PENDING_BOOKING)
+     * @param presentationId
+     * @return Boolean
+     */
+    @Override
+    public Boolean cancelPresentationSlotByStudentId(Integer presentationId) {
+        if (presentationDAO.cancelPresentationSlot(presentationId)) {
+            log.info("Presentation Slot Cancelled Successfully : " + MessageConstant.SUCCESS_CANCELLED_PRESENTATION_SLOT);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_CANCELLED_PRESENTATION_SLOT);
+            return true;
+        } else {
+            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.UNEXPECTED_ERROR);
+            return false;
+        }
+    }
 }

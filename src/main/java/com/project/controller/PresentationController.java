@@ -53,6 +53,27 @@ public class PresentationController {
     }
 
     /**
+     * Modify Presentation Date Time For Student (Condition: PENDING_BOOKING)
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    public static Boolean editPresentationSlotForStudent(Integer presentationId, LocalDateTime dateTime) {
+        log.info("Edit Presentation Slot : " + presentationId);
+        return presentationService.editPresentationSlotByStudentId(presentationId, dateTime);
+    }
+
+    /**
+     * Cancel Presentation Slot For Student (Condition: PENDING_BOOKING)
+     * @param presentationId
+     * @return Boolean
+     */
+    public static Boolean cancelPresentationSlotForStudent(Integer presentationId) {
+        log.info("Cancel Presentation Slot : " + presentationId);
+        return presentationService.cancelPresentationSlotByStudentId(presentationId);
+    }
+
+    /**
      * Get Authenticated UserId
      * @return userId
      */

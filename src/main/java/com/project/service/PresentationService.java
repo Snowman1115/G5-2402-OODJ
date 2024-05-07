@@ -35,5 +35,18 @@ public interface PresentationService {
      */
     Boolean bookPresentationSlotByStudentId(Integer presentationId, LocalDateTime dateTime);
 
+    /**
+     * Edit Presentation Slot By For Student
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    Boolean editPresentationSlotByStudentId(Integer presentationId, LocalDateTime dateTime);
 
+    /**
+     * Cancel Presentation Slot For Student (Condition: PENDING_BOOKING)
+     * @param presentationId
+     * @return Boolean
+     */
+    Boolean cancelPresentationSlotByStudentId(Integer presentationId);
 }

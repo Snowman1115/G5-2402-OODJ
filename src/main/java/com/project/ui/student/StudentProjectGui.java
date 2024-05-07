@@ -4,8 +4,20 @@
  */
 package com.project.ui.student;
 
+import com.project.common.constants.MessageConstant;
+import com.project.common.constants.ReportStatus;
+import com.project.common.constants.ReportStatus;
+import com.project.common.utils.Dialog;
+import com.project.controller.SubmissionController;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import org.icepdf.ri.common.ComponentKeyBinding;
 import org.icepdf.ri.common.SwingController;
@@ -17,6 +29,9 @@ import org.icepdf.ri.common.SwingViewBuilder;
  */
 public class StudentProjectGui extends javax.swing.JInternalFrame {
 
+    private String uploadedfilePath = null; 
+    private JPanel pdfSubmissionPreview = null;
+    
     /**
      * Creates new form StudentAssignmentGui
      */
@@ -24,11 +39,179 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
-        ui.setNorthPane(null);        
+        ui.setNorthPane(null);
+        
         // salesManagementPanel.setText(PropertiesReader.getProperty("SalesManagementPanelVersion"));
-        // refresh();
+        refresh();
     }
 
+    private void refresh() {
+        Map<String, Integer> submission = SubmissionController.getAllSubmissionStatusByStudentId();
+        menuBtn12.setText(submission.get("pendingSubmit").toString());
+        menuBtn13.setText(submission.get("overdue").toString());
+        
+        refreshTable();
+        refreshjTable3(0);
+        fillInComboBox1();
+        fillInComboBox2();
+        fillInComboBox3();
+        
+        menuBtn22.setVisible(false);
+    }
+
+    private void fillInComboBox1() {
+        projectComboBox1.removeAllItems();
+        List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+        List<Map<String, String>> pendingSubmit = new ArrayList<>();
+        for (Map<String, String> list : lists) {
+            if(ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_SUBMIT)) {
+                pendingSubmit.add(list);
+            }
+        }
+
+        if (pendingSubmit.isEmpty()) {
+            projectComboBox1.addItem(MessageConstant.CONDITION_PROJECT_COMBOBOX);
+        }
+
+        for (Map<String, String> list : lists) {
+            if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_SUBMIT)) {
+                projectComboBox1.addItem(list.get("moduleName"));
+            }
+        }
+        projectComboBox1.setSelectedIndex(0);
+    }
+    
+    private void fillInComboBox2() {
+        projectComboBox2.removeAllItems();
+        List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+        List<Map<String, String>> pendingSubmit = new ArrayList<>();
+        for (Map<String, String> list : lists) {
+            if(ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_MARKING)) {
+                pendingSubmit.add(list);
+            }
+        }
+
+        if (pendingSubmit.isEmpty()) {
+            projectComboBox2.addItem(MessageConstant.CONDITION_EDIT_PROJECT_COMBOBOX);
+        }
+
+        for (Map<String, String> list : lists) {
+            if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_MARKING)) {
+                projectComboBox2.addItem(list.get("moduleName"));
+            }
+        }
+        projectComboBox2.setSelectedIndex(0);
+    }
+    
+    private void fillInComboBox3() {
+        projectComboBox4.removeAllItems();
+        List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+        List<Map<String, String>> pendingSubmit = new ArrayList<>();
+        for (Map<String, String> list : lists) {
+            if(ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.MARKED_2)) {
+                pendingSubmit.add(list);
+            }
+        }
+
+        if (pendingSubmit.isEmpty()) {
+            projectComboBox4.addItem(MessageConstant.CONDITION_PROJECT_RESULT_COMBOBOX);
+        }
+
+        for (Map<String, String> list : lists) {
+            if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.MARKED_2)) {
+                projectComboBox4.addItem(list.get("moduleName"));
+            }
+        }
+        projectComboBox4.setSelectedIndex(0);
+    }
+    
+    private void refreshjTable3(Integer value) {
+        DefaultTableModel dtm = (DefaultTableModel)jTable3.getModel();
+        dtm.setRowCount(0);
+        
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        jTable3.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("".trim()));
+        
+        
+        List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+
+        switch(value) {
+            case 0 -> {
+                for (Map<String, String> list : lists) {
+                    String[] data = {list.get("moduleName"), list.get("type"), list.get("dueDate"), list.get("Status")};
+                    dtm.addRow(data);
+                }
+            }
+            case 1 -> {
+                for (Map<String, String> list : lists) {
+                    if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_SUBMIT)) {
+                        String[] data = {list.get("moduleName"), list.get("type"), list.get("dueDate"), list.get("Status")};
+                    dtm.addRow(data);
+                    }
+                }
+            }
+            case 2 -> {
+                for (Map<String, String> list : lists) {
+                    if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_MARKING)) {
+                        String[] data = {list.get("moduleName"), list.get("type"), list.get("dueDate"), list.get("Status")};
+                    dtm.addRow(data);
+                    }
+                }
+            }
+            case 3 -> {
+                for (Map<String, String> list : lists) {
+                    if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.MARKED_2)) {
+                        String[] data = {list.get("moduleName"), list.get("type"), list.get("dueDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+            case 4 -> {
+                for (Map<String, String> list : lists) {
+                    if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.OVERDUE)) {
+                        String[] data = {list.get("moduleName"), list.get("type"), list.get("dueDate"), list.get("Status")};
+                        dtm.addRow(data);
+                    }
+                }
+            }
+        }  
+    }
+    
+    private void refreshComboBox1Details(Object value) {
+        if (projectComboBox1.getSelectedItem() != null) {
+            if (projectComboBox1.getSelectedItem().equals(MessageConstant.CONDITION_PROJECT_COMBOBOX)) {
+                JField14.setText("Submission ID");
+                JField13.setText("Lectuerer Name");
+                JField15.setText("Project Due Date");
+                JField30.setText("Project Type");
+            } else {
+                List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField14.setText(list.get("id"));
+                        JField13.setText(list.get("lecturerName"));
+                        JField15.setText(list.get("dueDate"));
+                        JField30.setText(list.get("type"));
+                    }
+                }
+            }
+        }
+    }
+
+    
+    private void refreshTable() {
+        DefaultTableModel dtm =  (DefaultTableModel)jTable2.getModel();
+        dtm.setRowCount(0);
+        List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+        for (Map<String,String> list : lists) {
+            if (ReportStatus.valueOf(list.get("Status")).equals(ReportStatus.PENDING_SUBMIT)) {
+                String[] data = {list.get("moduleName"),list.get("dueDate")};
+                dtm.addRow(data);
+            }
+        }        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,13 +232,12 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn14 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         JField12 = new javax.swing.JTextField();
-        assignmentComboBox = new javax.swing.JComboBox<>();
+        projectComboBox = new javax.swing.JComboBox<>();
         menuBtn11 = new javax.swing.JLabel();
         menuBtn15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -74,10 +256,6 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn26 = new javax.swing.JLabel();
         JField15 = new javax.swing.JTextField();
         menuBtn27 = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        menuBtn28 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jLabel34 = new javax.swing.JLabel();
         JSeparator33 = new javax.swing.JSeparator();
         JSeparator34 = new javax.swing.JSeparator();
@@ -86,6 +264,10 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         JSeparator35 = new javax.swing.JSeparator();
         menuBtn29 = new javax.swing.JLabel();
         projectComboBox1 = new javax.swing.JComboBox<>();
+        menuBtn28 = new javax.swing.JLabel();
+        JField30 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        menuBtn40 = new javax.swing.JLabel();
         Panel8 = new javax.swing.JPanel();
         JField23 = new javax.swing.JTextField();
         menuBtn48 = new javax.swing.JLabel();
@@ -172,8 +354,13 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn13.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
         menuBtn13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn13.setText("0");
-        menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn13.setOpaque(true);
+        menuBtn13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn13MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -206,8 +393,13 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn12.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
         menuBtn12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn12.setText("0");
-        menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn12.setOpaque(true);
+        menuBtn12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -249,7 +441,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         JField12.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField12.setForeground(new java.awt.Color(1, 1, 1));
-        JField12.setText("Enter Module Name To Search");
+        JField12.setText("Enter Keywords To Search");
         JField12.setBorder(null);
         JField12.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JField12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,18 +451,18 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         });
         Panel1.add(JField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 290, 35));
 
-        assignmentComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        assignmentComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        assignmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Submit", "Pending Marking", "Marked", "Overdue" }));
-        assignmentComboBox.setToolTipText("d");
-        assignmentComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        assignmentComboBox.setFocusable(false);
-        assignmentComboBox.addActionListener(new java.awt.event.ActionListener() {
+        projectComboBox.setBackground(new java.awt.Color(254, 254, 254));
+        projectComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        projectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Submit", "Pending Marking", "Marked", "Overdue" }));
+        projectComboBox.setToolTipText("d");
+        projectComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        projectComboBox.setFocusable(false);
+        projectComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignmentComboBoxActionPerformed(evt);
+                projectComboBoxActionPerformed(evt);
             }
         });
-        Panel1.add(assignmentComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 330, 35));
+        Panel1.add(projectComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 330, 35));
 
         menuBtn11.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -313,18 +505,6 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel21.setBackground(new java.awt.Color(105, 105, 105));
-        jLabel21.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-24x24.png"))); // NOI18N
-        jLabel21.setText("DELETE PROJECT");
-        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel21MouseClicked(evt);
-            }
-        });
-
         jLabel37.setBackground(new java.awt.Color(105, 105, 105));
         jLabel37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(1, 1, 1));
@@ -343,14 +523,13 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,9 +539,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
                     .addComponent(jLabel13)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel37))
+                .addComponent(jLabel37)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -370,16 +547,26 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Module", "Due Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         Panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 330, 420));
 
@@ -393,7 +580,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
                 "Module", "Type", "DueDate", "Status"
@@ -429,17 +616,16 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         Panel4.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn22.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn22.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 10)); // NOI18N
         menuBtn22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn22.setText("SUBMISSION");
+        menuBtn22.setText("File Path : ");
         menuBtn22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn22.setOpaque(true);
-        Panel4.add(menuBtn22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
+        Panel4.add(menuBtn22, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 56, 540, 30));
 
         menuBtn23.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
         menuBtn23.setText("LECTURER NAME");
         menuBtn23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn23.setOpaque(true);
@@ -447,7 +633,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn24.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn24.setText("SELECT MODULE");
         menuBtn24.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn24.setOpaque(true);
@@ -456,14 +642,16 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn25.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn25.setText("INTAKE CODE");
+        menuBtn25.setText("SUBMISSION ID");
         menuBtn25.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn25.setOpaque(true);
         Panel4.add(menuBtn25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 330, 40));
 
+        JField14.setEditable(false);
+        JField14.setBackground(new java.awt.Color(255, 255, 255));
         JField14.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField14.setForeground(new java.awt.Color(1, 1, 1));
-        JField14.setText("Module Name");
+        JField14.setText("Submission ID");
         JField14.setBorder(null);
         JField14.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JField14.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -473,6 +661,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         });
         Panel4.add(JField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 35));
 
+        JField13.setEditable(false);
+        JField13.setBackground(new java.awt.Color(255, 255, 255));
         JField13.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField13.setForeground(new java.awt.Color(1, 1, 1));
         JField13.setText("Lectuerer Name");
@@ -487,12 +677,14 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn26.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
         menuBtn26.setText("DUE DATE");
         menuBtn26.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn26.setOpaque(true);
         Panel4.add(menuBtn26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 40));
 
+        JField15.setEditable(false);
+        JField15.setBackground(new java.awt.Color(255, 255, 255));
         JField15.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField15.setForeground(new java.awt.Color(1, 1, 1));
         JField15.setText("Project Due Date");
@@ -507,43 +699,11 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn27.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn27.setText("PROJECT FILE");
         menuBtn27.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn27.setOpaque(true);
         Panel4.add(menuBtn27, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 150, 40));
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        Panel4.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 660, 400));
-
-        menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn28.setText("PROJECT DESCRIPTION");
-        menuBtn28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn28.setOpaque(true);
-        Panel4.add(menuBtn28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 330, 40));
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Project Description");
-        jTextArea2.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        jScrollPane4.setViewportView(jTextArea2);
-
-        Panel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 330, 110));
 
         jLabel34.setBackground(new java.awt.Color(254, 254, 254));
         jLabel34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -621,6 +781,40 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             }
         });
         Panel4.add(projectComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 330, 35));
+
+        menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn28.setText("PROJECT TYPE");
+        menuBtn28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn28.setOpaque(true);
+        Panel4.add(menuBtn28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 330, 40));
+
+        JField30.setEditable(false);
+        JField30.setBackground(new java.awt.Color(255, 255, 255));
+        JField30.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField30.setForeground(new java.awt.Color(1, 1, 1));
+        JField30.setText("Project Type");
+        JField30.setBorder(null);
+        JField30.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JField30MouseClicked(evt);
+            }
+        });
+        Panel4.add(JField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 330, 35));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+        Panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 660, 390));
+
+        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn40.setText("SUBMISSION");
+        menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn40.setOpaque(true);
+        Panel4.add(menuBtn40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
         MainTabbedPanel1.addTab("Submit", Panel4);
 
@@ -1203,31 +1397,34 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
-        // TODO add your handling code here:
+        MainTabbedPanel.setSelectedIndex(1);
+        MainTabbedPanel1.setSelectedIndex(2);
     }//GEN-LAST:event_jLabel37MouseClicked
 
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-
-    }//GEN-LAST:event_jLabel21MouseClicked
-
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-
+        MainTabbedPanel.setSelectedIndex(1);
+        MainTabbedPanel1.setSelectedIndex(1);
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-
+        MainTabbedPanel.setSelectedIndex(1);
     }//GEN-LAST:event_jLabel13MouseClicked
 
-    private void assignmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignmentComboBoxActionPerformed
-
-    }//GEN-LAST:event_assignmentComboBoxActionPerformed
+    private void projectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBoxActionPerformed
+        refreshjTable3(projectComboBox.getSelectedIndex());
+    }//GEN-LAST:event_projectComboBoxActionPerformed
 
     private void JField12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField12MouseClicked
-    
+        if (JField12.getText().equals("Enter Keywords To Search")) {
+            JField12.setText("");
+        }    
     }//GEN-LAST:event_JField12MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-
+        DefaultTableModel dtm = (DefaultTableModel)jTable3.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        jTable3.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(JField12.getText().trim()));
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
@@ -1243,19 +1440,67 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel39MouseClicked
 
     private void projectComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox1ActionPerformed
-        // TODO add your handling code here:
+        refreshComboBox1Details(projectComboBox1.getSelectedItem());
     }//GEN-LAST:event_projectComboBox1ActionPerformed
 
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("."));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf")); // Set file filter for PDF files
+
+        int result = fileChooser.showOpenDialog(null); // Pass null to open dialog in the center of the screen
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String uploadedFilePath = selectedFile.getAbsolutePath();
+            uploadedfilePath = uploadedFilePath;
+
+            if (uploadedFilePath.toLowerCase().endsWith(".pdf")) {
+                // Your existing code to handle PDF file selection
+                menuBtn22.setVisible(true);
+                menuBtn22.setText("File Path : " + uploadedFilePath);
+                try {
+                    SwingController ctr1 = new SwingController();
+                    SwingViewBuilder vb = new SwingViewBuilder(ctr1);
+                    pdfSubmissionPreview = vb.buildViewerPanel();
+                    ComponentKeyBinding.install(ctr1, pdfSubmissionPreview);
+                    ctr1.openDocument(uploadedFilePath);
+
+                    jPanel2.add(pdfSubmissionPreview);
+                } catch (Exception e) {
+                    // Handle exceptions
+                }
+            } else {
+                Dialog.ErrorDialog(MessageConstant.ERROR_ONLY_PDF_SUPPORTED);
+            }
+        } else {
+            jPanel2.removeAll();
+            uploadedfilePath = null;
+            menuBtn22.setVisible(false);
+        }
     }//GEN-LAST:event_jLabel38MouseClicked
 
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
-        // TODO add your handling code here:
+        if (projectComboBox1.getSelectedItem().equals(MessageConstant.CONDITION_PROJECT_COMBOBOX)) {
+            Dialog.ErrorDialog(MessageConstant.CONDITION_PROJECT_COMBOBOX);
+            return;
+        }
+
+        if (uploadedfilePath == null) {
+            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_FILE);
+            return;
+        }
+        
+        
+        
     }//GEN-LAST:event_jLabel36MouseClicked
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
-
+        jPanel2.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
+        jPanel2.revalidate(); // Recalculate layout
+        jPanel2.repaint(); // Repaint
+        uploadedfilePath = null;
+        menuBtn22.setVisible(false);
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void JField15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField15MouseClicked
@@ -1362,6 +1607,18 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel44MouseClicked
 
+    private void menuBtn12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn12MouseClicked
+       projectComboBox.setSelectedIndex(1);
+    }//GEN-LAST:event_menuBtn12MouseClicked
+
+    private void menuBtn13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn13MouseClicked
+        projectComboBox.setSelectedIndex(4);
+    }//GEN-LAST:event_menuBtn13MouseClicked
+
+    private void JField30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField30MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JField30MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField12;
@@ -1382,6 +1639,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JField27;
     private javax.swing.JTextField JField28;
     private javax.swing.JTextField JField29;
+    private javax.swing.JTextField JField30;
     private javax.swing.JSeparator JSeparator33;
     private javax.swing.JSeparator JSeparator34;
     private javax.swing.JSeparator JSeparator35;
@@ -1397,12 +1655,9 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Panel6;
     private javax.swing.JPanel Panel7;
     private javax.swing.JPanel Panel8;
-    private static javax.swing.JComboBox<String> assignmentComboBox;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1415,17 +1670,16 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
@@ -1455,6 +1709,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn38;
     private javax.swing.JLabel menuBtn39;
     private javax.swing.JLabel menuBtn4;
+    private javax.swing.JLabel menuBtn40;
     private javax.swing.JLabel menuBtn44;
     private javax.swing.JLabel menuBtn45;
     private javax.swing.JLabel menuBtn46;
@@ -1471,6 +1726,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn57;
     private javax.swing.JLabel menuBtn58;
     private javax.swing.JLabel menuBtn59;
+    private static javax.swing.JComboBox<String> projectComboBox;
     private static javax.swing.JComboBox<String> projectComboBox1;
     private static javax.swing.JComboBox<String> projectComboBox2;
     private static javax.swing.JComboBox<String> projectComboBox4;

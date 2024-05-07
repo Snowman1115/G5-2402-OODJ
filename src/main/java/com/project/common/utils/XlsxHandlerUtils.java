@@ -404,6 +404,48 @@ public class XlsxHandlerUtils {
                     fileWriter1.close();
 
                 }
+                case "Report" -> {
+
+                    JSONArray jsonArray = new JSONArray();
+
+                    for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+                        Row row = sheet.getRow(rowIndex);
+                        if (row == null) continue; // Skip empty rows
+                        JSONObject json = new JSONObject(); // Create a JSON object for each user
+                        for (int i = 0; i < row.getLastCellNum(); i++) { // Start from the first column
+                            Cell cell = row.getCell(i);
+                            if (cell == null) continue;
+
+                            String columnName = sheet.getRow(0).getCell(i).toString().trim();
+                            switch (columnName) {
+                                case "id":
+                                    Integer reportId = Integer.parseInt(cell.getStringCellValue());
+                                    json.put("id", reportId);
+                                    break;
+                                case "reportName":
+                                    json.put("reportName", cell.getStringCellValue());
+                                    break;
+                                case "reportPath":
+                                    json.put("reportPath", cell.getStringCellValue());
+                                    break;
+                                case "reportType":
+                                    json.put("reportType", cell.getStringCellValue());
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        jsonArray.add(json);
+                    }
+                    workbook.close();
+                    file.close();
+
+                    File file1 = new File("src/main/resources/Data/Submission/ReportData.txt");
+                    FileWriter fileWriter1 = new FileWriter(file1);
+                    fileWriter1.write(jsonArray.toJSONString());
+                    fileWriter1.close();
+
+                }
             }
 
         } catch (IOException e) {
@@ -420,6 +462,7 @@ public class XlsxHandlerUtils {
         readExcelBySheetName(filePath, "Submission");
         readExcelBySheetName(filePath, "Presentation");
         readExcelBySheetName(filePath, "Consultation");
+        readExcelBySheetName(filePath, "Report");
     }
 
 }

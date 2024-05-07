@@ -199,13 +199,21 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
     private void refreshComboBox1Details(Object value) {
         if (presentationComboBox1.getSelectedItem() != null) {
-            List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
-            for (Map<String, String> list : lists) {
-                if (value.equals(list.get("moduleName"))) {
-                    JField14.setText(list.get("id"));
-                    JField13.setText(list.get("lecturerName"));
-                    JField15.setText(list.get("dueDate"));
-                    JField24.setText(list.get("Status"));
+            
+            if (presentationComboBox1.getSelectedItem().equals(MessageConstant.CONDITION_PRESENTATION_COMBOBOX)) {
+                JField14.setText("Presentation ID");
+                JField13.setText("Lectuerer Name");
+                JField15.setText("Project Due Date");
+                JField24.setText("Status");
+            } else {
+                List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField14.setText(list.get("id"));
+                        JField13.setText(list.get("lecturerName"));
+                        JField15.setText(list.get("dueDate"));
+                        JField24.setText(list.get("Status"));
+                    }
                 }
             }
         }
@@ -213,14 +221,23 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
     private void refreshComboBox2Details(Object value) {
         if (presentationComboBox2.getSelectedItem() != null) {
-            List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
-            for (Map<String, String> list : lists) {
-                if (value.equals(list.get("moduleName"))) {
-                    JField20.setText(list.get("id"));
-                    JField29.setText(list.get("lecturerName"));
-                    JField30.setText(list.get("dueDate"));
-                    JField26.setText(list.get("Status"));
-                    dateTimePicker2.setDateTimePermissive(DateTimeUtils.formatDateTime(list.get("presentationDate")));
+            
+            if (presentationComboBox2.getSelectedItem().equals(MessageConstant.CONDITION_EDIT_PRESENTATION_COMBOBOX)) {
+                JField20.setText("Presentation ID");
+                JField29.setText("Lectuerer Name");
+                JField30.setText("Project Due Date");
+                JField26.setText("Status");
+                dateTimePicker2.setDateTimePermissive(LocalDateTime.now());
+            } else {
+                List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField20.setText(list.get("id"));
+                        JField29.setText(list.get("lecturerName"));
+                        JField30.setText(list.get("dueDate"));
+                        JField26.setText(list.get("Status"));
+                        dateTimePicker2.setDateTimePermissive(DateTimeUtils.formatDateTime(list.get("presentationDate")));
+                    }
                 }
             }
         }
@@ -228,14 +245,22 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
 
     private void refreshComboBox3Details(Object value) {
         if (presentationComboBox3.getSelectedItem() != null) {
-            List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
-            for (Map<String, String> list : lists) {
-                if (value.equals(list.get("moduleName"))) {
-                    JField22.setText(list.get("id"));
-                    JField33.setText(list.get("lecturerName"));
-                    JField34.setText(list.get("dueDate"));
-                    JField32.setText(list.get("Status"));
-                    dateTimePicker3.setDateTimePermissive(DateTimeUtils.formatDateTime(list.get("presentationDate")));
+            if (presentationComboBox3.getSelectedItem().equals(MessageConstant.CONDITION_REJECT_PRESENTATION_COMBOBOX)) {
+                JField22.setText("Presentation ID");
+                JField33.setText("Lectuerer Name");
+                JField34.setText("Project Due Date");
+                JField32.setText("Status");
+                dateTimePicker3.setDateTimePermissive(LocalDateTime.now());
+            } else {
+                List<Map<String, String>> lists = PresentationController.getAllPresentationDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField22.setText(list.get("id"));
+                        JField33.setText(list.get("lecturerName"));
+                        JField34.setText(list.get("dueDate"));
+                        JField32.setText(list.get("Status"));
+                        dateTimePicker3.setDateTimePermissive(DateTimeUtils.formatDateTime(list.get("presentationDate")));
+                    }
                 }
             }
         }
@@ -338,6 +363,17 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         for (Map<String,String> list : lists) {
             String[] data = {list.get("moduleName"), list.get("dueDate")};
             dtm.addRow(data);
+        }
+        
+        DefaultTableModel dtm1 =  (DefaultTableModel)jTable4.getModel();
+        dtm1.setRowCount(0);
+        List<Map<String, String>> lists1 = PresentationController.getAllPresentationDetailsForStudent();
+        for (Map<String,String> list : lists1) {
+            if (PresentationStatus.valueOf(list.get("Status")).equals(PresentationStatus.BOOKED)) {
+                String[] data = {list.get("moduleName"),list.get("presentationDate")};
+                dtm1.addRow(data);
+            }
+     
         }
     }
 

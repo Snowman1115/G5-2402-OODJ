@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+@NoArgsConstructor
+public class Capstone2{
     private Integer reportId;
     private ReportType reportType;
     private String reportName;

@@ -465,9 +465,6 @@
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuBtn27MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn28">
               <Properties>
@@ -910,9 +907,6 @@
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuBtn8MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn19">
               <Properties>

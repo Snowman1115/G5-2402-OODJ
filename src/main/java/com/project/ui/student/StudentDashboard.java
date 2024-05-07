@@ -4,8 +4,10 @@
  */
 package com.project.ui.student;
 
+import com.project.common.utils.PropertiesReader;
 import com.project.controller.ConsultationController;
 import com.project.controller.PresentationController;
+import com.project.controller.SubmissionController;
 import com.project.ui.administrator.*;
 import java.util.Map;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -24,30 +26,28 @@ public class StudentDashboard extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);        
-        // adminPanelVersionLabel.setText(PropertiesReader.getProperty("AdminDashboardVersion"));
+        studentPanelVersionLabel.setText(PropertiesReader.getProperty("StudentDashboardVersion"));
         dashboardRefresh();
     }
     
     public static void dashboardRefresh(){
-        Map<String, Integer> map = ConsultationController.getUpcomingNFinishedConsultationForStudent();
-        menuBtn18.setText(map.get("upcoming").toString());
-        menuBtn19.setText(map.get("finished").toString());
+        Map<String, Integer> consultation = ConsultationController.getUpcomingNFinishedConsultationForStudent();
+        menuBtn18.setText(consultation.get("upcoming").toString());
+        menuBtn19.setText(consultation.get("finished").toString());
 
         Map<String, Integer> presentation = PresentationController.getAllPresentationStatusByStudentId();
         menuBtn15.setText(presentation.get("pendingBooking").toString());
         menuBtn14.setText(presentation.get("pendingConfirm").toString());
         menuBtn12.setText(presentation.get("confirmed").toString());
         menuBtn13.setText(presentation.get("overdue").toString());
-
         
-        // menuBtn12.setText(String.valueOf(UserAccountOperator.checkTotalActiveOfficer()));
-        // menuBtn13.setText(String.valueOf(UserAccountOperator.checkTotalActiveSalesPerson()));
-        // menuBtn15.setText(String.valueOf(checkTotalFurniture()));
-        // menuBtn14.setText(String.valueOf(checkStockAlertsFurniture()));
-        // menuBtn16.setText(String.valueOf(SalesOperator.getTotalSalesAmount()));
-        // menuBtn17.setText(String.valueOf(SalesOperator.getTotalPendingSales()));
-        // menuBtn18.setText(String.valueOf(SalesOperator.getTotalSuccessfulSales()));
-        // menuBtn19.setText(String.valueOf(SalesOperator.getTotalCancelledSales()));
+        
+        Map<String, Integer> submission = SubmissionController.getAllSubmissionStatusByStudentId();
+        menuBtn22.setText(submission.get("pendingSubmit").toString());
+        menuBtn28.setText(submission.get("pendingMarking").toString());
+        menuBtn26.setText(submission.get("marked").toString());
+        menuBtn24.setText(submission.get("overdue").toString());
+        
     }
 
     /**
@@ -319,11 +319,6 @@ public class StudentDashboard extends javax.swing.JInternalFrame {
         menuBtn27.setText("PENDING MARKING");
         menuBtn27.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn27.setOpaque(true);
-        menuBtn27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn27MouseClicked(evt);
-            }
-        });
 
         menuBtn28.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
@@ -552,11 +547,6 @@ public class StudentDashboard extends javax.swing.JInternalFrame {
         menuBtn8.setText("COMPLETED");
         menuBtn8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn8.setOpaque(true);
-        menuBtn8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn8MouseClicked(evt);
-            }
-        });
 
         menuBtn19.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn19.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
@@ -612,18 +602,10 @@ public class StudentDashboard extends javax.swing.JInternalFrame {
         StudentGui.ButtonClicked("menuBtn7");
     }//GEN-LAST:event_menuBtn13MouseClicked
 
-    private void menuBtn27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn27MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuBtn27MouseClicked
-
     private void menuBtn18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn18MouseClicked
         this.dispose();
         StudentGui.ButtonClicked("menuBtn2");
     }//GEN-LAST:event_menuBtn18MouseClicked
-
-    private void menuBtn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn8MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuBtn8MouseClicked
 
     private void menuBtn19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn19MouseClicked
         this.dispose();

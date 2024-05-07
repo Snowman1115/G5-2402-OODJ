@@ -1,6 +1,7 @@
 package com.project.pojo;
 
 import com.project.common.constants.ReportStatus;
+import com.project.common.constants.ReportType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class Submission {
     private Integer studentId;
     private LocalDateTime submissionDueDate;
     private ReportStatus reportStatus;
-    private String reportType;
+    private ReportType reportType;
     private Double reportResult;
     private LocalDateTime submittedAt;
     private LocalDateTime markedAt;

@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import com.project.common.constants.ReportStatus;
+import com.project.common.constants.ReportType;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
@@ -7,6 +9,7 @@ import com.project.common.utils.PropertiesReader;
 import com.project.pojo.Intake;
 import com.project.pojo.Submission;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,28 +34,26 @@ public class SubmissionDAO {
             obj.cloneObject(userData.getObject(i));
 
             Submission submission = new Submission();
-/*
-            intake.setIntakeId(obj.getInt("id"));
-            intake.setIntakeCode(obj.get("intakeCode"));
 
-            String studentStr = obj.get("studentList");
-            String[] studentArray = studentStr.split(",");
-            List<String> studentListStr = Arrays.asList(studentArray);
-            ArrayList<Integer> studentList = new ArrayList<>();
-            for (String list : studentListStr) {
-                studentList.add(Integer.parseInt(list));
-            }
+            submission.setSubmissionId(obj.getInt("id"));
+            submission.setReportId(obj.getInt("reportId"));
+            submission.setModuleId(obj.getInt("moduleId"));
+            submission.setStudentId(obj.getInt("studentId"));
+            submission.setSubmissionDueDate(DateTimeUtils.formatDateTime(obj.get("submissionDueDate")));
+            submission.setReportStatus(ReportStatus.valueOf(obj.get("reportStatus")));
+            submission.setReportType(ReportType.valueOf(obj.get("reportType")));
+            submission.setSubmittedAt(DateTimeUtils.formatDateTime(obj.get("submitted_at")));
+            submission.setMarkedAt(DateTimeUtils.formatDateTime(obj.get("marked_at")));
+            submission.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
+            submission.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
 
-            intake.setStudentList(studentList);
-            intake.setStartDate(DateTimeUtils.formatDate(obj.get("startDate")));
-            intake.setEndDate(DateTimeUtils.formatDate(obj.get("endDate")));
-            intake.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
-            intake.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
-
-            intakes.add(intake);*/
+            submissions.add(submission);
         }
     }
 
+    public static void main(String[] args) {
+        System.out.println(submissions);
+    }
     /*
 
     // Update consultation data

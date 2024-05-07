@@ -23,7 +23,6 @@ public class Dialog {
      * Prompt Error Dialog
      * @param message
      */
-    //helo lengzaii, jin xun here
     public static void ErrorDialog(String message){
         ImageIcon eicon = new ImageIcon(ERRORICON);
         JOptionPane.showMessageDialog(null,message, DEFAULTERRORTITLE, JOptionPane.ERROR_MESSAGE,eicon);

@@ -3,18 +3,24 @@ package com.project.dao;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.constants.ReportType;
-import com.project.common.utils.DateTimeUtils;
-import com.project.common.utils.FileHandler;
-import com.project.common.utils.JsonHandler;
-import com.project.common.utils.PropertiesReader;
+import com.project.common.utils.*;
 import com.project.pojo.*;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.filetypedetector.FileType;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class ReportDAO {
 
 
@@ -28,6 +34,67 @@ public class ReportDAO {
     static {
         loadConsultationData();
     }
+
+    /**
+     * Temporary Display
+     */
+    public List getAllReports() {
+        List list = new ArrayList();
+        list.add(reports);
+        list.add(finalYearReports);
+        list.add(investigateReports);
+        list.add(capstone1Reports);
+        list.add(capstone2Reports);
+        return list;
+    }
+
+    /**
+     * Get Report Details By Report ID and Type
+     * @param reportId
+     * @param reportType
+     * return Report
+     */
+    public Report getAllReportByIdnType(Integer reportId, ReportType reportType) {
+        switch (reportType) {
+            case REPORT -> {
+                for (Report report : reports) {
+                    if (report.getReportId().equals(reportId)) {
+                        return report;
+                    }
+                }
+            }
+            case INVESTIGATION -> {
+                for (InvestigateReport investigateReport : investigateReports) {
+                    if (investigateReport.getReportId().equals(reportId)) {
+                        return investigateReport;
+                    }
+                }
+            }
+            case FINAL_YEAR -> {
+                for (FinalYearReport finalYearReport : finalYearReports) {
+                    if (finalYearReport.getReportId().equals(reportId)) {
+                        return finalYearReport;
+                    }
+                }
+            }
+            case CAPSTONE_1 -> {
+                for (Capstone1Report capstone1Report : capstone1Reports) {
+                    if (capstone1Report.getReportId().equals(reportId)) {
+                        return capstone1Report;
+                    }
+                }
+            }
+            case CAPSTONE_2 -> {
+                for (Capstone2Report capstone2Report : capstone2Reports) {
+                    if (capstone2Report.getReportId().equals(reportId)) {
+                        return capstone2Report;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 
     /**
      * Get All Reports ID
@@ -54,27 +121,75 @@ public class ReportDAO {
     }
 
     /**
-     * Get All Report's Path
+     * Save File into System Resources
      *
      */
-    public List<String> getAllReportsPath() {
-        List<String> list = new ArrayList<>();
-        for (Report report : reports) {
-            list.add(report.getReportPath());
+    public Integer saveFile(String filePath, String systemFilePath, ReportType reportType) {
+        try {
+            PDDocument document = PDDocument.load(new File(filePath));
+            String fileName = UUIDHanlder.genUUID().toString() + ".pdf";
+
+            Path sourcePath = Paths.get(filePath);
+            String originalFileName = sourcePath.getFileName().toString();
+
+            Path destinationFolder = Paths.get(systemFilePath);
+            if (!Files.exists(destinationFolder)) {
+                Files.createDirectories(destinationFolder);
+            }
+            Path destinationPath = Paths.get(systemFilePath, fileName);
+            Files.copy(new File(filePath).toPath(), destinationPath);
+            document.close();
+
+            Integer newReportId = IDGenUtils.generateNewID(getAllReportId());
+            switch (reportType) {
+                case REPORT -> {
+                    Report report = new Report();
+                    report.setReportId(newReportId);
+                    report.setReportName(originalFileName);
+                    report.setReportPath(destinationPath.toString());
+                    report.setReportType(reportType);
+                    reports.add(report);
+                }
+                case INVESTIGATION -> {
+                    InvestigateReport investigateReport = new InvestigateReport();
+                    investigateReport.setReportId(newReportId);
+                    investigateReport.setReportName(originalFileName);
+                    investigateReport.setReportPath(destinationPath.toString());
+                    investigateReport.setReportType(reportType);
+                    investigateReports.add(investigateReport);
+                }
+                case FINAL_YEAR -> {
+                    FinalYearReport finalYearReport = new FinalYearReport();
+                    finalYearReport.setReportId(newReportId);
+                    finalYearReport.setReportName(originalFileName);
+                    finalYearReport.setReportPath(destinationPath.toString());
+                    finalYearReport.setReportType(reportType);
+                    finalYearReports.add(finalYearReport);
+                }
+                case CAPSTONE_1 -> {
+                    Capstone1Report capstone1Report = new Capstone1Report();
+                    capstone1Report.setReportId(newReportId);
+                    capstone1Report.setReportName(originalFileName);
+                    capstone1Report.setReportPath(destinationPath.toString());
+                    capstone1Report.setReportType(reportType);
+                    capstone1Reports.add(capstone1Report);
+                }
+                case CAPSTONE_2 -> {
+                    Capstone2Report capstone2Report = new Capstone2Report();
+                    capstone2Report.setReportId(newReportId);
+                    capstone2Report.setReportName(originalFileName);
+                    capstone2Report.setReportPath(destinationPath.toString());
+                    capstone2Report.setReportType(reportType);
+                    capstone2Reports.add(capstone2Report);
+                }
+            }
+
+            log.info("PDF File Saved Successfully : " + destinationPath);
+            return newReportId;
+        } catch (IOException e) {
+            log.warn("PDF File Saved Failed : " + e.getMessage());
+            return null;
         }
-        for (InvestigateReport investigateReport : investigateReports) {
-            list.add(investigateReport.getReportPath());
-        }
-        for (FinalYearReport finalYearReports : finalYearReports) {
-            list.add(finalYearReports.getReportPath());
-        }
-        for (Capstone1Report capstone1Report : capstone1Reports) {
-            list.add(capstone1Report.getReportPath());
-        }
-        for (Capstone2Report capstone2Report : capstone2Reports) {
-            list.add(capstone2Report.getReportPath());
-        }
-        return list;
     }
 
     /**

@@ -8,14 +8,22 @@
 package com.project;
 
 import com.project.common.constants.ReportType;
+import com.project.common.utils.UUIDHanlder;
 import com.project.pojo.FinalYearReport;
 import com.project.pojo.InvestigateReport;
 import com.project.pojo.Report;
 import com.project.ui.authentication.LoginGui;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Slf4j
 public class Main {

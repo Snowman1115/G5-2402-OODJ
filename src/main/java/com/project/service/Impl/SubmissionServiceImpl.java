@@ -1,9 +1,12 @@
 package com.project.service.Impl;
 
+import com.project.common.constants.ReportType;
 import com.project.dao.ModuleDAO;
+import com.project.dao.ReportDAO;
 import com.project.dao.SubmissionDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.pojo.ProjectModule;
+import com.project.pojo.Report;
 import com.project.pojo.UserAccount;
 import com.project.service.SubmissionService;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +51,15 @@ public class SubmissionServiceImpl implements SubmissionService {
             UserAccount user = userAccountDAO.getUserAccountById(lecturerId);
             mappedList.put("lecturerName", user.getFirstName() + " " + user.getLastName());
             mappedList.put("reportId", map.get("reportId"));
+            ReportDAO reportDAO = new ReportDAO();
+            if (Integer.parseInt(map.get("reportId")) != 0) {
+                Report report= reportDAO.getAllReportByIdnType(Integer.parseInt(map.get("reportId")), ReportType.valueOf(map.get("type")));
+                mappedList.put("FilePath", report.getReportPath());
+                mappedList.put("FileName", report.getReportName() +".pdf");
+            } else {
+                mappedList.put("FilePath", "");
+                mappedList.put("FileName", "");
+            }
             mappedList.put("dueDate", map.get("dueDate"));
             if (map.get("Status").equals("PENDING_SUBMIT")) {
                 mappedList.put("submitAt", "EMPTY");

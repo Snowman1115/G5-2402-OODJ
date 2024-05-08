@@ -18,6 +18,7 @@ public class MessageConstant {
     public static final String SUCCESS_CONSULTATION_CANCELLED = "Consultation Successfully Cancelled.";
     public static final String SUCCESS_BOOKED_PRESENTATION_SLOT = "Presentation Slot Successfully Booked.";
     public static final String SUCCESS_CANCELLED_PRESENTATION_SLOT = "Presentation Slot Successfully Cancelled.";
+    public static final String SUCCESS_SUBMITTED_PROJECT = "Project File Submitted Successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";

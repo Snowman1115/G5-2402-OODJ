@@ -21,6 +21,21 @@ public class IntakeDAO {
     static {
         loadConsultationData();
     }
+
+    /**
+     * Get Intake By Id
+     * @param intakeId
+     * @return Intake
+     */
+    public Intake getIntakeById(Integer intakeId) {
+        for (Intake intake : intakes) {
+            if (intake.getIntakeId().equals(intakeId)) {
+                return intake;
+            }
+        }
+        return null;
+    }
+
     /**
      * Preload Data into presentations Array
      */
@@ -54,11 +69,6 @@ public class IntakeDAO {
             intakes.add(intake);
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(intakes);
-    }
-
 
     /*
 

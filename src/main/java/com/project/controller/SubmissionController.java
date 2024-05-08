@@ -33,16 +33,6 @@ public class SubmissionController {
     }
 
     /**
-     * Submit Project With Submission ID
-     * @param submissionId
-     * @param filePath
-     * @return Boolean
-     */
-    public static Boolean submitStudentProject(Integer submissionId, String filePath) {
-        return submissionService.submitStudentProject(submissionId, filePath);
-    }
-
-    /**
      * Get Authenticated UserId
      * @return userId
      */

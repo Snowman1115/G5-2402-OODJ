@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.constants.ReportStatus;
 import com.project.common.constants.ReportType;
@@ -10,10 +11,12 @@ import com.project.common.utils.PropertiesReader;
 import com.project.pojo.Intake;
 import com.project.pojo.Presentation;
 import com.project.pojo.Submission;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
+@Slf4j
 public class SubmissionDAO {
 
     private static final String SUBMISSION_DATA = PropertiesReader.getProperty("SubmissionData");
@@ -25,6 +28,7 @@ public class SubmissionDAO {
 
     /**
      * Get Submission Details by ID
+     *
      * @param submissionId
      * @return Submission
      */
@@ -39,6 +43,7 @@ public class SubmissionDAO {
 
     /**
      * Get All Submission Status By Student Id
+     *
      * @param studentId
      * @return Map of List
      */
@@ -61,15 +66,33 @@ public class SubmissionDAO {
             }
         }
         Map<String, Integer> map = new HashMap<>();
-        map.put("pendingSubmit" , pendingSubmit);
-        map.put("pendingMarking" , pendingMarking);
-        map.put("marked" , marked);
-        map.put("overdue" , overdue);
+        map.put("pendingSubmit", pendingSubmit);
+        map.put("pendingMarking", pendingMarking);
+        map.put("marked", marked);
+        map.put("overdue", overdue);
         return map;
     }
 
     /**
+     * update Submission Status (Submitted)
+     *
+     * @param submissionId
+     * @param reportId
+     */
+    public void saveReportId(Integer submissionId, Integer reportId) {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                update(submissionId, "reportId", String.valueOf(reportId));
+                update(submissionId, "reportStatus", ReportStatus.PENDING_MARKING.toString());
+                update(submissionId, "submitted_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                update(submissionId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+            }
+        }
+    }
+
+    /**
      * Get All Submission Details By Student ID
+     *
      * @param studentId
      * @return Map Of List
      */
@@ -125,34 +148,49 @@ public class SubmissionDAO {
         }
     }
 
-    /*
 
     // Update consultation data
-    public static boolean update(Integer consultationId, String field, String value) {
+    public static boolean update(Integer submissionId, String field, String value) {
         // System.out.println(value);
-        for (Consultation consultation : consultations) {
-            if (consultation.getConsultationId().equals(consultationId)) {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
                 try {
                     switch (field) {
-                        case "lecturerId" -> {
-                            consultation.setLecturerId(Integer.parseInt(value));
-                            return store(consultationId, "lecturerId", value);
+                        case "reportId" -> {
+                            submission.setReportId(Integer.parseInt(value));
+                            return store(submissionId, "reportId", value);
+                        }
+                        case "moduleId" -> {
+                            submission.setModuleId(Integer.parseInt(value));
+                            return store(submissionId, "moduleId", value);
                         }
                         case "studentId" -> {
-                            consultation.setStudentId(Integer.parseInt(value));
-                            return store(consultationId, "studentId", value);
+                            submission.setStudentId(Integer.parseInt(value));
+                            return store(submissionId, "studentId", value);
                         }
-                        case "consultationDateTime" -> {
-                            consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(value));
-                            return store(consultationId, "consultationDateTime", value);
+                        case "submissionDueDate" -> {
+                            submission.setSubmissionDueDate(DateTimeUtils.formatDateTime(value));
+                            return store(submissionId, "submissionDueDate", value);
                         }
-                        case "consultationStatus" -> {
-                            consultation.setConsultationStatus(ConsultationStatus.valueOf(value));
-                            return store(consultationId, "consultationStatus", value);
+                        case "reportStatus" -> {
+                            submission.setReportStatus(ReportStatus.valueOf(value));
+                            return store(submissionId, "reportStatus", value);
+                        }
+                        case "reportType" -> {
+                            submission.setReportType(ReportType.valueOf(value));
+                            return store(submissionId, "reportType", value);
+                        }
+                        case "submitted_at" -> {
+                            submission.setSubmittedAt(DateTimeUtils.formatDateTime(value));
+                            return store(submissionId, "submitted_at", value);
+                        }
+                        case "marked_at" -> {
+                            submission.setMarkedAt(DateTimeUtils.formatDateTime(value));
+                            return store(submissionId, "marked_at", value);
                         }
                         case "updated_at" -> {
-                            consultation.setUpdatedAt(DateTimeUtils.formatDateTime(value));
-                            return store(consultationId, "updated_at", value);
+                            submission.setUpdatedAt(DateTimeUtils.formatDateTime(value));
+                            return store(submissionId, "updated_at", value);
                         }
                         default -> {
                             log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
@@ -171,18 +209,11 @@ public class SubmissionDAO {
 
     }
 
-    *//**
-     * Store updated data into text file
-     * @param consultationId
-     * @param attribute
-     * @param value
-     * @return
-     *//*
     private static boolean store(Integer consultationId, String attribute, String value) {
         // System.out.println(consultationId + attribute + value);
-        JsonHandler userJson = new JsonHandler();
-        userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
-        return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
+/*        JsonHandler userJson = new JsonHandler();
+        userJson.encode(FileHandler.readFile(SUBMISSION_DATA));
+        return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);*/
+        return false;
     }
-*/
 }

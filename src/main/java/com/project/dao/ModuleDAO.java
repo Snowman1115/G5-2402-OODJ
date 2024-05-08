@@ -50,6 +50,7 @@ public class ModuleDAO {
 
             ProjectModule projectModule = new ProjectModule();
             projectModule.setModuleId(obj.getInt("id"));
+            projectModule.setIntakeId(obj.getInt("intakeId"));
             projectModule.setModuleCode(obj.get("moduleCode"));
             projectModule.setSupervisorId(obj.getInt("supervisorId"));
             projectModule.setFirstMarker(obj.getInt("firstMarkerId"));

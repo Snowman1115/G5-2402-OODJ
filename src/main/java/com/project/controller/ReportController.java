@@ -16,7 +16,10 @@ public class ReportController {
      * @return Boolean
      */
     public static Boolean submitReport(Integer submissionId, String filePath) {
+        log.info("Project Submission : " + submissionId);
         return reportService.submitReport(submissionId, filePath);
     }
+
+
 
 }

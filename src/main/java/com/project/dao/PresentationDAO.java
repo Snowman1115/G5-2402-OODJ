@@ -161,12 +161,12 @@ public class PresentationDAO {
      * Preload Data into presentations Array
      */
     private static void loadConsultationData() {
-        JsonHandler userData = new JsonHandler();
-        userData.encode(FileHandler.readFile(PRESENTATION_DATA));
+        JsonHandler presentationData = new JsonHandler();
+        presentationData.encode(FileHandler.readFile(PRESENTATION_DATA));
 
-        for (int i = 0; i < (userData.getAll().size()); i++) {
+        for (int i = 0; i < (presentationData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.cloneObject(presentationData.getObject(i));
 
             Presentation presentation = new Presentation();
             presentation.setPresentationId(obj.getInt("id"));

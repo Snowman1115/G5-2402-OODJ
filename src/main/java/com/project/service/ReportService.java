@@ -1,11 +1,13 @@
 package com.project.service;
 
-public abstract class ReportService {
+public interface ReportService {
 
     /**
-     * Get All Report Details By Student ID
-     *
+     * Submit Report (Student)
+     * @param submissionId
+     * @param filePath
+     * @return Boolean
      */
-
+    Boolean submitReport(Integer submissionId, String filePath);
 
 }

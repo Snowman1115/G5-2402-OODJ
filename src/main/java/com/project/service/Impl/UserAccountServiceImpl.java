@@ -63,11 +63,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
     }
 
-    public static void main(String[] args) {
-        UserAccountServiceImpl userAccountService = new UserAccountServiceImpl();
-        System.out.println(userAccountService.loginAuthentication("student1", "Passw0rd123@"));
-    }
-
     /**
      * Verify User Security Phrase
      * @param account

@@ -7,8 +7,15 @@
 
 package com.project;
 
+import com.project.common.constants.ReportType;
+import com.project.pojo.FinalYearReport;
+import com.project.pojo.InvestigateReport;
+import com.project.pojo.Report;
 import com.project.ui.authentication.LoginGui;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 public class Main {

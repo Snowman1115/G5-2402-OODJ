@@ -24,6 +24,20 @@ public class SubmissionDAO {
     }
 
     /**
+     * Get Submission Details by ID
+     * @param submissionId
+     * @return Submission
+     */
+    public Submission getSubmissionById(Integer submissionId) {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                return submission;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Get All Submission Status By Student Id
      * @param studentId
      * @return Map of List

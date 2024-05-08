@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-public class InvestigateReport extends Report {
+public class Capstone2Report extends Report {
     @Override
     public String toString() {
-        return "InvestigateReport{" +
+        return "Capstone2Report{" +
                 "reportId=" + reportId +
                 ", reportName='" + reportName + '\'' +
                 ", reportType=" + reportType +

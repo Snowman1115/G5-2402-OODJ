@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Capstone2{
-    private Integer reportId;
-    private ReportType reportType;
-    private String reportName;
-    private String reportFilePath;
+public class Report {
+    protected Integer reportId;
+    protected String reportName;
+    protected ReportType reportType;
+    protected String reportPath;
 }

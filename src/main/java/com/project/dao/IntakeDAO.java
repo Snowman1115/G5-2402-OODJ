@@ -55,6 +55,11 @@ public class IntakeDAO {
         }
     }
 
+    public static void main(String[] args) {
+        System.out.println(intakes);
+    }
+
+
     /*
 
     // Update consultation data

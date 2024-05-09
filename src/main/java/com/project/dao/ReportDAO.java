@@ -38,14 +38,12 @@ public class ReportDAO {
     /**
      * Temporary Display
      */
-    public List getAllReports() {
-        List list = new ArrayList();
-        list.add(reports);
-        list.add(finalYearReports);
-        list.add(investigateReports);
-        list.add(capstone1Reports);
-        list.add(capstone2Reports);
-        return list;
+    public void getAllReports() {
+        System.out.println(reports);
+        System.out.println(finalYearReports);
+        System.out.println(investigateReports);
+        System.out.println(capstone1Reports);
+        System.out.println(capstone2Reports);
     }
 
     /**
@@ -94,7 +92,6 @@ public class ReportDAO {
         }
         return null;
     }
-
 
     /**
      * Get All Reports ID
@@ -193,6 +190,68 @@ public class ReportDAO {
     }
 
     /**
+     * Remove Report Data
+     * @param reportId
+     * @param reportType
+     */
+    public void removeReport(Integer reportId, ReportType reportType) {
+        switch (reportType) {
+            case REPORT -> {
+                for (Report report : reports) {
+                    if (report.getReportId().equals(reportId)) {
+                        deleteFile(report.getReportPath().toString());
+                    }
+                }
+                reports.removeIf(report -> report.getReportId().equals(reportId));
+            }
+            case INVESTIGATION -> {
+                for (InvestigateReport investigateReport : investigateReports) {
+                    if (investigateReport.getReportId().equals(reportId)) {
+                        deleteFile(investigateReport.getReportPath().toString());
+                    }
+                }
+                investigateReports.removeIf(investigateReport -> investigateReport.getReportId().equals(reportId));
+            }
+            case FINAL_YEAR -> {
+                for (FinalYearReport finalYearReport : finalYearReports) {
+                    if (finalYearReport.getReportId().equals(reportId)) {
+                        deleteFile(finalYearReport.getReportPath().toString());
+                    }
+                }
+                finalYearReports.removeIf(finalYearReport -> finalYearReport.getReportId().equals(reportId));
+            }
+            case CAPSTONE_1 -> {
+                for (Capstone1Report capstone1Report : capstone1Reports) {
+                    if (capstone1Report.getReportId().equals(reportId)) {
+                        deleteFile(capstone1Report.getReportPath().toString());
+                    }
+                }
+                capstone1Reports.removeIf(capstone1Report -> capstone1Report.getReportId().equals(reportId));
+            }
+            case CAPSTONE_2 -> {
+                for (Capstone2Report capstone2Report : capstone2Reports) {
+                    if (capstone2Report.getReportId().equals(reportId)) {
+                        deleteFile(capstone2Report.getReportPath().toString());
+                    }
+                }
+                capstone2Reports.removeIf(capstone2Report -> capstone2Report.getReportId().equals(reportId));
+            }
+        }
+        getAllReports();
+    }
+
+    private void deleteFile(String filePath) {
+        Path file = Paths.get(filePath);
+        try {
+            Files.delete(file);
+            System.out.println("File deleted successfully.");
+        } catch (IOException e) {
+            System.err.println("Failed to delete the file: " + e.getMessage());
+            e.printStackTrace(); // Print stack trace for debugging
+        }
+    }
+
+    /**
      * Preload Data into presentations Array
      */
     private static void loadConsultationData() {
@@ -247,8 +306,6 @@ public class ReportDAO {
             }
         }
     }
-
-
 
 /*
 

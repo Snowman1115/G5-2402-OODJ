@@ -19,11 +19,4 @@ public interface SubmissionService {
      */
     List getAllSubmissionDetailsForStudent(Integer studentId);
 
-    /**
-     * Submit Project With Submission ID
-     * @param submissionId
-     * @param filePath
-     * @return Boolean
-     */
-    Boolean submitStudentProject(Integer submissionId, String filePath);
 }

@@ -26,6 +26,10 @@ public class SubmissionDAO {
         loadSubmissionData();
     }
 
+    public static void main(String[] args) {
+        System.out.println(submissions);
+    }
+
     /**
      * Get Submission Details by ID
      *
@@ -91,8 +95,21 @@ public class SubmissionDAO {
     }
 
     /**
+     * Remove Submission
+     * @param submissionId
+     */
+    public void removeSubmission(Integer submissionId) {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                update(submissionId, "reportId", "0");
+                update(submissionId, "reportStatus", ReportStatus.PENDING_SUBMIT.toString());
+                update(submissionId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+            }
+        }
+    }
+
+    /**
      * Get All Submission Details By Student ID
-     *
      * @param studentId
      * @return Map Of List
      */
@@ -216,4 +233,5 @@ public class SubmissionDAO {
         return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);*/
         return false;
     }
+
 }

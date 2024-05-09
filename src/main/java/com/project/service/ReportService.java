@@ -10,4 +10,12 @@ public interface ReportService {
      */
     Boolean submitReport(Integer submissionId, String filePath);
 
+
+    /**
+     * Remove Report By Submission ID
+     * @param submissionId
+     * @return Boolean
+     */
+    Boolean removeSubmissionById(Integer submissionId);
+
 }

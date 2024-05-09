@@ -20,6 +20,14 @@ public class ReportController {
         return reportService.submitReport(submissionId, filePath);
     }
 
-
+    /**
+     * Remove Report By Submission ID
+     * @param submissionId
+     * @return Boolean
+     */
+    public static Boolean removeSubmissionById(Integer submissionId) {
+        log.info("Submission Remove : " + submissionId);
+        return reportService.removeSubmissionById(submissionId);
+    }
 
 }

@@ -28,12 +28,12 @@ public class UserAccountDAO {
     }
 
     // test run
-    /*public static void main(String[] args) {
-        JsonHandler jh = new JsonHandler();
-        jh.encode(FileHandler.readFile(USER_ACCOUNT));
-        jh.update(10, "testing", "testing");
-//        System.out.println(test);
-    }*/
+    public static void main(String[] args) {
+        UserAccountDAO uao = new UserAccountDAO();
+//        uao.add(111222, "Testing123", "Testing", "Testing", "testing@gmail.com", "testingpassword1234", "safeWord");
+        uao.delete(111222);
+        System.out.println(uao.getAllUsers());
+    }
 
 
     /**
@@ -71,6 +71,22 @@ public class UserAccountDAO {
             }
         }
         return null;
+    }
+
+    /**
+     * Get user account by userID
+     * @param userIds
+     * @return user accounts
+     */
+    public List<UserAccount> getUserAccountById(List<Integer> userIds) {
+        List<UserAccount> list = new ArrayList<>();
+        for (UserAccount ua : users) {
+            if (userIds.contains(ua.getUserId())) {
+                list.add(ua);
+            }
+        }
+
+        return list;
     }
 
     /**
@@ -252,8 +268,44 @@ public class UserAccountDAO {
         }
     }
 
-    // Update user data
-    public static boolean update(Integer userId, String field, String value) {
+    public void add(Integer userId, String username, String firstname, String lastName, String email, String password, String safeWord) {
+        UserAccount newUser = new UserAccount();
+        newUser.setUserId(userId);
+        newUser.setUsername(username);
+        newUser.setFirstName(firstname);
+        newUser.setLastName(lastName);
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        newUser.setSecurityPhrase(safeWord);
+        newUser.setCreatedAt(LocalDateTime.now());
+        newUser.setUpdatedAt(LocalDateTime.now());
+        users.add(newUser);
+
+        JSONObject newUserJson = new JSONObject();
+        newUserJson.put("id", userId);
+        newUserJson.put("username", username);
+        newUserJson.put("first_name", firstname);
+        newUserJson.put("last_name", lastName);
+        newUserJson.put("email", email);
+        newUserJson.put("password", password);
+        newUserJson.put("safeWord", safeWord);
+        newUserJson.put("created_at", DateTimeUtils.formatStrDateTime(newUser.getCreatedAt()));
+        newUserJson.put("updated_at", DateTimeUtils.formatStrDateTime(newUser.getUpdatedAt()));
+
+        JsonHandler userJson = new JsonHandler();
+        userJson.encode(FileHandler.readFile(USER_ACCOUNT));
+        userJson.addObject(newUserJson, USER_ACCOUNT);
+
+    }
+
+    /**
+     * Update user data
+     * @param userId
+     * @param field
+     * @param value
+     * @return boolean
+     */
+    public boolean update(Integer userId, String field, String value) {
         // find user object in arraylist
         for (UserAccount user : users) {
             if (user.getUserId().equals(userId)) {
@@ -308,12 +360,31 @@ public class UserAccountDAO {
      * @param userId
      * @param attribute
      * @param value
-     * @return
+     * @return boolean
      */
-    private static boolean store(Integer userId, String attribute, String value) {
+    private boolean store(Integer userId, String attribute, String value) {
         JsonHandler userJson = new JsonHandler();
         userJson.encode(FileHandler.readFile(USER_ACCOUNT));
         return userJson.update(userId, attribute, value, USER_ACCOUNT);
+    }
+
+    /**
+     * Delete user data
+     * @param userId
+     * @return boolean
+     */
+    public boolean delete(Integer userId) {
+        for (UserAccount ua : users) {
+            if (ua.getUserId().equals(userId)) {
+                users.remove(ua);
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(FileHandler.readFile(USER_ACCOUNT));
+                return userJson.delete(userId, USER_ACCOUNT);
+            }
+        }
+
+        log.error("Error: " + MessageConstant.ERROR_USER_NOT_FOUND);
+        return false;
     }
 
 }

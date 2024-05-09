@@ -255,6 +255,39 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         }
     }
 
+     private void refreshComboBox3Details(Object value) {
+        if (value == null) {
+            return;
+        }
+        if (projectComboBox2.getSelectedItem() != null) {
+            if (projectComboBox2.getSelectedItem().equals(MessageConstant.CONDITION_PROJECT_RESULT_COMBOBOX)) {
+                JField25.setText("Submission ID");
+                JField27.setText("Lecturer Name");
+                JField28.setText("Project Due Date");
+                JField32.setText("Project Type");
+                JField24.setText("Submission Date");
+                JField26.setText("Marking Status");
+                JField29.setText("result");
+                jTextArea6.setText("Lecturer Comment");
+                JField20.setText("Project File Name");
+            } else {
+                List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField25.setText(list.get("id"));
+                        JField27.setText(list.get("lecturerName"));
+                        JField28.setText(list.get("dueDate"));
+                        JField32.setText(list.get("type"));
+                        JField24.setText(list.get("submitAt"));
+                        JField26.setText(list.get("Status"));
+                        JField29.setText(list.get("result"));
+                        jTextArea6.setText("Lecturer Comment");
+                        JField20.setText(list.get("FileName"));
+                    }
+                }
+            }
+        }
+    }
     
     private void refreshTable() {
         DefaultTableModel dtm =  (DefaultTableModel)jTable2.getModel();
@@ -1529,7 +1562,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JField24MouseClicked
 
     private void projectComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox4ActionPerformed
-        // TODO add your handling code here:
+        refreshComboBox3Details(projectComboBox4.getSelectedItem());
     }//GEN-LAST:event_projectComboBox4ActionPerformed
 
     private void JField25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField25MouseClicked

@@ -56,6 +56,7 @@ public class MessageConstant {
     public static final String ERROR_PRESENTATION_SLOT_BOOKED = "The presentation slot is already booked.";
     public static final String ERROR_ONLY_PDF_SUPPORTED = "Only PDF format is supported. Please try again.";
     public static final String ERROR_EMPTY_FILE = "Please upload a file to submit.";
+    public static final String ERROR_SUBMISSION_DUE_DATE_IS_OVER = "Submission Due Date is Over, modification are not allowed.";
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations are available to book.";
@@ -64,8 +65,10 @@ public class MessageConstant {
     public static final String CONDITION_PRESENTATION_RESULT_COMBOBOX = "No marked presentation results to view.";
 
     public static final String CONDITION_PROJECT_COMBOBOX = "No projects are available to submit.";
-    public static final String CONDITION_EDIT_PROJECT_COMBOBOX = "No projects are available to submit.";
+    public static final String CONDITION_EDIT_PROJECT_COMBOBOX = "No projects are available to edit.";
     public static final String CONDITION_PROJECT_RESULT_COMBOBOX = "No marked project results to view.";
+
     /* WARNING */
+    public static final String WARNING_REMOVE_CONFIRMATION = "Are you sure you want to delete ?";
 
 }

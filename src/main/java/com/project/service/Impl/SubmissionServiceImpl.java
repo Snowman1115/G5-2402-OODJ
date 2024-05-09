@@ -52,13 +52,13 @@ public class SubmissionServiceImpl implements SubmissionService {
             mappedList.put("lecturerName", user.getFirstName() + " " + user.getLastName());
             mappedList.put("reportId", map.get("reportId"));
             ReportDAO reportDAO = new ReportDAO();
-            if (Integer.parseInt(map.get("reportId")) != 0) {
-                Report report= reportDAO.getAllReportByIdnType(Integer.parseInt(map.get("reportId")), ReportType.valueOf(map.get("type")));
-                mappedList.put("FilePath", report.getReportPath());
-                mappedList.put("FileName", report.getReportName() +".pdf");
-            } else {
+            if (map.get("reportId").equals("0")) {
                 mappedList.put("FilePath", "");
                 mappedList.put("FileName", "");
+            } else {
+                Report report = reportDAO.getAllReportByIdnType(Integer.parseInt(map.get("reportId")), ReportType.valueOf(map.get("type")));
+                mappedList.put("FilePath", report.getReportPath());
+                mappedList.put("FileName", report.getReportName() +".pdf");
             }
             mappedList.put("dueDate", map.get("dueDate"));
             if (map.get("Status").equals("PENDING_SUBMIT")) {
@@ -77,11 +77,4 @@ public class SubmissionServiceImpl implements SubmissionService {
         return list;
     }
 
-    @Override
-    public Boolean submitStudentProject(Integer submissionId, String filePath) {
-
-
-
-        return null;
-    }
 }

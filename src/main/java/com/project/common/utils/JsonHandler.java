@@ -120,8 +120,9 @@ public class JsonHandler {
      * Add object into json array
      * @param object
      */
-    public void addObject(Object object) {
-
+    public void addObject(JSONObject object, String filePath) {
+        json_array.add(object);
+        store(json_array.toJSONString(), filePath);
     }
 
     /**
@@ -129,6 +130,7 @@ public class JsonHandler {
      * @param objectId
      * @param attribute
      * @param value
+     * @param filePath
      * @return boolean
      */
     public boolean update(Integer objectId, String attribute, String value, String filePath) {
@@ -152,16 +154,38 @@ public class JsonHandler {
                 store(jsonString, filePath);
                 return true;
             } else {
-                log.info("Error: " + MessageConstant.ERROR_JSON_STORE_DATA);
+                log.error("Error: " + MessageConstant.ERROR_JSON_STORE_DATA);
                 return false;
             }
         } else if (obj != null && !obj.containsKey(attribute)) {
-            log.info("Error: " + '"' + attribute + '"' + " " + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
+            log.error("Error: " + '"' + attribute + '"' + " " + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
             return false;
         } else {
-            log.info("Error: " + MessageConstant.ERROR_JSON_OBJECT_NOT_FOUND);
+            log.error("Error: " + MessageConstant.ERROR_JSON_OBJECT_NOT_FOUND);
             return false;
         }
+    }
+
+    /**
+     * Remove/Delete record
+     * @param objectId
+     * @param filePath
+     * @return boolean
+     */
+    public boolean delete(Integer objectId, String filePath) {
+        for (int i=0; i<(json_array.size()); i++) {
+            JSONObject uo = (JSONObject) json_array.get(i);
+            int uoId = Integer.parseInt(uo.get("id").toString());
+            if (uoId == objectId) {
+                json_array.remove(uo);
+
+                store(json_array.toJSONString(), filePath);
+                return true;
+            }
+        }
+
+        log.error("Error: " + MessageConstant.ERROR_JSON_OBJECT_NOT_FOUND);
+        return false;
     }
 
 

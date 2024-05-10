@@ -33,6 +33,27 @@ public class SubmissionController {
     }
 
     /**
+     * Submit Report based on submissionId
+     * @param submissionId
+     * @param reportPath
+     * @return Boolean
+     */
+    public static Boolean submitReport(Integer submissionId, String reportPath) {
+        log.info("Project Submission : " + submissionId);
+        return submissionService.submitReport(submissionId, reportPath);
+    }
+
+    /**
+     * Remove Report By Submission ID
+     * @param submissionId
+     * @return Boolean
+     */
+    public static Boolean removeSubmissionById(Integer submissionId) {
+        log.info("Submission Remove : " + submissionId);
+        return submissionService.removeSubmissionById(submissionId);
+    }
+
+    /**
      * Get Authenticated UserId
      * @return userId
      */

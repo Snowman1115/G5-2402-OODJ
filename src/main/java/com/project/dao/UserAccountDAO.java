@@ -27,13 +27,6 @@ public class UserAccountDAO {
         loadUserData();
     }
 
-    // test run
-    public static void main(String[] args) {
-        UserAccountDAO uao = new UserAccountDAO();
-//        uao.add(111222, "Testing123", "Testing", "Testing", "testing@gmail.com", "testingpassword1234", "safeWord");
-        uao.delete(111222);
-        System.out.println(uao.getAllUsers());
-    }
 
 
     /**

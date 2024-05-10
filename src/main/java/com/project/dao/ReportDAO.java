@@ -8,12 +8,15 @@ import com.project.pojo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.filetypedetector.FileType;
+import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,17 +36,6 @@ public class ReportDAO {
 
     static {
         loadConsultationData();
-    }
-
-    /**
-     * Temporary Display
-     */
-    public void getAllReports() {
-        System.out.println(reports);
-        System.out.println(finalYearReports);
-        System.out.println(investigateReports);
-        System.out.println(capstone1Reports);
-        System.out.println(capstone2Reports);
     }
 
     /**
@@ -145,7 +137,18 @@ public class ReportDAO {
                     report.setReportName(originalFileName);
                     report.setReportPath(destinationPath.toString());
                     report.setReportType(reportType);
+
                     reports.add(report);
+
+                    JSONObject newReportJSON = new JSONObject();
+                    newReportJSON.put("id", newReportId);
+                    newReportJSON.put("reportName", originalFileName);
+                    newReportJSON.put("reportType", reportType.toString());
+                    newReportJSON.put("reportPath", destinationPath.toString());
+
+                    JsonHandler reportJSON = new JsonHandler();
+                    reportJSON.encode(FileHandler.readFile(REPORT_DATA));
+                    reportJSON.addObject(newReportJSON, REPORT_DATA);
                 }
                 case INVESTIGATION -> {
                     InvestigateReport investigateReport = new InvestigateReport();
@@ -154,6 +157,16 @@ public class ReportDAO {
                     investigateReport.setReportPath(destinationPath.toString());
                     investigateReport.setReportType(reportType);
                     investigateReports.add(investigateReport);
+
+                    JSONObject newReportJSON = new JSONObject();
+                    newReportJSON.put("id", newReportId);
+                    newReportJSON.put("reportName", originalFileName);
+                    newReportJSON.put("reportType", reportType.toString());
+                    newReportJSON.put("reportPath", destinationPath.toString());
+
+                    JsonHandler reportJSON = new JsonHandler();
+                    reportJSON.encode(FileHandler.readFile(REPORT_DATA));
+                    reportJSON.addObject(newReportJSON, REPORT_DATA);
                 }
                 case FINAL_YEAR -> {
                     FinalYearReport finalYearReport = new FinalYearReport();
@@ -162,6 +175,16 @@ public class ReportDAO {
                     finalYearReport.setReportPath(destinationPath.toString());
                     finalYearReport.setReportType(reportType);
                     finalYearReports.add(finalYearReport);
+
+                    JSONObject newReportJSON = new JSONObject();
+                    newReportJSON.put("id", newReportId);
+                    newReportJSON.put("reportName", originalFileName);
+                    newReportJSON.put("reportType", reportType.toString());
+                    newReportJSON.put("reportPath", destinationPath.toString());
+
+                    JsonHandler reportJSON = new JsonHandler();
+                    reportJSON.encode(FileHandler.readFile(REPORT_DATA));
+                    reportJSON.addObject(newReportJSON, REPORT_DATA);
                 }
                 case CAPSTONE_1 -> {
                     Capstone1Report capstone1Report = new Capstone1Report();
@@ -170,6 +193,17 @@ public class ReportDAO {
                     capstone1Report.setReportPath(destinationPath.toString());
                     capstone1Report.setReportType(reportType);
                     capstone1Reports.add(capstone1Report);
+
+                    JSONObject newReportJSON = new JSONObject();
+                    newReportJSON.put("id", newReportId);
+                    newReportJSON.put("reportName", originalFileName);
+                    newReportJSON.put("reportType", reportType.toString());
+                    newReportJSON.put("reportPath", destinationPath.toString());
+
+                    JsonHandler reportJSON = new JsonHandler();
+                    reportJSON.encode(FileHandler.readFile(REPORT_DATA));
+                    reportJSON.addObject(newReportJSON, REPORT_DATA);
+
                 }
                 case CAPSTONE_2 -> {
                     Capstone2Report capstone2Report = new Capstone2Report();
@@ -178,6 +212,17 @@ public class ReportDAO {
                     capstone2Report.setReportPath(destinationPath.toString());
                     capstone2Report.setReportType(reportType);
                     capstone2Reports.add(capstone2Report);
+
+                    JSONObject newReportJSON = new JSONObject();
+                    newReportJSON.put("id", newReportId);
+                    newReportJSON.put("reportName", originalFileName);
+                    newReportJSON.put("reportType", reportType.toString());
+                    newReportJSON.put("reportPath", destinationPath.toString());
+
+                    JsonHandler reportJSON = new JsonHandler();
+                    reportJSON.encode(FileHandler.readFile(REPORT_DATA));
+                    reportJSON.addObject(newReportJSON, REPORT_DATA);
+
                 }
             }
 
@@ -199,7 +244,10 @@ public class ReportDAO {
             case REPORT -> {
                 for (Report report : reports) {
                     if (report.getReportId().equals(reportId)) {
-                        deleteFile(report.getReportPath().toString());
+                        // deleteFile(report.getReportPath().toString());
+                        JsonHandler jsonHandler = new JsonHandler();
+                        jsonHandler.encode(FileHandler.readFile(REPORT_DATA));
+                        jsonHandler.delete(reportId, REPORT_DATA);
                     }
                 }
                 reports.removeIf(report -> report.getReportId().equals(reportId));
@@ -207,7 +255,10 @@ public class ReportDAO {
             case INVESTIGATION -> {
                 for (InvestigateReport investigateReport : investigateReports) {
                     if (investigateReport.getReportId().equals(reportId)) {
-                        deleteFile(investigateReport.getReportPath().toString());
+                        // deleteFile(investigateReport.getReportPath().toString());
+                        JsonHandler jsonHandler = new JsonHandler();
+                        jsonHandler.encode(FileHandler.readFile(REPORT_DATA));
+                        jsonHandler.delete(reportId, REPORT_DATA);
                     }
                 }
                 investigateReports.removeIf(investigateReport -> investigateReport.getReportId().equals(reportId));
@@ -215,7 +266,10 @@ public class ReportDAO {
             case FINAL_YEAR -> {
                 for (FinalYearReport finalYearReport : finalYearReports) {
                     if (finalYearReport.getReportId().equals(reportId)) {
-                        deleteFile(finalYearReport.getReportPath().toString());
+                        // deleteFile(finalYearReport.getReportPath().toString());
+                        JsonHandler jsonHandler = new JsonHandler();
+                        jsonHandler.encode(FileHandler.readFile(REPORT_DATA));
+                        jsonHandler.delete(reportId, REPORT_DATA);
                     }
                 }
                 finalYearReports.removeIf(finalYearReport -> finalYearReport.getReportId().equals(reportId));
@@ -223,7 +277,10 @@ public class ReportDAO {
             case CAPSTONE_1 -> {
                 for (Capstone1Report capstone1Report : capstone1Reports) {
                     if (capstone1Report.getReportId().equals(reportId)) {
-                        deleteFile(capstone1Report.getReportPath().toString());
+                        // deleteFile(capstone1Report.getReportPath().toString());
+                        JsonHandler jsonHandler = new JsonHandler();
+                        jsonHandler.encode(FileHandler.readFile(REPORT_DATA));
+                        jsonHandler.delete(reportId, REPORT_DATA);
                     }
                 }
                 capstone1Reports.removeIf(capstone1Report -> capstone1Report.getReportId().equals(reportId));
@@ -231,22 +288,24 @@ public class ReportDAO {
             case CAPSTONE_2 -> {
                 for (Capstone2Report capstone2Report : capstone2Reports) {
                     if (capstone2Report.getReportId().equals(reportId)) {
-                        deleteFile(capstone2Report.getReportPath().toString());
+                        // deleteFile(capstone2Report.getReportPath().toString());
+                        JsonHandler jsonHandler = new JsonHandler();
+                        jsonHandler.encode(FileHandler.readFile(REPORT_DATA));
+                        jsonHandler.delete(reportId, REPORT_DATA);
                     }
                 }
                 capstone2Reports.removeIf(capstone2Report -> capstone2Report.getReportId().equals(reportId));
             }
         }
-        getAllReports();
     }
 
     private void deleteFile(String filePath) {
         Path file = Paths.get(filePath);
         try {
-            Files.delete(file);
-            System.out.println("File deleted successfully.");
+            // Now try to delete the file
+            Files.deleteIfExists(file);
         } catch (IOException e) {
-            System.err.println("Failed to delete the file: " + e.getMessage());
+            // Handle if file deletion fails
             e.printStackTrace(); // Print stack trace for debugging
         }
     }
@@ -307,80 +366,20 @@ public class ReportDAO {
         }
     }
 
-/*
-
-    // Update consultation data
-    public static boolean update(Integer presentationId, String field, String value) {
-        // System.out.println(value);
-        for (Presentation presentation : presentations) {
-            if (presentation.getPresentationId().equals(presentationId)) {
-                try {
-                    switch (field) {
-                        case "moduleId" -> {
-                            presentation.setModuleId(Integer.parseInt(value));
-                            return store(presentationId, "moduleId", value);
-                        }
-                        case "lecturerId" -> {
-                            presentation.setLecturerId(Integer.parseInt(value));
-                            return store(presentationId, "lecturerId", value);
-                        }
-                        case "studentId" -> {
-                            presentation.setStudentId(Integer.parseInt(value));
-                            return store(presentationId, "studentId", value);
-                        }
-                        case "presentationDueDate" -> {
-                            presentation.setPresentationDueDate(DateTimeUtils.formatDateTime(value));
-                            return store(presentationId, "presentationDueDate", value);
-                        }
-                        case "presentationDateTime" -> {
-                            presentation.setPresentationDateTime(DateTimeUtils.formatDateTime(value));
-                            return store(presentationId, "presentationDateTime", value);
-                        }
-                        case "presentationStatus" -> {
-                            presentation.setPresentationStatus(PresentationStatus.valueOf(value));
-                            return store(presentationId, "presentationStatus", value);
-                        }
-                        case "presentationResult" -> {
-                            presentation.setPresentationResult(Double.valueOf(value));
-                            return store(presentationId, "presentationResult", value);
-                        }
-                        case "updated_at" -> {
-                            presentation.setUpdatedAt(DateTimeUtils.formatDateTime(value));
-                            return store(presentationId, "updated_at", value);
-                        }
-                        default -> {
-                            log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
-                            return false;
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return false;
-                }
-            }
-        }
-
-        log.info("Error: " + MessageConstant.ERROR_OBJECT_NOT_FOUND + value);
-        return false;
-
-    }
-
-    */
 /**
      * Store updated data into text file
      * @param consultationId
      * @param attribute
      * @param value
      * @return
-     *//*
+     */
 
     private static boolean store(Integer consultationId, String attribute, String value) {
         // System.out.println(consultationId + attribute + value);
         JsonHandler userJson = new JsonHandler();
-        userJson.encode(FileHandler.readFile(PRESENTATION_DATA));
-        return userJson.update(consultationId, attribute, value, PRESENTATION_DATA);
+        userJson.encode(FileHandler.readFile(REPORT_DATA));
+        return userJson.update(consultationId, attribute, value, REPORT_DATA);
     }
 
-*/
 
 }

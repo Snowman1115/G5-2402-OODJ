@@ -20,6 +20,7 @@ public class Submission {
     private ReportStatus reportStatus;
     private ReportType reportType;
     private Double reportResult;
+    private String Comment;
     private LocalDateTime submittedAt;
     private LocalDateTime markedAt;
     private LocalDateTime createdAt;

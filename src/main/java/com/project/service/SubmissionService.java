@@ -19,4 +19,19 @@ public interface SubmissionService {
      */
     List getAllSubmissionDetailsForStudent(Integer studentId);
 
+    /**
+     * Submit report base on submission Id
+     * @param submissionId
+     * @param reportPath
+     * @return Boolean
+     */
+    Boolean submitReport(Integer submissionId, String reportPath);
+
+    /**
+     * Remove Report By Submission ID
+     * @param submissionId
+     * @return Boolean
+     */
+    Boolean removeSubmissionById(Integer submissionId);
+
 }

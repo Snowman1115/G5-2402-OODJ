@@ -260,6 +260,9 @@ public class XlsxHandlerUtils {
                                 case "reportResult":
                                     json.put("reportResult", cell.getStringCellValue());
                                     break;
+                                case "comment":
+                                    json.put("comment", cell.getStringCellValue());
+                                    break;
                                 case "submitted_at":
                                     json.put("submitted_at", cell.getStringCellValue());
                                     break;
@@ -457,12 +460,12 @@ public class XlsxHandlerUtils {
     public static void main(String[] args) {
         String filePath = "src/main/resources/Data/SampleDataXlsx/G5_OODJ_Sample_Data.xlsx"; // Provide the path to your Excel file
         readExcelBySheetName(filePath, "User");
-        readExcelBySheetName(filePath, "Intake");
+        // readExcelBySheetName(filePath, "Intake");
         readExcelBySheetName(filePath, "ProjectModule");
         readExcelBySheetName(filePath, "Submission");
         readExcelBySheetName(filePath, "Presentation");
         readExcelBySheetName(filePath, "Consultation");
-        readExcelBySheetName(filePath, "Report");
+        // readExcelBySheetName(filePath, "Report");
     }
 
 }

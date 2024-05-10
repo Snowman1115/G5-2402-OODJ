@@ -27,7 +27,7 @@ public class StudentGui extends javax.swing.JFrame {
             new LoginGui();
             this.dispose();
         } else {
-            setTitle("Project Management System - Admin Panel");
+            setTitle("Project Management System - Student Panel");
             setVisible(true);
             initComponents();
             ButtonClicked("menuBtn1");
@@ -124,7 +124,7 @@ public class StudentGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
                 menuBtn8.setBackground(DefaultBtnColor);
-                WindowsPane.add(new StudentResultGui()).setVisible(true);
+//                WindowsPane.add(new StudentResultGui()).setVisible(true);
             } 
         }
     }

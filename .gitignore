@@ -38,3 +38,4 @@ build/
 .DS_Store
 
 src/main/resources/Data/Submission/Report/*
+src/main/resources/Data/Logback/*

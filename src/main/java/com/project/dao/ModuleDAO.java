@@ -11,7 +11,9 @@ import com.project.pojo.ProjectModule;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class ModuleDAO {
@@ -37,6 +39,63 @@ public class ModuleDAO {
         return null;
     }
 
+    /**
+     * Get Module by lecturerId
+     * @param lecturerId
+     * @return List of Module
+     */
+    
+    // Method to get all module details with first marker ID
+    public List getModuleByLecturerId(Integer lecturerId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getFirstMarker().equals(lecturerId)) {
+                Map map = new HashMap<>();
+                map.put("id", module.getModuleId().toString());
+                map.put("intakeId", module.getIntakeId().toString());
+                map.put("moduleCode", module.getModuleCode());
+                map.put("supervisorId", module.getSupervisorId().toString());
+                map.put("firstMarker", module.getFirstMarker().toString());
+                map.put("secondMarker", module.getSecondMarker().toString());
+                map.put("startDate", DateTimeUtils.formatStrDate(module.getStartDate()));
+                map.put("endDate", DateTimeUtils.formatStrDate(module.getEndDate()));
+                map.put("created_at", DateTimeUtils.formatStrDateTime(module.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(module.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
+    
+    //This method is similar to the above ones
+    //The only difference is with second marker ID
+    public List getModuleBySecondMarkerId(Integer lecturerId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getSecondMarker().equals(lecturerId)) {
+                Map map = new HashMap<>();
+                map.put("id", module.getModuleId().toString());
+                map.put("intakeId", module.getIntakeId().toString());
+                map.put("moduleCode", module.getModuleCode());
+                map.put("supervisorId", module.getSupervisorId().toString());
+                map.put("firstMarker", module.getFirstMarker().toString());
+                map.put("secondMarker", module.getSecondMarker().toString());
+                map.put("startDate", DateTimeUtils.formatStrDate(module.getStartDate()));
+                map.put("endDate", DateTimeUtils.formatStrDate(module.getEndDate()));
+                map.put("created_at", DateTimeUtils.formatStrDateTime(module.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(module.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
+    
+    
+    public static void main(String[] args) {
+        ModuleDAO test=new ModuleDAO();
+        System.out.println(test.getModuleByLecturerId(88608036));
+    }
+    
     /**
      * Preload Data into presentations Array
      */

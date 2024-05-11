@@ -40,6 +40,27 @@ public class SubmissionDAO {
         }
         return null;
     }
+    
+    /**
+     * Get All Submission Details By Module Id
+     *
+     * @param moduleId
+     * @return Submission
+     */
+    public Submission getSubmissionByModuleId(Integer moduleId) {
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                return submission;
+            }
+        }
+        return null;
+    }
+    
+    public static void main(String[] args) {
+        SubmissionDAO sub = new SubmissionDAO();
+        System.out.println(sub.getSubmissionByModuleId(36887009));
+        
+    }
 
     /**
      * Get All Submission Status By Student Id

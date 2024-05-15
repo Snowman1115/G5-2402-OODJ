@@ -60,7 +60,7 @@ public class SubmissionServiceImpl implements SubmissionService {
             } else {
                 Report report = reportDAO.getAllReportByIdnType(Integer.parseInt(map.get("reportId")), ReportType.valueOf(map.get("type")));
                 mappedList.put("FilePath", report.getReportPath());
-                mappedList.put("FileName", report.getReportName() +".pdf");
+                mappedList.put("FileName", report.getReportName());
             }
 
             if (map.get("Status").equals("PENDING_SUBMIT")) {

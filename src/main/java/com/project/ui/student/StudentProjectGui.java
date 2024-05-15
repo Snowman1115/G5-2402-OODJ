@@ -6,9 +6,7 @@ package com.project.ui.student;
 
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.ReportStatus;
-import com.project.common.constants.ReportStatus;
 import com.project.common.utils.Dialog;
-import com.project.controller.ReportController;
 import com.project.controller.SubmissionController;
 import java.io.File;
 import java.nio.file.Path;
@@ -35,6 +33,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private String uploadedfilePath = null; 
     private JPanel pdfSubmissionPreview = null;
     private JPanel pdfSubmissionPreview2 = null;
+    private JPanel pdfSubmissionPreview3 = null;
     
     /**
      * Creates new form StudentAssignmentGui
@@ -59,6 +58,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         fillInComboBox1();
         fillInComboBox2();
         fillInComboBox3();
+        fillInComboBox4();
         
         menuBtn22.setVisible(false);
     }
@@ -127,6 +127,29 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             }
         }
         projectComboBox4.setSelectedIndex(0);
+    }
+    
+    private void fillInComboBox4() {
+        projectComboBox5.removeAllItems();
+        List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+        List<Map<String, String>> submmitedList = new ArrayList<>();
+
+        for (Map<String, String> list : lists) {
+            if(!list.get("reportId").equals("0")) {
+                submmitedList.add(list);
+            }
+        }
+
+        if (submmitedList.isEmpty()) {
+            projectComboBox5.addItem(MessageConstant.CONDITION_NO_SUBMITTED_PROJECT_COMBOBOX);
+        }
+
+        for (Map<String, String> list : lists) {
+            if (!list.get("reportId").equals("0")) {
+                projectComboBox5.addItem(list.get("moduleName"));
+            }
+        }
+        projectComboBox5.setSelectedIndex(0);
     }
     
     private void refreshjTable3(Integer value) {
@@ -238,6 +261,12 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
                             jPanel3.revalidate(); // Recalculate layout
                             jPanel3.repaint(); // Repaint
                         }
+                        
+                        if (pdfSubmissionPreview3 != null) {
+                            jPanel1.remove(pdfSubmissionPreview3); // Remove the panel 's' from jPanel2
+                            jPanel1.revalidate(); // Recalculate layout
+                            jPanel1.repaint(); // Repaint
+                        }
             
                         SwingController ctr1 = new SwingController();
                         SwingViewBuilder vb = new SwingViewBuilder(ctr1);
@@ -255,6 +284,79 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         }
     }
 
+     private void refreshComboBox3Details(Object value) {
+        if (value == null) {
+            return;
+        }
+        if (projectComboBox2.getSelectedItem() != null) {
+            if (projectComboBox2.getSelectedItem().equals(MessageConstant.CONDITION_PROJECT_RESULT_COMBOBOX)) {
+                JField25.setText("Submission ID");
+                JField27.setText("Lecturer Name");
+                JField28.setText("Project Due Date");
+                JField32.setText("Project Type");
+                JField24.setText("Submission Date");
+                JField26.setText("Marking Status");
+                JField29.setText("result");
+                jTextArea6.setText("Lecturer Comment");
+                JField20.setText("Project File Name");
+            } else {
+                List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField25.setText(list.get("id"));
+                        JField27.setText(list.get("lecturerName"));
+                        JField28.setText(list.get("dueDate"));
+                        JField32.setText(list.get("type"));
+                        JField24.setText(list.get("submitAt"));
+                        JField26.setText(list.get("Status"));
+                        JField29.setText(list.get("result"));
+                        jTextArea6.setText(list.get("comment"));
+                        JField20.setText(list.get("FileName"));
+                    }
+                }
+            }
+        }
+    }
+     
+     private void refreshComboBox4Details(Object value) {
+        if (value == null) {
+            return;
+        }
+        if (projectComboBox5.getSelectedItem() != null) {
+            if (projectComboBox5.getSelectedItem().equals(MessageConstant.CONDITION_NO_SUBMITTED_PROJECT_COMBOBOX)) {
+                JField21.setText("Project File Name");
+                if (pdfSubmissionPreview3 != null) {
+                    jPanel1.remove(pdfSubmissionPreview3); // Remove the panel 's' from jPanel2
+                    jPanel1.revalidate(); // Recalculate layout
+                    jPanel1.repaint(); // Repaint
+                }
+            } else {
+                List<Map<String, String>> lists = SubmissionController.getAllSubmissionDetailsForStudent();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("moduleName"))) {
+                        JField21.setText(list.get("FileName"));
+                        
+                        if (pdfSubmissionPreview3 != null) {
+                            jPanel1.remove(pdfSubmissionPreview3); // Remove the panel 's' from jPanel2
+                            jPanel1.revalidate(); // Recalculate layout
+                            jPanel1.repaint(); // Repaint
+                        }
+            
+                        SwingController ctr1 = new SwingController();
+                        SwingViewBuilder vb = new SwingViewBuilder(ctr1);
+                        pdfSubmissionPreview3 = vb.buildViewerPanel();
+                        ComponentKeyBinding.install(ctr1, pdfSubmissionPreview3);
+                        
+                        Path destinationPath = Paths.get(list.get("FilePath"));
+                        
+                        ctr1.openDocument(String.valueOf(destinationPath));
+
+                        jPanel1.add(pdfSubmissionPreview3);   
+                    }
+                }
+            }
+        }
+    }
     
     private void refreshTable() {
         DefaultTableModel dtm =  (DefaultTableModel)jTable2.getModel();
@@ -349,16 +451,12 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         Panel6 = new javax.swing.JPanel();
         menuBtn38 = new javax.swing.JLabel();
         menuBtn44 = new javax.swing.JLabel();
-        menuBtn45 = new javax.swing.JLabel();
         JField24 = new javax.swing.JTextField();
         projectComboBox4 = new javax.swing.JComboBox<>();
         JField25 = new javax.swing.JTextField();
         JField26 = new javax.swing.JTextField();
         menuBtn50 = new javax.swing.JLabel();
-        menuBtn46 = new javax.swing.JLabel();
-        menuBtn47 = new javax.swing.JLabel();
         JField27 = new javax.swing.JTextField();
-        menuBtn51 = new javax.swing.JLabel();
         JField28 = new javax.swing.JTextField();
         menuBtn53 = new javax.swing.JLabel();
         JField29 = new javax.swing.JTextField();
@@ -367,15 +465,18 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         jTextArea6 = new javax.swing.JTextArea();
         menuBtn55 = new javax.swing.JLabel();
         JField20 = new javax.swing.JTextField();
-        menuBtn42 = new javax.swing.JLabel();
         JField32 = new javax.swing.JTextField();
+        menuBtn39 = new javax.swing.JLabel();
+        menuBtn43 = new javax.swing.JLabel();
+        menuBtn49 = new javax.swing.JLabel();
+        menuBtn52 = new javax.swing.JLabel();
+        menuBtn56 = new javax.swing.JLabel();
         Panel7 = new javax.swing.JPanel();
         menuBtn57 = new javax.swing.JLabel();
         projectComboBox5 = new javax.swing.JComboBox<>();
         menuBtn59 = new javax.swing.JLabel();
         JField21 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel44 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1104,14 +1205,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn44.setOpaque(true);
         Panel6.add(menuBtn44, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
 
-        menuBtn45.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn45.setText("SUBMISSION DATE");
-        menuBtn45.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn45.setOpaque(true);
-        Panel6.add(menuBtn45, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 300, 40));
-
+        JField24.setEditable(false);
+        JField24.setBackground(new java.awt.Color(255, 255, 255));
         JField24.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField24.setForeground(new java.awt.Color(1, 1, 1));
         JField24.setText("Submission Date");
@@ -1136,6 +1231,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         });
         Panel6.add(projectComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
+        JField25.setEditable(false);
+        JField25.setBackground(new java.awt.Color(255, 255, 255));
         JField25.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField25.setForeground(new java.awt.Color(1, 1, 1));
         JField25.setText("Module Name");
@@ -1148,6 +1245,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         });
         Panel6.add(JField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
 
+        JField26.setEditable(false);
+        JField26.setBackground(new java.awt.Color(255, 255, 255));
         JField26.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField26.setForeground(new java.awt.Color(1, 1, 1));
         JField26.setText("Marking Status");
@@ -1162,28 +1261,14 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn50.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
         menuBtn50.setText("MARKING STATUS");
         menuBtn50.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn50.setOpaque(true);
         Panel6.add(menuBtn50, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 300, 40));
 
-        menuBtn46.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn46.setText("INTAKE CODE");
-        menuBtn46.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn46.setOpaque(true);
-        Panel6.add(menuBtn46, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
-
-        menuBtn47.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn47.setText("LECTURER NAME");
-        menuBtn47.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn47.setOpaque(true);
-        Panel6.add(menuBtn47, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 300, 40));
-
+        JField27.setEditable(false);
+        JField27.setBackground(new java.awt.Color(255, 255, 255));
         JField27.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField27.setForeground(new java.awt.Color(1, 1, 1));
         JField27.setText("Lectuerer Name");
@@ -1196,14 +1281,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         });
         Panel6.add(JField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 300, 35));
 
-        menuBtn51.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn51.setText("DUE DATE");
-        menuBtn51.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn51.setOpaque(true);
-        Panel6.add(menuBtn51, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 300, 40));
-
+        JField28.setEditable(false);
+        JField28.setBackground(new java.awt.Color(255, 255, 255));
         JField28.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField28.setForeground(new java.awt.Color(1, 1, 1));
         JField28.setText("Project Due Date");
@@ -1218,12 +1297,14 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn53.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/view-24x24.png"))); // NOI18N
         menuBtn53.setText("RESULT");
         menuBtn53.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn53.setOpaque(true);
         Panel6.add(menuBtn53, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 300, 40));
 
+        JField29.setEditable(false);
+        JField29.setBackground(new java.awt.Color(255, 255, 255));
         JField29.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField29.setForeground(new java.awt.Color(1, 1, 1));
         JField29.setText("Project Result");
@@ -1238,18 +1319,20 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn54.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
         menuBtn54.setText("LECTURER COMMENT");
         menuBtn54.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn54.setOpaque(true);
         Panel6.add(menuBtn54, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 300, 40));
 
         jTextArea6.setEditable(false);
+        jTextArea6.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea6.setColumns(20);
         jTextArea6.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
         jTextArea6.setText("Lecturer Comment");
+        jTextArea6.setWrapStyleWord(true);
         jTextArea6.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         jScrollPane8.setViewportView(jTextArea6);
 
@@ -1257,12 +1340,14 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn55.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn55.setText("PROJECT FILE");
         menuBtn55.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn55.setOpaque(true);
         Panel6.add(menuBtn55, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 150, 40));
 
+        JField20.setEditable(false);
+        JField20.setBackground(new java.awt.Color(255, 255, 255));
         JField20.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField20.setForeground(new java.awt.Color(1, 1, 1));
         JField20.setText("Project File Name");
@@ -1274,14 +1359,6 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             }
         });
         Panel6.add(JField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 300, 35));
-
-        menuBtn42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn42.setText("PROJECT TYPE");
-        menuBtn42.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn42.setOpaque(true);
-        Panel6.add(menuBtn42, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 300, 40));
 
         JField32.setEditable(false);
         JField32.setBackground(new java.awt.Color(255, 255, 255));
@@ -1297,6 +1374,46 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         });
         Panel6.add(JField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 300, 35));
 
+        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn39.setText("SUBMISSION ID");
+        menuBtn39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn39.setOpaque(true);
+        Panel6.add(menuBtn39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
+
+        menuBtn43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        menuBtn43.setText("LECTURER NAME");
+        menuBtn43.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn43.setOpaque(true);
+        Panel6.add(menuBtn43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 300, 40));
+
+        menuBtn49.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
+        menuBtn49.setText("DUE DATE");
+        menuBtn49.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn49.setOpaque(true);
+        Panel6.add(menuBtn49, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 300, 40));
+
+        menuBtn52.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn52.setText("PROJECT TYPE");
+        menuBtn52.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn52.setOpaque(true);
+        Panel6.add(menuBtn52, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 300, 40));
+
+        menuBtn56.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn56.setText("SUBMISSION DATE");
+        menuBtn56.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn56.setOpaque(true);
+        Panel6.add(menuBtn56, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 300, 40));
+
         MainTabbedPanel1.addTab("Result", Panel6);
 
         Panel7.setPreferredSize(new java.awt.Dimension(1050, 570));
@@ -1304,15 +1421,14 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
 
         menuBtn57.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn57.setText("FILE NAME :");
         menuBtn57.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn57.setOpaque(true);
-        Panel7.add(menuBtn57, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 120, 40));
+        Panel7.add(menuBtn57, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 120, 40));
 
         projectComboBox5.setBackground(new java.awt.Color(254, 254, 254));
         projectComboBox5.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        projectComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
         projectComboBox5.setToolTipText("d");
         projectComboBox5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         projectComboBox5.setFocusable(false);
@@ -1321,7 +1437,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
                 projectComboBox5ActionPerformed(evt);
             }
         });
-        Panel7.add(projectComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 320, 40));
+        Panel7.add(projectComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 390, 40));
 
         menuBtn59.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1331,6 +1447,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
         menuBtn59.setOpaque(true);
         Panel7.add(menuBtn59, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 40));
 
+        JField21.setEditable(false);
+        JField21.setBackground(new java.awt.Color(255, 255, 255));
         JField21.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         JField21.setForeground(new java.awt.Color(1, 1, 1));
         JField21.setText("Project File Name");
@@ -1341,26 +1459,11 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
                 JField21MouseClicked(evt);
             }
         });
-        Panel7.add(JField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 360, 40));
+        Panel7.add(JField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 360, 40));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
         Panel7.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1040, 500));
-
-        jLabel44.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel44.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
-        jLabel44.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel44.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel44.setOpaque(true);
-        jLabel44.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel44MouseClicked(evt);
-            }
-        });
-        Panel7.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 10, 50, 40));
 
         MainTabbedPanel1.addTab("PDF Viwer", Panel7);
 
@@ -1409,12 +1512,16 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             Dialog.ErrorDialog(MessageConstant.CONDITION_EDIT_PROJECT_COMBOBOX);
             return;
         }
-        
+
         jPanel3.remove(pdfSubmissionPreview2); // Remove the panel 's' from jPanel2
         jPanel3.revalidate(); // Recalculate layout
         jPanel3.repaint(); // Repaint
         
-        if (ReportController.removeSubmissionById(Integer.parseInt(JField22.getText()))) {
+        /*jPanel1.remove(pdfSubmissionPreview3); // Remove the panel 's' from jPanel2
+        jPanel1.revalidate(); // Recalculate layout
+        jPanel1.repaint(); // Repaint*/
+        
+        if (SubmissionController.removeSubmissionById(Integer.parseInt(JField22.getText()))) {
             refresh();
         }
     }//GEN-LAST:event_jLabel40MouseClicked
@@ -1475,7 +1582,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
             return;
         }
         
-        if (ReportController.submitReport(Integer.parseInt(JField14.getText()), uploadedfilePath)) {
+        if (SubmissionController.submitReport(Integer.parseInt(JField14.getText()), uploadedfilePath)) {
             refresh();
             jPanel2.removeAll();
             uploadedfilePath = null;
@@ -1529,7 +1636,7 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JField24MouseClicked
 
     private void projectComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox4ActionPerformed
-        // TODO add your handling code here:
+        refreshComboBox3Details(projectComboBox4.getSelectedItem());
     }//GEN-LAST:event_projectComboBox4ActionPerformed
 
     private void JField25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField25MouseClicked
@@ -1565,24 +1672,8 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JField21MouseClicked
 
     private void projectComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboBox5ActionPerformed
-        if (projectComboBox5.getSelectedItem().equals("1")) {
-            try {
-                SwingController ctr1 = new SwingController();
-                SwingViewBuilder vb = new SwingViewBuilder(ctr1);
-                JPanel s = vb.buildViewerPanel();
-                ComponentKeyBinding.install(ctr1, s);
-                ctr1.openDocument("C:\\Users\\chanh\\Downloads\\COMPONENT 1 PRESENTATION AND REPORT GUIDELINES_MARCH2024.pdf");
-
-                jPanel1.add(s);
-            } catch (Exception e) {
-                // Handle exceptions
-            }
-        }
+        refreshComboBox4Details(projectComboBox5.getSelectedItem());
     }//GEN-LAST:event_projectComboBox5ActionPerformed
-
-    private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel44MouseClicked
 
     private void menuBtn12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn12MouseClicked
        projectComboBox.setSelectedIndex(1);
@@ -1651,7 +1742,6 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -1688,20 +1778,20 @@ public class StudentProjectGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn36;
     private javax.swing.JLabel menuBtn37;
     private javax.swing.JLabel menuBtn38;
+    private javax.swing.JLabel menuBtn39;
     private javax.swing.JLabel menuBtn4;
     private javax.swing.JLabel menuBtn40;
     private javax.swing.JLabel menuBtn41;
-    private javax.swing.JLabel menuBtn42;
+    private javax.swing.JLabel menuBtn43;
     private javax.swing.JLabel menuBtn44;
-    private javax.swing.JLabel menuBtn45;
-    private javax.swing.JLabel menuBtn46;
-    private javax.swing.JLabel menuBtn47;
     private javax.swing.JLabel menuBtn48;
+    private javax.swing.JLabel menuBtn49;
     private javax.swing.JLabel menuBtn50;
-    private javax.swing.JLabel menuBtn51;
+    private javax.swing.JLabel menuBtn52;
     private javax.swing.JLabel menuBtn53;
     private javax.swing.JLabel menuBtn54;
     private javax.swing.JLabel menuBtn55;
+    private javax.swing.JLabel menuBtn56;
     private javax.swing.JLabel menuBtn57;
     private javax.swing.JLabel menuBtn59;
     private static javax.swing.JComboBox<String> projectComboBox;

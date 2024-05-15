@@ -21,6 +21,10 @@ public class IntakeDAO {
     static {
         loadConsultationData();
     }
+    
+//    public static void main(String[] args) {
+//        System.out.println(intakes);
+//    }
 
     /**
      * Get Intake By Id

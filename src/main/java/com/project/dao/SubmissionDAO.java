@@ -26,10 +26,6 @@ public class SubmissionDAO {
         loadSubmissionData();
     }
 
-    public static void main(String[] args) {
-        System.out.println(submissions);
-    }
-
     /**
      * Get Submission Details by ID
      *
@@ -43,6 +39,27 @@ public class SubmissionDAO {
             }
         }
         return null;
+    }
+    
+    /**
+     * Get All Submission Details By Module Id
+     *
+     * @param moduleId
+     * @return Submission
+     */
+    public Submission getSubmissionByModuleId(Integer moduleId) {
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                return submission;
+            }
+        }
+        return null;
+    }
+    
+    public static void main(String[] args) {
+        SubmissionDAO sub = new SubmissionDAO();
+        System.out.println(sub.getSubmissionByModuleId(36887009));
+        
     }
 
     /**
@@ -64,7 +81,7 @@ public class SubmissionDAO {
                     pendingMarking = pendingMarking + 1;
                 } else if (submission.getReportStatus().equals(ReportStatus.MARKED_2)) {
                     marked = marked + 1;
-                } else if (submission.getReportStatus().equals(PresentationStatus.OVERDUE)) {
+                } else if (submission.getReportStatus().equals(ReportStatus.OVERDUE)) {
                     overdue = overdue + 1;
                 }
             }
@@ -126,6 +143,7 @@ public class SubmissionDAO {
                 map.put("type", submission.getReportType().toString());
                 map.put("Status", submission.getReportStatus().toString());
                 map.put("result", submission.getReportResult().toString());
+                map.put("comment", submission.getComment());
                 map.put("submitAt", DateTimeUtils.formatStrDateTime(submission.getSubmittedAt()));
                 map.put("markedAt", DateTimeUtils.formatStrDateTime(submission.getMarkedAt()));
 
@@ -156,6 +174,7 @@ public class SubmissionDAO {
             submission.setReportStatus(ReportStatus.valueOf(obj.get("reportStatus")));
             submission.setReportType(ReportType.valueOf(obj.get("reportType")));
             submission.setReportResult(Double.parseDouble(obj.get("reportResult")));
+            submission.setComment(obj.get("comment"));
             submission.setSubmittedAt(DateTimeUtils.formatDateTime(obj.get("submitted_at")));
             submission.setMarkedAt(DateTimeUtils.formatDateTime(obj.get("marked_at")));
             submission.setCreatedAt(DateTimeUtils.formatDateTime(obj.get("created_at")));
@@ -197,6 +216,14 @@ public class SubmissionDAO {
                             submission.setReportType(ReportType.valueOf(value));
                             return store(submissionId, "reportType", value);
                         }
+                        case "reportResult" -> {
+                            submission.setReportResult(Double.valueOf(value));
+                            return store(submissionId, "reportResult", value);
+                        }
+                        case "comment" -> {
+                            submission.setComment(value);
+                            return store(submissionId, "comment", value);
+                        }
                         case "submitted_at" -> {
                             submission.setSubmittedAt(DateTimeUtils.formatDateTime(value));
                             return store(submissionId, "submitted_at", value);
@@ -227,11 +254,9 @@ public class SubmissionDAO {
     }
 
     private static boolean store(Integer consultationId, String attribute, String value) {
-        // System.out.println(consultationId + attribute + value);
-/*        JsonHandler userJson = new JsonHandler();
+        JsonHandler userJson = new JsonHandler();
         userJson.encode(FileHandler.readFile(SUBMISSION_DATA));
-        return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);*/
-        return false;
+        return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);
     }
 
 }

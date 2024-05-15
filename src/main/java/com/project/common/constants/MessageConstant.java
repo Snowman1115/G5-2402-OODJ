@@ -67,6 +67,9 @@ public class MessageConstant {
     public static final String CONDITION_PROJECT_COMBOBOX = "No projects are available to submit.";
     public static final String CONDITION_EDIT_PROJECT_COMBOBOX = "No projects are available to edit.";
     public static final String CONDITION_PROJECT_RESULT_COMBOBOX = "No marked project results to view.";
+    public static final String CONDITION_NO_SUBMITTED_PROJECT_COMBOBOX = "No marked project results to view.";
+    
+    public static final String CONDITION_NO_MODULES_UNDER_LECTURER = "No modules to show.";
 
     /* WARNING */
     public static final String WARNING_REMOVE_CONFIRMATION = "Are you sure you want to delete ?";

@@ -114,7 +114,8 @@ public class ModuleDAO {
     
     public static void main(String[] args) {
         ModuleDAO test=new ModuleDAO();
-        System.out.println(test.getModuleByLecturerId(88608036));
+//        System.out.println(test.getModuleByLecturerId(88608036));
+        System.out.println(test.getModuleByProjectManagerId(39904006));
     }
     
     /**

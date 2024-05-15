@@ -4,6 +4,7 @@
  */
 package com.project.service.Impl;
 
+import com.project.common.utils.DateTimeUtils;
 import com.project.dao.IntakeDAO;
 import com.project.dao.ModuleDAO;
 import com.project.dao.SubmissionDAO;
@@ -26,11 +27,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     private ModuleDAO moduleDAO = new ModuleDAO();
     private IntakeDAO intakeDAO = new IntakeDAO();
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
-    private SubmissionDAO submissionDAO = new SubmissionDAO();
-  
-    
-    //TODO: Based on selection of module, need to find the intake name
-    //TODO: Get all supervisee based on module ID     
+    private SubmissionDAO submissionDAO = new SubmissionDAO();   
     
     //Get student ID, student name, intake code, module code, project type, and status to be displayed at the LecturerDashboard.java
     //If need to get other details from different txt files, insert your logic under this method    
@@ -44,28 +41,23 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             mappedMap.put("id", list.get("id"));
             mappedMap.put("moduleCode", list.get("moduleCode"));
             
-            //Get intake code
+            //Get intake code by intakeId that is from moduleDAO object
             Intake intake = intakeDAO.getIntakeById(Integer.parseInt(list.get("intakeId")));
             mappedMap.put("intakeCode", intake.getIntakeCode());
-                    
-//             SubmisisonDAO submissionDAO = new submissionDAO();
-//             Submission sumbission = submissiondao.getSubmissionByModuleID(moduleID);
 
-            //Get project type, and status by module ID
+            //Get report type, student ID, report status, and submission due date from Submission by module ID that is from moduleDAO object
             Submission submission = submissionDAO.getSubmissionByModuleId(Integer.parseInt(list.get("id")));
-            
-            
             if(submission.getModuleId().equals(Integer.parseInt(list.get("id"))))
             {
                 mappedMap.put("reportType", submission.getReportType().toString());
                 mappedMap.put("reportStatus", submission.getReportStatus().toString());
                 mappedMap.put("studentId", submission.getStudentId().toString());
-                //Get student name by student ID
+                mappedMap.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                //Get student name from UserAccount by student ID that is from Submission object
                 UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
                 String studentName=student.getFirstName()+" "+student.getLastName();
                 mappedMap.put("studentName", studentName);
             }
-
 //             if (submission.getModuleid.equals(moduleId))
 //             {
 //                 submission.getStatus();
@@ -97,16 +89,34 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             Map<String, String> mappedMap = new HashMap<>();
             mappedMap.put("id", list.get("id"));
             mappedMap.put("moduleCode", list.get("moduleCode"));
+            
+            //Get intake code by intakeId that is from moduleDAO object
+            Intake intake = intakeDAO.getIntakeById(Integer.valueOf(list.get("intakeId")));
+            mappedMap.put("intakeCode", intake.getIntakeCode());
+
+            //Get report type, student ID, report status, and submission due date from Submission by module ID that is from moduleDAO object
+            Submission submission = submissionDAO.getSubmissionByModuleId(Integer.valueOf(list.get("id")));
+            if(submission.getModuleId().equals(Integer.parseInt(list.get("id"))))
+            {
+                mappedMap.put("reportType", submission.getReportType().toString());
+                mappedMap.put("reportStatus", submission.getReportStatus().toString());
+                mappedMap.put("studentId", submission.getStudentId().toString());
+                mappedMap.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                //Get student name from UserAccount by student ID that is from Submission object
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                mappedMap.put("studentName", studentName);
+            }
             mappedLists.add(mappedMap);
         }
         return mappedLists;
     }
     
 //    For debug purpose, run the below main method to view the data
-    public static void main(String[] args) {
-        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
-        System.out.println(prje.getAllModuleDetailsByLecId(88608036));
-    }
+//    public static void main(String[] args) {
+//        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
+//        System.out.println(prje.getAllModuleDetailsBySecondMarkerId(88608036));
+//    }
     
 }
 

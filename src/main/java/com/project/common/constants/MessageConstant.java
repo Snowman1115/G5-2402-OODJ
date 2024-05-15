@@ -15,7 +15,9 @@ public class MessageConstant {
     public static final String SUCCESS_PASSWORD_UPDATE_SUCCESSFUL = "Password Update Successful.";
     public static final String SUCCESS_SECURITY_PHRASE_UPDATE_SUCCESSFUL = "Security Phrase Update Successful.";
     public static final String SUCCESS_BOOKING_CONSULTATION = "Consultation Successfully Booked.";
+    public static final String SUCCESS_CONSULTATION_CREATED = "Consultation Successfully Created.";
     public static final String SUCCESS_CONSULTATION_CANCELLED = "Consultation Successfully Cancelled.";
+    public static final String SUCCESS_CONSULTATION_COMPLETED = "Consultation Successfully Update To Completed.";
     public static final String SUCCESS_BOOKED_PRESENTATION_SLOT = "Presentation Slot Successfully Booked.";
     public static final String SUCCESS_CANCELLED_PRESENTATION_SLOT = "Presentation Slot Successfully Cancelled.";
     public static final String SUCCESS_SUBMITTED_PROJECT = "Project File Submitted Successfully.";
@@ -57,6 +59,7 @@ public class MessageConstant {
     public static final String ERROR_ONLY_PDF_SUPPORTED = "Only PDF format is supported. Please try again.";
     public static final String ERROR_EMPTY_FILE = "Please upload a file to submit.";
     public static final String ERROR_SUBMISSION_DUE_DATE_IS_OVER = "Submission Due Date is Over, modification are not allowed.";
+    public static final String ERROR_CONSULTATION_DATETIME_CLASHED = "The DateTime selected is clashing with other existing consultation DateTime. Please select another DateTime.";
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations are available to book.";

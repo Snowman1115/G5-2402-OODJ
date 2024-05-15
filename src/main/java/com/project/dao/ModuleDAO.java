@@ -91,10 +91,10 @@ public class ModuleDAO {
     }
     
     
-    public static void main(String[] args) {
-        ModuleDAO test=new ModuleDAO();
-        System.out.println(test.getModuleByLecturerId(88608036));
-    }
+//    public static void main(String[] args) {
+//        ModuleDAO test=new ModuleDAO();
+//        System.out.println(test.getModuleByLecturerId(88608036));
+//    }
     
     /**
      * Preload Data into presentations Array

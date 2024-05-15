@@ -27,8 +27,7 @@ public class PresentationServiceImpl implements PresentationService {
     private ModuleDAO moduleDAO = new ModuleDAO();
 
     /**
-     * Get All Presentaion Status By Student Id
-     *
+     * Get All Presentation Status By Student Id
      * @param studentId
      * @return Map of List
      */
@@ -39,7 +38,6 @@ public class PresentationServiceImpl implements PresentationService {
 
     /**
      * Get All Upcoming N Pending Booking Presentation
-     *
      * @param studentId
      * @return Map of list
      */

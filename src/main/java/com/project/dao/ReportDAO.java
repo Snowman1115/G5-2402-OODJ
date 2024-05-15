@@ -1,27 +1,19 @@
 package com.project.dao;
 
-import com.project.common.constants.MessageConstant;
-import com.project.common.constants.PresentationStatus;
 import com.project.common.constants.ReportType;
 import com.project.common.utils.*;
 import com.project.pojo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.filetypedetector.FileType;
 import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 public class ReportDAO {
@@ -129,7 +121,8 @@ public class ReportDAO {
             Files.copy(new File(filePath).toPath(), destinationPath);
             document.close();
 
-            Integer newReportId = IDGenUtils.generateNewID(getAllReportId());
+            LongIDGenerator longIDGenerator = new LongIDGenerator();
+            Integer newReportId = longIDGenerator.generateNewID(getAllReportId());
             switch (reportType) {
                 case REPORT -> {
                     Report report = new Report();

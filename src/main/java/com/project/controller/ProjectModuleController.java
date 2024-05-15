@@ -36,6 +36,11 @@ public class ProjectModuleController {
     public static List getAllModuleDetailsBySecondMarkerId() {
         return projectModuleService.getAllModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
     }
+    //Jin Xun - Project Manager
+    // Method to get all module details by project manager ID
+    public static List getAllModuleDetailsByProjectManagerId() {
+        return projectModuleService.getAllModuleDetailsByProjectManagerId(getAuthenticatedUserId());
+    }
     
     /**
      * Get Authenticated UserId

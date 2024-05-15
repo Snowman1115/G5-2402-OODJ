@@ -90,6 +90,27 @@ public class ModuleDAO {
         return list;
     }
     
+    // Jin Xun - Get Project Manager ID
+    public List getModuleByProjectManagerId(Integer ProjectManagerId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getSupervisorId().equals(ProjectManagerId)) {
+                Map map = new HashMap<>();
+                map.put("id", module.getModuleId().toString());
+                map.put("intakeId", module.getIntakeId().toString());
+                map.put("moduleCode", module.getModuleCode());
+                map.put("supervisorId", module.getSupervisorId().toString());
+                map.put("firstMarker", module.getFirstMarker().toString());
+                map.put("secondMarker", module.getSecondMarker().toString());
+                map.put("startDate", DateTimeUtils.formatStrDate(module.getStartDate()));
+                map.put("endDate", DateTimeUtils.formatStrDate(module.getEndDate()));
+                map.put("created_at", DateTimeUtils.formatStrDateTime(module.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(module.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
     
     public static void main(String[] args) {
         ModuleDAO test=new ModuleDAO();

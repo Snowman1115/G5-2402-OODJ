@@ -40,133 +40,133 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         switch (index) {
             case "menuBtn1" -> {
                 menuBtn1.setBackground(ClickedBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
                 WindowsPane.add(new ProjectManagerDashboard()).setVisible(true);
             } 
             case "menuBtn2" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(ClickedBtnColor);
+                menuBtn3.setBackground(ClickedBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new AdminOfficerManagement()).setVisible(true);
+                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+                WindowsPane.add(new ManagerModuleGui()).setVisible(true);
             } 
             case "menuBtn3" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(ClickedBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new AdminSalespersonManagement()).setVisible(true);
-            } 
-            case "menuBtn4" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(ClickedBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new AdminManagement()).setVisible(true);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+                 WindowsPane.add(new ManagerAssignMarker()).setVisible(true);
             } 
-            case "menuBtn5" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(ClickedBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                WindowsPane.add(new UserProfileGui()).setVisible(true);
-            } 
-            case "menuBtn6" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(ClickedBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-            } 
-            case "menuBtn7" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(ClickedBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new SalesGui()).setVisible(true);
-            } 
-            case "menuBtn8" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(ClickedBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new FurnitureGui()).setVisible(true);
-            } 
-            case "menuBtn9" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(ClickedBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new SuperAdminManagement()).setVisible(true);
-            } 
-            case "menuBtn10" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(ClickedBtnColor);
-                // WindowsPane.add(new OrderGui()).setVisible(true);
-            } 
+//            case "menuBtn4" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(ClickedBtnColor);
+//                menuBtn5.setBackground(DefaultBtnColor);
+//                menuBtn6.setBackground(DefaultBtnColor);
+//                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+//                // WindowsPane.add(new AdminManagement()).setVisible(true);
+//            } 
+//            case "menuBtn5" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn5.setBackground(ClickedBtnColor);
+//                menuBtn6.setBackground(DefaultBtnColor);
+//                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+//                WindowsPane.add(new UserProfileGui()).setVisible(true);
+//            } 
+//            case "menuBtn6" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn5.setBackground(DefaultBtnColor);
+//                menuBtn6.setBackground(ClickedBtnColor);
+//                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+//            } 
+//            case "menuBtn7" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn5.setBackground(DefaultBtnColor);
+//                menuBtn6.setBackground(DefaultBtnColor);
+//                menuBtn2.setBackground(ClickedBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+//                // WindowsPane.add(new SalesGui()).setVisible(true);
+//            } 
+//            case "menuBtn8" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn5.setBackground(DefaultBtnColor);
+//                menuBtn6.setBackground(DefaultBtnColor);
+//                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(ClickedBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+//                // WindowsPane.add(new FurnitureGui()).setVisible(true);
+//            } 
+//            case "menuBtn9" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn5.setBackground(DefaultBtnColor);
+//                menuBtn6.setBackground(DefaultBtnColor);
+//                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(ClickedBtnColor);
+//                menuBtn10.setBackground(DefaultBtnColor);
+//                // WindowsPane.add(new SuperAdminManagement()).setVisible(true);
+//            } 
+//            case "menuBtn10" -> {
+//                menuBtn1.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn3.setBackground(DefaultBtnColor);
+//                menuBtn4.setBackground(DefaultBtnColor);
+//                menuBtn5.setBackground(DefaultBtnColor);
+//                menuBtn6.setBackground(DefaultBtnColor);
+//                menuBtn2.setBackground(DefaultBtnColor);
+//                menuBtn8.setBackground(DefaultBtnColor);
+//                menuBtn9.setBackground(DefaultBtnColor);
+//                menuBtn10.setBackground(ClickedBtnColor);
+//                // WindowsPane.add(new OrderGui()).setVisible(true);
+//            } 
         }
     }
 
@@ -185,20 +185,14 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         Logo = new javax.swing.JLabel();
         MenuPanel = new javax.swing.JPanel();
         menuBtn1 = new javax.swing.JLabel();
-        menuBtn2 = new javax.swing.JLabel();
         menuBtn3 = new javax.swing.JLabel();
-        menuBtn4 = new javax.swing.JLabel();
         menuBtn5 = new javax.swing.JLabel();
         menuBtn6 = new javax.swing.JLabel();
-        menuBtn7 = new javax.swing.JLabel();
-        menuBtn8 = new javax.swing.JLabel();
-        menuBtn9 = new javax.swing.JLabel();
-        menuBtn10 = new javax.swing.JLabel();
+        menuBtn2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -257,39 +251,15 @@ public class ProjectManagerGui extends javax.swing.JFrame {
             }
         });
 
-        menuBtn2.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn2.setText("XXXX");
-        menuBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn2.setOpaque(true);
-        menuBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn2MouseClicked(evt);
-            }
-        });
-
         menuBtn3.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn3.setText("XXXXX");
+        menuBtn3.setText("Generate Report");
         menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn3.setOpaque(true);
         menuBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuBtn3MouseClicked(evt);
-            }
-        });
-
-        menuBtn4.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn4.setText("XXXXX");
-        menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn4.setOpaque(true);
-        menuBtn4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn4MouseClicked(evt);
             }
         });
 
@@ -317,51 +287,15 @@ public class ProjectManagerGui extends javax.swing.JFrame {
             }
         });
 
-        menuBtn7.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn7.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn7.setText("XXXXX");
-        menuBtn7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn7.setOpaque(true);
-        menuBtn7.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuBtn2.setBackground(new java.awt.Color(245, 245, 245));
+        menuBtn2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuBtn2.setText("View Module");
+        menuBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn2.setOpaque(true);
+        menuBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn7MouseClicked(evt);
-            }
-        });
-
-        menuBtn8.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn8.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn8.setText("XXXXX");
-        menuBtn8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn8.setOpaque(true);
-        menuBtn8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn8MouseClicked(evt);
-            }
-        });
-
-        menuBtn9.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn9.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn9.setText("XXXXX");
-        menuBtn9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn9.setOpaque(true);
-        menuBtn9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn9MouseClicked(evt);
-            }
-        });
-
-        menuBtn10.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn10.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn10.setText("XXXXXX");
-        menuBtn10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn10.setOpaque(true);
-        menuBtn10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn10MouseClicked(evt);
+                menuBtn2MouseClicked(evt);
             }
         });
 
@@ -373,17 +307,14 @@ public class ProjectManagerGui extends javax.swing.JFrame {
 
         jSeparator4.setForeground(new java.awt.Color(230, 230, 230));
 
-        jLabel1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel1.setText("  Sales Management");
-
+        jLabel2.setText("Module Management");
         jLabel2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel2.setText("  Furniture Management");
 
+        jLabel3.setText("Report Status");
         jLabel3.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel3.setText("  User Management");
 
-        jLabel4.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         jLabel4.setText("  Project Manager Home");
+        jLabel4.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
 
         jSeparator5.setForeground(new java.awt.Color(230, 230, 230));
 
@@ -394,18 +325,17 @@ public class ProjectManagerGui extends javax.swing.JFrame {
             .addComponent(menuBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menuBtn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menuBtn6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menuBtn8, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(menuBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator2)
-            .addComponent(menuBtn7, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(jSeparator3)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addComponent(jSeparator2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(jSeparator3))
             .addComponent(jSeparator4)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator5)
@@ -423,30 +353,18 @@ public class ProjectManagerGui extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(81, 81, 81)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(menuBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -456,8 +374,8 @@ public class ProjectManagerGui extends javax.swing.JFrame {
 
         getContentPane().add(MenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 200, 660));
 
-        WindowsPane.setForeground(new java.awt.Color(50, 50, 50));
         WindowsPane.setFocusable(false);
+        WindowsPane.setForeground(new java.awt.Color(50, 50, 50));
 
         javax.swing.GroupLayout WindowsPaneLayout = new javax.swing.GroupLayout(WindowsPane);
         WindowsPane.setLayout(WindowsPaneLayout);
@@ -480,17 +398,9 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         ButtonClicked("menuBtn1");
     }//GEN-LAST:event_menuBtn1MouseClicked
 
-    private void menuBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn2MouseClicked
-        ButtonClicked("menuBtn2");
-    }//GEN-LAST:event_menuBtn2MouseClicked
-
     private void menuBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn3MouseClicked
         ButtonClicked("menuBtn3");
     }//GEN-LAST:event_menuBtn3MouseClicked
-
-    private void menuBtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn4MouseClicked
-        ButtonClicked("menuBtn4");
-    }//GEN-LAST:event_menuBtn4MouseClicked
 
     private void menuBtn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn5MouseClicked
         ButtonClicked("menuBtn5");
@@ -502,21 +412,9 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         new LoginGui();
     }//GEN-LAST:event_menuBtn6MouseClicked
 
-    private void menuBtn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn7MouseClicked
-        ButtonClicked("menuBtn7");
-    }//GEN-LAST:event_menuBtn7MouseClicked
-
-    private void menuBtn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn8MouseClicked
-        ButtonClicked("menuBtn8");
-    }//GEN-LAST:event_menuBtn8MouseClicked
-
-    private void menuBtn9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn9MouseClicked
-        ButtonClicked("menuBtn9");
-    }//GEN-LAST:event_menuBtn9MouseClicked
-
-    private void menuBtn10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn10MouseClicked
-        ButtonClicked("menuBtn10");
-    }//GEN-LAST:event_menuBtn10MouseClicked
+    private void menuBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn2MouseClicked
+        ButtonClicked("menuBtn2");
+    }//GEN-LAST:event_menuBtn2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -560,7 +458,6 @@ public class ProjectManagerGui extends javax.swing.JFrame {
     private javax.swing.JLabel LogoTitle_1;
     private javax.swing.JPanel MenuPanel;
     private static javax.swing.JDesktopPane WindowsPane;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -571,14 +468,9 @@ public class ProjectManagerGui extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private static javax.swing.JLabel menuBtn1;
-    private static javax.swing.JLabel menuBtn10;
     private static javax.swing.JLabel menuBtn2;
     private static javax.swing.JLabel menuBtn3;
-    private static javax.swing.JLabel menuBtn4;
     private static javax.swing.JLabel menuBtn5;
     private static javax.swing.JLabel menuBtn6;
-    private static javax.swing.JLabel menuBtn7;
-    private static javax.swing.JLabel menuBtn8;
-    private static javax.swing.JLabel menuBtn9;
     // End of variables declaration//GEN-END:variables
 }

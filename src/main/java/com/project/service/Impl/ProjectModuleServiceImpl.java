@@ -102,6 +102,25 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return mappedLists;
     }
     
+    //Jin Xun - Project Manager
+    // To filter the module details by project manager ID
+    @Override
+    public List getAllModuleDetailsByProjectManagerId(Integer ProjectManagerId){
+         List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Map<String, String>> lists = moduleDAO.getModuleByProjectManagerId(ProjectManagerId);
+        for (Map<String, String> list : lists){
+            Map<String, String> mappedMap = new HashMap<>();
+            mappedMap.put("id", list.get("id"));
+            mappedMap.put("moduleCode", list.get("moduleCode"));
+            mappedMap.put("startDate", list.get("startDate"));
+            mappedMap.put("endDate", list.get("endDate"));
+            mappedMap.put("firstMarker", list.get("firstMarker"));
+            mappedMap.put("secondMarker", list.get("secondMarker"));
+            mappedLists.add(mappedMap);
+        }
+        return mappedLists;
+    }
+    
 //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();

@@ -2,21 +2,10 @@ package com.project.dao;
 
 import com.project.common.constants.ConsultationStatus;
 import com.project.common.constants.MessageConstant;
-import com.project.common.utils.DateTimeUtils;
-import com.project.common.utils.Dialog;
-import com.project.common.utils.FileHandler;
-import com.project.common.utils.IDGenUtils;
-import com.project.common.utils.JsonHandler;
-import com.project.common.utils.PropertiesReader;
+import com.project.common.utils.*;
 import com.project.pojo.Consultation;
-import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
-import org.mindrot.jbcrypt.BCrypt;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import org.json.simple.JSONObject;
@@ -25,6 +14,8 @@ import org.json.simple.JSONObject;
 public class ConsultationDAO {
     private static final String CONSULTATION_DATA = PropertiesReader.getProperty("ConsultationData");
     private static List<Consultation> consultations = new ArrayList<>();
+
+    private IDGenerator shortIdGenerator = new ShortIDGenerator();
 
     static {
         loadConsultationData();
@@ -274,7 +265,7 @@ public class ConsultationDAO {
         {
             if(consultation.getLecturerId().equals(lecturerId))
             {
-                Integer newConsultationId = IDGenUtils.generateNewID(getAllConsultationId());
+                Integer newConsultationId = shortIdGenerator.generateNewID(getAllConsultationId());
                 Consultation newConsultation=new Consultation();
                 newConsultation.setConsultationId(newConsultationId);
                 newConsultation.setLecturerId(lecturerId);

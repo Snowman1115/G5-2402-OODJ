@@ -3,7 +3,9 @@ package com.project.dao;
 import com.project.common.constants.ConsultationStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.utils.DateTimeUtils;
+import com.project.common.utils.Dialog;
 import com.project.common.utils.FileHandler;
+import com.project.common.utils.IDGenUtils;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.pojo.Consultation;
@@ -14,8 +16,10 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import org.json.simple.JSONObject;
 
 @Slf4j
 public class ConsultationDAO {
@@ -147,7 +151,173 @@ public class ConsultationDAO {
         }
         return false;
     }
+    
+    public List getConsultationByLecturerId(Integer lecturerId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            if (consultation.getLecturerId().equals(lecturerId)) {
+                Map map = new HashMap<>();
+                map.put("id", consultation.getConsultationId().toString());
+                map.put("lecturerId", consultation.getLecturerId().toString());
+                map.put("studentId", consultation.getStudentId().toString());
+                map.put("consultationDateTime", DateTimeUtils.formatStrDateTime(consultation.getConsultationDateTime()));
+                map.put("consultationStatus", consultation.getConsultationStatus().toString());
+                map.put("created_at", DateTimeUtils.formatStrDateTime(consultation.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(consultation.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
+    
+    /**
+     * Get Total Number of Upcoming and Finished Consultation For Student
+     * @param lecturerId
+     * @return Map of Number
+     */
+    public Map<String, Integer> getUpcomingNFinishedConsultationForLecturer(Integer lecturerId) {
+        Map<String, Integer> map = new HashMap<>();
+        Integer upcomingSum = 0;
+        Integer availableSum = 0;
+        for (Consultation consultation : consultations) {
+            if (consultation.getLecturerId().equals(lecturerId)) {
+                if (consultation.getConsultationStatus().equals(ConsultationStatus.AVAILABLE)) {
+                    availableSum = availableSum + 1;
+                } else if (consultation.getConsultationStatus().equals(ConsultationStatus.SCHEDULED)) {
+                    upcomingSum = upcomingSum + 1;
+                }
+            }
+        }
+        map.put("upcoming", upcomingSum);
+        map.put("available", availableSum);
+        return map;
+    }
+    
+    /**
+     * Get All Scheduled Consultation for Lecturer
+     * @param lecturerId
+     * @return List
+     */
+    public List<Consultation> getAllScheduledConsultationForLec(Integer lecturerId) {
+        List<Consultation> list = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            if (consultation.getLecturerId().equals(lecturerId) && consultation.getConsultationStatus().equals(ConsultationStatus.SCHEDULED)) {
+                list.add(consultation);
+            }
+        }
+        return list;
+    }
+    /**
+     * Get All Scheduled Consultation for Lecturer
+     * @param lecturerId
+     * @return List
+     */
+    public List<Consultation> getAllConsultationExceptCompletedForLec(Integer lecturerId) {
+        List<Consultation> list = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            if (consultation.getLecturerId().equals(lecturerId) && !consultation.getConsultationStatus().equals(ConsultationStatus.COMPLETED)) {
+                list.add(consultation);
+            }
+        }
+        return list;
+    }
+    
+    /**
+     * Update Booked Consultation To Complete By Consultation Id
+     * @param consultationId
+     * @return boolean
+     */
+    public Boolean completeBookedConsultationById(Integer consultationId) {
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationId().equals(consultationId)) {
+                update(consultationId, "consultationStatus", ConsultationStatus.COMPLETED.toString());
+                update(consultationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Get All Consultation ID
+     * @return List of consultationId
+     */    
+    private List<Integer> getAllConsultationId() {
+        List<Integer> list = new ArrayList<>();
+        for (Consultation consultation : consultations) {
+            list.add(consultation.getConsultationId());
+        }
+        return list;
+    }  
+    
+    /**
+     * Get All Consultation ID
+     * @return List of consultationId
+     */    
+    public Consultation getConsultationbyId(Integer consultationId) {
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationId().equals(consultationId)) {
+                return consultation;
+            }
+        }
+        return null;
+    }    
+    
+    /**
+     * Create A New Consultation Slot And Save Into System Resources
+     * @param lecturerId
+     * @param consultationDateTime
+     * @return Boolean
+     */
+    public Boolean createConsultationSlot(Integer lecturerId, LocalDateTime consultationDateTime) {
+        for(Consultation consultation:consultations)
+        {
+            if(consultation.getLecturerId().equals(lecturerId))
+            {
+                Integer newConsultationId = IDGenUtils.generateNewID(getAllConsultationId());
+                Consultation newConsultation=new Consultation();
+                newConsultation.setConsultationId(newConsultationId);
+                newConsultation.setLecturerId(lecturerId);
+                newConsultation.setStudentId(Integer.valueOf("0"));
+                newConsultation.setConsultationDateTime(consultationDateTime);
+                newConsultation.setConsultationStatus(ConsultationStatus.AVAILABLE);
+                newConsultation.setCreatedAt(LocalDateTime.now());
+                newConsultation.setUpdatedAt(LocalDateTime.now());
 
+                consultations.add(newConsultation);
+            
+                JSONObject newConsultationJSON = new JSONObject();
+                newConsultationJSON.put("id", newConsultation.getConsultationId());
+                newConsultationJSON.put("lecturerId", newConsultation.getLecturerId());
+                newConsultationJSON.put("studentId", newConsultation.getStudentId());
+                newConsultationJSON.put("consultationDateTime", DateTimeUtils.formatStrDateTime(newConsultation.getConsultationDateTime()));
+                newConsultationJSON.put("consultationStatus", newConsultation.getConsultationStatus().toString());
+                newConsultationJSON.put("created_at", DateTimeUtils.formatStrDateTime(newConsultation.getCreatedAt()));
+                newConsultationJSON.put("updated_at", DateTimeUtils.formatStrDateTime(newConsultation.getUpdatedAt()));
+
+                JsonHandler consultationJSON = new JsonHandler();
+                consultationJSON.encode(FileHandler.readFile(CONSULTATION_DATA));
+                consultationJSON.addObject(newConsultationJSON, CONSULTATION_DATA);   
+                return true;
+            }
+        }
+        return false;
+        }
+    /**
+     * Remove Consultation Data
+     * @param consultationId
+     */
+    public void deleteConsultation(Integer consultationId)
+    {
+        for (Consultation consultation : consultations) {
+            if (consultation.getConsultationId().equals(consultationId)) {
+                JsonHandler jsonHandler = new JsonHandler();
+                jsonHandler.encode(FileHandler.readFile(CONSULTATION_DATA));
+                jsonHandler.delete(consultationId, CONSULTATION_DATA);
+            }
+        }
+        consultations.removeIf(consultation -> consultation.getConsultationId().equals(consultationId));
+    }
     /**
      * Preload Data into consultations Array
      */
@@ -236,8 +406,12 @@ public class ConsultationDAO {
         userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
         return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
     }
-
-
+    
+    //    For debug purpose, run the below main method to view the data
+//    public static void main(String[] args) {
+//        ConsultationDAO testDAO = new ConsultationDAO();
+//        System.out.println(testDAO.getAllConsultationExceptCompletedForLec(88608036));
+//    }
 }
 
 

@@ -14,7 +14,7 @@ import java.awt.Color;
 
 /**
  *
- * @author chanh
+ * @author Sin Lian Feng
  */
 public class LecturerGui extends javax.swing.JFrame {
 
@@ -22,7 +22,7 @@ public class LecturerGui extends javax.swing.JFrame {
     private static Color ClickedBtnColor = new Color(230,230,230);
     
     /**
-     * Creates new form AdminGui
+     * Creates new form LecturerGui
      */
     public LecturerGui() {
         if (!UserAccountController.checkUserAuthorization(UserRoleType.LECTURER)) {
@@ -73,7 +73,7 @@ public class LecturerGui extends javax.swing.JFrame {
                 manageConsultationBtn.setBackground(ClickedBtnColor);
                 profileBtn.setBackground(DefaultBtnColor);
                 logoutBtn.setBackground(DefaultBtnColor);
-//                WindowsPane.add(new UserProfileGui()).setVisible(true);
+                WindowsPane.add(new LecturerConsultation()).setVisible(true);
             } 
             case "profileBtn" -> {
                 dashboardBtn.setBackground(DefaultBtnColor);

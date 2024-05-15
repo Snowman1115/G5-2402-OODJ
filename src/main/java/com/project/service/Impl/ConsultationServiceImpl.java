@@ -4,11 +4,14 @@ import com.project.common.constants.ConsultationStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.DateTimeUtils;
+import static com.project.common.utils.DateTimeUtils.*;
 import com.project.common.utils.Dialog;
 import com.project.dao.ConsultationDAO;
+import com.project.dao.IntakeDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.dao.UserRoleDAO;
 import com.project.pojo.Consultation;
+import com.project.pojo.Intake;
 import com.project.pojo.UserAccount;
 import com.project.service.ConsultationService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +25,7 @@ public class ConsultationServiceImpl implements ConsultationService {
     private ConsultationDAO consultationDAO = new ConsultationDAO();
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
     private UserRoleDAO userRoleDAO = new UserRoleDAO();
-
+    
     /**
      * Get Number of Student's Upcoming and Finished Consultation
      * @return Map of Integer
@@ -158,5 +161,167 @@ public class ConsultationServiceImpl implements ConsultationService {
             return false;
         }
     }
+    
+    /**
+     * Get All Consultation Details By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    @Override
+    public List getAllConsultationDetailsByLecId(Integer lecturerId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        //Get all cosultation details by lecturer ID
+        List<Map<String, String>> consultationList = consultationDAO.getConsultationByLecturerId(lecturerId);
+        for (Map<String, String> list : consultationList){
+            Map<String, String> mappedMap = new HashMap<>();
+            mappedMap.put("id", list.get("id"));
+            Integer studentId=Integer.valueOf(list.get("studentId"));
+            //If the consultation slot is not yet booked by any student, set studentId and studentName to EMPTY before displaying to avoid bug     
+            if(studentId != 0)
+            {
+                //Get student name by student ID that is from consultationDAO object
+                UserAccount student=userAccountDAO.getUserAccountById(studentId);
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                mappedMap.put("studentId", studentId.toString());
+                mappedMap.put("studentName", studentName);
+            }
+            else 
+            {
+                mappedMap.put("studentId", "EMPTY");
+                mappedMap.put("studentName", "EMPTY");
+            }
+            mappedMap.put("consultationDateTime", list.get("consultationDateTime"));
+            mappedMap.put("consultationStatus", list.get("consultationStatus"));
+            
+            mappedLists.add(mappedMap);
+        }
+        return mappedLists;
+    }
+    
+    /**
+     * Get Number of Lecturer's Upcoming and Finished Consultation
+     * @param lecturerId
+     * @return Map of Integer
+     */
+    @Override
+    public Map<String, Integer> getUpcomingNFinishedConsultationForLecturer(Integer lecturerId) {
+        return consultationDAO.getUpcomingNFinishedConsultationForLecturer(lecturerId);
+    }
+    
+     /**
+     * Get All Scheduled Consultation By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    @Override
+    public List<Map<String, String>> getAllScheduledConsultationByLecId(Integer lecturerId) {
+        List<Map<String, String>> mappedList = new ArrayList<>();
+        List<Consultation> consultations = consultationDAO.getAllScheduledConsultationForLec(lecturerId);
+        for (Consultation consultation : consultations) {
+            Map<String,String> map = new HashMap<>();
+            map.put("id", consultation.getConsultationId().toString());
+            UserAccount userAccount = userAccountDAO.getUserAccountById(consultation.getStudentId());
+            map.put("studentName", userAccount.getFirstName() + " " + userAccount.getLastName());
+            map.put("consultationDateTime", DateTimeUtils.formatStrDateTime(consultation.getConsultationDateTime()));
+            map.put("consultationStatus", consultation.getConsultationStatus().toString());
+            mappedList.add(map); 
+        }
+        return mappedList;
+    }
+    
+     /**
+     * Get All Consultation (Except Completed Consultations) By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    @Override
+    public List<Map<String, String>> getAllConsultationExceptCompletedByLecId(Integer lecturerId) {
+        List<Map<String, String>> mappedList = new ArrayList<>();
+        List<Consultation> consultations = consultationDAO.getAllConsultationExceptCompletedForLec(lecturerId);
+        for (Consultation consultation : consultations) {
+            Map<String,String> map = new HashMap<>();
+            map.put("id", consultation.getConsultationId().toString());
+            Integer studentId=Integer.valueOf(consultation.getStudentId());
+            //If the consultation slot is not yet booked by any student, set studentId and studentName to EMPTY before displaying to avoid bug     
+            if(studentId != 0)
+            {
+                //Get student name by student ID that is from consultationDAO object
+                UserAccount student=userAccountDAO.getUserAccountById(studentId);
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentId", studentId.toString());
+                map.put("studentName", studentName);
+            }
+            else 
+            {
+                map.put("studentId", "EMPTY");
+                map.put("studentName", "EMPTY");
+            }
+            map.put("consultationDateTime", DateTimeUtils.formatStrDateTime(consultation.getConsultationDateTime()));
+            map.put("consultationStatus", consultation.getConsultationStatus().toString());
+            mappedList.add(map); 
+            }
+        return mappedList;
+    }
+    
+    /**
+     * Update Booked Consultation To Complete By Consultation Id
+     * @param consultationId
+     * @return Boolean
+     */
+    @Override
+    public Boolean completeBookedConsultationById(Integer consultationId) {
+        if (consultationDAO.completeBookedConsultationById(consultationId)) {
+            log.info("Consultation Status Update To Completed Successfully: " + consultationId);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_CONSULTATION_COMPLETED);
+            return true;
+        } else {
+            log.info("Consultation Update To Completed Failed: " + consultationId);
+            return false;
+        }
+    }
 
+    @Override
+    public Boolean createConsultationSlotForLecturer(Integer lecturerId, LocalDateTime dateTime) {
+        List<Map<String, String>> consultationList = consultationDAO.getConsultationByLecturerId(lecturerId);
+        for (Map<String, String> list : consultationList){
+            LocalDateTime consultDateTime=DateTimeUtils.formatDateTime(list.get("consultationDateTime"));
+            Integer lecId=Integer.valueOf(list.get("lecturerId"));
+            //Check whether the selected consultation date time is clashed with the other existing consultation date time
+            if(lecId.equals(lecturerId) && consultDateTime.equals(dateTime))
+            {
+                //If found clashing, return false and display an error message
+                Dialog.ErrorDialog(MessageConstant.ERROR_CONSULTATION_DATETIME_CLASHED);
+                return false;
+            }
+        }
+        consultationDAO.createConsultationSlot(lecturerId, dateTime);
+        Dialog.SuccessDialog(MessageConstant.SUCCESS_CONSULTATION_CREATED);
+        return true;
+    }
+    
+     /**
+     * Delete Consultation By Consultation ID
+     * @param consultationId
+     * @return Boolean
+     */
+    @Override
+    public Boolean deleteConsultationById(Integer consultationId)
+    {
+        Consultation consultation = consultationDAO.getConsultationbyId(consultationId);
+
+        if(Dialog.ConfirmationDialog(MessageConstant.WARNING_REMOVE_CONFIRMATION)) {
+            log.info("Consultation Slot Deleted Successfully : " + consultationId);
+            consultationDAO.deleteConsultation(consultationId);
+            return true;
+        } else {
+            log.info("Delete Consultation Slot Cancelled : " + consultationId);
+            return false;
+        }    
+    }
+    //For debug purpose, run the below main method to view the data
+    public static void main(String[] args) {
+        ConsultationServiceImpl consult = new ConsultationServiceImpl();
+        System.out.println(consult.getAllScheduledConsultationByLecId(88608036));
+    }
 }

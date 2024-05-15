@@ -1,5 +1,6 @@
 package com.project.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -57,4 +58,53 @@ public interface ConsultationService {
      */
     public Boolean cancelBookedConsultationById(Integer consultationId);
 
+    /**
+     * Get All Consultation Details By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List getAllConsultationDetailsByLecId(Integer lecturerId);
+    
+    /**
+     * Get Number of Student's Upcoming and Finished Consultation
+     * @param lecturerId
+     * @return Map of Integer
+     */
+    public Map<String, Integer> getUpcomingNFinishedConsultationForLecturer(Integer lecturerId);
+    
+    /**
+     * Get All Scheduled Consultation By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List<Map<String, String>> getAllScheduledConsultationByLecId(Integer lecturerId);
+    
+    /**
+     * Get All Consultation (Except Completed Consultation) By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List<Map<String, String>> getAllConsultationExceptCompletedByLecId(Integer lecturerId);
+    
+    /**
+     * Update Booked Consultation To Completed By Consultation Id
+     * @param consultationId
+     * @return boolean
+     */
+    public Boolean completeBookedConsultationById(Integer consultationId);
+    
+     /**
+     * Create Consultation Slot For Lecturer By Lecturer Id and Date Time
+     * @param lecturerId
+     * @param dateTime
+     * @return Boolean
+     */
+    public Boolean createConsultationSlotForLecturer(Integer lecturerId, LocalDateTime dateTime);
+    
+     /**
+     * Delete Consultation By Consultation ID
+     * @param consultationId
+     * @return Boolean
+     */
+    public Boolean deleteConsultationById(Integer consultationId);
 }

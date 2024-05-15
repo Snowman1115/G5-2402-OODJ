@@ -12,14 +12,16 @@ import com.project.ui.authentication.UserProfileGui;
 import java.awt.Color;
 
 /**
- *
- * @author chanh
+ * User Interface - Admin
+ * @author AU YIK HOE
+ * @version 1.0, Last edited on 2024-05-14
+ * @since 2024-03-27
  */
 public class AdminGui extends javax.swing.JFrame {
 
     private static Color DefaultBtnColor = new Color(245,245,245);
     private static Color ClickedBtnColor = new Color(230,230,230);
-    
+
     /**
      * Creates new form AdminGui
      */
@@ -31,142 +33,90 @@ public class AdminGui extends javax.swing.JFrame {
             setTitle("Project Management System - Admin Panel");
             setVisible(true);
             initComponents();
-            ButtonClicked("menuBtn1");
+            ButtonClicked("dashboard");
         }
     }
-    
+
     public static void ButtonClicked(String index){
         WindowsPane.removeAll();
         switch (index) {
-            case "menuBtn1" -> {
+            case "dashboard" -> {
                 menuBtn1.setBackground(ClickedBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
                 WindowsPane.add(new AdminDashboard()).setVisible(true);
-            } 
-            case "menuBtn2" -> {
+            }
+            case "student" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(ClickedBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new AdminOfficerManagement()).setVisible(true);
-            } 
-            case "menuBtn3" -> {
+                WindowsPane.add(new StudentManagement()).setVisible(true);
+            }
+            case "lecturer" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(ClickedBtnColor);
                 menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new AdminSalespersonManagement()).setVisible(true);
-            } 
-            case "menuBtn4" -> {
+            }
+            case "pm" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn4.setBackground(ClickedBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new AdminManagement()).setVisible(true);
-            } 
-            case "menuBtn5" -> {
+            }
+            case "profile" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(ClickedBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
                 WindowsPane.add(new UserProfileGui()).setVisible(true);
-            } 
-            case "menuBtn6" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(ClickedBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-            } 
-            case "menuBtn7" -> {
+            }
+            case "admin" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(ClickedBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new SalesGui()).setVisible(true);
-            } 
-            case "menuBtn8" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(ClickedBtnColor);
-                menuBtn9.setBackground(DefaultBtnColor);
-                menuBtn10.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new FurnitureGui()).setVisible(true);
-            } 
-            case "menuBtn9" -> {
-                menuBtn1.setBackground(DefaultBtnColor);
-                menuBtn2.setBackground(DefaultBtnColor);
-                menuBtn3.setBackground(DefaultBtnColor);
-                menuBtn4.setBackground(DefaultBtnColor);
-                menuBtn5.setBackground(DefaultBtnColor);
-                menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(ClickedBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new SuperAdminManagement()).setVisible(true);
-            } 
-            case "menuBtn10" -> {
+            }
+            case "log" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
-                menuBtn7.setBackground(DefaultBtnColor);
-                menuBtn8.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(ClickedBtnColor);
                 // WindowsPane.add(new OrderGui()).setVisible(true);
-            } 
+            }
         }
     }
 
@@ -190,19 +140,15 @@ public class AdminGui extends javax.swing.JFrame {
         menuBtn4 = new javax.swing.JLabel();
         menuBtn5 = new javax.swing.JLabel();
         menuBtn6 = new javax.swing.JLabel();
-        menuBtn7 = new javax.swing.JLabel();
-        menuBtn8 = new javax.swing.JLabel();
         menuBtn9 = new javax.swing.JLabel();
-        menuBtn10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        menuBtn10 = new javax.swing.JLabel();
         WindowsPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -260,7 +206,7 @@ public class AdminGui extends javax.swing.JFrame {
         menuBtn2.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn2.setText("XXXX");
+        menuBtn2.setText("STUDENTS");
         menuBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn2.setOpaque(true);
         menuBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,7 +218,7 @@ public class AdminGui extends javax.swing.JFrame {
         menuBtn3.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn3.setText("XXXXX");
+        menuBtn3.setText("LECTURERS");
         menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn3.setOpaque(true);
         menuBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -284,7 +230,7 @@ public class AdminGui extends javax.swing.JFrame {
         menuBtn4.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn4.setText("XXXXX");
+        menuBtn4.setText("PROJECT MANAGERS");
         menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn4.setOpaque(true);
         menuBtn4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -317,34 +263,10 @@ public class AdminGui extends javax.swing.JFrame {
             }
         });
 
-        menuBtn7.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn7.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn7.setText("XXXXX");
-        menuBtn7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn7.setOpaque(true);
-        menuBtn7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn7MouseClicked(evt);
-            }
-        });
-
-        menuBtn8.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn8.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn8.setText("XXXXX");
-        menuBtn8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn8.setOpaque(true);
-        menuBtn8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn8MouseClicked(evt);
-            }
-        });
-
         menuBtn9.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn9.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn9.setText("XXXXX");
+        menuBtn9.setText("ADMINS");
         menuBtn9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn9.setOpaque(true);
         menuBtn9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -353,31 +275,9 @@ public class AdminGui extends javax.swing.JFrame {
             }
         });
 
-        menuBtn10.setBackground(new java.awt.Color(245, 245, 245));
-        menuBtn10.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn10.setText("XXXXXX");
-        menuBtn10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn10.setOpaque(true);
-        menuBtn10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn10MouseClicked(evt);
-            }
-        });
-
         jSeparator1.setForeground(new java.awt.Color(230, 230, 230));
 
-        jSeparator2.setForeground(new java.awt.Color(230, 230, 230));
-
-        jSeparator3.setForeground(new java.awt.Color(230, 230, 230));
-
         jSeparator4.setForeground(new java.awt.Color(230, 230, 230));
-
-        jLabel1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel1.setText("  Sales Management");
-
-        jLabel2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel2.setText("  Furniture Management");
 
         jLabel3.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         jLabel3.setText("  User Management");
@@ -387,6 +287,23 @@ public class AdminGui extends javax.swing.JFrame {
 
         jSeparator5.setForeground(new java.awt.Color(230, 230, 230));
 
+        jLabel5.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        jLabel5.setText("System Log");
+
+        jSeparator6.setForeground(new java.awt.Color(230, 230, 230));
+
+        menuBtn10.setBackground(new java.awt.Color(245, 245, 245));
+        menuBtn10.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuBtn10.setText("LOGS");
+        menuBtn10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn10.setOpaque(true);
+        menuBtn10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn10MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
         MenuPanel.setLayout(MenuPanelLayout);
         MenuPanelLayout.setHorizontalGroup(
@@ -394,22 +311,22 @@ public class AdminGui extends javax.swing.JFrame {
             .addComponent(menuBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menuBtn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menuBtn6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menuBtn8, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
             .addComponent(menuBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator2)
-            .addComponent(menuBtn7, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(menuBtn10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(jSeparator3)
             .addComponent(jSeparator4)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator5)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuBtn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(menuBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(menuBtn9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator6)
+            .addComponent(menuBtn10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,33 +337,25 @@ public class AdminGui extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuBtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuBtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,25 +385,9 @@ public class AdminGui extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn1MouseClicked
-        ButtonClicked("menuBtn1");
-    }//GEN-LAST:event_menuBtn1MouseClicked
-
-    private void menuBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn2MouseClicked
-        ButtonClicked("menuBtn2");
-    }//GEN-LAST:event_menuBtn2MouseClicked
-
-    private void menuBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn3MouseClicked
-        ButtonClicked("menuBtn3");
-    }//GEN-LAST:event_menuBtn3MouseClicked
-
-    private void menuBtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn4MouseClicked
-        ButtonClicked("menuBtn4");
-    }//GEN-LAST:event_menuBtn4MouseClicked
-
-    private void menuBtn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn5MouseClicked
-        ButtonClicked("menuBtn5");
-    }//GEN-LAST:event_menuBtn5MouseClicked
+    private void menuBtn9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn9MouseClicked
+        ButtonClicked("admin");
+    }//GEN-LAST:event_menuBtn9MouseClicked
 
     private void menuBtn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn6MouseClicked
         UserAccountController.logout();
@@ -502,20 +395,28 @@ public class AdminGui extends javax.swing.JFrame {
         new LoginGui();
     }//GEN-LAST:event_menuBtn6MouseClicked
 
-    private void menuBtn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn7MouseClicked
-        ButtonClicked("menuBtn7");
-    }//GEN-LAST:event_menuBtn7MouseClicked
+    private void menuBtn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn5MouseClicked
+        ButtonClicked("profile");
+    }//GEN-LAST:event_menuBtn5MouseClicked
 
-    private void menuBtn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn8MouseClicked
-        ButtonClicked("menuBtn8");
-    }//GEN-LAST:event_menuBtn8MouseClicked
+    private void menuBtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn4MouseClicked
+        ButtonClicked("pm");
+    }//GEN-LAST:event_menuBtn4MouseClicked
 
-    private void menuBtn9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn9MouseClicked
-        ButtonClicked("menuBtn9");
-    }//GEN-LAST:event_menuBtn9MouseClicked
+    private void menuBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn3MouseClicked
+        ButtonClicked("lecturer");
+    }//GEN-LAST:event_menuBtn3MouseClicked
+
+    private void menuBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn2MouseClicked
+        ButtonClicked("student");
+    }//GEN-LAST:event_menuBtn2MouseClicked
+
+    private void menuBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn1MouseClicked
+        ButtonClicked("dashboard");
+    }//GEN-LAST:event_menuBtn1MouseClicked
 
     private void menuBtn10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn10MouseClicked
-        ButtonClicked("menuBtn10");
+        ButtonClicked("log");
     }//GEN-LAST:event_menuBtn10MouseClicked
 
     /**
@@ -525,7 +426,7 @@ public class AdminGui extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -559,16 +460,14 @@ public class AdminGui extends javax.swing.JFrame {
     private javax.swing.JLabel LogoTitle_1;
     private javax.swing.JPanel MenuPanel;
     private static javax.swing.JDesktopPane WindowsPane;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private static javax.swing.JLabel menuBtn1;
     private static javax.swing.JLabel menuBtn10;
     private static javax.swing.JLabel menuBtn2;
@@ -576,8 +475,6 @@ public class AdminGui extends javax.swing.JFrame {
     private static javax.swing.JLabel menuBtn4;
     private static javax.swing.JLabel menuBtn5;
     private static javax.swing.JLabel menuBtn6;
-    private static javax.swing.JLabel menuBtn7;
-    private static javax.swing.JLabel menuBtn8;
     private static javax.swing.JLabel menuBtn9;
     // End of variables declaration//GEN-END:variables
 }

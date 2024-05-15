@@ -18,8 +18,8 @@ import java.io.IOException;
 
 @Slf4j
 public class JsonHandler {
-    private JSONArray json_array;
-    private JSONObject json_object;
+    private JSONArray json_array = new JSONArray();
+    private JSONObject json_object = new JSONObject();
 
     // ====================== //
     //    General methods     //
@@ -117,12 +117,16 @@ public class JsonHandler {
     }
 
     /**
-     * Add object into json array
+     * Add object into json array (direct update to save file)
      * @param object
      */
     public void addObject(JSONObject object, String filePath) {
         json_array.add(object);
         store(json_array.toJSONString(), filePath);
+    }
+
+    public void addObject(JSONObject object) {
+        json_array.add(object);
     }
 
     /**

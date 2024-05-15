@@ -4,12 +4,19 @@ import com.project.common.constants.AccountStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.Dialog;
+import com.project.common.utils.JsonHandler;
+import com.project.dao.IntakeDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.dao.UserAuthenticationDAO;
 import com.project.dao.UserRoleDAO;
+import com.project.pojo.Intake;
 import com.project.pojo.UserAccount;
 import com.project.service.UserAccountService;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 public class UserAccountServiceImpl implements UserAccountService {
@@ -19,6 +26,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     private UserAuthenticationDAO userAuthenticationDAO = new UserAuthenticationDAO();
 
     private UserRoleDAO userRoleDAO = new UserRoleDAO();
+
+    private IntakeDAO intakesDAO = new IntakeDAO();
 
     /**
      * Login Authentication
@@ -61,6 +70,11 @@ public class UserAccountServiceImpl implements UserAccountService {
             case STUDENT -> { log.info("Redirecting (" + account + ") to Student Panel."); return UserRoleType.STUDENT; }
             default -> { return null; }
         }
+    }
+
+    public static void main(String[] args) {
+        UserAccountServiceImpl userAccountService = new UserAccountServiceImpl();
+        System.out.println(userAccountService.loginAuthentication("student1", "Passw0rd123@"));
     }
 
     /**
@@ -175,5 +189,60 @@ public class UserAccountServiceImpl implements UserAccountService {
         Dialog.SuccessDialog(MessageConstant.SUCCESS_SECURITY_PHRASE_UPDATE_SUCCESSFUL);
         log.info("User {} security phrase update successful.", userId);
         return userAccountDAO.changeSecurityPhraseById(userId, confirmSecurityPhrase);
+    }
+
+    /**
+     * get users by role
+     * @param roleType
+     * @return Userlist
+     */
+    @Override
+    public JsonHandler getUsersByRole(UserRoleType roleType) {
+        List<Integer> userIds = userRoleDAO.filterUserByRole(roleType);
+        List<UserAccount> userAccounts = userAccountDAO.getUserAccountById(userIds);
+
+        switch (roleType) {
+            case STUDENT -> {
+                JsonHandler studentsJson = new JsonHandler();
+
+                for (Intake itk : intakesDAO.getAllIntakes()) {
+                    String intake_code = itk.getIntakeCode();
+                    List<Integer> students = itk.getStudentList();
+
+                    for (UserAccount ua : userAccounts) {
+                        int student_id = ua.getUserId();
+
+                        if (students.contains(student_id)) {
+                            JSONObject studentJsonObject = new JSONObject();
+                            studentJsonObject.put("id", ua.getUserId());
+                            studentJsonObject.put("username", ua.getUsername());
+                            studentJsonObject.put("firstName", ua.getFirstName());
+                            studentJsonObject.put("lastName", ua.getLastName());
+                            studentJsonObject.put("intake", intake_code);
+
+                            studentsJson.addObject(studentJsonObject);
+                        }
+                    }
+                }
+
+                return studentsJson;
+            }
+            case LECTURER -> {
+                JsonHandler lecturersJson = new JsonHandler();
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<String> getAllIntakes() {
+        List<String> list = new ArrayList<>();
+
+        for (Intake itk : intakesDAO.getAllIntakes()) {
+            list.add(itk.getIntakeCode());
+        }
+
+        return list;
     }
 }

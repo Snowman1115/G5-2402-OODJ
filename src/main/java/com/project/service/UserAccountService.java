@@ -1,7 +1,9 @@
 package com.project.service;
 
 import com.project.common.constants.UserRoleType;
+import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
+import java.util.List;
 
 public interface UserAccountService {
 
@@ -66,4 +68,11 @@ public interface UserAccountService {
      */
     boolean changeSecurityPhraseById(Integer userId, String oldSecurityPhrase, String confirmSecurityPhrase);
 
+    /**
+     * get users by role
+     * @return user
+     */
+    public JsonHandler getUsersByRole(UserRoleType roleType);
+
+    public List<String> getAllIntakes();
 }

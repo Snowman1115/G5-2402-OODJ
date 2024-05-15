@@ -70,6 +70,8 @@ public class IntakeDAO {
         }
     }
 
+    public List<Intake> getAllIntakes() { return intakes; }
+
     /*
 
     // Update consultation data

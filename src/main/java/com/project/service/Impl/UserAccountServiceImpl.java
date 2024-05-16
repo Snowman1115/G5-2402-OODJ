@@ -73,8 +73,9 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     public static void main(String[] args) {
-        UserAccountServiceImpl userAccountService = new UserAccountServiceImpl();
-        System.out.println(userAccountService.loginAuthentication("student1", "Passw0rd123@"));
+        UserAccountService userAccountImp = new UserAccountServiceImpl();
+        System.out.println(userAccountImp.getUsersByRole(UserRoleType.LECTURER).getAll());
+
     }
 
     /**
@@ -229,6 +230,20 @@ public class UserAccountServiceImpl implements UserAccountService {
             }
             case LECTURER -> {
                 JsonHandler lecturersJson = new JsonHandler();
+
+
+                for (UserAccount ua : userAccounts) {
+                    JSONObject lecturer = new JSONObject();
+                    lecturer.put("id", ua.getUserId());
+                    lecturer.put("username", ua.getUsername());
+                    lecturer.put("first_name", ua.getFirstName());
+                    lecturer.put("last_name", ua.getLastName());
+                    lecturer.put("email", ua.getEmail());
+
+                    lecturersJson.addObject(lecturer);
+                }
+
+                return lecturersJson;
             }
         }
 

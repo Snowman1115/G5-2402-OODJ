@@ -27,8 +27,8 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     private ModuleDAO moduleDAO = new ModuleDAO();
     private IntakeDAO intakeDAO = new IntakeDAO();
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
-    private SubmissionDAO submissionDAO = new SubmissionDAO();   
-    
+    private SubmissionDAO submissionDAO = new SubmissionDAO();
+
     //Get student ID, student name, intake code, module code, project type, and status to be displayed at the LecturerDashboard.java
     //If need to get other details from different txt files, insert your logic under this method    
     @Override    
@@ -89,7 +89,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             Map<String, String> mappedMap = new HashMap<>();
             mappedMap.put("id", list.get("id"));
             mappedMap.put("moduleCode", list.get("moduleCode"));
-            
+
             //Get intake code by intakeId that is from moduleDAO object
             Intake intake = intakeDAO.getIntakeById(Integer.valueOf(list.get("intakeId")));
             mappedMap.put("intakeCode", intake.getIntakeCode());
@@ -112,11 +112,39 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return mappedLists;
     }
     
+    //Jin Xun - Project Manager
+    // To filter the module details by project manager ID
+    @Override
+    public List getAllModuleDetailsByProjectManagerId(Integer ProjectManagerId){
+         List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Map<String, String>> lists = moduleDAO.getModuleByProjectManagerId(ProjectManagerId);
+        for (Map<String, String> list : lists){
+            Map<String, String> mappedMap = new HashMap<>();
+            mappedMap.put("id", list.get("id"));
+            mappedMap.put("moduleCode", list.get("moduleCode"));
+            mappedMap.put("startDate", list.get("startDate"));
+            mappedMap.put("endDate", list.get("endDate"));
+            mappedMap.put("firstMarker", list.get("firstMarker"));
+            mappedMap.put("secondMarker", list.get("secondMarker"));
+            mappedLists.add(mappedMap);
+        }
+        return mappedLists;
+    }
+
+    @Override
+    public List getModuleById(Integer moduleId) {
+        return (List) moduleDAO.getModuleByModuleId(moduleId);
+    }
+
 //    For debug purpose, run the below main method to view the data
-//    public static void main(String[] args) {
-//        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
-//        System.out.println(prje.getAllModuleDetailsBySecondMarkerId(88608036));
-//    }
+    public static void main(String[] args) {
+        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
+        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
+
+        System.out.println(prje.getModuleById(36887009));
+    }
+
+
     
 }
 

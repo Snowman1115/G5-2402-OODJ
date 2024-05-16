@@ -7,6 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -460,7 +461,7 @@ public class XlsxHandlerUtils {
     public static void main(String[] args) {
         String filePath = "src/main/resources/Data/SampleDataXlsx/G5_OODJ_Sample_Data.xlsx"; // Provide the path to your Excel file
         readExcelBySheetName(filePath, "User");
-        // readExcelBySheetName(filePath, "Intake");
+        readExcelBySheetName(filePath, "Intake");
         readExcelBySheetName(filePath, "ProjectModule");
         readExcelBySheetName(filePath, "Submission");
         readExcelBySheetName(filePath, "Presentation");

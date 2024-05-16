@@ -45,6 +45,16 @@ public class ProjectModuleController {
     public static List getModuleById(Integer moduleId) {
         return projectModuleService.getModuleById(moduleId);
     }
+    
+     /**
+     * Save Supervisor and Second Marker In Module 
+     * @param moduleDetails
+     * @return Boolean
+     */
+    public static Boolean saveModuleDetails(List moduleDetails){
+        //log info
+        return projectModuleService.saveModuleDetails(moduleDetails);
+    }
     /**
      * Get Authenticated UserId
      * @return userId
@@ -52,5 +62,7 @@ public class ProjectModuleController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
+    
+  
     
 }

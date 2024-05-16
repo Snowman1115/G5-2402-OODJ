@@ -207,8 +207,15 @@ public class UserAccountController {
     public static JsonHandler getAdmins() {
         return userAccountService.getUsersByRole(UserRoleType.ADMIN);
     }
+    
+//    
+//    public static List getAllLecturer(){
+//        return userAccountService.getAllLecturer(UserRoleType.LECTURER);
+//    }
+    
 
     /**
+     * 
      * get all intakes
      * @return intakes
      */

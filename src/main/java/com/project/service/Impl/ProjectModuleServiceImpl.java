@@ -4,7 +4,9 @@
  */
 package com.project.service.Impl;
 
+import com.project.common.constants.MessageConstant;
 import com.project.common.utils.DateTimeUtils;
+import com.project.common.utils.Dialog;
 import com.project.dao.IntakeDAO;
 import com.project.dao.ModuleDAO;
 import com.project.dao.SubmissionDAO;
@@ -13,6 +15,7 @@ import com.project.pojo.Intake;
 import com.project.pojo.Submission;
 import com.project.pojo.UserAccount;
 import com.project.service.ProjectModuleService;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,6 +137,19 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     @Override
     public List getModuleById(Integer moduleId) {
         return (List) moduleDAO.getModuleByModuleId(moduleId);
+    }
+    
+    public Boolean saveModuleDetails(List moduleDetails) {
+        if (moduleDAO.saveModuleChanges(moduleDetails)) {
+//            log.info("Module Changes Has Been Saved! : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_ASSIGNED_SUPERVISOR);
+            return true;
+        } else {
+//            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.UNEXPECTED_ERROR);
+            return false;
+        }
+
     }
 
 //    For debug purpose, run the below main method to view the data

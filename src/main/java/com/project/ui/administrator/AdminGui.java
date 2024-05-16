@@ -14,7 +14,7 @@ import java.awt.Color;
 /**
  * User Interface - Admin
  * @author AU YIK HOE
- * @version 1.0, Last edited on 2024-05-14
+ * @version 1.0, Last edited on 2024-04-17
  * @since 2024-03-27
  */
 public class AdminGui extends javax.swing.JFrame {
@@ -117,6 +117,18 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn10.setBackground(ClickedBtnColor);
                 // WindowsPane.add(new OrderGui()).setVisible(true);
             }
+            case "intakes" -> {
+                menuBtn1.setBackground(DefaultBtnColor);
+                menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
+                menuBtn4.setBackground(DefaultBtnColor);
+                menuBtn5.setBackground(DefaultBtnColor);
+                menuBtn6.setBackground(DefaultBtnColor);
+                menuBtn9.setBackground(DefaultBtnColor);
+                menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(ClickedBtnColor);
+                WindowsPane.add(new intakeManagement()).setVisible(true);
+            }
         }
     }
 
@@ -149,6 +161,9 @@ public class AdminGui extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         menuBtn10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        menuBtn11 = new javax.swing.JLabel();
         WindowsPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -288,7 +303,7 @@ public class AdminGui extends javax.swing.JFrame {
         jSeparator5.setForeground(new java.awt.Color(230, 230, 230));
 
         jLabel5.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel5.setText("System Log");
+        jLabel5.setText(" Intake Management");
 
         jSeparator6.setForeground(new java.awt.Color(230, 230, 230));
 
@@ -301,6 +316,23 @@ public class AdminGui extends javax.swing.JFrame {
         menuBtn10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuBtn10MouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        jLabel6.setText(" System Log");
+
+        jSeparator2.setForeground(new java.awt.Color(230, 230, 230));
+
+        menuBtn11.setBackground(new java.awt.Color(245, 245, 245));
+        menuBtn11.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuBtn11.setText("NEW INTAKE");
+        menuBtn11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn11.setOpaque(true);
+        menuBtn11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn11MouseClicked(evt);
             }
         });
 
@@ -317,16 +349,15 @@ public class AdminGui extends javax.swing.JFrame {
             .addComponent(jSeparator5)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuBtn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(menuBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(menuBtn9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSeparator6)
+            .addComponent(jSeparator2)
             .addComponent(menuBtn10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(menuBtn11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator6)
+            .addComponent(menuBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(menuBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(menuBtn9, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,10 +383,16 @@ public class AdminGui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuBtn11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuBtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -419,6 +456,10 @@ public class AdminGui extends javax.swing.JFrame {
         ButtonClicked("log");
     }//GEN-LAST:event_menuBtn10MouseClicked
 
+    private void menuBtn11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn11MouseClicked
+        ButtonClicked("intakes");
+    }//GEN-LAST:event_menuBtn11MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -463,13 +504,16 @@ public class AdminGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private static javax.swing.JLabel menuBtn1;
     private static javax.swing.JLabel menuBtn10;
+    private static javax.swing.JLabel menuBtn11;
     private static javax.swing.JLabel menuBtn2;
     private static javax.swing.JLabel menuBtn3;
     private static javax.swing.JLabel menuBtn4;

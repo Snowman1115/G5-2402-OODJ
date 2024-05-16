@@ -4,14 +4,18 @@
  */
 package com.project.service.Impl;
 
+import com.project.common.utils.JsonHandler;
 import com.project.dao.IntakeDAO;
 import com.project.dao.ModuleDAO;
 import com.project.dao.SubmissionDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.pojo.Intake;
+import com.project.pojo.ProjectModule;
 import com.project.pojo.Submission;
 import com.project.pojo.UserAccount;
 import com.project.service.ProjectModuleService;
+import org.json.simple.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -101,8 +105,44 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         }
         return mappedLists;
     }
-    
-//    For debug purpose, run the below main method to view the data
+
+    /**
+     * get all modules details
+     * @return modulesJson
+     */
+    @Override
+    public JsonHandler getAllModules() {
+        JsonHandler modulesJson = new JsonHandler();
+
+        for (ProjectModule m : moduleDAO.getAllModules()) {
+            JSONObject moduleObject = new JSONObject();
+
+            moduleObject.put("id", m.getModuleId());
+            moduleObject.put("intakeId", m.getIntakeId());
+            moduleObject.put("moduleCode", m.getModuleCode());
+            moduleObject.put("supervisorId", m.getSupervisorId());
+            moduleObject.put("firstMarker", m.getFirstMarker());
+            moduleObject.put("secondMarker", m.getSecondMarker());
+            moduleObject.put("startDate", m.getStartDate());
+            moduleObject.put("endDate", m.getEndDate());
+
+            modulesJson.addObject(moduleObject);
+        }
+        return modulesJson;
+    }
+
+    @Override
+    public List<String> getAllModuleCodes() {
+        List<String> moduleCodes = new ArrayList<>();
+
+        for (ProjectModule m : moduleDAO.getAllModules()) {
+            moduleCodes.add(m.getModuleCode());
+        }
+
+        return moduleCodes;
+    }
+
+    //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
         System.out.println(prje.getAllModuleDetailsByLecId(88608036));

@@ -231,7 +231,6 @@ public class UserAccountServiceImpl implements UserAccountService {
             case LECTURER -> {
                 JsonHandler lecturersJson = new JsonHandler();
 
-
                 for (UserAccount ua : userAccounts) {
                     JSONObject lecturer = new JSONObject();
                     lecturer.put("id", ua.getUserId());
@@ -244,6 +243,22 @@ public class UserAccountServiceImpl implements UserAccountService {
                 }
 
                 return lecturersJson;
+            }
+            case PROJECT_MANAGER -> {
+                JsonHandler PMsJson = new JsonHandler();
+
+                for (UserAccount ua : userAccounts) {
+                    JSONObject projectManager = new JSONObject();
+                    projectManager.put("id", ua.getUserId());
+                    projectManager.put("username", ua.getUsername());
+                    projectManager.put("first_name", ua.getFirstName());
+                    projectManager.put("last_name", ua.getLastName());
+                    projectManager.put("email", ua.getEmail());
+
+                    PMsJson.addObject(projectManager);
+                }
+
+                return PMsJson;
             }
         }
 

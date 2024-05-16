@@ -224,16 +224,12 @@ public class JsonHandler {
      * @return attribute value (String)
      */
     public String get(String attribute) {
-        try {
-            String val = json_object.get(attribute).toString();
+        Object val = json_object.get(attribute);
 
-            if (!val.equals("null")) {
-                return val;
-            } else {
-                return null;
-            }
-        } catch (NullPointerException e) {
-            log.error("Error: " + '"' + attribute + '"' + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
+        if (json_object.containsKey(attribute)) {
+            return (String) val;
+        } else {
+            log.error("Error: \"" + attribute + "\" " + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
             return null;
         }
     }

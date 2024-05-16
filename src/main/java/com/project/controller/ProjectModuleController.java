@@ -4,6 +4,7 @@
  */
 package com.project.controller;
 
+import com.project.common.utils.JsonHandler;
 import com.project.service.Impl.ProjectModuleServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.ProjectModuleService;
@@ -44,6 +45,12 @@ public class ProjectModuleController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
-    
-    
+
+    /**
+     * get all modules
+     * @return modules
+     */
+    public static List<String> getModulesCode() {
+        return projectModuleService.getAllModuleCodes();
+    }
 }

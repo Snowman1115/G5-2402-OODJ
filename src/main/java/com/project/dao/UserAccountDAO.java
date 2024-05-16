@@ -27,7 +27,16 @@ public class UserAccountDAO {
         loadUserData();
     }
 
-
+//    public static void main(String[] args) {
+//        JsonHandler js = new JsonHandler();
+//        JSONObject obj = new JSONObject();
+//        obj.put("name", "john");
+//        obj.put("age", 40);
+//        js.addObject(obj);
+//        js.cloneObject(js.getObject(0));
+//        System.out.println(js.get("name"));
+//        System.out.println(js.get("occupation"));
+//    }
 
     /**
      * Get All User Details

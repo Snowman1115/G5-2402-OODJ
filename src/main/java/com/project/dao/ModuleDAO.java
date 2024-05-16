@@ -39,6 +39,10 @@ public class ModuleDAO {
         return null;
     }
 
+    public List<ProjectModule> getAllModules() {
+        return modules;
+    }
+
     /**
      * Get Module by lecturerId
      * @param lecturerId

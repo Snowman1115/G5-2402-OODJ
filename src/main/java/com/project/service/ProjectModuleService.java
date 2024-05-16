@@ -4,6 +4,8 @@
  */
 package com.project.service;
 
+import com.project.common.utils.JsonHandler;
+
 import java.util.List;
 
 /**
@@ -20,4 +22,12 @@ public interface ProjectModuleService {
     public List getAllModuleDetailsByLecId(Integer lecturerId);
 
     public List getAllModuleDetailsBySecondMarkerId(Integer lecturerId);
+
+    /**
+     * get all modules information
+     * @return modules
+     */
+    public JsonHandler getAllModules();
+
+    public List<String> getAllModuleCodes();
 }

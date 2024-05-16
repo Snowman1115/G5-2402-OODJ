@@ -78,7 +78,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                     spEndDate.setText(mLists.get("endDate"));
 //                    mLists.get("firstMarker")
 //                    mLists.get("secondMarker")
-                };
+                }
         }
         
         private void fillspModuleComboBox(){

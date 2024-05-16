@@ -6,8 +6,10 @@ package com.project.ui.administrator;
 
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.Dialog;
+import com.project.common.utils.JsonHandler;
 import com.project.controller.IntakesController;
 import com.project.controller.ProjectModuleController;
+import com.project.controller.UserAccountController;
 import org.json.simple.JSONObject;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -38,7 +40,23 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }
     
     private void initForm() {
-        
+        intakeCode.setEnabled(false);
+        datePicker1.setEnabled(false);
+        datePicker2.setEnabled(false);
+        backBtn1.setEnabled(false);
+        backBtn2.setEnabled(false);
+        nextBtn2.setEnabled(false);
+        saveBtn.setEnabled(false);
+
+        JsonHandler PMs = UserAccountController.getPMs();
+        for (int i = 0; i < PMs.getAll().size(); i++) {
+            String projectManager = PMs.getObject(i).get("first_name") + " " + PMs.getObject(i).get("last_name") + "-" + PMs.getObject(i).get("id");
+            PM1.addItem(projectManager);
+            PM2.addItem(projectManager);
+            PM3.addItem(projectManager);
+            PM4.addItem(projectManager);
+
+        }
     }
 
     /**
@@ -472,7 +490,8 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_module2KeyReleased
 
     private void nextBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextBtn1MouseClicked
-        // TODO add your handling code here:
+        JsonHandler assignedModules = new JsonHandler();
+        JSONObject moduleObj = new JSONObject();
     }//GEN-LAST:event_nextBtn1MouseClicked
 
     private void backBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn2MouseClicked

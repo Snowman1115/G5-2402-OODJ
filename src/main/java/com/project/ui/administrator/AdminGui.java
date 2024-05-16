@@ -49,6 +49,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 WindowsPane.add(new AdminDashboard()).setVisible(true);
             }
             case "student" -> {
@@ -60,6 +61,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 WindowsPane.add(new StudentManagement()).setVisible(true);
             }
             case "lecturer" -> {
@@ -71,6 +73,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new AdminSalespersonManagement()).setVisible(true);
             }
             case "pm" -> {
@@ -82,6 +85,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new AdminManagement()).setVisible(true);
             }
             case "profile" -> {
@@ -93,6 +97,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 WindowsPane.add(new UserProfileGui()).setVisible(true);
             }
             case "admin" -> {
@@ -104,6 +109,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(ClickedBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new SuperAdminManagement()).setVisible(true);
             }
             case "log" -> {
@@ -115,6 +121,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(ClickedBtnColor);
+                menuBtn11.setBackground(DefaultBtnColor);
                 // WindowsPane.add(new OrderGui()).setVisible(true);
             }
             case "intakes" -> {

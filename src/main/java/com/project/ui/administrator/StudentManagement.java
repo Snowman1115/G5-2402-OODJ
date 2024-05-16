@@ -186,7 +186,6 @@ public class StudentManagement extends javax.swing.JInternalFrame {
 
     private void filterByIntakeActionPerformed(java.awt.event.ActionEvent evt) {
         String selectedIntake = (String) filterByIntake.getSelectedItem();
-        System.out.println(selectedIntake);
 
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(table);
         studentTable.setRowSorter(sorter);

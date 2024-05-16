@@ -29,4 +29,6 @@ public interface ProjectModuleService {
      * @return
      */
     public List getAllModuleDetailsByProjectManagerId(Integer ProjectManagerId);
+
+    public List getModuleById(Integer moduleId);
 }

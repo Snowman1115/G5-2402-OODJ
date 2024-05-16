@@ -41,7 +41,10 @@ public class ProjectModuleController {
     public static List getAllModuleDetailsByProjectManagerId() {
         return projectModuleService.getAllModuleDetailsByProjectManagerId(getAuthenticatedUserId());
     }
-    
+
+    public static List getModuleById(Integer moduleId) {
+        return projectModuleService.getModuleById(moduleId);
+    }
     /**
      * Get Authenticated UserId
      * @return userId
@@ -49,6 +52,5 @@ public class ProjectModuleController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
-    
     
 }

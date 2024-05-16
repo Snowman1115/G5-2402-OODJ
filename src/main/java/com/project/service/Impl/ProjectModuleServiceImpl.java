@@ -121,13 +121,20 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return mappedLists;
     }
     
+    @Override
+    public List getModuleById(Integer moduleId) {
+        return (List) moduleDAO.getModuleByModuleId(moduleId);
+    }
+    
 //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
         // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
         
-        System.out.println(prje.getAllModuleDetailsByProjectManagerId(39904006));
+        System.out.println(prje.getModuleById(36887009));
     }
+
+    
     
 }
 

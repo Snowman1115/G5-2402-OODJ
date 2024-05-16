@@ -8,6 +8,7 @@ package com.project.controller;
 
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.DataValidator;
+import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
 import com.project.pojo.UserAuthentication;
 import com.project.service.Impl.UserAccountServiceImpl;
@@ -15,6 +16,7 @@ import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.UserAccountService;
 import com.project.service.UserAuthenticationService;
 import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @Slf4j
 public class UserAccountController {
@@ -174,4 +176,43 @@ public class UserAccountController {
         userAuthenticationService.destroy();
     }
 
+    /**
+     * get all students
+     * @return students
+     */
+    public static JsonHandler getStudents() {
+        return userAccountService.getUsersByRole(UserRoleType.STUDENT);
+    }
+
+    /**
+     * get all lecturers
+     * @return lecturers
+     */
+    public static JsonHandler getLecturers() {
+        return userAccountService.getUsersByRole(UserRoleType.LECTURER);
+    }
+
+    /**
+     * get all project managers
+     * @return projectManagers
+     */
+    public static JsonHandler getPMs() {
+        return userAccountService.getUsersByRole(UserRoleType.PROJECT_MANAGER);
+    }
+
+    /**
+     * get all admins
+     * @return admins
+     */
+    public static JsonHandler getAdmins() {
+        return userAccountService.getUsersByRole(UserRoleType.ADMIN);
+    }
+
+    /**
+     * get all intakes
+     * @return intakes
+     */
+    public static List<String> getIntakes() {
+        return userAccountService.getAllIntakes();
+    }
 }

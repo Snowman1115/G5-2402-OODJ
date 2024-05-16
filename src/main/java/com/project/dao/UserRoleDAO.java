@@ -7,6 +7,7 @@ import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.pojo.UserRole;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,16 @@ public class UserRoleDAO {
             }
         }
         return null;
+    }
+
+    public List<Integer> filterUserByRole(UserRoleType roleType) {
+        List<Integer> list = new ArrayList<>();
+        for (UserRole userRole : user_roles) {
+            if (userRole.getUserRoleType().equals(roleType)) {
+                list.add(userRole.getUserId());
+            }
+        }
+        return list;
     }
 
     /**

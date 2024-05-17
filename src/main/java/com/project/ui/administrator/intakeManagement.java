@@ -8,7 +8,6 @@ import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.Dialog;
 import com.project.common.utils.JsonHandler;
 import com.project.controller.IntakesController;
-import com.project.controller.ProjectModuleController;
 import com.project.controller.UserAccountController;
 import org.json.simple.JSONObject;
 
@@ -17,7 +16,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -25,7 +23,8 @@ import java.util.stream.Collectors;
  */
 public class intakeManagement extends javax.swing.JInternalFrame {
     List<String> modules = new ArrayList<>();
-    String selectedModule1, selectedModule2, selectedModule3, selectedModule4, newIntake, intakeStartDate, intakeEndDate;
+    String newIntakeCode, intakeStartDate, intakeEndDate;
+    JsonHandler assignedModules;
 
     /**
      * Creates new form intakeManagement
@@ -412,28 +411,24 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         LocalDate startDate = datePicker2.getDate();
         LocalDate endDate = datePicker1.getDate();
 
-        if (newIntakeCode.equals("") || startDate == null || endDate == null) {
+        if (newIntakeCode.isEmpty() || startDate == null || endDate == null) {
             Dialog.ErrorDialog("No empty fields are allowed!");
         } else {
             if (IntakesController.validateNewIntakeCode(newIntakeCode) && ChronoUnit.YEARS.between(startDate, endDate) >= 1) {
-                newIntake = newIntakeCode;
+                this.newIntakeCode = newIntakeCode;
                 intakeStartDate = DateTimeUtils.formatStrDate(startDate);
                 intakeEndDate = DateTimeUtils.formatStrDate(endDate);
 
-                modules = ProjectModuleController.getModulesCode();
+                // display preview
 
-                List<String> tmpList = new ArrayList<>(modules);
-                for (String m : tmpList) {
-                    PM3.addItem(m);
-                }
 
                 intakeCode.setEnabled(false);
                 datePicker1.setEnabled(false);
                 datePicker2.setEnabled(false);
+                backBtn1.setEnabled(false);
                 nextBtn2.setEnabled(false);
-                PM3.setEnabled(true);
                 saveBtn.setEnabled(true);
-                backBtn1.setEnabled(true);
+                backBtn2.setEnabled(true);
             } else if (!IntakesController.validateNewIntakeCode(newIntakeCode)) {
                 Dialog.ErrorDialog("\"" + newIntakeCode + "\"" + " already exists!");
             } else {
@@ -444,24 +439,6 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nextBtn2MouseClicked
 
     private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
-        if (selectedModule1 != null && selectedModule2 != null && selectedModule3 != null && selectedModule4 != null) {
-            List<String> modules = new ArrayList<>();
-            modules.add(selectedModule1);
-            modules.add(selectedModule2);
-            modules.add(selectedModule3);
-            modules.add(selectedModule4);
-
-            JSONObject newIntakeObj = new JSONObject();
-            newIntakeObj.put("intakeCode", newIntake);
-            newIntakeObj.put("modules", String.join(",", modules));
-            newIntakeObj.put("startDate", intakeStartDate);
-            newIntakeObj.put("endDate", intakeEndDate);
-
-            System.out.println(newIntakeObj);
-        } else {
-            Dialog.ErrorDialog("All modules are required!");
-        }
-
 
     }//GEN-LAST:event_saveBtnMouseClicked
 
@@ -470,7 +447,15 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_intakeCodeKeyReleased
 
     private void backBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn1MouseClicked
-        
+        jTabbedPane1.setSelectedIndex(0);
+        intakeCode.setText(null);
+        intakeCode.setEnabled(false);
+        datePicker1.setDate(null);
+        datePicker1.setEnabled(false);
+        datePicker2.setDate(null);
+        datePicker2.setEnabled(false);
+        backBtn1.setEnabled(false);
+        nextBtn2.setEnabled(false);
     }//GEN-LAST:event_backBtn1MouseClicked
 
     private void module3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_module3KeyReleased
@@ -478,20 +463,56 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_module3KeyReleased
 
     private void module1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_module1KeyReleased
-        // TODO add your handling code here:
+        module1.setText(module1.getText().toUpperCase());
     }//GEN-LAST:event_module1KeyReleased
 
     private void module4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_module4KeyReleased
-        // TODO add your handling code here:
+        module4.setText(module4.getText().toUpperCase());
     }//GEN-LAST:event_module4KeyReleased
 
     private void module2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_module2KeyReleased
-        // TODO add your handling code here:
+        module2.setText(module2.getText().toUpperCase());
     }//GEN-LAST:event_module2KeyReleased
 
     private void nextBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextBtn1MouseClicked
-        JsonHandler assignedModules = new JsonHandler();
-        JSONObject moduleObj = new JSONObject();
+        if (!module1.getText().isEmpty() && !module2.getText().isEmpty() && !module3.getText().isEmpty() && !module4.getText().isEmpty() && !PM1.getSelectedItem().equals("-- Project Managers --") && !PM2.getSelectedItem().equals("-- Project Managers --") && !PM3.getSelectedItem().equals("-- Project Managers --") && !PM4.getSelectedItem().equals("-- Project Managers --")) {
+            assignedModules = new JsonHandler();
+
+            JSONObject moduleObj1 = new JSONObject();
+            moduleObj1.put("moduleCode", module1.getText());
+            moduleObj1.put("projectManager", Integer.parseInt(PM1.getSelectedItem().toString().split("-")[1]));
+            assignedModules.addObject(moduleObj1);
+
+            JSONObject moduleObj2 = new JSONObject();
+            moduleObj2.put("moduleCode", module2.getText());
+            moduleObj2.put("projectManager", Integer.parseInt(PM2.getSelectedItem().toString().split("-")[1]));
+            assignedModules.addObject(moduleObj2);
+
+            JSONObject moduleObj3 = new JSONObject();
+            moduleObj3.put("moduleCode", module3.getText());
+            moduleObj3.put("projectManager", Integer.parseInt(PM3.getSelectedItem().toString().split("-")[1]));
+            assignedModules.addObject(moduleObj3);
+
+            JSONObject moduleObj4 = new JSONObject();
+            moduleObj4.put("moduleCode", module4.getText());
+            moduleObj4.put("projectManager", Integer.parseInt(PM4.getSelectedItem().toString().split("-")[1]));
+            assignedModules.addObject(moduleObj4);
+
+            jTabbedPane1.setSelectedIndex(1);
+            intakeCode.setText(null);
+            intakeCode.setEnabled(true);
+            datePicker1.setDate(null);
+            datePicker1.setEnabled(true);
+            datePicker2.setDate(null);
+            datePicker2.setEnabled(true);
+            backBtn1.setEnabled(true);
+            nextBtn2.setEnabled(true);
+        } else if (module1.getText().isEmpty() || module2.getText().isEmpty() || module3.getText().isEmpty() || module4.getText().isEmpty()) {
+            Dialog.ErrorDialog("All modules are required!");
+        } else {
+            Dialog.ErrorDialog("Each module must have an assigned Project Manager!");
+        }
+
     }//GEN-LAST:event_nextBtn1MouseClicked
 
     private void backBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn2MouseClicked

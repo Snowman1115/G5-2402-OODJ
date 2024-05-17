@@ -4,7 +4,6 @@
  */
 package com.project.ui.lecturer;
 
-import com.project.ui.administrator.*;
 import com.project.common.constants.UserRoleType;
 import com.project.controller.UserAccountController;
 import com.project.ui.authentication.LoginGui;
@@ -64,7 +63,7 @@ public class LecturerGui extends javax.swing.JFrame {
                 manageConsultationBtn.setBackground(DefaultBtnColor);
                 profileBtn.setBackground(DefaultBtnColor);
                 logoutBtn.setBackground(DefaultBtnColor);
-//                WindowsPane.add(new AdminManagement()).setVisible(true);
+                WindowsPane.add(new LecturerPresentation()).setVisible(true);
             } 
             case "manageConsultationBtn" -> {
                 dashboardBtn.setBackground(DefaultBtnColor);

@@ -4,14 +4,11 @@ import com.project.common.constants.ConsultationStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.DateTimeUtils;
-import static com.project.common.utils.DateTimeUtils.*;
 import com.project.common.utils.Dialog;
 import com.project.dao.ConsultationDAO;
-import com.project.dao.IntakeDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.dao.UserRoleDAO;
 import com.project.pojo.Consultation;
-import com.project.pojo.Intake;
 import com.project.pojo.UserAccount;
 import com.project.service.ConsultationService;
 import lombok.extern.slf4j.Slf4j;
@@ -109,7 +106,7 @@ public class ConsultationServiceImpl implements ConsultationService {
      * Book Consultation Slots by Consultation Id
      * @param consultationId
      * @param studentId
-     * @return boolean
+     * @return Boolean
      */
     @Override
     public boolean bookConsultationSlot(Integer consultationId, Integer studentId) {
@@ -117,7 +114,7 @@ public class ConsultationServiceImpl implements ConsultationService {
             log.info("Consultation Booked Successfully: " + consultationId + " + " + studentId);
             Dialog.SuccessDialog(MessageConstant.SUCCESS_BOOKING_CONSULTATION);
             return true;
-        };
+        }
         log.info("Consultation Booked Failed: " + consultationId + " + " + studentId);
         return false;
     }
@@ -205,14 +202,14 @@ public class ConsultationServiceImpl implements ConsultationService {
      * @return Map of Integer
      */
     @Override
-    public Map<String, Integer> getUpcomingNFinishedConsultationForLecturer(Integer lecturerId) {
-        return consultationDAO.getUpcomingNFinishedConsultationForLecturer(lecturerId);
+    public Map<String, Integer> getAvailableNSchduledConsultationForLecturer(Integer lecturerId) {
+        return consultationDAO.getAvailableNScheduledConsultationForLecturer(lecturerId);
     }
     
      /**
      * Get All Scheduled Consultation By Lecturer Id
      * @param lecturerId
-     * @return List
+     * @return List of Map
      */
     @Override
     public List<Map<String, String>> getAllScheduledConsultationByLecId(Integer lecturerId) {
@@ -233,7 +230,7 @@ public class ConsultationServiceImpl implements ConsultationService {
      /**
      * Get All Consultation (Except Completed Consultations) By Lecturer Id
      * @param lecturerId
-     * @return List
+     * @return List of Map
      */
     @Override
     public List<Map<String, String>> getAllConsultationExceptCompletedByLecId(Integer lecturerId) {
@@ -242,7 +239,7 @@ public class ConsultationServiceImpl implements ConsultationService {
         for (Consultation consultation : consultations) {
             Map<String,String> map = new HashMap<>();
             map.put("id", consultation.getConsultationId().toString());
-            Integer studentId=Integer.valueOf(consultation.getStudentId());
+            Integer studentId=consultation.getStudentId();
             //If the consultation slot is not yet booked by any student, set studentId and studentName to EMPTY before displaying to avoid bug     
             if(studentId != 0)
             {
@@ -308,8 +305,6 @@ public class ConsultationServiceImpl implements ConsultationService {
     @Override
     public Boolean deleteConsultationById(Integer consultationId)
     {
-        Consultation consultation = consultationDAO.getConsultationbyId(consultationId);
-
         if(Dialog.ConfirmationDialog(MessageConstant.WARNING_REMOVE_CONFIRMATION)) {
             log.info("Consultation Slot Deleted Successfully : " + consultationId);
             consultationDAO.deleteConsultation(consultationId);

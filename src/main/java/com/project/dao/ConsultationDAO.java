@@ -53,7 +53,7 @@ public class ConsultationDAO {
 
     /**
      * Get All Consultation Details for Student
-     *
+     * @param studentId
      * @return List
      */
     public List<Consultation> getAllEventsForStudent(Integer studentId) {
@@ -91,7 +91,7 @@ public class ConsultationDAO {
 
     /**
      * Get Upcoming Event Details for Student
-     *
+     * @param studentId
      * @return List of Map
      */
     public List<Map<String, String>> getUpcomingEventForStudent(Integer studentId) {
@@ -112,7 +112,7 @@ public class ConsultationDAO {
      * Book Consultation Slots by Consultation Id
      * @param consultationId
      * @param studentId
-     * @return boolean
+     * @return Boolean
      */
     public Boolean bookConsultationSlot(Integer consultationId, Integer studentId) {
         for (Consultation consultation : consultations) {
@@ -143,6 +143,12 @@ public class ConsultationDAO {
         return false;
     }
     
+    /**
+     * Get All Consultation Details By Lecturer Id
+     * @param lecturerId
+     * @return
+     */    
+    
     public List getConsultationByLecturerId(Integer lecturerId) {
         List<Map<String, String>> list = new ArrayList<>();
         for (Consultation consultation : consultations) {
@@ -162,11 +168,11 @@ public class ConsultationDAO {
     }
     
     /**
-     * Get Total Number of Upcoming and Finished Consultation For Student
+     * Get Total Number of Available and Scheduled Consultation For Lecturer
      * @param lecturerId
      * @return Map of Number
      */
-    public Map<String, Integer> getUpcomingNFinishedConsultationForLecturer(Integer lecturerId) {
+    public Map<String, Integer> getAvailableNScheduledConsultationForLecturer(Integer lecturerId) {
         Map<String, Integer> map = new HashMap<>();
         Integer upcomingSum = 0;
         Integer availableSum = 0;
@@ -199,7 +205,7 @@ public class ConsultationDAO {
         return list;
     }
     /**
-     * Get All Scheduled Consultation for Lecturer
+     * Get All Scheduled Consultation Except Completed for Lecturer
      * @param lecturerId
      * @return List
      */
@@ -216,7 +222,7 @@ public class ConsultationDAO {
     /**
      * Update Booked Consultation To Complete By Consultation Id
      * @param consultationId
-     * @return boolean
+     * @return Boolean
      */
     public Boolean completeBookedConsultationById(Integer consultationId) {
         for (Consultation consultation : consultations) {
@@ -243,6 +249,7 @@ public class ConsultationDAO {
     
     /**
      * Get All Consultation ID
+     *@param consultationId
      * @return List of consultationId
      */    
     public Consultation getConsultationbyId(Integer consultationId) {
@@ -397,12 +404,6 @@ public class ConsultationDAO {
         userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
         return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
     }
-    
-    //    For debug purpose, run the below main method to view the data
-//    public static void main(String[] args) {
-//        ConsultationDAO testDAO = new ConsultationDAO();
-//        System.out.println(testDAO.getAllConsultationExceptCompletedForLec(88608036));
-//    }
 }
 
 

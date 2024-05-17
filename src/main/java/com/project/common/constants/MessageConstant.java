@@ -19,7 +19,10 @@ public class MessageConstant {
     public static final String SUCCESS_CONSULTATION_CANCELLED = "Consultation Successfully Cancelled.";
     public static final String SUCCESS_CONSULTATION_COMPLETED = "Consultation Successfully Update To Completed.";
     public static final String SUCCESS_BOOKED_PRESENTATION_SLOT = "Presentation Slot Successfully Booked.";
+    public static final String SUCCESS_CONFIRMED_PRESENTATION_SLOT = "Presentation Slot Successfully Confirmed.";
     public static final String SUCCESS_CANCELLED_PRESENTATION_SLOT = "Presentation Slot Successfully Cancelled.";
+    public static final String SUCCESS_REJECTED_PRESENTATION_SLOT = "Presentation Slot Successfully Rejected.";
+    public static final String SUCCESS_UPDATED_PRESENTATION_MARKS = "Presentation Marks Successfully Updated.";
     public static final String SUCCESS_SUBMITTED_PROJECT = "Project File Submitted Successfully.";
     public static final String SUCCESS_ASSIGNED_SUPERVISOR = "Supervisor And Second Marker Assigned Successfully.";
 
@@ -45,6 +48,8 @@ public class MessageConstant {
     public static final String ERROR_PASSWORD_FORMAT_INCORRECT = "Password format is incorrect. Please include at least one special character, number, and capital letter.";
     public static final String ERROR_DATE_FORMAT_INCORRECT = "Incorrect date format. The format should be 'yyyy-MM-dd'.";
     public static final String ERROR_POSTCODE_FORMAT_INCORRECT = "Incorrect postcode format. Please try again.";
+    public static final String ERROR_MARKS_FORMAT_INCORRECT = "Incorrect marks format. Please try again and enter numbers only.";
+    public static final String ERROR_MARKS_EXCEED_RANGE = "Marks must be between 0 and 100. Please enter again.";
     public static final String ERROR_STATE_INCORRECT = "Invalid state. Please try again.";
     public static final String ERROR_SECURITY_PHRASE_N_ACCOUNT_INCORRECT = "Incorrect username/security phrase. Please try again.";
     public static final String ERROR_PASSWORD_N_CPASSWORD_NOT_MATCH = "Passwords do not match. Please try again.";
@@ -60,7 +65,14 @@ public class MessageConstant {
     public static final String ERROR_ONLY_PDF_SUPPORTED = "Only PDF format is supported. Please try again.";
     public static final String ERROR_EMPTY_FILE = "Please upload a file to submit.";
     public static final String ERROR_SUBMISSION_DUE_DATE_IS_OVER = "Submission Due Date is Over, modification are not allowed.";
-    public static final String ERROR_CONSULTATION_DATETIME_CLASHED = "The DateTime selected is clashing with other existing consultation DateTime. Please select another DateTime.";
+    public static final String ERROR_CONSULTATION_DATETIME_CLASHED = """
+                                                                     The DateTime selected is clashing with other existing consultation DateTime.
+                                                                     Please select another DateTime.
+                                                                     """;
+    public static final String ERROR_PRESENTATION_DATETIME_CLASHED = """
+                                                                     The DateTime requested is clashing with other booked presentation DateTime. 
+                                                                     Please contact your student to choose another DateTime and this presentation is automatically rejected.
+                                                                     """;
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations are available to book.";
@@ -77,5 +89,9 @@ public class MessageConstant {
 
     /* WARNING */
     public static final String WARNING_REMOVE_CONFIRMATION = "Are you sure you want to delete ?";
+    public static final String WARNING_MARK_PRESENTATION = """
+                                                           Are you sure you want to give the presentation marks?
+                                                           Once updated, you are not allowed to modify the marks !
+                                                           """;
 
 }

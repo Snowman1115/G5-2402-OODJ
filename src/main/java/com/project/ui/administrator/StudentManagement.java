@@ -82,10 +82,10 @@ public class StudentManagement extends javax.swing.JInternalFrame {
 
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn16.setText("ACTIONS");
         menuBtn16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setOpaque(true);
         MainPanel.add(menuBtn16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 120, 40));
 
@@ -122,12 +122,12 @@ public class StudentManagement extends javax.swing.JInternalFrame {
 
         MainPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1020, 440));
 
-        filterByIntake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         filterByIntake.setBackground(new java.awt.Color(254, 254, 254));
+        filterByIntake.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        filterByIntake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        filterByIntake.setToolTipText("d");
         filterByIntake.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         filterByIntake.setFocusable(false);
-        filterByIntake.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        filterByIntake.setToolTipText("d");
         filterByIntake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterByIntakeActionPerformed(evt);
@@ -135,23 +135,38 @@ public class StudentManagement extends javax.swing.JInternalFrame {
         });
         MainPanel.add(filterByIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 330, 35));
 
+        menuBtn17.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn17.setText("STUDENT DETAILS");
         menuBtn17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn17.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn17.setOpaque(true);
         MainPanel.add(menuBtn17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 670, 40));
 
         addBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-24.png"))); // NOI18N
         addBtn.setText("Add");
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addBtnMouseClicked(evt);
+            }
+        });
         MainPanel.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 110, 40));
 
         editBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-24x24.png"))); // NOI18N
         editBtn.setText("Edit");
+        editBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editBtnMouseClicked(evt);
+            }
+        });
         MainPanel.add(editBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, 110, 40));
 
         deleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
         deleteBtn.setText("Delete");
+        deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseClicked(evt);
+            }
+        });
         MainPanel.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 600, 110, 40));
 
         jButton6.setText("xxx");
@@ -183,6 +198,18 @@ public class StudentManagement extends javax.swing.JInternalFrame {
 
         sorter.setRowFilter(RowFilter.regexFilter(regex));
     }//GEN-LAST:event_searchFieldKeyReleased
+
+    private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtnMouseClicked
+
+    private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editBtnMouseClicked
+
+    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteBtnMouseClicked
 
     private void filterByIntakeActionPerformed(java.awt.event.ActionEvent evt) {
         String selectedIntake = (String) filterByIntake.getSelectedItem();

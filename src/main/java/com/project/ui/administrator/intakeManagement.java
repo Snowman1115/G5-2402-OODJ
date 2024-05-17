@@ -56,6 +56,8 @@ public class intakeManagement extends javax.swing.JInternalFrame {
             PM4.addItem(projectManager);
 
         }
+
+        jPanel4.setVisible(false);
     }
 
     /**
@@ -103,12 +105,32 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         nextBtn2 = new javax.swing.JButton();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
         backBtn1 = new javax.swing.JButton();
         backBtn2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        endDatePre = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        intakeCodePre = new javax.swing.JLabel();
+        module1PMPre = new javax.swing.JLabel();
+        module2PMPre = new javax.swing.JLabel();
+        module3PMPre = new javax.swing.JLabel();
+        module4PMPre = new javax.swing.JLabel();
+        startDatePre = new javax.swing.JLabel();
+        module1Pre = new javax.swing.JLabel();
+        module2Pre = new javax.swing.JLabel();
+        module3Pre = new javax.swing.JLabel();
+        module4Pre = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1093, 695));
 
@@ -122,6 +144,7 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         jLabel5.setOpaque(true);
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 35));
 
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -162,8 +185,9 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         PM3.setFocusable(false);
         jPanel5.add(PM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 350, 35));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 440, 240));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 440, 240));
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -204,8 +228,9 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         PM1.setFocusable(false);
         jPanel6.add(PM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 350, 35));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 440, 240));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 440, 240));
 
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -246,8 +271,9 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         PM4.setFocusable(false);
         jPanel7.add(PM4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 350, 35));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 440, 240));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 440, 240));
 
+        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -288,7 +314,7 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         PM2.setFocusable(false);
         jPanel8.add(PM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 350, 35));
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 440, 240));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 440, 240));
 
         nextBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/forward-button-24.png"))); // NOI18N
         nextBtn1.setText("Next");
@@ -319,11 +345,11 @@ public class intakeManagement extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/new-copy-24.png"))); // NOI18N
-        jLabel1.setText("NEW INTAKE");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/summary-24.png"))); // NOI18N
+        jLabel1.setText("SUMMARY");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.setOpaque(true);
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 35));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 290, 35));
 
         jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -350,13 +376,7 @@ public class intakeManagement extends javax.swing.JInternalFrame {
                 saveBtnMouseClicked(evt);
             }
         });
-        jPanel3.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 560, 110, 40));
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Intake Code :");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.setOpaque(true);
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, 35));
+        jPanel3.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 560, 110, 40));
 
         nextBtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/forward-button-24.png"))); // NOI18N
         nextBtn2.setText("Next");
@@ -386,7 +406,122 @@ public class intakeManagement extends javax.swing.JInternalFrame {
                 backBtn2MouseClicked(evt);
             }
         });
-        jPanel3.add(backBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, 110, 40));
+        jPanel3.add(backBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 560, 110, 40));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/new-copy-24.png"))); // NOI18N
+        jLabel7.setText("NEW INTAKE");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.setOpaque(true);
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 35));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("End Date :");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setOpaque(true);
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 100, 35));
+
+        endDatePre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        endDatePre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        endDatePre.setOpaque(true);
+        jPanel4.add(endDatePre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 340, 35));
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Module 1 :");
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel11.setOpaque(true);
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 100, 35));
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel22.setText("Module 2 :");
+        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel22.setOpaque(true);
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 100, 35));
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel23.setText("Module 3 :");
+        jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel23.setOpaque(true);
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 100, 35));
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel24.setText("Module 4 :");
+        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel24.setOpaque(true);
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 100, 35));
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel25.setText("Start Date :");
+        jLabel25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel25.setOpaque(true);
+        jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 100, 35));
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel26.setText("Intake Code :");
+        jLabel26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel26.setOpaque(true);
+        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 35));
+
+        intakeCodePre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        intakeCodePre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        intakeCodePre.setOpaque(true);
+        jPanel4.add(intakeCodePre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 340, 35));
+
+        module1PMPre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module1PMPre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module1PMPre.setOpaque(true);
+        jPanel4.add(module1PMPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 340, 35));
+
+        module2PMPre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module2PMPre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module2PMPre.setOpaque(true);
+        jPanel4.add(module2PMPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 340, 35));
+
+        module3PMPre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module3PMPre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module3PMPre.setOpaque(true);
+        jPanel4.add(module3PMPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 340, 35));
+
+        module4PMPre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module4PMPre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module4PMPre.setOpaque(true);
+        jPanel4.add(module4PMPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 340, 35));
+
+        startDatePre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        startDatePre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startDatePre.setOpaque(true);
+        jPanel4.add(startDatePre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 340, 35));
+
+        module1Pre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module1Pre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module1Pre.setOpaque(true);
+        jPanel4.add(module1Pre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 340, 35));
+
+        module2Pre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module2Pre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module2Pre.setOpaque(true);
+        jPanel4.add(module2Pre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 340, 35));
+
+        module3Pre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module3Pre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module3Pre.setOpaque(true);
+        jPanel4.add(module3Pre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 340, 35));
+
+        module4Pre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        module4Pre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        module4Pre.setOpaque(true);
+        jPanel4.add(module4Pre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 340, 35));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 490, 480));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Intake Code :");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.setOpaque(true);
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, 35));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 630));
 
@@ -416,11 +551,21 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         } else {
             if (IntakesController.validateNewIntakeCode(newIntakeCode) && ChronoUnit.YEARS.between(startDate, endDate) >= 1) {
                 this.newIntakeCode = newIntakeCode;
-                intakeStartDate = DateTimeUtils.formatStrDate(startDate);
-                intakeEndDate = DateTimeUtils.formatStrDate(endDate);
+                this.intakeStartDate = DateTimeUtils.formatStrDate(startDate);
+                this.intakeEndDate = DateTimeUtils.formatStrDate(endDate);
 
                 // display preview
-
+                intakeCodePre.setText(newIntakeCode);
+                module1Pre.setText(assignedModules.getObject(0).get("moduleCode").toString());
+                module1PMPre.setText(assignedModules.getObject(0).get("projectManagerName").toString());
+                module2Pre.setText(assignedModules.getObject(1).get("moduleCode").toString());
+                module2PMPre.setText(assignedModules.getObject(1).get("projectManagerName").toString());
+                module3Pre.setText(assignedModules.getObject(2).get("moduleCode").toString());
+                module3PMPre.setText(assignedModules.getObject(2).get("projectManagerName").toString());
+                module4Pre.setText(assignedModules.getObject(3).get("moduleCode").toString());
+                module4PMPre.setText(assignedModules.getObject(3).get("projectManagerName").toString());
+                startDatePre.setText(DateTimeUtils.formatStrDate(startDate));
+                endDatePre.setText(DateTimeUtils.formatStrDate(endDate));
 
                 intakeCode.setEnabled(false);
                 datePicker1.setEnabled(false);
@@ -429,6 +574,8 @@ public class intakeManagement extends javax.swing.JInternalFrame {
                 nextBtn2.setEnabled(false);
                 saveBtn.setEnabled(true);
                 backBtn2.setEnabled(true);
+
+                jPanel4.setVisible(true);
             } else if (!IntakesController.validateNewIntakeCode(newIntakeCode)) {
                 Dialog.ErrorDialog("\"" + newIntakeCode + "\"" + " already exists!");
             } else {
@@ -481,21 +628,25 @@ public class intakeManagement extends javax.swing.JInternalFrame {
             JSONObject moduleObj1 = new JSONObject();
             moduleObj1.put("moduleCode", module1.getText());
             moduleObj1.put("projectManager", Integer.parseInt(PM1.getSelectedItem().toString().split("-")[1]));
+            moduleObj1.put("projectManagerName", PM1.getSelectedItem().toString().split("-")[0]);
             assignedModules.addObject(moduleObj1);
 
             JSONObject moduleObj2 = new JSONObject();
             moduleObj2.put("moduleCode", module2.getText());
             moduleObj2.put("projectManager", Integer.parseInt(PM2.getSelectedItem().toString().split("-")[1]));
+            moduleObj2.put("projectManagerName", PM2.getSelectedItem().toString().split("-")[0]);
             assignedModules.addObject(moduleObj2);
 
             JSONObject moduleObj3 = new JSONObject();
             moduleObj3.put("moduleCode", module3.getText());
             moduleObj3.put("projectManager", Integer.parseInt(PM3.getSelectedItem().toString().split("-")[1]));
+            moduleObj3.put("projectManagerName", PM3.getSelectedItem().toString().split("-")[0]);
             assignedModules.addObject(moduleObj3);
 
             JSONObject moduleObj4 = new JSONObject();
             moduleObj4.put("moduleCode", module4.getText());
             moduleObj4.put("projectManager", Integer.parseInt(PM4.getSelectedItem().toString().split("-")[1]));
+            moduleObj4.put("projectManagerName", PM4.getSelectedItem().toString().split("-")[0]);
             assignedModules.addObject(moduleObj4);
 
             jTabbedPane1.setSelectedIndex(1);
@@ -521,7 +672,7 @@ public class intakeManagement extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> PM1;
+    private static javax.swing.JComboBox<String> PM1;
     private static javax.swing.JComboBox<String> PM2;
     private static javax.swing.JComboBox<String> PM3;
     private static javax.swing.JComboBox<String> PM4;
@@ -529,9 +680,12 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     private javax.swing.JButton backBtn2;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private javax.swing.JLabel endDatePre;
     private javax.swing.JTextField intakeCode;
+    private javax.swing.JLabel intakeCodePre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -543,13 +697,21 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -557,11 +719,20 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField module1;
+    private javax.swing.JLabel module1PMPre;
+    private javax.swing.JLabel module1Pre;
     private javax.swing.JTextField module2;
+    private javax.swing.JLabel module2PMPre;
+    private javax.swing.JLabel module2Pre;
     private javax.swing.JTextField module3;
+    private javax.swing.JLabel module3PMPre;
+    private javax.swing.JLabel module3Pre;
     private javax.swing.JTextField module4;
+    private javax.swing.JLabel module4PMPre;
+    private javax.swing.JLabel module4Pre;
     private javax.swing.JButton nextBtn1;
     private javax.swing.JButton nextBtn2;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JLabel startDatePre;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,18 +1,11 @@
 package com.project.ui.lecturer;
 
-import com.project.ui.student.*;
 import com.project.common.constants.MessageConstant;
-import com.project.common.utils.Dialog;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
-import com.project.controller.ConsultationController;
 import com.project.controller.ProjectModuleController;
-import org.bouncycastle.tsp.TSPUtil;
-import org.icepdf.ri.common.ComponentKeyBinding;
-import org.icepdf.ri.common.SwingController;
-import org.icepdf.ri.common.SwingViewBuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -33,41 +26,14 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
 
-        // refresh();
-
-        // salesManagementPanel.setText(PropertiesReader.getProperty("SalesManagementPanelVersion"));
         refresh();
     }
 
     private void refresh() {
         fillInSelectModuleComboBoxFirstMarker();
         fillInSelectModuleComboBoxSecondMarker();
-        // refreshDashboard();
-        // refreshComboBox(0);
     }
-//    
-//    private void refreshDashboard() {
-//        Map<String, Integer> map = ConsultationController.getUpcomingNFinishedConsultationForStudent();
-//        menuBtn12.setText(map.get("upcoming").toString());
-//        menuBtn13.setText(map.get("finished").toString());
-//
-//        fillInJComboBox();
-//        refreshTable();
-//    }
-//
-//    private void refreshDetails(Object value) {
-//        if (consultationComboBox2.getSelectedItem() != null) {
-//            List<Map<String, String>> lists = ConsultationController.getAllScheduledConsultationIdByStudentId(mpduleID);
-//            for (Map<String, String> list : lists) {
-//                if (value.equals(list.get("id"))) {
-//                    JField19.setText(list.get("lecturer"));
-//                    JField18.setText(list.get("date"));
-//                    JField20.setText(list.get("status"));
-//                }
-//            }
-//        }
-//    }
-//
+
     //Get all modules if the lecturer is first marker
     private void fillInSelectModuleComboBoxFirstMarker() {
         selectModuleComboBoxFM.removeAllItems();
@@ -99,16 +65,6 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
             selectModuleComboBoxSM.addItem(list.get("moduleCode"));
         }
         selectModuleComboBoxSM.setSelectedIndex(0);
-              
-//        consultationComboBox2.removeAllItems();
-//        List<Map<String, String>> lists2 = ConsultationController.getAllScheduledConsultationIdByStudentId();
-//        if (lists2.isEmpty()) {
-//            consultationComboBox2.addItem("There is no scheduled consultation.");
-//        }
-//        for (Map<String, String> list : lists2) {
-//            consultationComboBox2.addItem(list.get("id"));
-//        }
-//        consultationComboBox2.setSelectedIndex(0);
     }
     
 
@@ -146,53 +102,6 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
             }
         }
     }
-//
-//    private void refreshComboBox(Integer value) {
-//        DefaultTableModel dtm = (DefaultTableModel)jTable3.getModel();
-//        dtm.setRowCount(0);
-//        
-//        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
-//        jTable3.setRowSorter(tr);
-//        tr.setRowFilter(RowFilter.regexFilter("".trim()));
-//        
-//        
-//        List<Map<String, String>> lists = ConsultationController.getAllEventsForStudent();
-//
-//        switch(value) {
-//            case 0 -> {
-//                for (Map<String, String> list : lists) {
-//                    String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
-//                    dtm.addRow(data);
-//                }
-//            }
-//            case 1 -> {
-//                for (Map<String, String> list : lists) {
-//                    if (list.get("status").equals("SCHEDULED")) {
-//                        String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
-//                        dtm.addRow(data);
-//                    }
-//                }
-//            }
-//            case 2 -> {
-//                for (Map<String, String> list : lists) {
-//                    if (list.get("status").equals("COMPLETED")) {
-//                        String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
-//                        dtm.addRow(data);
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    
-//    private void refreshTable() {
-//        DefaultTableModel dtm =  (DefaultTableModel)jTable2.getModel();
-//        dtm.setRowCount(0);
-//        List<Map<String, String>> lists = ConsultationController.getUpcomingEventForStudent();
-//        for (Map<String,String> list : lists) {
-//            String[] data = {list.get("date"), list.get("lecturer")};
-//            dtm.addRow(data);
-//        }
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

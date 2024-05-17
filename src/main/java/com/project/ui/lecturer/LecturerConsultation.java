@@ -2,7 +2,6 @@ package com.project.ui.lecturer;
 
 import com.github.lgooddatepicker.optionalusertools.DateTimeChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent;
-import com.project.ui.student.*;
 import com.project.common.constants.MessageConstant;
 import com.project.common.utils.Dialog;
 import javax.swing.*;
@@ -13,10 +12,6 @@ import com.project.controller.ConsultationController;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import org.bouncycastle.tsp.TSPUtil;
-import org.icepdf.ri.common.ComponentKeyBinding;
-import org.icepdf.ri.common.SwingController;
-import org.icepdf.ri.common.SwingViewBuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -46,8 +41,6 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
                 checkIfSelectedPastDate();
             }
         });
-        // salesManagementPanel.setText(PropertiesReader.getProperty("SalesManagementPanelVersion"));
-        // refresh();
     }
 
     private void refresh() {
@@ -131,30 +124,6 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
         }
         consultationIDComboBoxInDelete.setSelectedIndex(0);
     }
-
-//    private void refreshComboBox1(String value) {
-//        DefaultTableModel dtm1 =  (DefaultTableModel)jTable4.getModel();
-//        dtm1.setRowCount(0);
-//        
-//        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm1);
-//        jTable4.setRowSorter(tr);
-//        tr.setRowFilter(RowFilter.regexFilter("".trim()));
-//        
-//        List<Map<String, String>> availableSlots = ConsultationController.getAllAvailableConsultationSlots();
-//        if (value.equals("All")) {
-//            for (Map<String,String> list : availableSlots) {
-//                String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
-//                dtm1.addRow(data);
-//            }
-//        } else {
-//            for (Map<String,String> list : availableSlots) {
-//                if (list.get("lecturer").equals(value)) {
-//                    String[] data = {list.get("id"), list.get("lecturer"), list.get("date"), list.get("status")};
-//                    dtm1.addRow(data);
-//                }
-//            }
-//        }
-//    }
 
     private void refreshConsultationOverviewTable(Integer value) {
         DefaultTableModel dtm = (DefaultTableModel)consultationOverviewTbl.getModel();
@@ -1015,7 +984,7 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_deleteConsultationBtnInDeleteMouseClicked
 
     private void consultationIDComboBoxInDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationIDComboBoxInDeleteActionPerformed
-        refreshConsultationDetailsInDelete(consultationIDComboBox.getSelectedItem());
+        refreshConsultationDetailsInDelete(consultationIDComboBoxInDelete.getSelectedItem());
     }//GEN-LAST:event_consultationIDComboBoxInDeleteActionPerformed
 
     private void completedConsultationBtnInEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedConsultationBtnInEditMouseClicked

@@ -158,6 +158,149 @@ public class PresentationDAO {
     }
 
     /**
+     * Get Total Number of Upcoming and Finished Consultation For Student
+     * @param lecturerId
+     * @return Map of Number
+     */
+    public Map<String, Integer> getPendingConfirmAndMarkingPresentationForLecturer(Integer lecturerId) {
+        Map<String, Integer> map = new HashMap<>();
+        Integer pendingConfirmSum = 0;
+        Integer pendingMarkingSum = 0;
+        for (Presentation presentation : presentations) {
+            if (presentation.getLecturerId().equals(lecturerId)) {
+                if (presentation.getPresentationStatus().equals(PresentationStatus.PENDING_CONFIRM)) {
+                    pendingConfirmSum = pendingConfirmSum + 1;
+                } else if (presentation.getPresentationStatus().equals(PresentationStatus.BOOKED)) {
+                    pendingMarkingSum = pendingMarkingSum + 1;
+                }
+            }
+        }
+        map.put("pendingConfirm", pendingConfirmSum);
+        map.put("pendingMarking", pendingMarkingSum);
+        return map;
+    }
+    
+    /**
+     * Get All Scheduled Presentation for Lecturer
+     * @param lecturerId
+     * @return List
+     */    
+    public List getPresentationByLecturerId(Integer lecturerId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Presentation presentation : presentations) {
+            if (presentation.getLecturerId().equals(lecturerId)) {
+                Map map = new HashMap<>();
+                map.put("id", presentation.getPresentationId().toString());
+                map.put("moduleId", presentation.getModuleId().toString());
+                map.put("lecturerId", presentation.getLecturerId().toString());
+                map.put("studentId", presentation.getStudentId().toString());
+                map.put("presentationDueDate", DateTimeUtils.formatStrDateTime(presentation.getPresentationDueDate()));
+                map.put("presentationDateTime", DateTimeUtils.formatStrDateTime(presentation.getPresentationDateTime()));
+                map.put("presentationStatus", presentation.getPresentationStatus().toString());
+                map.put("presentationResult", presentation.getPresentationResult().toString());
+                map.put("created_at", DateTimeUtils.formatStrDateTime(presentation.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(presentation.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Get All Booked Presentation for Lecturer
+     * @param lecturerId
+     * @return List
+     */  
+    public List<Presentation> getAllBookedPresentationForLec(Integer lecturerId) {
+        List<Presentation> list = new ArrayList<>();
+        for (Presentation presentation : presentations) {
+            if (presentation.getLecturerId().equals(lecturerId) && presentation.getPresentationStatus().equals(PresentationStatus.BOOKED)) {
+                list.add(presentation);
+            }
+        }
+        return list;
+    }
+    
+    /**
+     * Get All Pending Confirm Presentation for Lecturer
+     * @param lecturerId
+     * @return List
+     */  
+    public List<Presentation> getAllPendingConfirmPresentationForLec(Integer lecturerId) {
+        List<Presentation> list = new ArrayList<>();
+        for (Presentation presentation : presentations) {
+            if (presentation.getLecturerId().equals(lecturerId) && presentation.getPresentationStatus().equals(PresentationStatus.PENDING_CONFIRM)) {
+                list.add(presentation);
+            }
+        }
+        return list;
+    }
+    
+    /**
+     * Get All Not Yet Graded Presentation for Lecturer
+     * @param lecturerId
+     * @return List
+     */  
+    public List<Presentation> getNotYetGradedPresentationForLec(Integer lecturerId) {
+        List<Presentation> list = new ArrayList<>();
+        for (Presentation presentation : presentations) {
+            //Get all presentation including OVERDUE and BOOKED
+            if (presentation.getLecturerId().equals(lecturerId) && (presentation.getPresentationStatus().equals(PresentationStatus.BOOKED) || presentation.getPresentationStatus().equals(PresentationStatus.OVERDUE))) {
+                list.add(presentation);
+            }
+        }
+        return list;
+    }
+    
+    /**
+     * Update Booked Consultation To Complete By Consultation Id
+     * @param presentationId
+     * @return Boolean
+     */
+    public Boolean acceptPresentationById(Integer presentationId) {
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
+                update(presentationId, "presentationStatus", PresentationStatus.BOOKED.toString());
+                update(presentationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    } 
+    /**
+     * Update Booked Consultation To Complete By Consultation Id
+     * @param presentationId
+     * @return Boolean
+     */
+    public Boolean rejectPresentationById(Integer presentationId) {
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
+                update(presentationId, "presentationStatus", PresentationStatus.REJECTED.toString());
+                update(presentationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    } 
+    
+    /**
+     * Update Booked Consultation To Complete By Consultation Id
+     * @param presentationId
+     * @return Boolean
+     */
+    public Boolean updatePresentationMarksById(Integer presentationId, Double marks) {
+        for (Presentation presentation : presentations) {
+            if (presentation.getPresentationId().equals(presentationId)) {
+                update(presentationId, "presentationStatus", PresentationStatus.MARKED.toString());
+                update(presentationId, "presentationResult", marks.toString());
+                update(presentationId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    } 
+    
+    /**
      * Preload Data into presentations Array
      */
     private static void loadConsultationData() {
@@ -262,6 +405,4 @@ public class PresentationDAO {
         userJson.encode(FileHandler.readFile(PRESENTATION_DATA));
         return userJson.update(consultationId, attribute, value, PRESENTATION_DATA);
     }
-
-
 }

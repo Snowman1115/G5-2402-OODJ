@@ -7,7 +7,7 @@ import java.util.Map;
 public interface PresentationService {
 
     /**
-     * Get All Presentaion Status By Student Id
+     * Get All Presentation Status By Student Id
      * @param studentId
      * @return Map of List
      */
@@ -49,4 +49,64 @@ public interface PresentationService {
      * @return Boolean
      */
     Boolean cancelPresentationSlotByStudentId(Integer presentationId);
+    
+    /**
+     * Get All Pending Confirm And Pending Marking Presentation For Lecturer
+     * @param lecturerId
+     * @return Map of Integer
+     */
+    public Map<String, Integer> getPendingConfirmAndMarkingPresentationForLecturer(Integer lecturerId);
+    
+    /**
+     * Get All Consultation Details By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List getAllPresentationDetailsByLecId(Integer lecturerId); 
+    
+    /**
+     * Get All Booked Presentation By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List <Map<String, String>> getAllBookedPresentationByLecId(Integer lecturerId); 
+    
+    /**
+     * Get All Pending Confirm Presentation By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List <Map<String, String>> getAllPendingConfirmPresentationByLecId(Integer lecturerId); 
+    
+    /**
+     * Get All Not Yet Graded Presentation By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    public List <Map<String, String>> getNotYetGradedPresentationByLecId(Integer lecturerId); 
+
+    /**
+     * Update Pending Confirm Presentation To Accepted By Presentation Id
+     * @param presentationId
+     * @param dateTime
+     * @param lecturerId
+     * @return Boolean
+     */
+    public Boolean acceptPresentationById(Integer presentationId, LocalDateTime dateTime, Integer lecturerId);
+    
+    /**
+     * Update Pending Confirm Presentation To Rejected By Presentation Id
+     * @param presentationId
+     * @param lecturerId
+     * @return Boolean
+     */
+    public Boolean rejectPresentationById(Integer presentationId);
+    
+    /**
+     * Update Booked Presentation To Marked By Presentation Id
+     * @param presentationId
+     * @param marks
+     * @return Boolean
+     */
+    public Boolean updatePresentationMarksById(Integer presentationId, Double marks);
 }

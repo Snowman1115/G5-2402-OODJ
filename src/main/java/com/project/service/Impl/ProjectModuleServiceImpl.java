@@ -58,24 +58,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
                 String studentName=student.getFirstName()+" "+student.getLastName();
                 mappedMap.put("studentName", studentName);
             }
-//             if (submission.getModuleid.equals(moduleId))
-//             {
-//                 submission.getStatus();
-//                 submission.getStudentiD
-//                         UserAccount user = userAccountDAO.getUserAccountById(student);
-//                String name = user.getFirstName() + " " + user.getLastName();
-//                mappedMap.put("name", name);
-//                mappedMap.put("studentId", student.toString());   
-//             }
-//                
-//                
-//                List<Map<String, String>> studentSubmissions = submissionDAO.getAllSubmissionDetailsByStudentId(student);
-//                for (Map<String, String> studentSubmission : studentSubmissions) {
-//                    if (studentSubmission.get("moduleId").equals(list.get("id"))) {
-//                        mappedMap.put("Status", studentSubmission.get("Status"));
-//                        mappedMap.put("submitAt", studentSubmission.get("submitAt"));
-//                    }
-//            }
             mappedLists.add(mappedMap);
         }
         return mappedLists;
@@ -111,13 +93,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         }
         return mappedLists;
     }
-    
-//    For debug purpose, run the below main method to view the data
-//    public static void main(String[] args) {
-//        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
-//        System.out.println(prje.getAllModuleDetailsBySecondMarkerId(88608036));
-//    }
-    
 }
 
 

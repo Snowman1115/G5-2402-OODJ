@@ -2,9 +2,7 @@ package com.project.controller;
 
 import com.project.service.ConsultationService;
 import com.project.service.Impl.ConsultationServiceImpl;
-import com.project.service.Impl.UserAccountServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
-import com.project.service.UserAccountService;
 import com.project.service.UserAuthenticationService;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
@@ -100,7 +98,7 @@ public class ConsultationController {
      * @return Map of Integer
      */
     public static Map<String, Integer> getUpcomingNFinishedConsultationForLecturer() {
-        return consultationService.getUpcomingNFinishedConsultationForLecturer(getAuthenticatedUserId());
+        return consultationService.getAvailableNSchduledConsultationForLecturer(getAuthenticatedUserId());
     }
     
     /**
@@ -125,18 +123,17 @@ public class ConsultationController {
      * @return Boolean
      */
     public static Boolean completeBookedConsultationById(Integer consultationId) {
-        log.info("Booked Consultation with ID: " + consultationId + "is completed");
+        log.info("Booked Consultation with ID: " + consultationId + " is completed");
         return consultationService.completeBookedConsultationById(consultationId);
     }
     
      /**
      * Create Consultation Slot For Lecturer By Lecturer Id and Date Time
-     * @param lecturerId
      * @param dateTime
      * @return Boolean
      */
     public static Boolean createConsultationSlotForLecturer(LocalDateTime dateTime) {
-        log.info("New consultation slot for the lecturer with lecturerID : " + getAuthenticatedUserId() + "has created successfully");
+        log.info("New consultation slot for the lecturer with lecturerID : " + getAuthenticatedUserId() + " has created successfully");
         return consultationService.createConsultationSlotForLecturer(getAuthenticatedUserId(), dateTime);
     }
     

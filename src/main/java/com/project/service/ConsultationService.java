@@ -8,18 +8,21 @@ public interface ConsultationService {
 
     /**
      * Get Number of Student's Upcoming and Finished Consultation
+     * @param studentId
      * @return Map of Integer
      */
     public Map<String, Integer> getUpcomingNFinishedConsultationForStudent(Integer studentId);
 
     /**
      * Get Upcoming Event for Student
+     * @param studentId
      * @return List of Map
      */
     public List<Map<String, String>> getUpcomingEventForStudent(Integer studentId);
 
     /**
      * Get All Consultation Details for Student
+     * @param studentId
      * @return List of Map
      */
     List getAllEventsForStudent(Integer studentId);
@@ -40,7 +43,7 @@ public interface ConsultationService {
      * Book Consultation Slots by Consultation Id
      * @param consultationId
      * @param studentId
-     * @return boolean
+     * @return Boolean
      */
     boolean bookConsultationSlot(Integer consultationId, Integer studentId);
 
@@ -54,7 +57,7 @@ public interface ConsultationService {
     /**
      * Cancel Booked Consultation Details By Consultation Id
      * @param consultationId
-     * @return boolean
+     * @return Boolean
      */
     public Boolean cancelBookedConsultationById(Integer consultationId);
 
@@ -70,7 +73,7 @@ public interface ConsultationService {
      * @param lecturerId
      * @return Map of Integer
      */
-    public Map<String, Integer> getUpcomingNFinishedConsultationForLecturer(Integer lecturerId);
+    public Map<String, Integer> getAvailableNSchduledConsultationForLecturer(Integer lecturerId);
     
     /**
      * Get All Scheduled Consultation By Lecturer Id
@@ -89,7 +92,7 @@ public interface ConsultationService {
     /**
      * Update Booked Consultation To Completed By Consultation Id
      * @param consultationId
-     * @return boolean
+     * @return Boolean
      */
     public Boolean completeBookedConsultationById(Integer consultationId);
     

@@ -42,7 +42,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
                 menuBtn1.setBackground(ClickedBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
-//                menuBtn4.setBackground(DefaultBtnColor);
+                menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
@@ -55,7 +55,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(ClickedBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
-//                menuBtn4.setBackground(DefaultBtnColor);
+                menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
@@ -68,7 +68,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn3.setBackground(ClickedBtnColor);
-//                menuBtn4.setBackground(DefaultBtnColor);
+                menuBtn4.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
@@ -77,19 +77,19 @@ public class ProjectManagerGui extends javax.swing.JFrame {
 //                menuBtn10.setBackground(DefaultBtnColor);
                  WindowsPane.add(new ManagerAssignMarker()).setVisible(true);
             } 
-//            case "menuBtn4" -> {
-//                menuBtn1.setBackground(DefaultBtnColor);
-//                menuBtn3.setBackground(DefaultBtnColor);
-//                menuBtn3.setBackground(DefaultBtnColor);
-//                menuBtn4.setBackground(ClickedBtnColor);
-//                menuBtn5.setBackground(DefaultBtnColor);
-//                menuBtn6.setBackground(DefaultBtnColor);
-//                menuBtn2.setBackground(DefaultBtnColor);
+            case "menuBtn4" -> {
+                menuBtn1.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
+                menuBtn4.setBackground(ClickedBtnColor);
+                menuBtn5.setBackground(DefaultBtnColor);
+                menuBtn6.setBackground(DefaultBtnColor);
+                menuBtn2.setBackground(DefaultBtnColor);
 //                menuBtn8.setBackground(DefaultBtnColor);
 //                menuBtn9.setBackground(DefaultBtnColor);
 //                menuBtn10.setBackground(DefaultBtnColor);
-//                // WindowsPane.add(new AdminManagement()).setVisible(true);
-//            } 
+                WindowsPane.add(new ManagerModuleGui()).setVisible(true);
+            } 
 //            case "menuBtn5" -> {
 //                menuBtn1.setBackground(DefaultBtnColor);
 //                menuBtn3.setBackground(DefaultBtnColor);
@@ -197,6 +197,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        menuBtn4 = new javax.swing.JLabel();
         WindowsPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -254,7 +255,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         menuBtn3.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn3.setText("Generate Report");
+        menuBtn3.setText("VIEW REPORT");
         menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn3.setOpaque(true);
         menuBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,7 +291,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         menuBtn2.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn2.setText("View Module");
+        menuBtn2.setText("Manage Intake Module");
         menuBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn2.setOpaque(true);
         menuBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -307,16 +308,28 @@ public class ProjectManagerGui extends javax.swing.JFrame {
 
         jSeparator4.setForeground(new java.awt.Color(230, 230, 230));
 
-        jLabel2.setText("Module Management");
         jLabel2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        jLabel2.setText("Module Management");
 
-        jLabel3.setText("Report Status");
         jLabel3.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        jLabel3.setText("Report Status");
 
-        jLabel4.setText("  Project Manager Home");
         jLabel4.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        jLabel4.setText("  Project Manager Home");
 
         jSeparator5.setForeground(new java.awt.Color(230, 230, 230));
+
+        menuBtn4.setBackground(new java.awt.Color(245, 245, 245));
+        menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuBtn4.setText("View Module");
+        menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn4.setOpaque(true);
+        menuBtn4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
         MenuPanel.setLayout(MenuPanelLayout);
@@ -329,17 +342,22 @@ public class ProjectManagerGui extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addComponent(jSeparator2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(199, 199, 199))
             .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(199, 199, 199)
+                .addContainerGap()
+                .addComponent(menuBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3))
             .addComponent(jSeparator4)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator5)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MenuPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(menuBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addGap(16, 16, 16)))
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,29 +371,37 @@ public class ProjectManagerGui extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(175, 175, 175)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MenuPanelLayout.createSequentialGroup()
+                    .addGap(113, 113, 113)
+                    .addComponent(menuBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(507, Short.MAX_VALUE)))
         );
 
         getContentPane().add(MenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 200, 660));
 
-        WindowsPane.setFocusable(false);
         WindowsPane.setForeground(new java.awt.Color(50, 50, 50));
+        WindowsPane.setFocusable(false);
 
         javax.swing.GroupLayout WindowsPaneLayout = new javax.swing.GroupLayout(WindowsPane);
         WindowsPane.setLayout(WindowsPaneLayout);
@@ -415,6 +441,11 @@ public class ProjectManagerGui extends javax.swing.JFrame {
     private void menuBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn2MouseClicked
         ButtonClicked("menuBtn2");
     }//GEN-LAST:event_menuBtn2MouseClicked
+
+    private void menuBtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn4MouseClicked
+        // TODO add your handling code here:
+        ButtonClicked("menuBtn4");
+    }//GEN-LAST:event_menuBtn4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -470,6 +501,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
     private static javax.swing.JLabel menuBtn1;
     private static javax.swing.JLabel menuBtn2;
     private static javax.swing.JLabel menuBtn3;
+    private static javax.swing.JLabel menuBtn4;
     private static javax.swing.JLabel menuBtn5;
     private static javax.swing.JLabel menuBtn6;
     // End of variables declaration//GEN-END:variables

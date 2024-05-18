@@ -33,4 +33,6 @@ public interface ProjectModuleService {
     public List getModuleById(Integer moduleId);
 
     public Boolean saveModuleDetails(List moduleDetails);
+
+    public List getModuleTypeById(Integer moduleId);
 }

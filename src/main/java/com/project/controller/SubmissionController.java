@@ -60,5 +60,17 @@ public class SubmissionController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
+    
+    private static List getAllReport(){
+        return submissionService.getAllReportDetails();
+    }
+
+//    public static List getAssessmentByModuleId(Integer moduleId) {
+//        return submissionService.getAssessmentByModuleId(moduleId);
+//    }
+
+    public static Boolean saveAssessmentType(Integer moduleId, String savedAssessment) {
+        return submissionService.saveAssessmentType(moduleId, savedAssessment);
+    }
 
 }

@@ -34,4 +34,10 @@ public interface SubmissionService {
      */
     Boolean removeSubmissionById(Integer submissionId);
 
+    public List getAllReportDetails();
+
+    public List getAssessmentByModuleId(Integer moduleId);
+
+    public Boolean saveAssessmentType(Integer moduleId, String savedAssessment);
+
 }

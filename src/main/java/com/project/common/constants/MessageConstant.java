@@ -26,6 +26,7 @@ public class MessageConstant {
     public static final String SUCCESS_SUBMITTED_PROJECT = "Project File Submitted Successfully.";
     public static final String SUCCESS_ASSIGNED_SUPERVISOR = "Supervisor And Second Marker Assigned Successfully.";
     public static final String SUCCESS_RESET_FIELD = "Field has been reset to default.";
+    public static final String SUCCESS_UPDATE_ASSESSMENT_TYPE = "Assessment Type Has Been Updated Successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";

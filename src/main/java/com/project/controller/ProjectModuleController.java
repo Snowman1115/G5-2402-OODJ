@@ -63,6 +63,8 @@ public class ProjectModuleController {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
     
-  
+    public static List getModuleTypeById(Integer moduleId) {
+        return projectModuleService.getModuleTypeById(moduleId);
+    }
     
 }

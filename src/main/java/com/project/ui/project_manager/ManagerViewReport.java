@@ -27,44 +27,38 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author Olaf
+ * @author Jin Xun
  */
-public class ManagerModuleGui extends javax.swing.JInternalFrame {
+public class ManagerViewReport extends javax.swing.JInternalFrame {
 
      private Integer moduleId;
      private Map<String, String> currentModuleDetails;
-     private String firstMarkerName, secondMarkerName, moduleType;
+     private String firstMarkerName, secondMarkerName;
      private JsonHandler lecturerLists;
     /**
      * Creates new form StudentAssignmentGui
      */
-    public ManagerModuleGui() {
+    public ManagerViewReport() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
         refresh();
-
-        // salesManagementPanel.setText(PropertiesReader.getProperty("SalesManagementPanelVersion"));
-        // refresh();
     }
 
     private void refresh() {
-        moduleId = null;
         refreshTable();
         fillspModuleComboBox();
-        fillAssessmentComboBox();
-        ModuleTabbedPanel.setSelectedIndex(0);
     }
     
     private void refreshTable() {
-        DefaultTableModel dtm =  (DefaultTableModel)jTableModuleDetails.getModel();
+        DefaultTableModel dtm =  (DefaultTableModel)jTableReportDetails.getModel();
         dtm.setRowCount(0);
-        List<Map<String, String>> moduleLists = ProjectModuleController.getAllModuleDetailsByProjectManagerId();
-        for (Map<String,String> list : moduleLists) {
-            String[] data = {list.get("id"),list.get("moduleCode"), list.get("startDate"),list.get("endDate"), list.get("firstMarker") , list.get("secondMarker"),};
-            dtm.addRow(data);   
-        }
+//        List<Map<String, String>> moduleLists = SubmissionController.getAllReport();
+//        for (Map<String,String> list : moduleLists) {
+//            String[] data = {list.get("id"),list.get("moduleCode"), list.get("startDate"),list.get("endDate"), list.get("firstMarker") , list.get("secondMarker"),};
+//            dtm.addRow(data);   
+//        }
     }
     
 //    private String getSelectedModuleId() {
@@ -129,48 +123,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 }
         }
         
-        private void autofillAssessment(Integer moduleId){
-            List<Map<String, String>> moduleTypeLists = ProjectModuleController.getModuleTypeById(moduleId);
-            Map<String, String> mLists = moduleTypeLists.isEmpty() ? null : moduleTypeLists.get(0);
-
-//          if module type list is not empty
-            if (moduleTypeLists != null) {
-                    moduleType = mLists.get("assessmentType");
-                    //Auto fill text field
-                    atModuleId.setText(mLists.get("id"));
-                    atModuleName.setText(mLists.get("moduleCode"));
-                    atStartDate.setText(mLists.get("startDate"));
-                    atEndDate.setText(mLists.get("endDate"));
-                    switch (moduleType){
-                        case "INTERNSHIP":
-                            assessmentTypeComboBox.setSelectedItem("Internship");
-                            break;
-                            
-                        case "INVESTIGATION":
-                            assessmentTypeComboBox.setSelectedItem("Investigation Report");
-                            break;
-                            
-                        case "CAPSTONE_1":
-                            assessmentTypeComboBox.setSelectedItem("Capstone 1");
-                            break;
-                        
-                        case "CAPSTONE_2":
-                            assessmentTypeComboBox.setSelectedItem("Capstone 2");
-                            break;
-                            
-                        case "FINAL_YEAR":
-                            assessmentTypeComboBox.setSelectedItem("Final Year Report");
-                            break;
-                        
-                        default:
-                            assessmentTypeComboBox.setSelectedItem("None");
-                            break;
-                    }
-            } else {
-                assessmentTypeComboBox.setSelectedItem("None");
-            }
-        }
-        
         private void fillspModuleComboBox(){
             // Create list to store all lectures name
             lecturerLists = UserAccountController.getLecturers();
@@ -201,26 +153,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             }
         }
         
-        private void fillAssessmentComboBox(){
-            assessmentTypeComboBox.addItem("None");
-            assessmentTypeComboBox.addItem("Internship");
-            assessmentTypeComboBox.addItem("Investigation Report");
-            assessmentTypeComboBox.addItem("Capstone 1");
-            assessmentTypeComboBox.addItem("Capstone 2");
-            assessmentTypeComboBox.addItem("Final Year Report");
-        }
-        
-        private String getLecturerIdByName(String firstName, String lastName) {
-            for (int i = 0; i < lecturerLists.getAll().size(); i++) {
-                JSONObject lecturer = (JSONObject) lecturerLists.getAll().get(i);
-                if (lecturer.get("first_name").equals(firstName) && lecturer.get("last_name").equals(lastName)) {
-                    return lecturer.get("id").toString();
-                }
-            }
-            return null; // Handle case where lecturer name is not found
-        }
-        
-        //All save function 
         private void saveDataChanges(){
             String saveModuleId = spModuleId.getText();
             String saveSelectedSP = (String) spModuleSPComboBox.getSelectedItem();
@@ -242,7 +174,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                     
                     if(ProjectModuleController.saveModuleDetails(savedModule)){
                         System.out.println("Success");
-                        refresh();
                     }
                 } else{
                     Dialog.ErrorDialog(MessageConstant.CONDITION_NO_DATA_CHANGES);
@@ -252,49 +183,15 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             }
         }
         
-        public void saveAssessmentType(){
-            String assessmentType = (String) assessmentTypeComboBox.getSelectedItem();
-            String savedAssessment;
-            if(moduleId != null){
-                if (assessmentType != moduleType){
-                    switch(assessmentType){
-                        case "Internship":
-                            savedAssessment = "INTERNSHIP";
-                            break;
-                            
-                        case "Investigation Report":
-                            savedAssessment = "INVESTIGATION";
-                            break;
-                            
-                        case "Capstone 1":
-                            savedAssessment = "CAPSTONE_1";
-                            break;
-                        
-                        case "Capstone 2":
-                            savedAssessment = "CAPSTONE_2";
-                            break;
-                            
-                        case "Final Year Report":
-                            savedAssessment = "FINAL_YEAR";
-                            break;
-                        
-                        default:
-                            savedAssessment = "REPORT";
-                            break;
-                    }
-
-                    if(SubmissionController.saveAssessmentType(moduleId, savedAssessment)){
-                        System.out.println("Success");
-                        refresh();
-                    }
-                } else{
-                        Dialog.ErrorDialog(MessageConstant.CONDITION_NO_DATA_CHANGES);
-                    }
-            }  else {
-                Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
+        private String getLecturerIdByName(String firstName, String lastName) {
+            for (int i = 0; i < lecturerLists.getAll().size(); i++) {
+                JSONObject lecturer = (JSONObject) lecturerLists.getAll().get(i);
+                if (lecturer.get("first_name").equals(firstName) && lecturer.get("last_name").equals(lastName)) {
+                    return lecturer.get("id").toString();
                 }
+            }
+            return null; // Handle case where lecturer name is not found
         }
-
 
 
 //    private void refreshDashboard() {
@@ -419,7 +316,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ModuleTabbedPanel = new javax.swing.JTabbedPane();
+        MainTabbedPanel = new javax.swing.JTabbedPane();
         Panel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         menuBtn4 = new javax.swing.JLabel();
@@ -434,10 +331,10 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         manageSupervisor = new javax.swing.JLabel();
-        manageAssessmentType = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         menuBtn16 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableModuleDetails = new javax.swing.JTable();
+        jTableReportDetails = new javax.swing.JTable();
         Panel2 = new javax.swing.JPanel();
         JSeparator33 = new javax.swing.JSeparator();
         menuBtn35 = new javax.swing.JLabel();
@@ -458,38 +355,37 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn32 = new javax.swing.JLabel();
         menuBtn34 = new javax.swing.JLabel();
         menuBtn33 = new javax.swing.JLabel();
-        JSeparator39 = new javax.swing.JSeparator();
-        jLabel42 = new javax.swing.JLabel();
-        menuBtn47 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         menuBtn40 = new javax.swing.JLabel();
         menuBtn31 = new javax.swing.JLabel();
+        spModuleSMComboBox1 = new javax.swing.JComboBox<>();
         menuBtn42 = new javax.swing.JLabel();
-        atModuleId = new javax.swing.JTextField();
+        spModuleId1 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        atModuleName = new javax.swing.JTextField();
+        spModuleName1 = new javax.swing.JTextField();
         JSeparator34 = new javax.swing.JSeparator();
         menuBtn44 = new javax.swing.JLabel();
         JSeparator38 = new javax.swing.JSeparator();
-        atEndDate = new javax.swing.JTextField();
+        spEndDate1 = new javax.swing.JTextField();
         menuBtn45 = new javax.swing.JLabel();
         menuBtn39 = new javax.swing.JLabel();
         menuBtn41 = new javax.swing.JLabel();
-        assessmentTypeComboBox = new javax.swing.JComboBox<>();
-        atStartDate = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        menuBtn46 = new javax.swing.JLabel();
+        spModuleSPComboBox1 = new javax.swing.JComboBox<>();
+        spStartDate1 = new javax.swing.JTextField();
         menuBtn43 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableModuleDetails1 = new javax.swing.JTable();
         jLabel38 = new javax.swing.JLabel();
-        menuBtn48 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        JSeparator40 = new javax.swing.JSeparator();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ModuleTabbedPanel.setBackground(new java.awt.Color(230, 230, 230));
-        ModuleTabbedPanel.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        ModuleTabbedPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        MainTabbedPanel.setBackground(new java.awt.Color(230, 230, 230));
+        MainTabbedPanel.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        MainTabbedPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ModuleTabbedPanelMouseClicked(evt);
+                MainTabbedPanelMouseClicked(evt);
             }
         });
 
@@ -578,7 +474,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn14.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn14.setText("MODULE ");
+        menuBtn14.setText("Student Report");
         menuBtn14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn14.setOpaque(true);
         Panel1.add(menuBtn14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
@@ -633,7 +529,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         manageSupervisor.setForeground(new java.awt.Color(1, 1, 1));
         manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
-        manageSupervisor.setText("MANAGE SUPERVISOR AND SECOND MARKER");
+        manageSupervisor.setText("View Report Details");
         manageSupervisor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageSupervisor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -641,15 +537,15 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             }
         });
 
-        manageAssessmentType.setBackground(new java.awt.Color(105, 105, 105));
-        manageAssessmentType.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        manageAssessmentType.setForeground(new java.awt.Color(1, 1, 1));
-        manageAssessmentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
-        manageAssessmentType.setText("MANAGE ASSESSMENT TYPES");
-        manageAssessmentType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manageAssessmentType.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel21.setBackground(new java.awt.Color(105, 105, 105));
+        jLabel21.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        jLabel21.setText("Export Table");
+        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manageAssessmentTypeMouseClicked(evt);
+                jLabel21MouseClicked(evt);
             }
         });
 
@@ -661,7 +557,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(manageSupervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageAssessmentType, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -670,7 +566,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addComponent(manageSupervisor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(manageAssessmentType)
+                .addComponent(jLabel21)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -678,17 +574,17 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn16.setText("VIEW MODULE DETAILS");
+        menuBtn16.setText("VIEW STUDENT REPORT");
         menuBtn16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn16.setOpaque(true);
         Panel1.add(menuBtn16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 670, 40));
 
-        jTableModuleDetails.setModel(new javax.swing.table.DefaultTableModel(
+        jTableReportDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Module Id", "Module Name", "Start Date", "End Date", "First Marker", "Second Marker"
+                "Module", "Student Id", "Student Name", "Report Status", "Report Type", "Comment"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -699,28 +595,25 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableModuleDetails.setFocusable(false);
-        jTableModuleDetails.setRequestFocusEnabled(false);
-        jTableModuleDetails.getTableHeader().setResizingAllowed(false);
-        jTableModuleDetails.getTableHeader().setReorderingAllowed(false);
-        jTableModuleDetails.setUpdateSelectionOnSort(false);
-        jTableModuleDetails.setVerifyInputWhenFocusTarget(false);
-        jScrollPane3.setViewportView(jTableModuleDetails);
-        if (jTableModuleDetails.getColumnModel().getColumnCount() > 0) {
-            jTableModuleDetails.getColumnModel().getColumn(0).setResizable(false);
-            jTableModuleDetails.getColumnModel().getColumn(1).setResizable(false);
-            jTableModuleDetails.getColumnModel().getColumn(2).setResizable(false);
-            jTableModuleDetails.getColumnModel().getColumn(2).setHeaderValue("Start Date");
-            jTableModuleDetails.getColumnModel().getColumn(3).setResizable(false);
-            jTableModuleDetails.getColumnModel().getColumn(3).setHeaderValue("End Date");
-            jTableModuleDetails.getColumnModel().getColumn(4).setResizable(false);
-            jTableModuleDetails.getColumnModel().getColumn(4).setHeaderValue("First Marker");
-            jTableModuleDetails.getColumnModel().getColumn(5).setResizable(false);
+        jTableReportDetails.setFocusable(false);
+        jTableReportDetails.setRequestFocusEnabled(false);
+        jTableReportDetails.getTableHeader().setResizingAllowed(false);
+        jTableReportDetails.getTableHeader().setReorderingAllowed(false);
+        jTableReportDetails.setUpdateSelectionOnSort(false);
+        jTableReportDetails.setVerifyInputWhenFocusTarget(false);
+        jScrollPane3.setViewportView(jTableReportDetails);
+        if (jTableReportDetails.getColumnModel().getColumnCount() > 0) {
+            jTableReportDetails.getColumnModel().getColumn(0).setResizable(false);
+            jTableReportDetails.getColumnModel().getColumn(1).setResizable(false);
+            jTableReportDetails.getColumnModel().getColumn(2).setResizable(false);
+            jTableReportDetails.getColumnModel().getColumn(3).setResizable(false);
+            jTableReportDetails.getColumnModel().getColumn(4).setResizable(false);
+            jTableReportDetails.getColumnModel().getColumn(5).setResizable(false);
         }
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 1020, 360));
 
-        ModuleTabbedPanel.addTab("OverView", Panel1);
+        MainTabbedPanel.addTab("View Report", Panel1);
 
         Panel2.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -731,7 +624,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
-        menuBtn35.setText("END DATE");
+        menuBtn35.setText("REPORT STATUS");
         menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn35.setOpaque(true);
         Panel2.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
@@ -747,7 +640,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        menuBtn38.setText("MODULE NAME");
+        menuBtn38.setText("STUDENT ID");
         menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn38.setOpaque(true);
         Panel2.add(menuBtn38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
@@ -755,7 +648,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        menuBtn36.setText("SUPERVISOR");
+        menuBtn36.setText("REPORT TYPE");
         menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn36.setOpaque(true);
         Panel2.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 300, 40));
@@ -777,7 +670,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         jLabel36.setForeground(new java.awt.Color(1, 1, 1));
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
-        jLabel36.setText("SAVE ");
+        jLabel36.setText("Export File?");
         jLabel36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel36.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel36.setOpaque(true);
@@ -807,11 +700,11 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         Panel2.add(spModuleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
 
         spModuleId.setEditable(false);
-        spModuleId.setBackground(new java.awt.Color(255, 255, 255));
         spModuleId.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        spModuleId.setForeground(new java.awt.Color(1, 1, 1));
+        spModuleId.setBackground(new java.awt.Color(255, 255, 255));
         spModuleId.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         spModuleId.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spModuleId.setForeground(new java.awt.Color(1, 1, 1));
         spModuleId.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 spModuleIdMouseClicked(evt);
@@ -845,7 +738,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         jLabel40.setForeground(new java.awt.Color(1, 1, 1));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
-        jLabel40.setText("CANCEL");
+        jLabel40.setText("Back");
         jLabel40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel40.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel40.setOpaque(true);
@@ -905,7 +798,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn32.setText("MODULE ID");
+        menuBtn32.setText("MODULE");
         menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn32.setOpaque(true);
         Panel2.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
@@ -913,7 +806,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
-        menuBtn34.setText("START DATE");
+        menuBtn34.setText("STUDENT NAME");
         menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn34.setOpaque(true);
         Panel2.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
@@ -921,39 +814,12 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        menuBtn33.setText("SECOND MARKER");
+        menuBtn33.setText("COMMENT");
         menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn33.setOpaque(true);
         Panel2.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 300, 40));
 
-        JSeparator39.setForeground(new java.awt.Color(1, 1, 1));
-        Panel2.add(JSeparator39, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 170, 10));
-
-        jLabel42.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel-24x24_1.png"))); // NOI18N
-        jLabel42.setText("RESET TO DEFAULT");
-        jLabel42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel42.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel42.setOpaque(true);
-        jLabel42.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel42MouseClicked(evt);
-            }
-        });
-        Panel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 170, 35));
-
-        menuBtn47.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        menuBtn47.setText("ACTION :");
-        menuBtn47.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn47.setOpaque(true);
-        Panel2.add(menuBtn47, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 90, 40));
-
-        ModuleTabbedPanel.addTab("Manage Supervisor & Second Marker", Panel2);
+        MainTabbedPanel.addTab("Report Details", Panel2);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -973,6 +839,18 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn31.setOpaque(true);
         jPanel1.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, 90, 40));
 
+        spModuleSMComboBox1.setBackground(new java.awt.Color(254, 254, 254));
+        spModuleSMComboBox1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        spModuleSMComboBox1.setToolTipText("d");
+        spModuleSMComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        spModuleSMComboBox1.setFocusable(false);
+        spModuleSMComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spModuleSMComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(spModuleSMComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 300, 35));
+
         menuBtn42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
@@ -981,23 +859,23 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn42.setOpaque(true);
         jPanel1.add(menuBtn42, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 90, 40));
 
-        atModuleId.setEditable(false);
-        atModuleId.setBackground(new java.awt.Color(255, 255, 255));
-        atModuleId.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        atModuleId.setForeground(new java.awt.Color(1, 1, 1));
-        atModuleId.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        atModuleId.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        atModuleId.addMouseListener(new java.awt.event.MouseAdapter() {
+        spModuleId1.setEditable(false);
+        spModuleId1.setBackground(new java.awt.Color(255, 255, 255));
+        spModuleId1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        spModuleId1.setForeground(new java.awt.Color(1, 1, 1));
+        spModuleId1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        spModuleId1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spModuleId1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atModuleIdMouseClicked(evt);
+                spModuleId1MouseClicked(evt);
             }
         });
-        atModuleId.addActionListener(new java.awt.event.ActionListener() {
+        spModuleId1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atModuleIdActionPerformed(evt);
+                spModuleId1ActionPerformed(evt);
             }
         });
-        jPanel1.add(atModuleId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
+        jPanel1.add(spModuleId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
         jLabel41.setBackground(new java.awt.Color(254, 254, 254));
         jLabel41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -1015,23 +893,23 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, 170, 35));
 
-        atModuleName.setEditable(false);
-        atModuleName.setBackground(new java.awt.Color(255, 255, 255));
-        atModuleName.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        atModuleName.setForeground(new java.awt.Color(1, 1, 1));
-        atModuleName.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        atModuleName.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        atModuleName.addMouseListener(new java.awt.event.MouseAdapter() {
+        spModuleName1.setEditable(false);
+        spModuleName1.setBackground(new java.awt.Color(255, 255, 255));
+        spModuleName1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        spModuleName1.setForeground(new java.awt.Color(1, 1, 1));
+        spModuleName1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        spModuleName1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spModuleName1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atModuleNameMouseClicked(evt);
+                spModuleName1MouseClicked(evt);
             }
         });
-        atModuleName.addActionListener(new java.awt.event.ActionListener() {
+        spModuleName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atModuleNameActionPerformed(evt);
+                spModuleName1ActionPerformed(evt);
             }
         });
-        jPanel1.add(atModuleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
+        jPanel1.add(spModuleName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
 
         JSeparator34.setForeground(new java.awt.Color(1, 1, 1));
         jPanel1.add(JSeparator34, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 470, 170, 10));
@@ -1047,18 +925,18 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         JSeparator38.setForeground(new java.awt.Color(1, 1, 1));
         jPanel1.add(JSeparator38, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, 170, 10));
 
-        atEndDate.setEditable(false);
-        atEndDate.setBackground(new java.awt.Color(255, 255, 255));
-        atEndDate.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        atEndDate.setForeground(new java.awt.Color(1, 1, 1));
-        atEndDate.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        atEndDate.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        atEndDate.addMouseListener(new java.awt.event.MouseAdapter() {
+        spEndDate1.setEditable(false);
+        spEndDate1.setBackground(new java.awt.Color(255, 255, 255));
+        spEndDate1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        spEndDate1.setForeground(new java.awt.Color(1, 1, 1));
+        spEndDate1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        spEndDate1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spEndDate1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atEndDateMouseClicked(evt);
+                spEndDate1MouseClicked(evt);
             }
         });
-        jPanel1.add(atEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 300, 35));
+        jPanel1.add(spEndDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 300, 35));
 
         menuBtn45.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1079,55 +957,110 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        menuBtn41.setText("Assessment Type");
+        menuBtn41.setText("STUDENT");
         menuBtn41.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn41.setOpaque(true);
         jPanel1.add(menuBtn41, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 300, 40));
 
-        assessmentTypeComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        assessmentTypeComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        assessmentTypeComboBox.setToolTipText("d");
-        assessmentTypeComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        assessmentTypeComboBox.setFocusable(false);
-        assessmentTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assessmentTypeComboBoxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(assessmentTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 35));
-
-        atStartDate.setEditable(false);
-        atStartDate.setBackground(new java.awt.Color(255, 255, 255));
-        atStartDate.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        atStartDate.setForeground(new java.awt.Color(1, 1, 1));
-        atStartDate.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        atStartDate.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        atStartDate.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel37.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
+        jLabel37.setText("ADD STUDENT");
+        jLabel37.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel37.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel37.setOpaque(true);
+        jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atStartDateMouseClicked(evt);
+                jLabel37MouseClicked(evt);
             }
         });
-        atStartDate.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 170, 35));
+
+        menuBtn46.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        menuBtn46.setText("INTAKE");
+        menuBtn46.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn46.setOpaque(true);
+        jPanel1.add(menuBtn46, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 300, 40));
+
+        spModuleSPComboBox1.setBackground(new java.awt.Color(254, 254, 254));
+        spModuleSPComboBox1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        spModuleSPComboBox1.setToolTipText("d");
+        spModuleSPComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        spModuleSPComboBox1.setFocusable(false);
+        spModuleSPComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atStartDateActionPerformed(evt);
+                spModuleSPComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(atStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
+        jPanel1.add(spModuleSPComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 35));
+
+        spStartDate1.setEditable(false);
+        spStartDate1.setBackground(new java.awt.Color(255, 255, 255));
+        spStartDate1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        spStartDate1.setForeground(new java.awt.Color(1, 1, 1));
+        spStartDate1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        spStartDate1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spStartDate1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                spStartDate1MouseClicked(evt);
+            }
+        });
+        spStartDate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spStartDate1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(spStartDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
 
         menuBtn43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn43.setText("Manage Assessment Type");
+        menuBtn43.setText("Manage Student & Intake");
         menuBtn43.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn43.setOpaque(true);
         jPanel1.add(menuBtn43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
+
+        jTableModuleDetails1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Student Id", "Student Name", "Intake"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableModuleDetails1.setFocusable(false);
+        jTableModuleDetails1.setRequestFocusEnabled(false);
+        jTableModuleDetails1.getTableHeader().setResizingAllowed(false);
+        jTableModuleDetails1.getTableHeader().setReorderingAllowed(false);
+        jTableModuleDetails1.setUpdateSelectionOnSort(false);
+        jTableModuleDetails1.setVerifyInputWhenFocusTarget(false);
+        jScrollPane4.setViewportView(jTableModuleDetails1);
+        if (jTableModuleDetails1.getColumnModel().getColumnCount() > 0) {
+            jTableModuleDetails1.getColumnModel().getColumn(0).setResizable(false);
+            jTableModuleDetails1.getColumnModel().getColumn(1).setResizable(false);
+            jTableModuleDetails1.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 610, 180));
 
         jLabel38.setBackground(new java.awt.Color(254, 254, 254));
         jLabel38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(1, 1, 1));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
-        jLabel38.setText("SAVE");
+        jLabel38.setText("BOOK");
         jLabel38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel38.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel38.setOpaque(true);
@@ -1138,48 +1071,20 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, 170, 35));
 
-        menuBtn48.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        menuBtn48.setText("ACTION :");
-        menuBtn48.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn48.setOpaque(true);
-        jPanel1.add(menuBtn48, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 90, 40));
+        MainTabbedPanel.addTab("Manage Student and Intake", jPanel1);
 
-        jLabel43.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel-24x24_1.png"))); // NOI18N
-        jLabel43.setText("RESET TO DEFAULT");
-        jLabel43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel43.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel43.setOpaque(true);
-        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel43MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 170, 35));
-
-        JSeparator40.setForeground(new java.awt.Color(1, 1, 1));
-        jPanel1.add(JSeparator40, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 170, 10));
-
-        ModuleTabbedPanel.addTab("Manage Assessment Type", jPanel1);
-
-        getContentPane().add(ModuleTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
+        getContentPane().add(MainTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageSupervisorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupervisorMouseClicked
 //      add code to get row detail (Module Id)
-        int selectedRow = jTableModuleDetails.getSelectedRow();
+        int selectedRow = jTableReportDetails.getSelectedRow();
         if (selectedRow != -1) {
-            moduleId = Integer.parseInt(jTableModuleDetails.getValueAt(selectedRow, 0).toString());
-            ModuleTabbedPanel.setSelectedIndex(1);
+            moduleId = Integer.parseInt(jTableReportDetails.getValueAt(selectedRow, 0).toString());
+            MainTabbedPanel.setSelectedIndex(1);
             autofillModuleSupervisor(moduleId);
-            autofillAssessment(moduleId);
         } else {
             Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
         }
@@ -1207,8 +1112,15 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_spModuleIdMouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
-//  cancel button module page
-    refresh();
+//        if (consultationComboBox2.getSelectedItem().equals("There is no scheduled consultation.")) {
+//            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
+//            return;
+//        }
+//
+//        if (ConsultationController.cancelBookedConsultationById(Integer.parseInt((String) consultationComboBox2.getSelectedItem()))) {
+//            refresh();
+//        }
+        MainTabbedPanel.setSelectedIndex(0);
     }//GEN-LAST:event_jLabel40MouseClicked
 
     private void spModuleSMComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spModuleSMComboBoxActionPerformed
@@ -1220,21 +1132,14 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_spStartDateMouseClicked
 
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
-       // Save Module Supervisor and Second Marker button
-        saveDataChanges();
+      
+      saveDataChanges();
     }//GEN-LAST:event_jLabel36MouseClicked
 
-    private void manageAssessmentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageAssessmentTypeMouseClicked
-        int selectedRow = jTableModuleDetails.getSelectedRow();
-        if (selectedRow != -1) {
-            moduleId = Integer.parseInt(jTableModuleDetails.getValueAt(selectedRow, 0).toString());
-            ModuleTabbedPanel.setSelectedIndex(2);
-            autofillModuleSupervisor(moduleId);
-            autofillAssessment(moduleId);
-        } else {
-            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
-        }
-    }//GEN-LAST:event_manageAssessmentTypeMouseClicked
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+//        MainTabbedPanel.setSelectedIndex(1);
+//        MainTabbedPanel1.setSelectedIndex(1);
+    }//GEN-LAST:event_jLabel21MouseClicked
 
     private void menuBtn12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn12MouseClicked
 //        consultationComboBox.setSelectedIndex(1);
@@ -1268,71 +1173,57 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_spModuleNameActionPerformed
 
-    private void assessmentTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentTypeComboBoxActionPerformed
+    private void spModuleSPComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spModuleSPComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_assessmentTypeComboBoxActionPerformed
+    }//GEN-LAST:event_spModuleSPComboBox1ActionPerformed
 
-    private void atModuleNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atModuleNameMouseClicked
+    private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_atModuleNameMouseClicked
+    }//GEN-LAST:event_jLabel37MouseClicked
 
-    private void atModuleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atModuleNameActionPerformed
+    private void spModuleName1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spModuleName1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_atModuleNameActionPerformed
+    }//GEN-LAST:event_spModuleName1MouseClicked
 
-    private void atModuleIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atModuleIdMouseClicked
+    private void spModuleName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spModuleName1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_atModuleIdMouseClicked
+    }//GEN-LAST:event_spModuleName1ActionPerformed
 
-    private void atModuleIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atModuleIdActionPerformed
+    private void spModuleId1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spModuleId1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_atModuleIdActionPerformed
+    }//GEN-LAST:event_spModuleId1MouseClicked
 
-    private void atEndDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atEndDateMouseClicked
+    private void spModuleId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spModuleId1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_atEndDateMouseClicked
+    }//GEN-LAST:event_spModuleId1ActionPerformed
+
+    private void spEndDate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spEndDate1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_spEndDate1MouseClicked
 
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
-//        cancel button
-        refresh();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel41MouseClicked
 
-    private void atStartDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atStartDateMouseClicked
+    private void spModuleSMComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spModuleSMComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_atStartDateMouseClicked
+    }//GEN-LAST:event_spModuleSMComboBox1ActionPerformed
 
-    private void atStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atStartDateActionPerformed
+    private void spStartDate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spStartDate1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_atStartDateActionPerformed
+    }//GEN-LAST:event_spStartDate1MouseClicked
+
+    private void spStartDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spStartDate1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_spStartDate1ActionPerformed
 
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        // Save Assessment Type button
-        saveAssessmentType();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel38MouseClicked
 
-    private void ModuleTabbedPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModuleTabbedPanelMouseClicked
+    private void MainTabbedPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainTabbedPanelMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_ModuleTabbedPanelMouseClicked
-
-    private void jLabel42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseClicked
-        // TODO add your handling code here:
-        if(moduleId != null){
-            autofillModuleSupervisor(moduleId);
-            Dialog.SuccessDialog(MessageConstant.SUCCESS_RESET_FIELD);
-        } else{
-            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
-        }
-    }//GEN-LAST:event_jLabel42MouseClicked
-
-    private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
-        // TODO add your handling code here:
-        if(moduleId != null){
-            autofillAssessment(moduleId);
-            Dialog.SuccessDialog(MessageConstant.SUCCESS_RESET_FIELD);
-        } else{
-            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
-        }
-    }//GEN-LAST:event_jLabel43MouseClicked
+    }//GEN-LAST:event_MainTabbedPanelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1341,31 +1232,25 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator JSeparator34;
     private javax.swing.JSeparator JSeparator37;
     private javax.swing.JSeparator JSeparator38;
-    private javax.swing.JSeparator JSeparator39;
-    private javax.swing.JSeparator JSeparator40;
-    private javax.swing.JTabbedPane ModuleTabbedPanel;
+    private javax.swing.JTabbedPane MainTabbedPanel;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel2;
-    private static javax.swing.JComboBox<String> assessmentTypeComboBox;
-    private javax.swing.JTextField atEndDate;
-    private javax.swing.JTextField atModuleId;
-    private javax.swing.JTextField atModuleName;
-    private javax.swing.JTextField atStartDate;
     private static javax.swing.JComboBox<String> consultationComboBox;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTableModuleDetails;
-    private javax.swing.JLabel manageAssessmentType;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTableModuleDetails1;
+    private javax.swing.JTable jTableReportDetails;
     private javax.swing.JLabel manageSupervisor;
     private static javax.swing.JLabel menuBtn12;
     private static javax.swing.JLabel menuBtn13;
@@ -1391,14 +1276,19 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
     private javax.swing.JLabel menuBtn43;
     private javax.swing.JLabel menuBtn44;
     private javax.swing.JLabel menuBtn45;
-    private javax.swing.JLabel menuBtn47;
-    private javax.swing.JLabel menuBtn48;
+    private javax.swing.JLabel menuBtn46;
     private javax.swing.JTextField spEndDate;
+    private javax.swing.JTextField spEndDate1;
     private javax.swing.JTextField spModuleId;
+    private javax.swing.JTextField spModuleId1;
     private javax.swing.JTextField spModuleName;
+    private javax.swing.JTextField spModuleName1;
     private static javax.swing.JComboBox<String> spModuleSMComboBox;
+    private static javax.swing.JComboBox<String> spModuleSMComboBox1;
     private static javax.swing.JComboBox<String> spModuleSPComboBox;
+    private static javax.swing.JComboBox<String> spModuleSPComboBox1;
     private javax.swing.JTextField spStartDate;
+    private javax.swing.JTextField spStartDate1;
     // End of variables declaration//GEN-END:variables
 
 

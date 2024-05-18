@@ -101,7 +101,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     // To filter the module details by project manager ID
     @Override
     public List getAllModuleDetailsByProjectManagerId(Integer ProjectManagerId){
-         List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Map<String, String>> mappedLists = new ArrayList<>();
         List<Map<String, String>> lists = moduleDAO.getModuleByProjectManagerId(ProjectManagerId);
         for (Map<String, String> list : lists){
             Map<String, String> mappedMap = new HashMap<>();
@@ -128,18 +128,33 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             return true;
         } else {
 //            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
-            Dialog.SuccessDialog(MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.ERROR_EMPTY_MODULE);
             return false;
         }
 
     }
+    
+    
+    @Override
+    public List getModuleTypeById(Integer moduleId) {
+        List<Map<String, String>> moduleDetails = moduleDAO.getModuleByModuleId(moduleId);
+        String assessmentType = submissionDAO.getAssessmentTypeByModuleId(moduleId);
 
+        // Adding the assessmentType to each module detail map
+        if (moduleDetails != null && assessmentType != null) {
+            for (Map<String, String> moduleDetail : moduleDetails) {
+                moduleDetail.put("assessmentType", assessmentType);
+            }
+        }
+        return moduleDetails;
+    }
+    
 //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
         // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
 
-        System.out.println(prje.getModuleById(36887009));
+        System.out.println(prje.getModuleTypeById(36887009));
     }
 
 

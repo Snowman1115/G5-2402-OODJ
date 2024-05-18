@@ -134,5 +134,51 @@ public class SubmissionServiceImpl implements SubmissionService {
             return false;
         }
     }
+    
+    public List getAllReportDetails(){
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+//        List<Map<String, String>> lists = SubmissionDAO.getAllReport();
+//        for (Map<String, String> list : lists){
+//            Map<String, String> mappedMap = new HashMap<>();
+//            mappedMap.put("id", list.get("id"));
+//            mappedMap.put("moduleCode", list.get("moduleCode"));
+//            mappedMap.put("startDate", list.get("startDate"));
+//            mappedMap.put("endDate", list.get("endDate"));
+//            mappedMap.put("firstMarker", list.get("firstMarker"));
+//            mappedMap.put("secondMarker", list.get("secondMarker"));
+//            mappedLists.add(mappedMap);
+//        }
+        return mappedLists;
+    }
+    
+//    
+//    public List getAssessmentByModuleId(Integer moduleId){
+//        
+//    }
 
+    @Override
+    public List getAssessmentByModuleId(Integer moduleId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    @Override
+    public Boolean saveAssessmentType(Integer moduleId, String savedAssessment) {
+        System.out.println(moduleId);
+        System.out.println(savedAssessment);
+        if (submissionDAO.saveAssessmentTypeChanges(moduleId, savedAssessment)) {
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_ASSIGNED_SUPERVISOR);
+            return true;
+        } else {
+    //      log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.ERROR_EMPTY_MODULE);
+            return false;
+        }
+    }
+    
+    public static void main(String[] args) {
+        SubmissionServiceImpl test = new SubmissionServiceImpl();
+        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
+
+        System.out.println(test.saveAssessmentType(36887009,"CAPSTONE_1"));
+    }
 }

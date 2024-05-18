@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 @Slf4j
@@ -18,7 +17,7 @@ public class PresentationController {
     private static PresentationService presentationService = new PresentationServiceImpl();
 
     /**
-     * Get All Presentaion Status By Student Id
+     * Get All Presentation Status By Student Id
      * @return Map of List
      */
     public static Map<String,Integer> getAllPresentationStatusByStudentId() {
@@ -72,14 +71,85 @@ public class PresentationController {
         log.info("Cancel Presentation Slot : " + presentationId);
         return presentationService.cancelPresentationSlotByStudentId(presentationId);
     }
+    
+    /**
+     * Get All Pending Confirm And Pending Marking Presentation For Lecturer
+     * @return Map of list
+     */
+    public static Map<String,Integer>getPendingConfirmAndMarkingPresentationForLecturer() {
+        return presentationService.getPendingConfirmAndMarkingPresentationForLecturer(getAuthenticatedUserId());
+    }
+    
+    /**
+     * Get All Presentation Details By Lecturer Id
+     * @return List
+     */
+    public static List getAllPresentationDetailsByLecId() {
+        return presentationService.getAllPresentationDetailsByLecId(getAuthenticatedUserId());
+    }
 
+    /**
+     * Get All Booked Presentation By Lecturer Id
+     * @return List
+     */
+    public static List getAllBookedPresentationByLecId() {
+        return presentationService.getAllBookedPresentationByLecId(getAuthenticatedUserId());
+    } 
+    
+    /**
+     * Get All Pending Confirm Presentation By Lecturer Id
+     * @return List
+     */
+    public static List getAllPendingConfirmPresentationByLecId() {
+        return presentationService.getAllPendingConfirmPresentationByLecId(getAuthenticatedUserId());
+    } 
+    
+    /**
+     * Get All Not Yet Graded Presentation By Lecturer Id
+     * @return List
+     */
+    public static List getNotYetGradedPresentationByLecId() {
+        return presentationService.getNotYetGradedPresentationByLecId(getAuthenticatedUserId());
+    }    
+
+    /**
+     * Update Pending Confirm Presentation To Book By Presentation Id
+     * @param presentationId
+     * @param dateTime
+     * @return Boolean
+     */
+    public static Boolean acceptPresentationById(Integer presentationId, LocalDateTime dateTime) {
+        log.info("Pending Confirm Presentation with ID: " + presentationId + " is accepted");
+        return presentationService.acceptPresentationById(presentationId, dateTime, getAuthenticatedUserId());
+    }
+    
+    /**
+     * Update Pending Confirm Presentation To Rejected By Consultation Id
+     * @param presentationId
+     * @param
+     * @return Boolean
+     */
+    public static Boolean rejectPresentationById(Integer presentationId) {
+        log.info("Pending Confirm Presentation with ID: " + presentationId + " is rejected");
+        return presentationService.rejectPresentationById(presentationId);
+    }
+    
+    /**
+     * Update Booked Presentation To Marked By Consultation Id
+     * @param presentationId
+     * @param
+     * @return Boolean
+     */
+    public static Boolean updatePresentationMarksById(Integer presentationId, Double marks) {
+        log.info("Booked Presentation with ID: " + presentationId + " is updated to MARKED");
+        return presentationService.updatePresentationMarksById(presentationId, marks);
+    }
+    
     /**
      * Get Authenticated UserId
      * @return userId
      */
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
-    }
-
-
+    }  
 }

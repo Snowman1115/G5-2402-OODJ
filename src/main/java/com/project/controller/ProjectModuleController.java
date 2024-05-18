@@ -37,7 +37,25 @@ public class ProjectModuleController {
     public static List getAllModuleDetailsBySecondMarkerId() {
         return projectModuleService.getAllModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
     }
-    
+    //Jin Xun - Project Manager
+    // Method to get all module details by project manager ID
+    public static List getAllModuleDetailsByProjectManagerId() {
+        return projectModuleService.getAllModuleDetailsByProjectManagerId(getAuthenticatedUserId());
+    }
+
+    public static List getModuleById(Integer moduleId) {
+        return projectModuleService.getModuleById(moduleId);
+    }
+
+     /**
+     * Save Supervisor and Second Marker In Module
+     * @param moduleDetails
+     * @return Boolean
+     */
+    public static Boolean saveModuleDetails(List moduleDetails){
+        //log info
+        return projectModuleService.saveModuleDetails(moduleDetails);
+    }
     /**
      * Get Authenticated UserId
      * @return userId
@@ -53,4 +71,7 @@ public class ProjectModuleController {
     public static List<String> getModulesCode() {
         return projectModuleService.getAllModuleCodes();
     }
+
+
+
 }

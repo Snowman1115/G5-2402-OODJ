@@ -30,4 +30,17 @@ public interface ProjectModuleService {
     public JsonHandler getAllModules();
 
     public List<String> getAllModuleCodes();
+
+    //Jin Xun - Project Manager
+
+    /**
+     *
+     * @param ProjectManagerId
+     * @return
+     */
+    public List getAllModuleDetailsByProjectManagerId(Integer ProjectManagerId);
+
+    public List getModuleById(Integer moduleId);
+
+    public Boolean saveModuleDetails(List moduleDetails);
 }

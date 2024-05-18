@@ -1,13 +1,17 @@
 package com.project.dao;
 
+import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
+import static com.project.dao.PresentationDAO.update;
 import com.project.pojo.Intake;
 import com.project.pojo.Presentation;
 import com.project.pojo.ProjectModule;
+import static java.lang.Integer.parseInt;
+import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -94,10 +98,74 @@ public class ModuleDAO {
         return list;
     }
     
+    // Jin Xun - Get Project Manager ID
+    public List getModuleByProjectManagerId(Integer ProjectManagerId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getSupervisorId().equals(ProjectManagerId)) {
+                Map map = new HashMap<>();
+                map.put("id", module.getModuleId().toString());
+                map.put("intakeId", module.getIntakeId().toString());
+                map.put("moduleCode", module.getModuleCode());
+                map.put("supervisorId", module.getSupervisorId().toString());
+                map.put("firstMarker", module.getFirstMarker().toString());
+                map.put("secondMarker", module.getSecondMarker().toString());
+                map.put("startDate", DateTimeUtils.formatStrDate(module.getStartDate()));
+                map.put("endDate", DateTimeUtils.formatStrDate(module.getEndDate()));
+                map.put("created_at", DateTimeUtils.formatStrDateTime(module.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(module.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
+
+       public List getModuleByModuleId(Integer moduleId) {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(moduleId)) {
+                 Map map = new HashMap<>();
+                map.put("id", module.getModuleId().toString());
+                map.put("intakeId", module.getIntakeId().toString());
+                map.put("moduleCode", module.getModuleCode());
+                map.put("supervisorId", module.getSupervisorId().toString());
+                map.put("firstMarker", module.getFirstMarker().toString());
+                map.put("secondMarker", module.getSecondMarker().toString());
+                map.put("startDate", DateTimeUtils.formatStrDate(module.getStartDate()));
+                map.put("endDate", DateTimeUtils.formatStrDate(module.getEndDate()));
+                map.put("created_at", DateTimeUtils.formatStrDateTime(module.getCreatedAt()));
+                map.put("updated_at", DateTimeUtils.formatStrDateTime(module.getUpdatedAt()));
+                list.add(map);
+            }
+        }
+        return list;
+    }
+
+       
+    /**
+     * Save Supervisor and Second Marker In Module 
+     * @param moduleDetails
+     * @return 
+     */
+    public Boolean saveModuleChanges(List<String> moduleDetails) {
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(parseInt(moduleDetails.get(0)))) {
+                System.out.println(moduleDetails.get(0));
+                System.out.println(moduleDetails.get(1));
+                update(parseInt(moduleDetails.get(0)), "firstMarker", moduleDetails.get(1));
+                update(parseInt(moduleDetails.get(0)), "secondMarker", moduleDetails.get(2));
+                update(parseInt(moduleDetails.get(0)), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    }
     
     public static void main(String[] args) {
         ModuleDAO test=new ModuleDAO();
-        System.out.println(test.getModuleByLecturerId(88608036));
+//        System.out.println(test.getModuleByLecturerId(88608036));
+//        System.out.println(test.getModuleByProjectManagerId(39904006));
+        System.out.println(test.getModuleByModuleId(36887009));
     }
     
     /**
@@ -127,34 +195,46 @@ public class ModuleDAO {
         }
     }
 
-    /*
+   
 
     // Update consultation data
-    public static boolean update(Integer consultationId, String field, String value) {
+    public static boolean update(Integer moduleId, String field, String value) {
         // System.out.println(value);
-        for (Consultation consultation : consultations) {
-            if (consultation.getConsultationId().equals(consultationId)) {
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(moduleId)) {
                 try {
                     switch (field) {
-                        case "lecturerId" -> {
-                            consultation.setLecturerId(Integer.parseInt(value));
-                            return store(consultationId, "lecturerId", value);
+                        case "intakeId" -> {
+                            module.setModuleId(Integer.parseInt(value));
+                            return store(moduleId, "intakeId", value);
                         }
-                        case "studentId" -> {
-                            consultation.setStudentId(Integer.parseInt(value));
-                            return store(consultationId, "studentId", value);
+                        case "moduleCode" -> {
+                            module.setModuleCode(String.valueOf(value));
+                            return store(moduleId, "moduleCode", value);
                         }
-                        case "consultationDateTime" -> {
-                            consultation.setConsultationDateTime(DateTimeUtils.formatDateTime(value));
-                            return store(consultationId, "consultationDateTime", value);
+                        case "supervisorId" -> {
+                            module.setSupervisorId(Integer.parseInt(value));
+                            return store(moduleId, "supervisorId", value);
                         }
-                        case "consultationStatus" -> {
-                            consultation.setConsultationStatus(ConsultationStatus.valueOf(value));
-                            return store(consultationId, "consultationStatus", value);
+                        case "firstMarker" -> {
+                            module.setFirstMarker(Integer.parseInt(value));
+                            return store(moduleId, "firstMarkerId", value);
+                        }
+                        case "secondMarker" -> {
+                            module.setSecondMarker(Integer.parseInt(value));
+                            return store(moduleId, "secondMarkerId", value);
+                        }
+                        case "startDate" -> {
+                            module.setStartDate(DateTimeUtils.formatDate(value));
+                            return store(moduleId, "startDate", value);
+                        }
+                        case "endDate" -> {
+                            module.setEndDate(DateTimeUtils.formatDate(value));
+                            return store(moduleId, "endDate", value);
                         }
                         case "updated_at" -> {
-                            consultation.setUpdatedAt(DateTimeUtils.formatDateTime(value));
-                            return store(consultationId, "updated_at", value);
+                            module.setUpdatedAt(DateTimeUtils.formatDateTime(value));
+                            return store(moduleId, "updated_at", value);
                         }
                         default -> {
                             log.info("Error: " + MessageConstant.ERROR_OBJECT_FIELD_NOT_FOUND);
@@ -173,19 +253,19 @@ public class ModuleDAO {
 
     }
 
-    *//**
+    /**
      * Store updated data into text file
      * @param consultationId
      * @param attribute
      * @param value
      * @return
-     *//*
+     */
     private static boolean store(Integer consultationId, String attribute, String value) {
         // System.out.println(consultationId + attribute + value);
         JsonHandler userJson = new JsonHandler();
-        userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
-        return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
+        userJson.encode(FileHandler.readFile(MODULE_DATA));
+        return userJson.update(consultationId, attribute, value, MODULE_DATA);
     }
-*/
+
 
 }

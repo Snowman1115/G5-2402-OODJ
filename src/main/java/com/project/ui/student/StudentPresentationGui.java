@@ -274,9 +274,9 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
                     JField37.setText(list.get("id"));
                     JField36.setText(list.get("lecturerName"));
                     JField35.setText(list.get("dueDate"));
-                    JField38.setText(list.get("Status"));
+                    JField38.setText(list.get("presentationDate"));
                     JField40.setText(list.get("result"));
-                    JField39.setText(list.get("presentationDate"));
+                    JField39.setText(list.get("Status"));
                 }
             }
         }

@@ -146,8 +146,6 @@ public class ModuleDAO {
     public Boolean saveModuleChanges(List<String> moduleDetails) {
         for (ProjectModule module : modules) {
             if (module.getModuleId().equals(parseInt(moduleDetails.get(0)))) {
-                System.out.println(moduleDetails.get(0));
-                System.out.println(moduleDetails.get(1));
                 update(parseInt(moduleDetails.get(0)), "firstMarker", moduleDetails.get(1));
                 update(parseInt(moduleDetails.get(0)), "secondMarker", moduleDetails.get(2));
                 update(parseInt(moduleDetails.get(0)), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));

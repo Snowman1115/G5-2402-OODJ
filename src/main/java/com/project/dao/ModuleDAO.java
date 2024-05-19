@@ -2,10 +2,7 @@ package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
-import com.project.common.utils.DateTimeUtils;
-import com.project.common.utils.FileHandler;
-import com.project.common.utils.JsonHandler;
-import com.project.common.utils.PropertiesReader;
+import com.project.common.utils.*;
 import static com.project.dao.PresentationDAO.update;
 import com.project.pojo.Intake;
 import com.project.pojo.Presentation;
@@ -13,11 +10,11 @@ import com.project.pojo.ProjectModule;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Slf4j
 public class ModuleDAO {
@@ -97,7 +94,45 @@ public class ModuleDAO {
         }
         return list;
     }
-    
+
+    public void addModule(Integer intakeId, String moduleCode, Integer projectManagerId, LocalDate startDate, LocalDate endDate) {
+        JsonHandler moduleJson = new JsonHandler();
+        List<Integer> idList = new ArrayList<>();
+        IDGenerator idGenerator = new LongIDGenerator();
+
+        moduleJson.encode(FileHandler.readFile(MODULE_DATA));
+
+        for (ProjectModule m : modules) {
+            idList.add(m.getModuleId());
+        }
+        int newModuleId = idGenerator.generateNewID(idList);
+
+        ProjectModule newModule = new ProjectModule();
+        newModule.setModuleId(newModuleId);
+        newModule.setIntakeId(intakeId);
+        newModule.setModuleCode(moduleCode);
+        newModule.setSupervisorId(projectManagerId);
+        newModule.setFirstMarker(0);
+        newModule.setSecondMarker(0);
+        newModule.setStartDate(startDate);
+        newModule.setEndDate(endDate);
+        newModule.setCreatedAt(LocalDateTime.now());
+        newModule.setUpdatedAt(LocalDateTime.now());
+        modules.add(newModule);
+
+        JSONObject newModuleObj = new JSONObject();
+        newModuleObj.put("id", newModuleId);
+        newModuleObj.put("intakeId", intakeId);
+        newModuleObj.put("moduleCode", moduleCode);
+        newModuleObj.put("supervisorId", projectManagerId);
+        newModuleObj.put("firstMarkerId", 0);
+        newModuleObj.put("secondMarkerId", 0);
+        newModuleObj.put("startDate", DateTimeUtils.formatStrDate(startDate));
+        newModuleObj.put("endDate", DateTimeUtils.formatStrDate(endDate));
+        newModuleObj.put("created_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        newModuleObj.put("updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        moduleJson.addObject(newModuleObj, MODULE_DATA);
+    }
     // Jin Xun - Get Project Manager ID
     public List getModuleByProjectManagerId(Integer ProjectManagerId) {
         List<Map<String, String>> list = new ArrayList<>();

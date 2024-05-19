@@ -74,7 +74,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn9.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(DefaultBtnColor);
                 menuBtn11.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new AdminSalespersonManagement()).setVisible(true);
+//                WindowsPane.add(new LecturerManagement()).setVisible(true);
             }
             case "pm" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
@@ -135,6 +135,9 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn10.setBackground(DefaultBtnColor);
                 menuBtn11.setBackground(ClickedBtnColor);
                 WindowsPane.add(new intakeManagement()).setVisible(true);
+            }
+            case "addStudent" -> {
+                WindowsPane.add(new AddStudent()).setVisible(true);
             }
         }
     }

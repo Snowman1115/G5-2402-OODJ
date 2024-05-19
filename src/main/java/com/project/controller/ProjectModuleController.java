@@ -9,6 +9,8 @@ import com.project.service.Impl.ProjectModuleServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.ProjectModuleService;
 import com.project.service.UserAuthenticationService;
+
+import java.time.LocalDate;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
@@ -65,12 +67,15 @@ public class ProjectModuleController {
     }
 
     /**
-     * get all modules
-     * @return modules
+     * add new module
+     * @param intakeId
+     * @param moduleCode
+     * @param projectManagerId
+     * @param startDate
+     * @param endDate
+     * @return boolean
      */
-    public static List<String> getModulesCode() {
-        return projectModuleService.getAllModuleCodes();
-    }
+    public static boolean addNewModule (int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate) { return projectModuleService.addModule(intakeId, moduleCode, projectManagerId, startDate, endDate); }
 
 
 

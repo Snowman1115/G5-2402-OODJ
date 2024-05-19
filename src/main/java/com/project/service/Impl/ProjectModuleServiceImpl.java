@@ -4,10 +4,11 @@
  */
 package com.project.service.Impl;
 
-import com.project.common.utils.JsonHandler;
 import com.project.common.constants.MessageConstant;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.Dialog;
+import lombok.extern.slf4j.Slf4j;
+import com.project.common.utils.JsonHandler;
 import com.project.dao.IntakeDAO;
 import com.project.dao.ModuleDAO;
 import com.project.dao.SubmissionDAO;
@@ -19,12 +20,13 @@ import com.project.pojo.UserAccount;
 import com.project.service.ProjectModuleService;
 import org.json.simple.JSONObject;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 /**
  *
  * @author Sin Lian Feng
@@ -35,7 +37,11 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     private IntakeDAO intakeDAO = new IntakeDAO();
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
     private SubmissionDAO submissionDAO = new SubmissionDAO();
-
+  
+    
+    //TODO: Based on selection of module, need to find the intake name
+    //TODO: Get all supervisee based on module ID     
+    
     //Get student ID, student name, intake code, module code, project type, and status to be displayed at the LecturerDashboard.java
     //If need to get other details from different txt files, insert your logic under this method    
     @Override    
@@ -101,40 +107,14 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return mappedLists;
     }
 
-    /**
-     * get all modules details
-     * @return modulesJson
-     */
-    @Override
-    public JsonHandler getAllModules() {
-        JsonHandler modulesJson = new JsonHandler();
-
-        for (ProjectModule m : moduleDAO.getAllModules()) {
-            JSONObject moduleObject = new JSONObject();
-
-            moduleObject.put("id", m.getModuleId());
-            moduleObject.put("intakeId", m.getIntakeId());
-            moduleObject.put("moduleCode", m.getModuleCode());
-            moduleObject.put("supervisorId", m.getSupervisorId());
-            moduleObject.put("firstMarker", m.getFirstMarker());
-            moduleObject.put("secondMarker", m.getSecondMarker());
-            moduleObject.put("startDate", m.getStartDate());
-            moduleObject.put("endDate", m.getEndDate());
-
-            modulesJson.addObject(moduleObject);
+    public boolean addModule(int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate) {
+        try {
+            moduleDAO.addModule(intakeId, moduleCode, projectManagerId, startDate, endDate);
+            return true;
+        } catch (Exception e) {
+            log.error("Error: " + e.getMessage());
+            return false;
         }
-        return modulesJson;
-    }
-
-    @Override
-    public List<String> getAllModuleCodes() {
-        List<String> moduleCodes = new ArrayList<>();
-
-        for (ProjectModule m : moduleDAO.getAllModules()) {
-            moduleCodes.add(m.getModuleCode());
-        }
-
-        return moduleCodes;
     }
 
     //    For debug purpose, run the below main method to view the data

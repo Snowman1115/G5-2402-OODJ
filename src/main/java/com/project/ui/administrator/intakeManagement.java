@@ -22,8 +22,8 @@ import java.util.List;
  * @author Dell Technologies
  */
 public class intakeManagement extends javax.swing.JInternalFrame {
-    List<String> modules = new ArrayList<>();
-    String newIntakeCode, intakeStartDate, intakeEndDate;
+    String newIntakeCode;
+    LocalDate intakeStartDate, intakeEndDate;
     JsonHandler assignedModules;
 
     /**
@@ -551,8 +551,8 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         } else {
             if (IntakesController.validateNewIntakeCode(newIntakeCode) && ChronoUnit.YEARS.between(startDate, endDate) >= 1) {
                 this.newIntakeCode = newIntakeCode;
-                this.intakeStartDate = DateTimeUtils.formatStrDate(startDate);
-                this.intakeEndDate = DateTimeUtils.formatStrDate(endDate);
+                this.intakeStartDate = startDate;
+                this.intakeEndDate = endDate;
 
                 // display preview
                 intakeCodePre.setText(newIntakeCode);
@@ -586,7 +586,7 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nextBtn2MouseClicked
 
     private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
-
+        IntakesController.registerNewIntake(newIntakeCode, intakeStartDate, intakeEndDate, assignedModules);
     }//GEN-LAST:event_saveBtnMouseClicked
 
     private void intakeCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intakeCodeKeyReleased
@@ -622,6 +622,10 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_module2KeyReleased
 
     private void nextBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextBtn1MouseClicked
+        jPanel4.setVisible(false);
+        backBtn2.setEnabled(false);
+        saveBtn.setEnabled(false);
+
         if (!module1.getText().isEmpty() && !module2.getText().isEmpty() && !module3.getText().isEmpty() && !module4.getText().isEmpty() && !PM1.getSelectedItem().equals("-- Project Managers --") && !PM2.getSelectedItem().equals("-- Project Managers --") && !PM3.getSelectedItem().equals("-- Project Managers --") && !PM4.getSelectedItem().equals("-- Project Managers --")) {
             assignedModules = new JsonHandler();
 
@@ -667,7 +671,14 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nextBtn1MouseClicked
 
     private void backBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn2MouseClicked
-        // TODO add your handling code here:
+        jPanel4.setVisible(false);
+        intakeCode.setEnabled(true);
+        datePicker1.setEnabled(true);
+        datePicker2.setEnabled(true);
+        nextBtn2.setEnabled(true);
+        backBtn1.setEnabled(true);
+        backBtn2.setEnabled(false);
+        saveBtn.setEnabled(false);
     }//GEN-LAST:event_backBtn2MouseClicked
 
 

@@ -200,7 +200,7 @@ public class StudentManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_searchFieldKeyReleased
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-        // TODO add your handling code here:
+        AdminGui.ButtonClicked("addStudent");
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked

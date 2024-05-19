@@ -4,7 +4,11 @@
  */
 package com.project.ui.administrator;
 
+import com.project.common.utils.Dialog;
+import com.project.controller.IntakesController;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.util.List;
 
 /**
  *
@@ -20,6 +24,20 @@ public class AddStudent extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+
+        setupForm();
+    }
+
+    public void setupForm() {
+        List<String> intakeCodes = IntakesController.getUpToDateIntakeCodes();
+
+        if (!intakeCodes.isEmpty()) {
+            for (String intake : intakeCodes) {
+                intakes.addItem(intake);
+            }
+        } else {
+            Dialog.ErrorDialog("No available intakes found!\nPlease create new intakes to register students.");
+        }
     }
 
     /**
@@ -208,7 +226,7 @@ public class AddStudent extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_emailKeyReleased
 
     private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        // TODO add your handling code here:
+        AdminGui.ButtonClicked("student");
     }//GEN-LAST:event_cancelBtnMouseClicked
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked

@@ -28,8 +28,8 @@ public class ProjectModuleController {
      */
     
     // Method to get all module details with first marker ID
-    public static List getAllModuleDetailsByLecId() {
-        return projectModuleService.getAllModuleDetailsByLecId(getAuthenticatedUserId());
+    public static List getAllModuleDetailsByFirstMarkerId() {
+        return projectModuleService.getAllModuleDetailsByFirstMarkerId(getAuthenticatedUserId());
     }
     
     // Method to get all module details with second marker ID
@@ -62,7 +62,4 @@ public class ProjectModuleController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
-    
-  
-    
 }

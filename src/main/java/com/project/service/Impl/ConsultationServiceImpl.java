@@ -315,8 +315,8 @@ public class ConsultationServiceImpl implements ConsultationService {
         }    
     }
     //For debug purpose, run the below main method to view the data
-    public static void main(String[] args) {
-        ConsultationServiceImpl consult = new ConsultationServiceImpl();
-        System.out.println(consult.getAllScheduledConsultationByLecId(88608036));
-    }
+//    public static void main(String[] args) {
+//        ConsultationServiceImpl consult = new ConsultationServiceImpl();
+//        System.out.println(consult.getAllConsultationExceptCompletedByLecId(88608036));
+//    }
 }

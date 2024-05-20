@@ -35,14 +35,16 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     //Get student ID, student name, intake code, module code, project type, and status to be displayed at the LecturerDashboard.java
     //If need to get other details from different txt files, insert your logic under this method    
     @Override    
-    public List getAllModuleDetailsByLecId(Integer lecturerId) {        
+    public List getAllModuleDetailsByFirstMarkerId(Integer lecturerId) {        
         List<Map<String, String>> mappedLists = new ArrayList<>();
         //Get all module details by lecturer ID
-        List<Map<String, String>> moduleList = moduleDAO.getModuleByLecturerId(lecturerId);
+        List<Map<String, String>> moduleList = moduleDAO.getModuleByFirstMarkerId(lecturerId);
         for (Map<String, String> list : moduleList){
             Map<String, String> mappedMap = new HashMap<>();
             mappedMap.put("id", list.get("id"));
             mappedMap.put("moduleCode", list.get("moduleCode"));
+            mappedMap.put("moduleStartDate", list.get("startDate"));
+            mappedMap.put("moduleEndDate", list.get("endDate"));
             
             //Get intake code by intakeId that is from moduleDAO object
             Intake intake = intakeDAO.getIntakeById(Integer.parseInt(list.get("intakeId")));
@@ -54,6 +56,8 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             {
                 mappedMap.put("reportType", submission.getReportType().toString());
                 mappedMap.put("reportStatus", submission.getReportStatus().toString());
+                mappedMap.put("reportResult", submission.getReportResult().toString());
+                mappedMap.put("lecturerComment", submission.getComment());
                 mappedMap.put("studentId", submission.getStudentId().toString());
                 mappedMap.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
                 //Get student name from UserAccount by student ID that is from Submission object
@@ -74,7 +78,8 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             Map<String, String> mappedMap = new HashMap<>();
             mappedMap.put("id", list.get("id"));
             mappedMap.put("moduleCode", list.get("moduleCode"));
-
+            mappedMap.put("moduleStartDate", list.get("startDate"));
+            mappedMap.put("moduleEndDate", list.get("endDate"));
             //Get intake code by intakeId that is from moduleDAO object
             Intake intake = intakeDAO.getIntakeById(Integer.valueOf(list.get("intakeId")));
             mappedMap.put("intakeCode", intake.getIntakeCode());
@@ -85,6 +90,8 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             {
                 mappedMap.put("reportType", submission.getReportType().toString());
                 mappedMap.put("reportStatus", submission.getReportStatus().toString());
+                mappedMap.put("reportResult", submission.getReportResult().toString());
+                mappedMap.put("lecturerComment", submission.getComment());
                 mappedMap.put("studentId", submission.getStudentId().toString());
                 mappedMap.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
                 //Get student name from UserAccount by student ID that is from Submission object
@@ -133,17 +140,8 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         }
 
     }
-
-//    For debug purpose, run the below main method to view the data
-    public static void main(String[] args) {
-        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
-        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
-
-        System.out.println(prje.getModuleById(36887009));
-    }
-
-
-    
+//    public static void main(String[] args) {
+//        ProjectModuleServiceImpl test=new ProjectModuleServiceImpl();
+//        System.out.println(test.getAllModuleDetailsByFirstMarkerId(88608036));
+//    }
 }
-
-

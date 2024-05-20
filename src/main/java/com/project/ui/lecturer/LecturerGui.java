@@ -54,7 +54,7 @@ public class LecturerGui extends javax.swing.JFrame {
                 manageConsultationBtn.setBackground(DefaultBtnColor);
                 profileBtn.setBackground(DefaultBtnColor);
                 logoutBtn.setBackground(DefaultBtnColor);
-//                WindowsPane.add(new AdminSalespersonManagement()).setVisible(true);
+                WindowsPane.add(new LecturerMarkReport()).setVisible(true);
             } 
             case "managePresentationBtn" -> {
                 dashboardBtn.setBackground(DefaultBtnColor);

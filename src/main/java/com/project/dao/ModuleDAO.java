@@ -50,7 +50,7 @@ public class ModuleDAO {
      */
     
     // Method to get all module details with first marker ID
-    public List getModuleByLecturerId(Integer lecturerId) {
+    public List getModuleByFirstMarkerId(Integer lecturerId) {
         List<Map<String, String>> list = new ArrayList<>();
         for (ProjectModule module : modules) {
             if (module.getFirstMarker().equals(lecturerId)) {
@@ -92,6 +92,33 @@ public class ModuleDAO {
             }
         }
         return list;
+    }
+    
+     /**
+     * Get Module by lecturerId
+     * @param lecturerId
+     * @return List of Module
+     */
+    public List<ProjectModule> getModuleListByFirstMarkerId(Integer lecturerId)
+    {
+        List<ProjectModule> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getFirstMarker().equals(lecturerId)) {
+                list.add(module);
+            }
+        }
+        return list;      
+    }
+    
+    public List<ProjectModule> getModuleListBySecondMarkerId(Integer lecturerId)
+    {
+        List<ProjectModule> list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getSecondMarker().equals(lecturerId)) {
+                list.add(module);
+            }
+        }
+        return list;      
     }
     
     // Jin Xun - Get Project Manager ID
@@ -155,13 +182,6 @@ public class ModuleDAO {
             }
         }
         return false;
-    }
-    
-    public static void main(String[] args) {
-        ModuleDAO test=new ModuleDAO();
-//        System.out.println(test.getModuleByLecturerId(88608036));
-//        System.out.println(test.getModuleByProjectManagerId(39904006));
-        System.out.println(test.getModuleByModuleId(36887009));
     }
     
     /**

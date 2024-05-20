@@ -86,6 +86,7 @@ public class MessageConstant {
     public static final String CONDITION_NO_SUBMITTED_PROJECT_COMBOBOX = "No marked project results to view.";
     
     public static final String CONDITION_NO_MODULES_UNDER_LECTURER = "No modules to show.";
+    public static final String CONDITION_NO_SUBMISSIONS_UNDER_MODULES = "No submissions to show.";
 
     /* WARNING */
     public static final String WARNING_REMOVE_CONFIRMATION = "Are you sure you want to delete ?";
@@ -93,5 +94,4 @@ public class MessageConstant {
                                                            Are you sure you want to give the presentation marks?
                                                            Once updated, you are not allowed to modify the marks !
                                                            """;
-
 }

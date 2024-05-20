@@ -17,7 +17,7 @@ public interface ProjectModuleService {
      * @param lecturerId
      * @return List
      */
-    public List getAllModuleDetailsByLecId(Integer lecturerId);
+    public List getAllModuleDetailsByFirstMarkerId(Integer lecturerId);
 
     public List getAllModuleDetailsBySecondMarkerId(Integer lecturerId);
     

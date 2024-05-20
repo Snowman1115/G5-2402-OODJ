@@ -202,7 +202,7 @@ public class LecturerPresentation extends javax.swing.JInternalFrame {
     }
     
     //Check whether the input of presentation marks from lecturer is Double
-    public static boolean checkIsDouble(String input)
+    private static boolean checkIsDouble(String input)
     {
         try{
             Double.parseDouble(input);

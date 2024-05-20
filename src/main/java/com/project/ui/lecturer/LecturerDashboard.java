@@ -37,7 +37,7 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
     //Get all modules if the lecturer is first marker
     private void fillInSelectModuleComboBoxFirstMarker() {
         selectModuleComboBoxFM.removeAllItems();
-        List<Map<String, String>> lists = ProjectModuleController.getAllModuleDetailsByLecId();
+        List<Map<String, String>> lists = ProjectModuleController.getAllModuleDetailsByFirstMarkerId();
         
         if (lists.isEmpty()) {
             selectModuleComboBoxFM.addItem(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER);
@@ -45,10 +45,9 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         }
         
         for (Map<String, String> list : lists) {
-            selectModuleComboBoxFM.addItem(list.get("moduleCode"));
+            selectModuleComboBoxFM.addItem(list.get("moduleCode")+" "+list.get("moduleStartDate"));
         }
         selectModuleComboBoxFM.setSelectedIndex(0);
-        // selectModuleComboBox.getSelectedItem();
     }
     
     //Get all modules if the lecturer is second marker
@@ -62,14 +61,14 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         }
         
         for (Map<String, String> list : lists) {
-            selectModuleComboBoxSM.addItem(list.get("moduleCode"));
+            selectModuleComboBoxSM.addItem(list.get("moduleCode")+" "+list.get("moduleStartDate"));
         }
         selectModuleComboBoxSM.setSelectedIndex(0);
     }
     
 
     private void refreshTableAfterSelectModuleFM(String value) {
-        DefaultTableModel dtm1 =  (DefaultTableModel)superviseeTableFM.getModel();
+        DefaultTableModel dtm1 = (DefaultTableModel)superviseeTableFM.getModel();
         dtm1.setRowCount(0);
         
         //Search function
@@ -77,9 +76,9 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
         superviseeTableFM.setRowSorter(tr);
         
-        List<Map<String, String>> superviseeList = ProjectModuleController.getAllModuleDetailsByLecId();
+        List<Map<String, String>> superviseeList = ProjectModuleController.getAllModuleDetailsByFirstMarkerId();
         for (Map<String,String> list : superviseeList) {
-            if (value.equals(list.get("moduleCode"))) {
+            if (value.equals(list.get("moduleCode")+" "+list.get("moduleStartDate"))) {
                 String[] data = {list.get("studentId"), list.get("studentName"), list.get("intakeCode"), list.get("reportType"), list.get("reportStatus"),list.get("submissionDueDate")};
                 dtm1.addRow(data);
             }
@@ -96,7 +95,7 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         
         List<Map<String, String>> superviseeList = ProjectModuleController.getAllModuleDetailsBySecondMarkerId();
         for (Map<String,String> list : superviseeList) {
-            if (value.equals(list.get("moduleCode"))) {
+            if (value.equals(list.get("moduleCode")+" "+list.get("moduleStartDate"))) {
                 String[] data = {list.get("studentId"), list.get("studentName"), list.get("intakeCode"), list.get("reportType"), list.get("reportStatus"),list.get("submissionDueDate")};
                 dtm1.addRow(data);
             }

@@ -1,7 +1,9 @@
 package com.project.service.Impl;
 
 import com.project.common.constants.MessageConstant;
+import com.project.common.constants.ReportStatus;
 import com.project.common.constants.ReportType;
+import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.Dialog;
 import com.project.dao.*;
 import com.project.pojo.*;
@@ -22,6 +24,8 @@ public class SubmissionServiceImpl implements SubmissionService {
     private ModuleDAO moduleDAO = new ModuleDAO();
     private ReportDAO reportDAO = new ReportDAO();
     private IntakeDAO intakeDAO = new IntakeDAO();
+    private static List<ProjectModule> modules = new ArrayList<>();
+//    private static List<Submission> submissions = new ArrayList<>();
 
     /**
      * Get All Submission Status By Student Id
@@ -134,5 +138,213 @@ public class SubmissionServiceImpl implements SubmissionService {
             return false;
         }
     }
+    
+    /**
+     * Get All Pending Marking Submission (First and Second Marker) By Lecturer ID
+     * @param lecturerId
+     * @return Map of Number
+     */
+    @Override
+    public Map<String, Integer> getPendingMarkingSubmissionForLecturer(Integer lecturerId) {
+        return submissionDAO.getPendingMarkingSubmissionForLecturer(lecturerId);
+    }
+    
+    /**
+     * Get All Upcoming Submission Due Date (First and Second Marker) By Lecturer ID
+     * @param lecturerId
+     * @return List
+     */
+    @Override
+    public List<Map<String, String>> getAllUpcomingSubmissionDueDateByLecId(Integer lecturerId) {
+        List<Map<String, String>> mappedList = new ArrayList<>();
+        List<ProjectModule> moduleList1=moduleDAO.getModuleListByFirstMarkerId(lecturerId);
+        List<ProjectModule> moduleList2=moduleDAO.getModuleListBySecondMarkerId(lecturerId);
+        for(ProjectModule module:moduleList1)
+        {
+            List<Submission> submission1 = submissionDAO.getSubmissionListByModuleId(module.getModuleId());
+            for (Submission submission:submission1)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getFirstMarker().equals(lecturerId))
+                {
+                    if(submission.getSubmissionDueDate().isAfter(LocalDateTime.now()))
+                    {
+                        Map<String,String> map = new HashMap<>();
+                        map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                        map.put("moduleName", module.getModuleCode());
+                        mappedList.add(map); 
+                        //Break the loop to avoid duplication of same data adding to the list
+                        break;
+                    }
+                }
+            }
+        }  
+        for(ProjectModule module:moduleList2)
+        {
+            List<Submission> submission2 = submissionDAO.getSubmissionListByModuleId(module.getModuleId());
+            for (Submission submission:submission2)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getSecondMarker().equals(lecturerId))
+                {
+                    if(submission.getSubmissionDueDate().isAfter(LocalDateTime.now()))
+                    {
+                        Map<String,String> map = new HashMap<>();
+                        map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                        map.put("moduleName", module.getModuleCode());
+                        mappedList.add(map); 
+                        //Break the loop to avoid duplication of same data adding to the list
+                        break;
+                    }
+                }
+            }
+        }
+        return mappedList;
+    }
+    
+    /**
+     * Get All Submission Details By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    @Override
+    public List getAllSubmissionDetailsByLecId(Integer lecturerId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<ProjectModule> moduleList1=moduleDAO.getModuleListByFirstMarkerId(lecturerId);
+        List<ProjectModule> moduleList2=moduleDAO.getModuleListBySecondMarkerId(lecturerId);
+        //Get all module details by lecturer ID
+        for(ProjectModule module:moduleList1)
+        {
+            List<Submission> submission1 = submissionDAO.getSubmissionListByModuleId(module.getModuleId());
+            for (Submission submission:submission1)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getFirstMarker().equals(lecturerId))
+                {
+                    Map<String,String> map = new HashMap<>();
+                    Integer studentId=submission.getStudentId();
+                    if(studentId != 0)
+                    {
+                        UserAccount student=userAccountDAO.getUserAccountById(studentId);
+                        String studentName=student.getFirstName()+" "+student.getLastName();
+                        map.put("studentId", studentId.toString());
+                        map.put("studentName", studentName);
+                    }
+                    else 
+                    {
+                        map.put("studentId", "EMPTY");
+                        map.put("studentName", "EMPTY");
+                    }
+                    map.put("moduleName", module.getModuleCode());
+                    map.put("reportType", submission.getReportType().toString());
+                    map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                    map.put("submissionStatus", submission.getReportStatus().toString());
+                    map.put("reportResult", submission.getReportResult().toString());
+                    mappedLists.add(map); 
+                }
+            }
+        }
+        for(ProjectModule module:moduleList2)
+        {
+            List<Submission> submission2 = submissionDAO.getSubmissionListByModuleId(module.getModuleId());
+            for (Submission submission:submission2)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getSecondMarker().equals(lecturerId))
+                {
+                    Map<String,String> map = new HashMap<>();
+                    Integer studentId=submission.getStudentId();
+                    if(studentId != 0)
+                    {
+                        UserAccount student=userAccountDAO.getUserAccountById(studentId);
+                        String studentName=student.getFirstName()+" "+student.getLastName();
+                        map.put("studentId", studentId.toString());
+                        map.put("studentName", studentName);
+                    }
+                    else 
+                    {
+                        map.put("studentId", "EMPTY");
+                        map.put("studentName", "EMPTY");
+                    }
+                    map.put("moduleName", module.getModuleCode());
+                    map.put("reportType", submission.getReportType().toString());
+                    map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                    map.put("submissionStatus", submission.getReportStatus().toString());
+                    map.put("reportResult", submission.getReportResult().toString());
+                    mappedLists.add(map); 
+                }
+            }
+        }
+        return mappedLists;
+    }
+    
+    /**
+     * Get All Submission Details By Module Id
+     * @param moduleId
+     * @return List
+     */    
+    @Override
+    public List getAllSubmissionByModuleId(Integer moduleId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Submission> submissionList = submissionDAO.getSubmissionListByModuleId(moduleId);
+        for(Submission submission:submissionList)
+        {
+            if(submission.getModuleId().equals(moduleId) && (submission.getReportStatus().equals(ReportStatus.PENDING_MARKING) || submission.getReportStatus().equals(ReportStatus.OVERDUE)))
+            {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", submission.getSubmissionId().toString());
+                
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentName", studentName);
+                
+                map.put("reportType", submission.getSubmissionId().toString());
+                map.put("markingStatus", submission.getReportStatus().toString());
+                map.put("reportMarks", submission.getReportResult().toString());
+                map.put("lecturerComment", submission.getComment());
+                mappedLists.add(map);
+            }
+        }
+        return mappedLists;
+    }
+    
+    /**
+     * Get Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */   
+    @Override
+    public List<Map<String, String>> getSubmissionDetailsById(Integer submissionId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        Submission submission = submissionDAO.getSubmissionById(submissionId);
+        if(submission.getSubmissionId().equals(submissionId))
+            {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", submission.getSubmissionId().toString());
 
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentName", studentName);
+
+                map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                map.put("reportType", submission.getReportType().toString());
+                Integer reportId=submission.getReportId();
+                if (reportId.equals(0)) {
+                    map.put("FilePath", "");
+                    map.put("FileName", "");
+                } else {
+                    Report report = reportDAO.getAllReportByIdnType(submission.getReportId(), submission.getReportType());
+                    map.put("filePath", report.getReportPath());
+                    map.put("fileName", report.getReportName());
+                }
+                map.put("markingStatus", submission.getReportStatus().toString());
+                map.put("reportMarks", submission.getReportResult().toString());
+                map.put("lecturerComment", submission.getComment());
+                mappedLists.add(map);
+            }
+        return mappedLists;
+    }
+//    public static void main(String[] args) {
+//        SubmissionServiceImpl test=new SubmissionServiceImpl();
+//        System.out.println(test.getAllSubmissionByModuleId(36887009));
+//    }
 }

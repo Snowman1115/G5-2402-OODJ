@@ -15,6 +15,7 @@ import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -302,14 +303,28 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public boolean registerNewUser(JsonHandler userData, UserRoleType roleType) {
         int userId = this.getNewId();
-        int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
-        List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
         String defSafeWord = userData.get("first_name")+userData.get("last_name"); //create default safeword
 
         try {
             userAccountDAO.add(userId, userData.get("username"), userData.get("first_name"), userData.get("last_name"), userData.get("email"), userData.get("password"), defSafeWord);
-            userRoleDAO.add(userId, UserRoleType.STUDENT);
-            intakesDAO.addNewStudent(intakeId, userId);
+            userRoleDAO.add(userId, roleType);
+
+            switch (roleType) {
+                case STUDENT -> {
+                    int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
+                    LocalDate endDateOfIntake = intakesDAO.getIntakeById(intakeId).getEndDate();
+                    List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
+                    intakesDAO.addNewStudent(intakeId, userId);
+
+                    for (int moduleId : modulesInIntake) {
+                        submissionDAO.createSubmission(moduleId, userId, endDateOfIntake);
+                    }
+                }
+                case LECTURER -> {
+
+                }
+            }
+
             return true;
         } catch (Exception e) {
             return false;

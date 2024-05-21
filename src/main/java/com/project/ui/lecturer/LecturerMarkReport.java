@@ -59,7 +59,6 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         selectSubmissionComboBoxInMarkReport1.removeAllItems();
         if(pdfSubmissionPreview != null)
         {
-            projectFileNameFieldInMarkReport1.setText("Project File Name");
             filePanelInMarkReport1.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
             filePanelInMarkReport1.revalidate(); // Recalculate layout
             filePanelInMarkReport1.repaint(); // Repaint 
@@ -75,6 +74,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     JField28.setText("Marking Status");
                     reportResultFieldInMarkReport1.setText("Report Result");
                     lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
+                    projectFileNameFieldInMarkReport1.setText("Project File Name");
                 }
             }
         }
@@ -83,7 +83,6 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         selectSubmissionComboBoxInMarkReport2.removeAllItems();
         if(pdfSubmissionPreview != null)
         {
-            projectFileNameFieldInMarkReport2.setText("Project File Name");
             filePanelInMarkReport2.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
             filePanelInMarkReport2.revalidate(); // Recalculate layout
             filePanelInMarkReport2.repaint(); // Repaint 
@@ -99,6 +98,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     JField35.setText("Marking Status");
                     reportResultFieldInMarkReport2.setText("Report Result");
                     lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+                    projectFileNameFieldInMarkReport2.setText("Project File Name");
                 }
             }
         }
@@ -108,7 +108,6 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         selectSubmissionComboBoxInModify.removeAllItems();
         if(pdfSubmissionPreview != null)
         {
-            projectFileNameFieldInModify.setText("Project File Name");
             filePanelInModify.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
             filePanelInModify.revalidate(); // Recalculate layout
             filePanelInModify.repaint(); // Repaint 
@@ -124,6 +123,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     JField30.setText("Marking Status");
                     reportResultFieldInModify.setText("Report Result");
                     lecturerCommentFieldInModify.setText("Lecturer Comment");
+                    projectFileNameFieldInModify.setText("Project File Name");
                 }
             }
         }
@@ -141,6 +141,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             JField28.setText("Marking Status");
             reportResultFieldInMarkReport1.setText("Report Result");
             lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
+            projectFileNameFieldInMarkReport1.setText("Project File Name");
         } 
         else
         {
@@ -165,6 +166,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             JField35.setText("Marking Status");
             reportResultFieldInMarkReport2.setText("Report Result");
             lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+            projectFileNameFieldInMarkReport2.setText("Project File Name");
         } 
         else
         {
@@ -189,6 +191,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             JField30.setText("Marking Status");
             reportResultFieldInModify.setText("Report Result");
             lecturerCommentFieldInModify.setText("Lecturer Comment");
+            projectFileNameFieldInModify.setText("Project File Name");
         } 
         else
         {
@@ -299,6 +302,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             JField28.setText("Marking Status");
             reportResultFieldInMarkReport1.setText("Report Result");
             lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
+            projectFileNameFieldInMarkReport1.setText("Project File Name");
         } 
         else
         {
@@ -316,11 +320,12 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         if (lists2.isEmpty()) {
             selectSubmissionComboBoxInMarkReport2.addItem(MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES);
             //Need to set the below fields back to default after update
-            JField27.setText("Student Name");
-            JField31.setText("Report Type");
-            JField28.setText("Marking Status");
+            JField33.setText("Student Name");
+            JField35.setText("Report Type");
+            JField34.setText("Marking Status");
             reportResultFieldInMarkReport2.setText("Report Result");
             lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+            projectFileNameFieldInMarkReport2.setText("Project File Name");
         } 
         else
         {
@@ -343,6 +348,7 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             JField30.setText("Marking Status");
             reportResultFieldInModify.setText("Report Result");
             lecturerCommentFieldInModify.setText("Lecturer Comment");
+            projectFileNameFieldInModify.setText("Project File Name");
         } 
         else
         {

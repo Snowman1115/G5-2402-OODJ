@@ -43,7 +43,7 @@ public class ModuleDAO {
     public List<Integer> getModulesByIntakeId(Integer intakeId) {
         List<Integer> modulesList = new ArrayList<>();
         for (ProjectModule module : modules) {
-            if (module.getIntakeId() == intakeId) {
+            if (module.getIntakeId().equals(intakeId)) {
                 modulesList.add(module.getModuleId());
             }
         }

@@ -14,7 +14,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 
 @Slf4j
 public class JsonHandler {
@@ -214,7 +213,7 @@ public class JsonHandler {
      * Get set json object
      * @param object
      */
-    public void cloneObject(JSONObject object) {
+    public void setObject(JSONObject object) {
         json_object = object;
     }
 
@@ -230,7 +229,7 @@ public class JsonHandler {
             return (String) val;
         } else {
             log.error("Error: \"" + attribute + "\" " + MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
-            return null;
+            throw new RuntimeException(MessageConstant.ERROR_JSON_ATTRIBUTE_NOT_FOUND);
         }
     }
 

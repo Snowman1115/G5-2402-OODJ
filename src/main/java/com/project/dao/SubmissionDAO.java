@@ -1,15 +1,12 @@
 package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
-import com.project.common.constants.PresentationStatus;
 import com.project.common.constants.ReportStatus;
 import com.project.common.constants.ReportType;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
-import com.project.pojo.Intake;
-import com.project.pojo.Presentation;
 import com.project.pojo.Submission;
 import lombok.extern.slf4j.Slf4j;
 
@@ -161,7 +158,7 @@ public class SubmissionDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             Submission submission = new Submission();
 

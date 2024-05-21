@@ -1,11 +1,7 @@
 package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
-import com.project.common.constants.PresentationStatus;
 import com.project.common.utils.*;
-import static com.project.dao.PresentationDAO.update;
-import com.project.pojo.Intake;
-import com.project.pojo.Presentation;
 import com.project.pojo.ProjectModule;
 import static java.lang.Integer.parseInt;
 import java.time.LocalDateTime;
@@ -13,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Slf4j
@@ -38,6 +33,21 @@ public class ModuleDAO {
             }
         }
         return null;
+    }
+
+    /**
+     * return all modules based on intake id
+     * @param intakeId
+     * @return
+     */
+    public List<Integer> getModulesByIntakeId(Integer intakeId) {
+        List<Integer> modulesList = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getIntakeId() == intakeId) {
+                modulesList.add(module.getModuleId());
+            }
+        }
+        return modulesList;
     }
 
     public List<ProjectModule> getAllModules() {
@@ -212,7 +222,7 @@ public class ModuleDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             ProjectModule projectModule = new ProjectModule();
             projectModule.setModuleId(obj.getInt("id"));

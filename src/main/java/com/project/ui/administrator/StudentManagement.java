@@ -6,8 +6,6 @@ package com.project.ui.administrator;
 
 import com.project.common.utils.JsonHandler;
 import com.project.controller.UserAccountController;
-import com.project.pojo.UserRole;
-import org.apache.poi.ss.usermodel.Row;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -20,8 +18,10 @@ import java.util.regex.Pattern;
 
 
 /**
- *
- * @author Dell Technologies
+ * student management - Admin
+ * @author AU YIK HOE
+ * @version 1.0, Last edited on 2024-05-18
+ * @since 2024-05-01
  */
 public class StudentManagement extends javax.swing.JInternalFrame {
     DefaultTableModel table;
@@ -73,7 +73,6 @@ public class StudentManagement extends javax.swing.JInternalFrame {
         addBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -169,9 +168,6 @@ public class StudentManagement extends javax.swing.JInternalFrame {
         });
         MainPanel.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 600, 110, 40));
 
-        jButton6.setText("xxx");
-        MainPanel.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 110, 40));
-
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search-24x24.png"))); // NOI18N
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -228,7 +224,6 @@ public class StudentManagement extends javax.swing.JInternalFrame {
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private static javax.swing.JComboBox<String> filterByIntake;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

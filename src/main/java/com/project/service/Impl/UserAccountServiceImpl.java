@@ -4,17 +4,18 @@ import com.project.common.constants.AccountStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.Dialog;
+import com.project.common.utils.IDGenerator;
 import com.project.common.utils.JsonHandler;
-import com.project.dao.IntakeDAO;
-import com.project.dao.UserAccountDAO;
-import com.project.dao.UserAuthenticationDAO;
-import com.project.dao.UserRoleDAO;
+import com.project.common.utils.LongIDGenerator;
+import com.project.dao.*;
 import com.project.pojo.Intake;
 import com.project.pojo.UserAccount;
 import com.project.service.UserAccountService;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     private UserRoleDAO userRoleDAO = new UserRoleDAO();
 
     private IntakeDAO intakesDAO = new IntakeDAO();
+    private ModuleDAO moduleDAO = new ModuleDAO();
 
     /**
      * Login Authentication
@@ -265,6 +267,10 @@ public class UserAccountServiceImpl implements UserAccountService {
         return null;
     }
 
+    /**
+     * get all intake codes
+     * @return
+     */
     @Override
     public List<String> getAllIntakes() {
         List<String> list = new ArrayList<>();
@@ -274,5 +280,40 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
 
         return list;
+    }
+
+    /**
+     * request new user id
+     * @return
+     */
+    @Override
+    public Integer getNewId() {
+        List<Integer> userIds = new ArrayList<>();
+        IDGenerator idGenerator = new LongIDGenerator();
+
+        for (UserAccount ua : userAccountDAO.getAllUsers()) {
+            userIds.add(ua.getUserId());
+        }
+
+        return idGenerator.generateNewID(userIds);
+    }
+
+    @Override
+    public boolean registerNewUser(JsonHandler userData, UserRoleType roleType) {
+        int userId = this.getNewId();
+        int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
+        List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
+        String defSafeWord = userData.get("first_name")+userData.get("last_name"); //create default safeword
+
+        try {
+            userAccountDAO.add(userId, userData.get("username"), userData.get("first_name"), userData.get("last_name"), userData.get("email"), userData.get("password"), defSafeWord);
+            userRoleDAO.add(userId, UserRoleType.STUDENT);
+            intakesDAO.addNewStudent(intakeId, userId);
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }

@@ -4,18 +4,25 @@
  */
 package com.project.ui.administrator;
 
+import com.project.common.constants.UserRoleType;
 import com.project.common.utils.Dialog;
+import com.project.common.utils.JsonHandler;
 import com.project.controller.IntakesController;
+import com.project.controller.UserAccountController;
+import org.json.simple.JSONObject;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.util.List;
+import java.util.Random;
 
 /**
- *
- * @author Dell Technologies
+ * add student - Admin
+ * @author AU YIK HOE
+ * @version 1.0, Last edited on 2024-05-20
+ * @since 2024-05-01
  */
 public class AddStudent extends javax.swing.JInternalFrame {
-
+    int newId;
     /**
      * Creates new form AddStudent
      */
@@ -38,8 +45,23 @@ public class AddStudent extends javax.swing.JInternalFrame {
         } else {
             Dialog.ErrorDialog("No available intakes found!\nPlease create new intakes to register students.");
         }
+
+        newId = UserAccountController.getNewUserId();
     }
 
+    public String randomGenerator(int length) {
+        String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i=0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            char randomChar = characters.charAt(index);
+            sb.append(randomChar);
+        }
+        
+        return sb.toString();  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,22 +82,25 @@ public class AddStudent extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         intakes = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
         password = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
+        generateBtn = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1093, 695));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        username.setEditable(false);
+        username.setBackground(new java.awt.Color(204, 204, 204));
         username.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         username.setForeground(new java.awt.Color(1, 1, 1));
         username.setBorder(null);
         username.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        username.setFocusable(false);
         username.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 usernameKeyReleased(evt);
@@ -156,19 +181,13 @@ public class AddStudent extends javax.swing.JInternalFrame {
         intakes.setFocusable(false);
         jPanel1.add(intakes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 290, 35));
 
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("(Default)");
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel9.setOpaque(true);
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 80, 35));
-
         password.setEditable(false);
         password.setBackground(new java.awt.Color(204, 204, 204));
         password.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         password.setForeground(new java.awt.Color(1, 1, 1));
         password.setBorder(null);
         password.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        password.setFocusable(false);
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 290, 35));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -201,24 +220,41 @@ public class AddStudent extends javax.swing.JInternalFrame {
         });
         jPanel1.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 580, 110, 40));
 
+        generateBtn.setBackground(new java.awt.Color(153, 204, 255));
+        generateBtn.setForeground(new java.awt.Color(0, 0, 0));
+        generateBtn.setText("Generate");
+        generateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(generateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 90, 35));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased
-        String pmsEmail = "@pms.edu";
-        String newUsername = username.getText();
-        String newUserEmail = newUsername + pmsEmail;
-        email.setText(newUserEmail);
+        
     }//GEN-LAST:event_usernameKeyReleased
 
     private void firstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstNameKeyReleased
-        // TODO add your handling code here:
+        String pmsEmail = "@pms.edu";
+
+        String newUserEmail = firstName.getText().replace(" ", "").toLowerCase() + newId+ pmsEmail;
+        email.setText(newUserEmail);
+        String newUsername = firstName.getText().replace(" ", "") + newId;
+        username.setText(newUsername);
     }//GEN-LAST:event_firstNameKeyReleased
 
     private void lastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lastNameKeyReleased
-        // TODO add your handling code here:
+        String pmsEmail = "@pms.edu";
+
+        String newUserEmail = firstName.getText().replace(" ", "").toLowerCase() + lastName.getText().replace(" ", "").toLowerCase() + newId + pmsEmail;
+        email.setText(newUserEmail);
+        String newUsername = firstName.getText().replace(" ", "") + lastName.getText().replace(" ", "") + newId;
+        username.setText(newUsername);
     }//GEN-LAST:event_lastNameKeyReleased
 
     private void emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailKeyReleased
@@ -230,8 +266,32 @@ public class AddStudent extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cancelBtnMouseClicked
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-        // TODO add your handling code here:
+        if (!username.getText().isEmpty() && !firstName.getText().isEmpty() && !lastName.getText().isEmpty() && !password.getText().isEmpty() && !intakes.getSelectedItem().equals("-- Intakes --")) {
+            JsonHandler newStudentJson = new JsonHandler();
+            JSONObject newStudentObj = new JSONObject();
+            newStudentObj.put("username", username.getText());
+            newStudentObj.put("first_name", firstName.getText());
+            newStudentObj.put("last_name", lastName.getText());
+            newStudentObj.put("email", email.getText());
+            newStudentObj.put("password", password.getText());
+            newStudentObj.put("intake", intakes.getSelectedItem().toString());
+            newStudentJson.setObject(newStudentObj);
+
+            if (UserAccountController.addStudent(newStudentJson)) {
+                Dialog.SuccessDialog("Student registered successfully!\nPlease send login credentials to student.\n\tUsername: " + username.getText() + "\n\tEmail: " + email.getText() + "\n\tPassword: " + password.getText());
+                AdminGui.ButtonClicked("student");
+            } else {
+                Dialog.ErrorDialog("An unexpected error has occurred. Please contact technical department for this issue");
+            }
+
+        } else {
+            Dialog.ErrorDialog("No empty fields are allowed! Check:\n1. Ensure password is generated\n2. Intake is selected\n3. No empty fields");
+        }
     }//GEN-LAST:event_addBtnMouseClicked
+
+    private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed
+        password.setText(randomGenerator(15));
+    }//GEN-LAST:event_generateBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,6 +299,7 @@ public class AddStudent extends javax.swing.JInternalFrame {
     private javax.swing.JButton cancelBtn;
     private javax.swing.JTextField email;
     private javax.swing.JTextField firstName;
+    private javax.swing.JButton generateBtn;
     private static javax.swing.JComboBox<String> intakes;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -247,7 +308,6 @@ public class AddStudent extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lastName;
     private javax.swing.JTextField password;

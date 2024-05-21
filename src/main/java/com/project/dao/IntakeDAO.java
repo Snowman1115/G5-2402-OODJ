@@ -2,7 +2,6 @@ package com.project.dao;
 
 import com.project.common.utils.*;
 import com.project.pojo.Intake;
-import com.project.pojo.ProjectModule;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
@@ -11,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class IntakeDAO {
@@ -23,7 +23,10 @@ public class IntakeDAO {
     }
     
 //    public static void main(String[] args) {
-//        System.out.println(intakes);
+//        IntakeDAO intakes = new IntakeDAO();
+//        intakes.addNewStudent(41902888, 111222);
+//        intakes.addNewStudent(41902888, 222111);
+//        intakes.addNewStudent(41902888, 333222);
 //    }
 
     /**
@@ -41,6 +44,21 @@ public class IntakeDAO {
     }
 
     /**
+     * get intake id by intake code
+     * @param intakeCode
+     * @return
+     */
+    public int getIntakeIdByIntakeCode(String intakeCode) {
+        for (Intake i : intakes) {
+            if (i.getIntakeCode().equals(intakeCode)) {
+                return i.getIntakeId();
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      * Preload Data into presentations Array
      */
     private static void loadConsultationData() {
@@ -49,7 +67,7 @@ public class IntakeDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             Intake intake = new Intake();
 
@@ -124,6 +142,19 @@ public class IntakeDAO {
         intakesJson.addObject(newIntakeObj, INTAKE_DATA);
 
         return newIntakeId;
+    }
+
+    public void addNewStudent(int intakeId, int studentId) {
+        for (Intake itk : intakes) {
+            if (itk.getIntakeId() == intakeId) {
+                itk.getStudentList().add(studentId);
+                String students = itk.getStudentList().stream().map(String::valueOf).collect(Collectors.joining(","));
+
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(FileHandler.readFile(INTAKE_DATA));
+                userJson.update(itk.getIntakeId(), "studentList", students, INTAKE_DATA);
+            }
+        }
     }
 
     /*

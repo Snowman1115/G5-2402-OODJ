@@ -14,12 +14,12 @@ import org.json.simple.JSONObject;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- *
- * @author Dell Technologies
+ * intake management - Admin
+ * @author AU YIK HOE
+ * @version 1.0, Last edited on 2024-05-16
+ * @since 2024-05-01
  */
 public class intakeManagement extends javax.swing.JInternalFrame {
     String newIntakeCode;
@@ -554,6 +554,10 @@ public class intakeManagement extends javax.swing.JInternalFrame {
                 this.intakeStartDate = startDate;
                 this.intakeEndDate = endDate;
 
+                for (int i=0; i<assignedModules.getAll().size(); i++) {
+                    assignedModules.getObject(i).replace("moduleCode", assignedModules.getObject(i).get("moduleCode") + " (" + newIntakeCode + ")");
+                }
+
                 // display preview
                 intakeCodePre.setText(newIntakeCode);
                 module1Pre.setText(assignedModules.getObject(0).get("moduleCode").toString());
@@ -586,7 +590,12 @@ public class intakeManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nextBtn2MouseClicked
 
     private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
-        IntakesController.registerNewIntake(newIntakeCode, intakeStartDate, intakeEndDate, assignedModules);
+        if (IntakesController.registerNewIntake(newIntakeCode, intakeStartDate, intakeEndDate, assignedModules)) {
+            Dialog.SuccessDialog("New intake created successfully!");
+        } else {
+            Dialog.ErrorDialog("An unexpected error occurred. Contact technical department for assistance.");
+        }
+        AdminGui.ButtonClicked("intakes");
     }//GEN-LAST:event_saveBtnMouseClicked
 
     private void intakeCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intakeCodeKeyReleased

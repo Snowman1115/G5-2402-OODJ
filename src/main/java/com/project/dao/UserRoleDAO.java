@@ -68,11 +68,11 @@ public class UserRoleDAO {
 
         JSONObject newRecord = new JSONObject();
         newRecord.put("id", userId);
-        newRecord.put("roleType", roleType);
-        newRecord.put("status", AccountStatus.isActive);
+        newRecord.put("roleType", roleType.toString());
+        newRecord.put("status", AccountStatus.isActive.toString());
 
         JsonHandler userRolesJson = new JsonHandler();
-        userRolesJson.encode(USER_ACCOUNT);
+        userRolesJson.encode(FileHandler.readFile(USER_ACCOUNT));
         userRolesJson.addObject(newRecord, USER_ACCOUNT);
     }
 
@@ -106,5 +106,4 @@ public class UserRoleDAO {
             user_roles.add(ur);
         }
     }
-
 }

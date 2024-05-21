@@ -153,6 +153,7 @@ public class IntakeDAO {
                 JsonHandler userJson = new JsonHandler();
                 userJson.encode(FileHandler.readFile(INTAKE_DATA));
                 userJson.update(itk.getIntakeId(), "studentList", students, INTAKE_DATA);
+                userJson.update(itk.getIntakeId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()), INTAKE_DATA);
             }
         }
     }

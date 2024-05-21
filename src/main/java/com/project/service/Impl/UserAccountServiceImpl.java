@@ -30,6 +30,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     private IntakeDAO intakesDAO = new IntakeDAO();
     private ModuleDAO moduleDAO = new ModuleDAO();
+    private SubmissionDAO submissionDAO = new SubmissionDAO();
 
     /**
      * Login Authentication
@@ -309,10 +310,8 @@ public class UserAccountServiceImpl implements UserAccountService {
             userAccountDAO.add(userId, userData.get("username"), userData.get("first_name"), userData.get("last_name"), userData.get("email"), userData.get("password"), defSafeWord);
             userRoleDAO.add(userId, UserRoleType.STUDENT);
             intakesDAO.addNewStudent(intakeId, userId);
-
             return true;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return false;
         }
     }

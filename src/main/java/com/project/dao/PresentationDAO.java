@@ -1,6 +1,5 @@
 package com.project.dao;
 
-import com.project.common.constants.ConsultationStatus;
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.utils.DateTimeUtils;
@@ -309,7 +308,7 @@ public class PresentationDAO {
 
         for (int i = 0; i < (presentationData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(presentationData.getObject(i));
+            obj.setObject(presentationData.getObject(i));
 
             Presentation presentation = new Presentation();
             presentation.setPresentationId(obj.getInt("id"));

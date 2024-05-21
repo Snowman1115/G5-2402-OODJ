@@ -74,7 +74,7 @@ public class SubmissionDAO {
         }
         return list;
     }
-    
+
 //    public static void main(String[] args) {
 //        SubmissionDAO sub = new SubmissionDAO();
 //        System.out.println(sub.getSubmissionByModuleId(36887009));  
@@ -170,7 +170,7 @@ public class SubmissionDAO {
         }
         return list;
     }
-    
+
     /**
      * Get All Pending Marking Submission (First and Second Marker) By Lecturer ID
      * @param lecturerId
@@ -202,7 +202,7 @@ public class SubmissionDAO {
                     if(submission.getReportStatus().equals(ReportStatus.MARKED_1))
                     {
                         pendingMarkingSecondMarkerSum=pendingMarkingSecondMarkerSum+1;
-                    } 
+                    }
                 }
             }
         }
@@ -210,7 +210,7 @@ public class SubmissionDAO {
         map.put("secondMarkerPendingMarking",pendingMarkingSecondMarkerSum);
         return map;
     }
- 
+
     /**
      * Update Submission Status To Marked_1 By Submission Id
      * @param submissionId
@@ -218,7 +218,7 @@ public class SubmissionDAO {
      * @param comment
      * @return Boolean
      */
-    
+
     public Boolean updateSubmissionMarksByIdForFirstMarker(Integer submissionId, Double marks, String comment)
     {
         for (Submission submission : submissions) {
@@ -230,9 +230,9 @@ public class SubmissionDAO {
                 return true;
             }
         }
-        return false;        
+        return false;
     }
-    
+
     /**
      * Update Submission Status To Marked_2 By Submission Id
      * @param submissionId
@@ -240,7 +240,7 @@ public class SubmissionDAO {
      * @param comment
      * @return Boolean
      */
-    
+
     public Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment)
     {
         for (Submission submission : submissions) {
@@ -252,9 +252,9 @@ public class SubmissionDAO {
                 return true;
             }
         }
-        return false;        
+        return false;
     }
-    
+
     /**
      * Preload Data into presentations Array
      */
@@ -264,7 +264,7 @@ public class SubmissionDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             Submission submission = new Submission();
 
@@ -360,4 +360,5 @@ public class SubmissionDAO {
         userJson.encode(FileHandler.readFile(SUBMISSION_DATA));
         return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);
     }
+
 }

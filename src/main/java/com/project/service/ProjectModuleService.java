@@ -4,6 +4,9 @@
  */
 package com.project.service;
 
+import com.project.common.utils.JsonHandler;
+
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -25,10 +28,22 @@ public interface ProjectModuleService {
     
     public List getModuleDetailsBySecondMarkerId(Integer lecturerId);
     
+
+    /**
+     * add new module
+     * @param intakeId
+     * @param moduleCode
+     * @param projectManagerId
+     * @param startDate
+     * @param endDate
+     * @return boolean
+     */
+    public boolean addModule(int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate);
+
     //Jin Xun - Project Manager
 
     /**
-     * 
+     *
      * @param ProjectManagerId
      * @return
      */

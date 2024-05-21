@@ -16,6 +16,8 @@ import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.UserAccountService;
 import com.project.service.UserAuthenticationService;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
+
 import java.util.List;
 
 @Slf4j
@@ -222,4 +224,13 @@ public class UserAccountController {
     public static List<String> getIntakes() {
         return userAccountService.getAllIntakes();
     }
+
+    /**
+     * request new user id
+     * @return
+     */
+    public static Integer getNewUserId() { return userAccountService.getNewId(); }
+    public static boolean addStudent(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.STUDENT); }
+    public static boolean addLecturer(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.LECTURER); }
+    public static boolean addAdmin(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.ADMIN); }
 }

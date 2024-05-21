@@ -6,12 +6,10 @@ import com.project.common.utils.FileHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
-import com.project.pojo.UserRole;
 import lombok.extern.slf4j.Slf4j;
-import java.io.*;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -27,7 +25,16 @@ public class UserAccountDAO {
         loadUserData();
     }
 
-
+//    public static void main(String[] args) {
+//        JsonHandler js = new JsonHandler();
+//        JSONObject obj = new JSONObject();
+//        obj.put("name", "john");
+//        obj.put("age", 40);
+//        js.addObject(obj);
+//        js.cloneObject(js.getObject(0));
+//        System.out.println(js.get("name"));
+//        System.out.println(js.get("occupation"));
+//    }
 
     /**
      * Get All User Details
@@ -63,6 +70,7 @@ public class UserAccountDAO {
                 return user;
             }
         }
+
         return null;
     }
 
@@ -245,7 +253,7 @@ public class UserAccountDAO {
 
         for (int i=0; i<(userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             UserAccount ua = new UserAccount();
             ua.setUserId(obj.getInt("id"));
@@ -262,13 +270,15 @@ public class UserAccountDAO {
     }
 
     public void add(Integer userId, String username, String firstname, String lastName, String email, String password, String safeWord) {
+        String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
         UserAccount newUser = new UserAccount();
         newUser.setUserId(userId);
         newUser.setUsername(username);
         newUser.setFirstName(firstname);
         newUser.setLastName(lastName);
         newUser.setEmail(email);
-        newUser.setPassword(password);
+        newUser.setPassword(encryptedPassword);
         newUser.setSecurityPhrase(safeWord);
         newUser.setCreatedAt(LocalDateTime.now());
         newUser.setUpdatedAt(LocalDateTime.now());
@@ -280,7 +290,7 @@ public class UserAccountDAO {
         newUserJson.put("first_name", firstname);
         newUserJson.put("last_name", lastName);
         newUserJson.put("email", email);
-        newUserJson.put("password", password);
+        newUserJson.put("password", encryptedPassword);
         newUserJson.put("safeWord", safeWord);
         newUserJson.put("created_at", DateTimeUtils.formatStrDateTime(newUser.getCreatedAt()));
         newUserJson.put("updated_at", DateTimeUtils.formatStrDateTime(newUser.getUpdatedAt()));

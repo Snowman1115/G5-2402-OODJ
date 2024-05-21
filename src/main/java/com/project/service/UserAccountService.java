@@ -3,6 +3,8 @@ package com.project.service;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.JsonHandler;
 import com.project.pojo.UserAccount;
+import org.json.simple.JSONObject;
+
 import java.util.List;
 
 public interface UserAccountService {
@@ -74,5 +76,17 @@ public interface UserAccountService {
      */
     public JsonHandler getUsersByRole(UserRoleType roleType);
 
+    /**
+     * get all intake codes
+     * @return
+     */
     public List<String> getAllIntakes();
+
+    /**
+     * request new id
+     * @return
+     */
+    public Integer getNewId();
+    public boolean registerNewUser(JsonHandler userData, UserRoleType roleType);
+
 }

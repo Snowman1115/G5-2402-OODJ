@@ -312,7 +312,7 @@ public class ReportDAO {
 
         for (int i = 0; i < (reportData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(reportData.getObject(i));
+            obj.setObject(reportData.getObject(i));
 
             switch (ReportType.valueOf(obj.get("reportType"))) {
                 case REPORT -> {

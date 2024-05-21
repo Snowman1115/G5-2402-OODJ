@@ -21,6 +21,10 @@ public interface ProjectModuleService {
 
     public List getAllModuleDetailsBySecondMarkerId(Integer lecturerId);
     
+    public List getModuleDetailsByFirstMarkerId(Integer lecturerId);
+    
+    public List getModuleDetailsBySecondMarkerId(Integer lecturerId);
+    
     //Jin Xun - Project Manager
 
     /**

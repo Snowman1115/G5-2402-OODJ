@@ -23,6 +23,7 @@ public class MessageConstant {
     public static final String SUCCESS_CANCELLED_PRESENTATION_SLOT = "Presentation Slot Successfully Cancelled.";
     public static final String SUCCESS_REJECTED_PRESENTATION_SLOT = "Presentation Slot Successfully Rejected.";
     public static final String SUCCESS_UPDATED_PRESENTATION_MARKS = "Presentation Marks Successfully Updated.";
+    public static final String SUCCESS_UPDATED_SUBMISSION_MARKS = "Submission Marks Successfully Updated.";
     public static final String SUCCESS_SUBMITTED_PROJECT = "Project File Submitted Successfully.";
     public static final String SUCCESS_ASSIGNED_SUPERVISOR = "Supervisor And Second Marker Assigned Successfully.";
 
@@ -64,6 +65,8 @@ public class MessageConstant {
     public static final String ERROR_PRESENTATION_SLOT_BOOKED = "The presentation slot is already booked.";
     public static final String ERROR_ONLY_PDF_SUPPORTED = "Only PDF format is supported. Please try again.";
     public static final String ERROR_EMPTY_FILE = "Please upload a file to submit.";
+    public static final String ERROR_NO_SUBMISSION_SELECTED = "Please select a submission to be marked.";
+    public static final String ERROR_NO_MODULES_SELECTED = "Please select a module and fetch all the submissions first.";
     public static final String ERROR_SUBMISSION_DUE_DATE_IS_OVER = "Submission Due Date is Over, modification are not allowed.";
     public static final String ERROR_CONSULTATION_DATETIME_CLASHED = """
                                                                      The DateTime selected is clashing with other existing consultation DateTime.
@@ -94,4 +97,5 @@ public class MessageConstant {
                                                            Are you sure you want to give the presentation marks?
                                                            Once updated, you are not allowed to modify the marks !
                                                            """;
+    public static final String WARNING_MARK_REPORT = "Are you sure you want to give the report marks and commment?";
 }

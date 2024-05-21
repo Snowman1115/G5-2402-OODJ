@@ -210,6 +210,50 @@ public class SubmissionDAO {
         map.put("secondMarkerPendingMarking",pendingMarkingSecondMarkerSum);
         return map;
     }
+ 
+    /**
+     * Update Submission Status To Marked_1 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    
+    public Boolean updateSubmissionMarksByIdForFirstMarker(Integer submissionId, Double marks, String comment)
+    {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                update(submissionId, "reportStatus", ReportStatus.MARKED_1.toString());
+                update(submissionId, "reportResult", marks.toString());
+                update(submissionId, "comment", comment);
+                update(submissionId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;        
+    }
+    
+    /**
+     * Update Submission Status To Marked_2 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    
+    public Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment)
+    {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                update(submissionId, "reportStatus", ReportStatus.MARKED_2.toString());
+                update(submissionId, "reportResult", marks.toString());
+                update(submissionId, "comment", comment);
+                update(submissionId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;        
+    }
     
     /**
      * Preload Data into presentations Array

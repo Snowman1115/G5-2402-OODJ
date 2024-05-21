@@ -56,11 +56,25 @@ public interface SubmissionService {
     public List getAllSubmissionDetailsByLecId(Integer lecturerId); 
     
     /**
-     * Get All Submission Details By Module Id
+     * Get All Pending Marking Submission By Module Id
      * @param moduleId
      * @return List
      */
-    public List getAllSubmissionByModuleId(Integer moduleId);
+    public List getPendingMarkingSubmissionByModuleId(Integer moduleId);
+    
+    /**
+     * Get All Marked_1 Submission By Module Id
+     * @param moduleId
+     * @return List
+     */
+    public List getMarked1SubmissionByModuleId(Integer moduleId);
+    
+    /**
+     * Get All Marked_2 Submission By Module Id
+     * @param moduleId
+     * @return List
+     */
+    public List getMarked2SubmissionByModuleId(Integer moduleId);
     
     /**
      * Get Submission Details By Submission Id
@@ -68,4 +82,36 @@ public interface SubmissionService {
      * @return List
      */
     public List<Map<String, String>> getSubmissionDetailsById(Integer submissionId);
+    
+    /**
+     * Get Marked_1 Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */
+    public List<Map<String, String>> getMarked1SubmissionDetailsById(Integer submissionId);
+    
+    /**
+     * Get Marked_2 Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */
+    public List<Map<String, String>> getMarked2SubmissionDetailsById(Integer submissionId);
+    
+    /**
+     * Update Submission Status To Marked_1 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    public Boolean updateSubmissionMarksByIdForFirstMarker(Integer submissionId, Double marks, String comment);
+    
+    /**
+     * Update Submission Status To Marked_2 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    public Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment);
 }

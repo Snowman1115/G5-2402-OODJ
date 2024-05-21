@@ -276,18 +276,80 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
     
     /**
-     * Get All Submission Details By Module Id
+     * Get All Pending Marking Submission By Module Id
      * @param moduleId
      * @return List
      */    
     @Override
-    public List getAllSubmissionByModuleId(Integer moduleId)
+    public List getPendingMarkingSubmissionByModuleId(Integer moduleId)
     {
         List<Map<String, String>> mappedLists = new ArrayList<>();
         List<Submission> submissionList = submissionDAO.getSubmissionListByModuleId(moduleId);
         for(Submission submission:submissionList)
         {
             if(submission.getModuleId().equals(moduleId) && (submission.getReportStatus().equals(ReportStatus.PENDING_MARKING) || submission.getReportStatus().equals(ReportStatus.OVERDUE)))
+            {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", submission.getSubmissionId().toString());
+                
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentName", studentName);
+                
+                map.put("reportType", submission.getSubmissionId().toString());
+                map.put("markingStatus", submission.getReportStatus().toString());
+                map.put("reportMarks", submission.getReportResult().toString());
+                map.put("lecturerComment", submission.getComment());
+                mappedLists.add(map);
+            }
+        }
+        return mappedLists;
+    }
+    
+    /**
+     * Get All Marked_1 Submission By Module Id
+     * @param moduleId
+     * @return List
+     */    
+    @Override
+    public List getMarked1SubmissionByModuleId(Integer moduleId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Submission> submissionList = submissionDAO.getSubmissionListByModuleId(moduleId);
+        for(Submission submission:submissionList)
+        {
+            if(submission.getModuleId().equals(moduleId) && submission.getReportStatus().equals(ReportStatus.MARKED_1))
+            {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", submission.getSubmissionId().toString());
+                
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentName", studentName);
+                
+                map.put("reportType", submission.getSubmissionId().toString());
+                map.put("markingStatus", submission.getReportStatus().toString());
+                map.put("reportMarks", submission.getReportResult().toString());
+                map.put("lecturerComment", submission.getComment());
+                mappedLists.add(map);
+            }
+        }
+        return mappedLists;
+    }
+    
+    /**
+     * Get All Marked_2 Submission By Module Id
+     * @param moduleId
+     * @return List
+     */    
+    @Override
+    public List getMarked2SubmissionByModuleId(Integer moduleId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Submission> submissionList = submissionDAO.getSubmissionListByModuleId(moduleId);
+        for(Submission submission:submissionList)
+        {
+            if(submission.getModuleId().equals(moduleId) && submission.getReportStatus().equals(ReportStatus.MARKED_2))
             {
                 Map<String,String> map = new HashMap<>();
                 map.put("id", submission.getSubmissionId().toString());
@@ -316,7 +378,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     {
         List<Map<String, String>> mappedLists = new ArrayList<>();
         Submission submission = submissionDAO.getSubmissionById(submissionId);
-        if(submission.getSubmissionId().equals(submissionId))
+        if(submission.getSubmissionId().equals(submissionId) && submission.getReportStatus().equals(ReportStatus.PENDING_MARKING))
             {
                 Map<String,String> map = new HashMap<>();
                 map.put("id", submission.getSubmissionId().toString());
@@ -343,8 +405,120 @@ public class SubmissionServiceImpl implements SubmissionService {
             }
         return mappedLists;
     }
+    
+    /**
+     * Get Marked_1 Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */   
+    @Override
+    public List<Map<String, String>> getMarked1SubmissionDetailsById(Integer submissionId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        Submission submission = submissionDAO.getSubmissionById(submissionId);
+        if(submission.getSubmissionId().equals(submissionId) && submission.getReportStatus().equals(ReportStatus.MARKED_1))
+            {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", submission.getSubmissionId().toString());
+
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentName", studentName);
+
+                map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                map.put("reportType", submission.getReportType().toString());
+                Integer reportId=submission.getReportId();
+                if (reportId.equals(0)) {
+                    map.put("FilePath", "");
+                    map.put("FileName", "");
+                } else {
+                    Report report = reportDAO.getAllReportByIdnType(submission.getReportId(), submission.getReportType());
+                    map.put("filePath", report.getReportPath());
+                    map.put("fileName", report.getReportName());
+                }
+                map.put("markingStatus", submission.getReportStatus().toString());
+                map.put("reportMarks", submission.getReportResult().toString());
+                map.put("lecturerComment", submission.getComment());
+                mappedLists.add(map);
+            }
+        return mappedLists;
+    }
+    
+    /**
+     * Get Marked_2 Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */   
+    @Override
+    public List<Map<String, String>> getMarked2SubmissionDetailsById(Integer submissionId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        Submission submission = submissionDAO.getSubmissionById(submissionId);
+        if(submission.getSubmissionId().equals(submissionId) && submission.getReportStatus().equals(ReportStatus.MARKED_2))
+            {
+                Map<String,String> map = new HashMap<>();
+                map.put("id", submission.getSubmissionId().toString());
+
+                UserAccount student=userAccountDAO.getUserAccountById(submission.getStudentId());
+                String studentName=student.getFirstName()+" "+student.getLastName();
+                map.put("studentName", studentName);
+
+                map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                map.put("reportType", submission.getReportType().toString());
+                Integer reportId=submission.getReportId();
+                if (reportId.equals(0)) {
+                    map.put("FilePath", "");
+                    map.put("FileName", "");
+                } else {
+                    Report report = reportDAO.getAllReportByIdnType(submission.getReportId(), submission.getReportType());
+                    map.put("filePath", report.getReportPath());
+                    map.put("fileName", report.getReportName());
+                }
+                map.put("markingStatus", submission.getReportStatus().toString());
+                map.put("reportMarks", submission.getReportResult().toString());
+                map.put("lecturerComment", submission.getComment());
+                mappedLists.add(map);
+            }
+        return mappedLists;
+    }
+    
+    /**
+     * Update Submission Status To Marked_1 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    @Override
+    public Boolean updateSubmissionMarksByIdForFirstMarker(Integer submissionId, Double marks, String comment) {
+        if (submissionDAO.updateSubmissionMarksByIdForFirstMarker(submissionId, marks, comment)) {
+            log.info("Submission Status Update To Marked_1 Successfully: " + submissionId);
+            return true;
+        } else{
+            log.info("Submission Status Update To Marked_1 Failed: " + submissionId);
+            return false;
+        }        
+    }
+    
+    /**
+     * Update Submission Status To Marked_1 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    @Override
+    public Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment) {
+        if (submissionDAO.updateSubmissionMarksByIdForSecondMarker(submissionId, marks, comment)) {
+            log.info("Submission Status Update To Marked_2 Successfully: " + submissionId);
+            return true;
+        } else{
+            log.info("Submission Status Update To Marked_2 Failed: " + submissionId);
+            return false;
+        }        
+    }
 //    public static void main(String[] args) {
 //        SubmissionServiceImpl test=new SubmissionServiceImpl();
-//        System.out.println(test.getAllSubmissionByModuleId(36887009));
+//        System.out.println(test.getPendingMarkingSubmissionByModuleId(36887009));
 //    }
 }

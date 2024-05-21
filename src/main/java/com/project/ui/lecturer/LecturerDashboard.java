@@ -45,7 +45,7 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         }
         
         for (Map<String, String> list : lists) {
-            selectModuleComboBoxFM.addItem(list.get("moduleCode")+" "+list.get("moduleStartDate"));
+            selectModuleComboBoxFM.addItem(list.get("moduleCode"));
         }
         selectModuleComboBoxFM.setSelectedIndex(0);
     }
@@ -61,7 +61,7 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         }
         
         for (Map<String, String> list : lists) {
-            selectModuleComboBoxSM.addItem(list.get("moduleCode")+" "+list.get("moduleStartDate"));
+            selectModuleComboBoxSM.addItem(list.get("moduleCode"));
         }
         selectModuleComboBoxSM.setSelectedIndex(0);
     }
@@ -76,10 +76,10 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
         superviseeTableFM.setRowSorter(tr);
         
-        List<Map<String, String>> superviseeList = ProjectModuleController.getAllModuleDetailsByFirstMarkerId();
+        List<Map<String, String>> superviseeList = ProjectModuleController.getModuleDetailsByFirstMarkerId();
         for (Map<String,String> list : superviseeList) {
-            if (value.equals(list.get("moduleCode")+" "+list.get("moduleStartDate"))) {
-                String[] data = {list.get("studentId"), list.get("studentName"), list.get("intakeCode"), list.get("reportType"), list.get("reportStatus"),list.get("submissionDueDate")};
+            if (value.equals(list.get("moduleCode"))) {
+                String[] data = {list.get("studentId"), list.get("studentName"), list.get("intakeCode"), list.get("reportType"), list.get("submissionStatus"),list.get("submissionDueDate")};
                 dtm1.addRow(data);
             }
         }
@@ -93,10 +93,10 @@ public class LecturerDashboard extends javax.swing.JInternalFrame {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
         superviseeTableSM.setRowSorter(tr);
         
-        List<Map<String, String>> superviseeList = ProjectModuleController.getAllModuleDetailsBySecondMarkerId();
+        List<Map<String, String>> superviseeList = ProjectModuleController.getModuleDetailsBySecondMarkerId();
         for (Map<String,String> list : superviseeList) {
-            if (value.equals(list.get("moduleCode")+" "+list.get("moduleStartDate"))) {
-                String[] data = {list.get("studentId"), list.get("studentName"), list.get("intakeCode"), list.get("reportType"), list.get("reportStatus"),list.get("submissionDueDate")};
+            if (value.equals(list.get("moduleCode"))) {
+                String[] data = {list.get("studentId"), list.get("studentName"), list.get("intakeCode"), list.get("reportType"), list.get("submissionStatus"),list.get("submissionDueDate")};
                 dtm1.addRow(data);
             }
         }

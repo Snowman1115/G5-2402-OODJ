@@ -939,8 +939,8 @@ public class LecturerPresentation extends javax.swing.JInternalFrame {
             return;
         }
         
-        String presentationInput=presentationMarksField.getText();
-        boolean flag=checkIsDouble(presentationInput);
+        String presentationMarksInput=presentationMarksField.getText();
+        boolean flag=checkIsDouble(presentationMarksInput);
         if(flag == true)
         {
             Double presentationMarks=Double.valueOf(presentationMarksField.getText());
@@ -948,14 +948,13 @@ public class LecturerPresentation extends javax.swing.JInternalFrame {
                 if(Dialog.ConfirmationDialog(MessageConstant.WARNING_MARK_PRESENTATION))
                 {
                    PresentationController.updatePresentationMarksById(Integer.valueOf((String)presentationIDComboBoxInUpdate.getSelectedItem()),Double.valueOf(presentationMarksField.getText()));
-                    Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATED_PRESENTATION_MARKS);
-                    refresh(); 
+                   Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATED_PRESENTATION_MARKS);
+                   refresh(); 
                 }
                 else
                 {
 
                 }
-
             } 
             else
             {

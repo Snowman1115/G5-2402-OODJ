@@ -1,19 +1,15 @@
 package com.project.ui.lecturer;
 
 import com.project.common.constants.MessageConstant;
-import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.Dialog;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
-import com.project.controller.ConsultationController;
 import com.project.controller.ProjectModuleController;
 import com.project.controller.SubmissionController;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import javax.swing.table.TableRowSorter;
@@ -27,7 +23,6 @@ import org.icepdf.ri.common.SwingViewBuilder;
  */
 public class LecturerMarkReport extends javax.swing.JInternalFrame {
     
-    private String uploadedfilePath = null; 
     private JPanel pdfSubmissionPreview = null;
     /**
      * Creates new form LecturerConsultation
@@ -45,6 +40,8 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         refreshDashboard();
         refreshSubmissionOverviewTable(0);
         refreshSelectModuleInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem());
+        refreshSelectModuleInMarkReport2(selectModuleComboBoxInMarkReport2.getSelectedItem());
+        refreshSelectModuleInModify(selectModuleComboBoxInModify.getSelectedItem());
     }
     
     private void refreshDashboard() {
@@ -53,6 +50,8 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         secondMarkerPendingMarking.setText(map.get("secondMarkerPendingMarking").toString());
 
         selectModuleComboBoxInMarkReport1();
+        selectModuleComboBoxInMarkReport2();
+        selectModuleComboBoxInModify();
         refreshUpcomingSubmissionDueDateTable();   
     }
 
@@ -60,10 +59,10 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         selectSubmissionComboBoxInMarkReport1.removeAllItems();
         if(pdfSubmissionPreview != null)
         {
-            projectFileNameField.setText("Project File Name");
-            filePanel.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
-            filePanel.revalidate(); // Recalculate layout
-            filePanel.repaint(); // Repaint 
+            projectFileNameFieldInMarkReport1.setText("Project File Name");
+            filePanelInMarkReport1.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
+            filePanelInMarkReport1.revalidate(); // Recalculate layout
+            filePanelInMarkReport1.repaint(); // Repaint 
         }
         if (selectModuleComboBoxInMarkReport1.getSelectedItem() != null) {
             List<Map<String, String>> lists = ProjectModuleController.getAllModuleDetailsByFirstMarkerId();
@@ -74,8 +73,57 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     JField25.setText(list.get("moduleCode"));
                     JField31.setText("Report Type");
                     JField28.setText("Marking Status");
-                    reportResultField.setText("Report Result");
-                    lecturerCommentField.setText("Lecturer Comment");
+                    reportResultFieldInMarkReport1.setText("Report Result");
+                    lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
+                }
+            }
+        }
+    }
+    private void refreshSelectModuleInMarkReport2(Object value) {
+        selectSubmissionComboBoxInMarkReport2.removeAllItems();
+        if(pdfSubmissionPreview != null)
+        {
+            projectFileNameFieldInMarkReport2.setText("Project File Name");
+            filePanelInMarkReport2.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
+            filePanelInMarkReport2.revalidate(); // Recalculate layout
+            filePanelInMarkReport2.repaint(); // Repaint 
+        }
+        if (selectModuleComboBoxInMarkReport2.getSelectedItem() != null) {
+            List<Map<String, String>> lists = ProjectModuleController.getAllModuleDetailsBySecondMarkerId();
+            for (Map<String, String> list : lists) {
+                if (value.equals(list.get("id"))) {
+                    //Need to set the below fields back to default after update
+                    JField33.setText("Student Name");
+                    JField36.setText(list.get("moduleCode"));
+                    JField34.setText("Report Type");
+                    JField35.setText("Marking Status");
+                    reportResultFieldInMarkReport2.setText("Report Result");
+                    lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+                }
+            }
+        }
+    }
+    
+    private void refreshSelectModuleInModify(Object value) {
+        selectSubmissionComboBoxInModify.removeAllItems();
+        if(pdfSubmissionPreview != null)
+        {
+            projectFileNameFieldInModify.setText("Project File Name");
+            filePanelInModify.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel2
+            filePanelInModify.revalidate(); // Recalculate layout
+            filePanelInModify.repaint(); // Repaint 
+        }
+        if (selectModuleComboBoxInModify.getSelectedItem() != null) {
+            List<Map<String, String>> lists = ProjectModuleController.getAllModuleDetailsByFirstMarkerId();
+            for (Map<String, String> list : lists) {
+                if (value.equals(list.get("id"))) {
+                    //Need to set the below fields back to default after update
+                    JField29.setText("Student Name");
+                    JField26.setText(list.get("moduleCode"));
+                    JField32.setText("Report Type");
+                    JField30.setText("Marking Status");
+                    reportResultFieldInModify.setText("Report Result");
+                    lecturerCommentFieldInModify.setText("Lecturer Comment");
                 }
             }
         }
@@ -91,8 +139,8 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             JField25.setText("Module Name");
             JField31.setText("Report Type");
             JField28.setText("Marking Status");
-            reportResultField.setText("Report Result");
-            lecturerCommentField.setText("Lecturer Comment");
+            reportResultFieldInMarkReport1.setText("Report Result");
+            lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
         } 
         else
         {
@@ -105,6 +153,54 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         selectModuleComboBoxInMarkReport1.setSelectedIndex(0);
     }
     
+    private void selectModuleComboBoxInMarkReport2() {
+        selectModuleComboBoxInMarkReport2.removeAllItems();
+        List<Map<String, String>> list1 = ProjectModuleController.getAllModuleDetailsBySecondMarkerId();
+        if (list1.isEmpty()) {
+            selectModuleComboBoxInMarkReport2.addItem(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER);
+            //Need to set the below fields back to default after update
+            JField33.setText("Student Name");
+            JField36.setText("Module Name");
+            JField34.setText("Report Type");
+            JField35.setText("Marking Status");
+            reportResultFieldInMarkReport2.setText("Report Result");
+            lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+        } 
+        else
+        {
+            for (Map<String, String> list : list1)
+            {
+               selectModuleComboBoxInMarkReport2.addItem(list.get("id"));
+               JField36.setText(list.get("moduleCode"));
+            }
+        }
+        selectModuleComboBoxInMarkReport2.setSelectedIndex(0);
+    }
+    
+    private void selectModuleComboBoxInModify() {
+        selectModuleComboBoxInModify.removeAllItems();
+        List<Map<String, String>> list1 = ProjectModuleController.getAllModuleDetailsByFirstMarkerId();
+        if (list1.isEmpty()) {
+            selectModuleComboBoxInModify.addItem(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER);
+            //Need to set the below fields back to default after update
+            JField29.setText("Student Name");
+            JField26.setText("Module Name");
+            JField32.setText("Report Type");
+            JField30.setText("Marking Status");
+            reportResultFieldInModify.setText("Report Result");
+            lecturerCommentFieldInModify.setText("Lecturer Comment");
+        } 
+        else
+        {
+            for (Map<String, String> list : list1)
+            {
+               selectModuleComboBoxInModify.addItem(list.get("id"));
+               JField26.setText(list.get("moduleCode"));
+            }
+        }
+        selectModuleComboBoxInModify.setSelectedIndex(0);
+    }
+    
     private void refreshSubmissionDetailsInMarkReport1(Object value) {
         if (selectSubmissionComboBoxInMarkReport1.getSelectedItem() != null && selectSubmissionComboBoxInMarkReport1.getSelectedItem() != MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES) {
             List<Map<String, String>> lists = SubmissionController.getSubmissionDetailsById(Integer.valueOf((String)value));
@@ -113,22 +209,80 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     JField27.setText(list.get("studentName"));
                     JField31.setText(list.get("reportType"));
                     JField28.setText(list.get("markingStatus"));
-                    reportResultField.setText(list.get("reportMarks"));
-                    lecturerCommentField.setText(list.get("lecturerComment"));
-                    projectFileNameField.setText(list.get("fileName"));
+                    reportResultFieldInMarkReport1.setText(list.get("reportMarks"));
+                    lecturerCommentFieldInMarkReport1.setText(list.get("lecturerComment"));
+                    projectFileNameFieldInMarkReport1.setText(list.get("fileName"));
                     if(pdfSubmissionPreview != null)
                     {
-                        filePanel.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
-                        filePanel.revalidate(); // Recalculate layout
-                        filePanel.repaint(); // Repaint 
+                        filePanelInMarkReport1.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
+                        filePanelInMarkReport1.revalidate(); // Recalculate layout
+                        filePanelInMarkReport1.repaint(); // Repaint 
                     }
                     SwingController ctr1 = new SwingController();
-                    SwingViewBuilder vb = new SwingViewBuilder(ctr1);
-                    pdfSubmissionPreview = vb.buildViewerPanel();
+                    SwingViewBuilder vb1 = new SwingViewBuilder(ctr1);
+                    pdfSubmissionPreview = vb1.buildViewerPanel();
                     ComponentKeyBinding.install(ctr1, pdfSubmissionPreview);
-                    Path destinationPath = Paths.get(list.get("filePath")); 
-                    ctr1.openDocument(String.valueOf(destinationPath));
-                    filePanel.add(pdfSubmissionPreview);   
+                    Path destinationPath1 = Paths.get(list.get("filePath")); 
+                    ctr1.openDocument(String.valueOf(destinationPath1));
+                    filePanelInMarkReport1.add(pdfSubmissionPreview);   
+                }
+            }
+        }
+    }
+    
+    private void refreshSubmissionDetailsInMarkReport2(Object value) {
+        if (selectSubmissionComboBoxInMarkReport2.getSelectedItem() != null && selectSubmissionComboBoxInMarkReport2.getSelectedItem() != MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES) {
+            List<Map<String, String>> lists = SubmissionController.getMarked1SubmissionDetailsById(Integer.valueOf((String)value));
+            for (Map<String, String> list : lists) {
+                if (value.equals(list.get("id"))) {
+                    JField33.setText(list.get("studentName"));
+                    JField34.setText(list.get("reportType"));
+                    JField35.setText(list.get("markingStatus"));
+                    reportResultFieldInMarkReport2.setText(list.get("reportMarks"));
+                    lecturerCommentFieldInMarkReport2.setText(list.get("lecturerComment"));
+                    projectFileNameFieldInMarkReport2.setText(list.get("fileName"));
+                    if(pdfSubmissionPreview != null)
+                    {
+                        filePanelInMarkReport2.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
+                        filePanelInMarkReport2.revalidate(); // Recalculate layout
+                        filePanelInMarkReport2.repaint(); // Repaint 
+                    }
+                    SwingController ctr2 = new SwingController();
+                    SwingViewBuilder vb2 = new SwingViewBuilder(ctr2);
+                    pdfSubmissionPreview = vb2.buildViewerPanel();
+                    ComponentKeyBinding.install(ctr2, pdfSubmissionPreview);
+                    Path destinationPath2 = Paths.get(list.get("filePath")); 
+                    ctr2.openDocument(String.valueOf(destinationPath2));
+                    filePanelInMarkReport2.add(pdfSubmissionPreview);   
+                }
+            }
+        }
+    }
+    
+    private void refreshSubmissionDetailsInModify(Object value) {
+        if (selectSubmissionComboBoxInModify.getSelectedItem() != null && selectSubmissionComboBoxInModify.getSelectedItem() != MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES) {
+            List<Map<String, String>> lists = SubmissionController.getMarked2SubmissionDetailsById(Integer.valueOf((String)value));
+            for (Map<String, String> list : lists) {
+                if (value.equals(list.get("id"))) {
+                    JField29.setText(list.get("studentName"));
+                    JField32.setText(list.get("reportType"));
+                    JField30.setText(list.get("markingStatus"));
+                    reportResultFieldInModify.setText(list.get("reportMarks"));
+                    lecturerCommentFieldInModify.setText(list.get("lecturerComment"));
+                    projectFileNameFieldInModify.setText(list.get("fileName"));
+                    if(pdfSubmissionPreview != null)
+                    {
+                        filePanelInModify.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
+                        filePanelInModify.revalidate(); // Recalculate layout
+                        filePanelInModify.repaint(); // Repaint 
+                    }
+                    SwingController ctr3 = new SwingController();
+                    SwingViewBuilder vb3 = new SwingViewBuilder(ctr3);
+                    pdfSubmissionPreview = vb3.buildViewerPanel();
+                    ComponentKeyBinding.install(ctr3, pdfSubmissionPreview);
+                    Path destinationPath3 = Paths.get(list.get("filePath")); 
+                    ctr3.openDocument(String.valueOf(destinationPath3));
+                    filePanelInModify.add(pdfSubmissionPreview);   
                 }
             }
         }
@@ -136,15 +290,15 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
     
     private void selectSubmissionComboBoxInMarkReport1(Object value) {
         selectSubmissionComboBoxInMarkReport1.removeAllItems();
-        List<Map<String, String>> lists2 = SubmissionController.getAllSubmissionByModuleId(Integer.valueOf((String)value));
+        List<Map<String, String>> lists2 = SubmissionController.getPendingMarkingSubmissionByModuleId(Integer.valueOf((String)value));
         if (lists2.isEmpty()) {
             selectSubmissionComboBoxInMarkReport1.addItem(MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES);
             //Need to set the below fields back to default after update
             JField27.setText("Student Name");
             JField31.setText("Report Type");
             JField28.setText("Marking Status");
-            reportResultField.setText("Report Result");
-            lecturerCommentField.setText("Lecturer Comment");
+            reportResultFieldInMarkReport1.setText("Report Result");
+            lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
         } 
         else
         {
@@ -154,6 +308,50 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             }
         }
         selectSubmissionComboBoxInMarkReport1.setSelectedIndex(0);
+    }
+    
+    private void selectSubmissionComboBoxInMarkReport2(Object value) {
+        selectSubmissionComboBoxInMarkReport2.removeAllItems();
+        List<Map<String, String>> lists2 = SubmissionController.getMarked1SubmissionByModuleId(Integer.valueOf((String)value));
+        if (lists2.isEmpty()) {
+            selectSubmissionComboBoxInMarkReport2.addItem(MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES);
+            //Need to set the below fields back to default after update
+            JField27.setText("Student Name");
+            JField31.setText("Report Type");
+            JField28.setText("Marking Status");
+            reportResultFieldInMarkReport2.setText("Report Result");
+            lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+        } 
+        else
+        {
+            for (Map<String, String> list : lists2)
+            {
+                selectSubmissionComboBoxInMarkReport2.addItem(list.get("id"));
+            }
+        }
+        selectSubmissionComboBoxInMarkReport2.setSelectedIndex(0);
+    }
+    
+    private void selectSubmissionComboBoxInModify(Object value) {
+        selectSubmissionComboBoxInModify.removeAllItems();
+        List<Map<String, String>> lists2 = SubmissionController.getMarked2SubmissionByModuleId(Integer.valueOf((String)value));
+        if (lists2.isEmpty()) {
+            selectSubmissionComboBoxInModify.addItem(MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES);
+            //Need to set the below fields back to default after update
+            JField29.setText("Student Name");
+            JField32.setText("Report Type");
+            JField30.setText("Marking Status");
+            reportResultFieldInModify.setText("Report Result");
+            lecturerCommentFieldInModify.setText("Lecturer Comment");
+        } 
+        else
+        {
+            for (Map<String, String> list : lists2)
+            {
+                selectSubmissionComboBoxInModify.addItem(list.get("id"));
+            }
+        }
+        selectSubmissionComboBoxInModify.setSelectedIndex(0);
     }
 
     private void refreshSubmissionOverviewTable(Integer value) {
@@ -260,9 +458,9 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         menuBtn11 = new javax.swing.JLabel();
         menuBtn15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        createConsultationBtn = new javax.swing.JLabel();
-        editConsultationBtn = new javax.swing.JLabel();
-        deleteConsultationBtn = new javax.swing.JLabel();
+        firstMarkerMarkReportBtn = new javax.swing.JLabel();
+        firstMarkerModifyMarksBtn = new javax.swing.JLabel();
+        secondMarkerMarkReportBtn = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         upcomingSubmissionDueDateTbl = new javax.swing.JTable();
         menuBtn16 = new javax.swing.JLabel();
@@ -271,70 +469,85 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         Panel2 = new javax.swing.JPanel();
         MainTabbedPanel1 = new javax.swing.JTabbedPane();
         Panel10 = new javax.swing.JPanel();
-        projectFileNameField = new javax.swing.JTextField();
+        projectFileNameFieldInMarkReport1 = new javax.swing.JTextField();
         menuBtn44 = new javax.swing.JLabel();
         menuBtn45 = new javax.swing.JLabel();
         selectModuleComboBoxInMarkReport1 = new javax.swing.JComboBox<>();
-        updateReportBtn = new javax.swing.JLabel();
+        updateReportBtnInMarkReport1 = new javax.swing.JLabel();
         JSeparator39 = new javax.swing.JSeparator();
         JField27 = new javax.swing.JTextField();
         menuBtn46 = new javax.swing.JLabel();
         JField31 = new javax.swing.JTextField();
         menuBtn47 = new javax.swing.JLabel();
         menuBtn49 = new javax.swing.JLabel();
-        filePanel = new javax.swing.JPanel();
+        filePanelInMarkReport1 = new javax.swing.JPanel();
         menuBtn51 = new javax.swing.JLabel();
         selectSubmissionComboBoxInMarkReport1 = new javax.swing.JComboBox<>();
-        reportResultField = new javax.swing.JTextField();
+        reportResultFieldInMarkReport1 = new javax.swing.JTextField();
         menuBtn43 = new javax.swing.JLabel();
         JField28 = new javax.swing.JTextField();
         menuBtn52 = new javax.swing.JLabel();
         menuBtn54 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        lecturerCommentField = new javax.swing.JTextArea();
-        fetchSubmissionBtn = new javax.swing.JLabel();
+        lecturerCommentFieldInMarkReport1 = new javax.swing.JTextArea();
+        fetchSubmissionBtnInMarkReport1 = new javax.swing.JLabel();
         JSeparator40 = new javax.swing.JSeparator();
         menuBtn50 = new javax.swing.JLabel();
         JField25 = new javax.swing.JTextField();
-        Panel4 = new javax.swing.JPanel();
-        menuBtn22 = new javax.swing.JLabel();
-        JSeparator33 = new javax.swing.JSeparator();
-        createNewConsutationBtn = new javax.swing.JLabel();
-        menuBtn29 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        createConsultationTbl = new javax.swing.JTable();
-        searchFieldInCreateConsultation = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        consultationDateTimePicker = new com.github.lgooddatepicker.components.DateTimePicker();
-        menuBtn23 = new javax.swing.JLabel();
-        Panel8 = new javax.swing.JPanel();
-        menuBtn33 = new javax.swing.JLabel();
-        menuBtn34 = new javax.swing.JLabel();
-        JField18 = new javax.swing.JTextField();
-        menuBtn30 = new javax.swing.JLabel();
-        menuBtn32 = new javax.swing.JLabel();
-        menuBtn37 = new javax.swing.JLabel();
-        cancelConsultationBtnInEdit = new javax.swing.JLabel();
-        JSeparator37 = new javax.swing.JSeparator();
-        JField19 = new javax.swing.JTextField();
-        menuBtn36 = new javax.swing.JLabel();
-        consultationIDComboBox = new javax.swing.JComboBox<>();
-        JField20 = new javax.swing.JTextField();
-        completedConsultationBtnInEdit = new javax.swing.JLabel();
-        JSeparator38 = new javax.swing.JSeparator();
-        Panel9 = new javax.swing.JPanel();
-        menuBtn35 = new javax.swing.JLabel();
-        menuBtn38 = new javax.swing.JLabel();
-        JField21 = new javax.swing.JTextField();
-        menuBtn31 = new javax.swing.JLabel();
-        menuBtn39 = new javax.swing.JLabel();
-        menuBtn40 = new javax.swing.JLabel();
-        JField22 = new javax.swing.JTextField();
-        menuBtn41 = new javax.swing.JLabel();
-        consultationIDComboBoxInDelete = new javax.swing.JComboBox<>();
-        JField23 = new javax.swing.JTextField();
-        deleteConsultationBtnInDelete = new javax.swing.JLabel();
+        Panel11 = new javax.swing.JPanel();
+        projectFileNameFieldInModify = new javax.swing.JTextField();
+        menuBtn48 = new javax.swing.JLabel();
+        menuBtn53 = new javax.swing.JLabel();
+        selectModuleComboBoxInModify = new javax.swing.JComboBox<>();
+        updateReportBtnInModify = new javax.swing.JLabel();
+        JSeparator41 = new javax.swing.JSeparator();
+        JField29 = new javax.swing.JTextField();
+        menuBtn55 = new javax.swing.JLabel();
+        JField32 = new javax.swing.JTextField();
+        menuBtn56 = new javax.swing.JLabel();
+        menuBtn57 = new javax.swing.JLabel();
+        filePanelInModify = new javax.swing.JPanel();
+        menuBtn58 = new javax.swing.JLabel();
+        selectSubmissionComboBoxInModify = new javax.swing.JComboBox<>();
+        reportResultFieldInModify = new javax.swing.JTextField();
+        menuBtn59 = new javax.swing.JLabel();
+        JField30 = new javax.swing.JTextField();
+        menuBtn60 = new javax.swing.JLabel();
+        menuBtn61 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        lecturerCommentFieldInModify = new javax.swing.JTextArea();
+        fetchSubmissionBtnInModify = new javax.swing.JLabel();
+        JSeparator43 = new javax.swing.JSeparator();
+        menuBtn62 = new javax.swing.JLabel();
+        JField26 = new javax.swing.JTextField();
+        Panel3 = new javax.swing.JPanel();
+        MainTabbedPanel2 = new javax.swing.JTabbedPane();
+        Panel12 = new javax.swing.JPanel();
+        projectFileNameFieldInMarkReport2 = new javax.swing.JTextField();
+        menuBtn63 = new javax.swing.JLabel();
+        menuBtn64 = new javax.swing.JLabel();
+        selectModuleComboBoxInMarkReport2 = new javax.swing.JComboBox<>();
+        updateReportBtnInMarkReport2 = new javax.swing.JLabel();
         JSeparator42 = new javax.swing.JSeparator();
+        JField33 = new javax.swing.JTextField();
+        menuBtn65 = new javax.swing.JLabel();
+        JField34 = new javax.swing.JTextField();
+        menuBtn66 = new javax.swing.JLabel();
+        menuBtn67 = new javax.swing.JLabel();
+        filePanelInMarkReport2 = new javax.swing.JPanel();
+        menuBtn68 = new javax.swing.JLabel();
+        selectSubmissionComboBoxInMarkReport2 = new javax.swing.JComboBox<>();
+        reportResultFieldInMarkReport2 = new javax.swing.JTextField();
+        menuBtn69 = new javax.swing.JLabel();
+        JField35 = new javax.swing.JTextField();
+        menuBtn70 = new javax.swing.JLabel();
+        menuBtn71 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        lecturerCommentFieldInMarkReport2 = new javax.swing.JTextArea();
+        fetchSubmissionBtnInMarkReport2 = new javax.swing.JLabel();
+        JSeparator44 = new javax.swing.JSeparator();
+        menuBtn72 = new javax.swing.JLabel();
+        JField36 = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -486,39 +699,39 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
 
         jPanel7.setBackground(new java.awt.Color(254, 254, 254));
 
-        createConsultationBtn.setBackground(new java.awt.Color(105, 105, 105));
-        createConsultationBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        createConsultationBtn.setForeground(new java.awt.Color(1, 1, 1));
-        createConsultationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
-        createConsultationBtn.setText("MARK REPORT (FIRST MARKER)");
-        createConsultationBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        createConsultationBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        firstMarkerMarkReportBtn.setBackground(new java.awt.Color(105, 105, 105));
+        firstMarkerMarkReportBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        firstMarkerMarkReportBtn.setForeground(new java.awt.Color(1, 1, 1));
+        firstMarkerMarkReportBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
+        firstMarkerMarkReportBtn.setText("MARK REPORT (FIRST MARKER)");
+        firstMarkerMarkReportBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        firstMarkerMarkReportBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createConsultationBtnMouseClicked(evt);
+                firstMarkerMarkReportBtnMouseClicked(evt);
             }
         });
 
-        editConsultationBtn.setBackground(new java.awt.Color(105, 105, 105));
-        editConsultationBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        editConsultationBtn.setForeground(new java.awt.Color(1, 1, 1));
-        editConsultationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        editConsultationBtn.setText("MODIFY MARKS");
-        editConsultationBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        editConsultationBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        firstMarkerModifyMarksBtn.setBackground(new java.awt.Color(105, 105, 105));
+        firstMarkerModifyMarksBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        firstMarkerModifyMarksBtn.setForeground(new java.awt.Color(1, 1, 1));
+        firstMarkerModifyMarksBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        firstMarkerModifyMarksBtn.setText("MODIFY MARKS");
+        firstMarkerModifyMarksBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        firstMarkerModifyMarksBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editConsultationBtnMouseClicked(evt);
+                firstMarkerModifyMarksBtnMouseClicked(evt);
             }
         });
 
-        deleteConsultationBtn.setBackground(new java.awt.Color(105, 105, 105));
-        deleteConsultationBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        deleteConsultationBtn.setForeground(new java.awt.Color(1, 1, 1));
-        deleteConsultationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
-        deleteConsultationBtn.setText("MARK REPORT (SECOND MARKER)");
-        deleteConsultationBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deleteConsultationBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        secondMarkerMarkReportBtn.setBackground(new java.awt.Color(105, 105, 105));
+        secondMarkerMarkReportBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        secondMarkerMarkReportBtn.setForeground(new java.awt.Color(1, 1, 1));
+        secondMarkerMarkReportBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
+        secondMarkerMarkReportBtn.setText("MARK REPORT (SECOND MARKER)");
+        secondMarkerMarkReportBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        secondMarkerMarkReportBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteConsultationBtnMouseClicked(evt);
+                secondMarkerMarkReportBtnMouseClicked(evt);
             }
         });
 
@@ -529,11 +742,11 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGap(0, 19, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteConsultationBtn)
+                    .addComponent(secondMarkerMarkReportBtn)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(createConsultationBtn)
+                        .addComponent(firstMarkerMarkReportBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(editConsultationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(firstMarkerModifyMarksBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -541,10 +754,10 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editConsultationBtn)
-                    .addComponent(createConsultationBtn))
+                    .addComponent(firstMarkerModifyMarksBtn)
+                    .addComponent(firstMarkerMarkReportBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deleteConsultationBtn)
+                .addComponent(secondMarkerMarkReportBtn)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -633,13 +846,13 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         Panel10.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        projectFileNameField.setEditable(false);
-        projectFileNameField.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        projectFileNameField.setForeground(new java.awt.Color(1, 1, 1));
-        projectFileNameField.setText("Project File Name");
-        projectFileNameField.setBorder(null);
-        projectFileNameField.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        Panel10.add(projectFileNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 300, 40));
+        projectFileNameFieldInMarkReport1.setEditable(false);
+        projectFileNameFieldInMarkReport1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        projectFileNameFieldInMarkReport1.setText("Project File Name");
+        projectFileNameFieldInMarkReport1.setBorder(null);
+        projectFileNameFieldInMarkReport1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        projectFileNameFieldInMarkReport1.setForeground(new java.awt.Color(1, 1, 1));
+        Panel10.add(projectFileNameFieldInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 300, 40));
 
         menuBtn44.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -669,21 +882,21 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         });
         Panel10.add(selectModuleComboBoxInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 35));
 
-        updateReportBtn.setBackground(new java.awt.Color(254, 254, 254));
-        updateReportBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        updateReportBtn.setForeground(new java.awt.Color(1, 1, 1));
-        updateReportBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        updateReportBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
-        updateReportBtn.setText("UPDATE");
-        updateReportBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        updateReportBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        updateReportBtn.setOpaque(true);
-        updateReportBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        updateReportBtnInMarkReport1.setBackground(new java.awt.Color(254, 254, 254));
+        updateReportBtnInMarkReport1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        updateReportBtnInMarkReport1.setForeground(new java.awt.Color(1, 1, 1));
+        updateReportBtnInMarkReport1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updateReportBtnInMarkReport1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
+        updateReportBtnInMarkReport1.setText("UPDATE");
+        updateReportBtnInMarkReport1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateReportBtnInMarkReport1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        updateReportBtnInMarkReport1.setOpaque(true);
+        updateReportBtnInMarkReport1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateReportBtnMouseClicked(evt);
+                updateReportBtnInMarkReport1MouseClicked(evt);
             }
         });
-        Panel10.add(updateReportBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 170, 35));
+        Panel10.add(updateReportBtnInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 170, 35));
 
         JSeparator39.setForeground(new java.awt.Color(1, 1, 1));
         Panel10.add(JSeparator39, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 570, 170, 10));
@@ -730,9 +943,9 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         menuBtn49.setOpaque(true);
         Panel10.add(menuBtn49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 300, 40));
 
-        filePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        filePanel.setLayout(new java.awt.BorderLayout());
-        Panel10.add(filePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 700, 360));
+        filePanelInMarkReport1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        filePanelInMarkReport1.setLayout(new java.awt.BorderLayout());
+        Panel10.add(filePanelInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 700, 360));
 
         menuBtn51.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -754,18 +967,18 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         });
         Panel10.add(selectSubmissionComboBoxInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 300, 35));
 
-        reportResultField.setBackground(new java.awt.Color(255, 255, 255));
-        reportResultField.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        reportResultField.setForeground(new java.awt.Color(1, 1, 1));
-        reportResultField.setText("Report Result");
-        reportResultField.setBorder(null);
-        reportResultField.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        reportResultField.addMouseListener(new java.awt.event.MouseAdapter() {
+        reportResultFieldInMarkReport1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        reportResultFieldInMarkReport1.setText("Report Result");
+        reportResultFieldInMarkReport1.setBackground(new java.awt.Color(255, 255, 255));
+        reportResultFieldInMarkReport1.setBorder(null);
+        reportResultFieldInMarkReport1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        reportResultFieldInMarkReport1.setForeground(new java.awt.Color(1, 1, 1));
+        reportResultFieldInMarkReport1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                reportResultFieldMouseClicked(evt);
+                reportResultFieldInMarkReport1MouseClicked(evt);
             }
         });
-        Panel10.add(reportResultField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 300, 35));
+        Panel10.add(reportResultFieldInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 300, 35));
 
         menuBtn43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -800,39 +1013,39 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         menuBtn54.setOpaque(true);
         Panel10.add(menuBtn54, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 300, 40));
 
-        lecturerCommentField.setBackground(new java.awt.Color(255, 255, 255));
-        lecturerCommentField.setColumns(20);
-        lecturerCommentField.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        lecturerCommentField.setForeground(new java.awt.Color(0, 0, 0));
-        lecturerCommentField.setLineWrap(true);
-        lecturerCommentField.setRows(5);
-        lecturerCommentField.setText("Lecturer Comment");
-        lecturerCommentField.setWrapStyleWord(true);
-        lecturerCommentField.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        lecturerCommentField.addMouseListener(new java.awt.event.MouseAdapter() {
+        lecturerCommentFieldInMarkReport1.setColumns(20);
+        lecturerCommentFieldInMarkReport1.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        lecturerCommentFieldInMarkReport1.setLineWrap(true);
+        lecturerCommentFieldInMarkReport1.setRows(5);
+        lecturerCommentFieldInMarkReport1.setText("Lecturer Comment");
+        lecturerCommentFieldInMarkReport1.setWrapStyleWord(true);
+        lecturerCommentFieldInMarkReport1.setBackground(new java.awt.Color(255, 255, 255));
+        lecturerCommentFieldInMarkReport1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        lecturerCommentFieldInMarkReport1.setForeground(new java.awt.Color(0, 0, 0));
+        lecturerCommentFieldInMarkReport1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lecturerCommentFieldMouseClicked(evt);
+                lecturerCommentFieldInMarkReport1MouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(lecturerCommentField);
+        jScrollPane8.setViewportView(lecturerCommentFieldInMarkReport1);
 
         Panel10.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 460, 120));
 
-        fetchSubmissionBtn.setBackground(new java.awt.Color(254, 254, 254));
-        fetchSubmissionBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        fetchSubmissionBtn.setForeground(new java.awt.Color(1, 1, 1));
-        fetchSubmissionBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fetchSubmissionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
-        fetchSubmissionBtn.setText("FETCH SUBMISSION");
-        fetchSubmissionBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fetchSubmissionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        fetchSubmissionBtn.setOpaque(true);
-        fetchSubmissionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        fetchSubmissionBtnInMarkReport1.setBackground(new java.awt.Color(254, 254, 254));
+        fetchSubmissionBtnInMarkReport1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        fetchSubmissionBtnInMarkReport1.setForeground(new java.awt.Color(1, 1, 1));
+        fetchSubmissionBtnInMarkReport1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fetchSubmissionBtnInMarkReport1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
+        fetchSubmissionBtnInMarkReport1.setText("FETCH SUBMISSION");
+        fetchSubmissionBtnInMarkReport1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fetchSubmissionBtnInMarkReport1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        fetchSubmissionBtnInMarkReport1.setOpaque(true);
+        fetchSubmissionBtnInMarkReport1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                fetchSubmissionBtnMouseClicked(evt);
+                fetchSubmissionBtnInMarkReport1MouseClicked(evt);
             }
         });
-        Panel10.add(fetchSubmissionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 30));
+        Panel10.add(fetchSubmissionBtnInMarkReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 30));
 
         JSeparator40.setForeground(new java.awt.Color(1, 1, 1));
         Panel10.add(JSeparator40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 310, 10));
@@ -846,376 +1059,491 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         Panel10.add(menuBtn50, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, 300, 30));
 
         JField25.setEditable(false);
-        JField25.setBackground(new java.awt.Color(255, 255, 255));
         JField25.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField25.setForeground(new java.awt.Color(1, 1, 1));
         JField25.setText("Module Name");
+        JField25.setBackground(new java.awt.Color(255, 255, 255));
         JField25.setBorder(null);
         JField25.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField25.setForeground(new java.awt.Color(1, 1, 1));
         Panel10.add(JField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, 35));
 
         MainTabbedPanel1.addTab("Mark Report", Panel10);
 
-        Panel4.setPreferredSize(new java.awt.Dimension(1050, 570));
-        Panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel11.setPreferredSize(new java.awt.Dimension(1050, 570));
+        Panel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn22.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
-        menuBtn22.setText("SELECT DATE TIME:");
-        menuBtn22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn22.setOpaque(true);
-        Panel4.add(menuBtn22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 170, 40));
+        projectFileNameFieldInModify.setEditable(false);
+        projectFileNameFieldInModify.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        projectFileNameFieldInModify.setForeground(new java.awt.Color(1, 1, 1));
+        projectFileNameFieldInModify.setText("Project File Name");
+        projectFileNameFieldInModify.setBorder(null);
+        projectFileNameFieldInModify.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel11.add(projectFileNameFieldInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 300, 40));
 
-        JSeparator33.setForeground(new java.awt.Color(1, 1, 1));
-        Panel4.add(JSeparator33, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, 170, 10));
+        menuBtn48.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn48.setText("SELECT MODULE");
+        menuBtn48.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn48.setOpaque(true);
+        Panel11.add(menuBtn48, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 300, 30));
 
-        createNewConsutationBtn.setBackground(new java.awt.Color(254, 254, 254));
-        createNewConsutationBtn.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        createNewConsutationBtn.setForeground(new java.awt.Color(1, 1, 1));
-        createNewConsutationBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        createNewConsutationBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
-        createNewConsutationBtn.setText("CREATE");
-        createNewConsutationBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        createNewConsutationBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        createNewConsutationBtn.setOpaque(true);
-        createNewConsutationBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createNewConsutationBtnMouseClicked(evt);
-            }
-        });
-        Panel4.add(createNewConsutationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 510, 170, 35));
+        menuBtn53.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn53.setText("ACTION :");
+        menuBtn53.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn53.setOpaque(true);
+        Panel11.add(menuBtn53, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 530, 90, 40));
 
-        menuBtn29.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        menuBtn29.setText("ACTION :");
-        menuBtn29.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn29.setOpaque(true);
-        Panel4.add(menuBtn29, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 90, 40));
-
-        createConsultationTbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Consultation ID", "Student ID", "Student Name", "Date", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        createConsultationTbl.setFocusable(false);
-        createConsultationTbl.setRequestFocusEnabled(false);
-        createConsultationTbl.getTableHeader().setResizingAllowed(false);
-        createConsultationTbl.getTableHeader().setReorderingAllowed(false);
-        createConsultationTbl.setUpdateSelectionOnSort(false);
-        createConsultationTbl.setVerifyInputWhenFocusTarget(false);
-        jScrollPane4.setViewportView(createConsultationTbl);
-        if (createConsultationTbl.getColumnModel().getColumnCount() > 0) {
-            createConsultationTbl.getColumnModel().getColumn(0).setResizable(false);
-            createConsultationTbl.getColumnModel().getColumn(1).setResizable(false);
-            createConsultationTbl.getColumnModel().getColumn(2).setResizable(false);
-            createConsultationTbl.getColumnModel().getColumn(3).setResizable(false);
-            createConsultationTbl.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        Panel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1020, 390));
-
-        searchFieldInCreateConsultation.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        searchFieldInCreateConsultation.setText("Enter Keywords To Search");
-        searchFieldInCreateConsultation.setBorder(null);
-        searchFieldInCreateConsultation.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        searchFieldInCreateConsultation.setForeground(new java.awt.Color(1, 1, 1));
-        searchFieldInCreateConsultation.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchFieldInCreateConsultationMouseClicked(evt);
-            }
-        });
-        Panel4.add(searchFieldInCreateConsultation, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 370, 35));
-
-        jLabel12.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search-24x24.png"))); // NOI18N
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel12.setOpaque(true);
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-        Panel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 50, 40, 35));
-        Panel4.add(consultationDateTimePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 360, 40));
-
-        menuBtn23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn23.setText("CREATE CONSULTATION");
-        menuBtn23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn23.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn23.setOpaque(true);
-        Panel4.add(menuBtn23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 210, 40));
-
-        MainTabbedPanel1.addTab("Create", Panel4);
-
-        Panel8.setPreferredSize(new java.awt.Dimension(1050, 570));
-        Panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        menuBtn33.setText("STUDENT NAME");
-        menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn33.setOpaque(true);
-        Panel8.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
-
-        menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
-        menuBtn34.setText("DATE");
-        menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn34.setOpaque(true);
-        Panel8.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
-
-        JField18.setEditable(false);
-        JField18.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField18.setText("Consultation Date");
-        JField18.setBackground(new java.awt.Color(255, 255, 255));
-        JField18.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        JField18.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField18.setForeground(new java.awt.Color(1, 1, 1));
-        Panel8.add(JField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
-
-        menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn30.setText("EDIT SCHEDULED CONSULTATION");
-        menuBtn30.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn30.setOpaque(true);
-        Panel8.add(menuBtn30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
-
-        menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn32.setText("CONSULTATION ID");
-        menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn32.setOpaque(true);
-        Panel8.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
-
-        menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        menuBtn37.setText("ACTION :");
-        menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn37.setOpaque(true);
-        Panel8.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 90, 40));
-
-        cancelConsultationBtnInEdit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cancelConsultationBtnInEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel-24x24_1.png"))); // NOI18N
-        cancelConsultationBtnInEdit.setText("CANCEL");
-        cancelConsultationBtnInEdit.setBackground(new java.awt.Color(254, 254, 254));
-        cancelConsultationBtnInEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cancelConsultationBtnInEdit.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        cancelConsultationBtnInEdit.setForeground(new java.awt.Color(1, 1, 1));
-        cancelConsultationBtnInEdit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        cancelConsultationBtnInEdit.setOpaque(true);
-        cancelConsultationBtnInEdit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelConsultationBtnInEditMouseClicked(evt);
-            }
-        });
-        Panel8.add(cancelConsultationBtnInEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 520, 170, 35));
-
-        JSeparator37.setForeground(new java.awt.Color(1, 1, 1));
-        Panel8.add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 560, 200, 10));
-
-        JField19.setEditable(false);
-        JField19.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField19.setText("Consultation Status");
-        JField19.setBackground(new java.awt.Color(255, 255, 255));
-        JField19.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        JField19.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField19.setForeground(new java.awt.Color(1, 1, 1));
-        Panel8.add(JField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 300, 35));
-
-        menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
-        menuBtn36.setText("STATUS");
-        menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn36.setOpaque(true);
-        Panel8.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
-
-        consultationIDComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        consultationIDComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        consultationIDComboBox.setFocusable(false);
-        consultationIDComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        consultationIDComboBox.setToolTipText("d");
-        consultationIDComboBox.addActionListener(new java.awt.event.ActionListener() {
+        selectModuleComboBoxInModify.setBackground(new java.awt.Color(254, 254, 254));
+        selectModuleComboBoxInModify.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        selectModuleComboBoxInModify.setToolTipText("d");
+        selectModuleComboBoxInModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selectModuleComboBoxInModify.setFocusable(false);
+        selectModuleComboBoxInModify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultationIDComboBoxActionPerformed(evt);
+                selectModuleComboBoxInModifyActionPerformed(evt);
             }
         });
-        Panel8.add(consultationIDComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
+        Panel11.add(selectModuleComboBoxInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 35));
 
-        JField20.setEditable(false);
-        JField20.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField20.setText("Student Name");
-        JField20.setBackground(new java.awt.Color(255, 255, 255));
-        JField20.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        JField20.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JField20.setForeground(new java.awt.Color(1, 1, 1));
-        Panel8.add(JField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
-
-        completedConsultationBtnInEdit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        completedConsultationBtnInEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/success-24x24.png"))); // NOI18N
-        completedConsultationBtnInEdit.setText("MARK AS COMPLETED");
-        completedConsultationBtnInEdit.setBackground(new java.awt.Color(254, 254, 254));
-        completedConsultationBtnInEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        completedConsultationBtnInEdit.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        completedConsultationBtnInEdit.setForeground(new java.awt.Color(1, 1, 1));
-        completedConsultationBtnInEdit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        completedConsultationBtnInEdit.setOpaque(true);
-        completedConsultationBtnInEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+        updateReportBtnInModify.setBackground(new java.awt.Color(254, 254, 254));
+        updateReportBtnInModify.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        updateReportBtnInModify.setForeground(new java.awt.Color(1, 1, 1));
+        updateReportBtnInModify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updateReportBtnInModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
+        updateReportBtnInModify.setText("UPDATE");
+        updateReportBtnInModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateReportBtnInModify.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        updateReportBtnInModify.setOpaque(true);
+        updateReportBtnInModify.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                completedConsultationBtnInEditMouseClicked(evt);
+                updateReportBtnInModifyMouseClicked(evt);
             }
         });
-        Panel8.add(completedConsultationBtnInEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 200, 35));
+        Panel11.add(updateReportBtnInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 170, 35));
 
-        JSeparator38.setForeground(new java.awt.Color(1, 1, 1));
-        Panel8.add(JSeparator38, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 560, 170, 10));
+        JSeparator41.setForeground(new java.awt.Color(1, 1, 1));
+        Panel11.add(JSeparator41, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 570, 170, 10));
 
-        MainTabbedPanel1.addTab("Edit", Panel8);
+        JField29.setEditable(false);
+        JField29.setBackground(new java.awt.Color(255, 255, 255));
+        JField29.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField29.setForeground(new java.awt.Color(1, 1, 1));
+        JField29.setText("Student Name");
+        JField29.setBorder(null);
+        JField29.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel11.add(JField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 300, 35));
 
-        Panel9.setPreferredSize(new java.awt.Dimension(1050, 570));
-        Panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuBtn55.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn55.setText("REPORT TYPE");
+        menuBtn55.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn55.setOpaque(true);
+        Panel11.add(menuBtn55, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 300, 40));
 
-        menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        menuBtn35.setText("STUDENT NAME");
-        menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn35.setOpaque(true);
-        Panel9.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
+        JField32.setEditable(false);
+        JField32.setBackground(new java.awt.Color(255, 255, 255));
+        JField32.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField32.setForeground(new java.awt.Color(1, 1, 1));
+        JField32.setText("Report Type");
+        JField32.setBorder(null);
+        JField32.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel11.add(JField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 300, 35));
 
-        menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
-        menuBtn38.setText("DATE");
-        menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn38.setOpaque(true);
-        Panel9.add(menuBtn38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
+        menuBtn56.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn56.setText("SELECT SUBMISSION");
+        menuBtn56.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn56.setOpaque(true);
+        Panel11.add(menuBtn56, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 40));
 
-        JField21.setEditable(false);
-        JField21.setBackground(new java.awt.Color(255, 255, 255));
-        JField21.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField21.setForeground(new java.awt.Color(1, 1, 1));
-        JField21.setText("Consultation Date");
-        JField21.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        JField21.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        Panel9.add(JField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
+        menuBtn57.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        menuBtn57.setText("STUDENT NAME");
+        menuBtn57.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn57.setOpaque(true);
+        Panel11.add(menuBtn57, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 300, 40));
 
-        menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn31.setText("DELETE CONSULTATION");
-        menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn31.setOpaque(true);
-        Panel9.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
+        filePanelInModify.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        filePanelInModify.setLayout(new java.awt.BorderLayout());
+        Panel11.add(filePanelInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 700, 360));
 
-        menuBtn39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
-        menuBtn39.setText("CONSULTATION ID");
-        menuBtn39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn39.setOpaque(true);
-        Panel9.add(menuBtn39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
+        menuBtn58.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn58.setText("PROJECT FILE");
+        menuBtn58.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn58.setOpaque(true);
+        Panel11.add(menuBtn58, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 170, 40));
 
-        menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        menuBtn40.setText("ACTION :");
-        menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn40.setOpaque(true);
-        Panel9.add(menuBtn40, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, 90, 40));
-
-        JField22.setEditable(false);
-        JField22.setBackground(new java.awt.Color(255, 255, 255));
-        JField22.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField22.setForeground(new java.awt.Color(1, 1, 1));
-        JField22.setText("Consultation Status");
-        JField22.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        JField22.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        Panel9.add(JField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 300, 35));
-
-        menuBtn41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
-        menuBtn41.setText("STATUS");
-        menuBtn41.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn41.setOpaque(true);
-        Panel9.add(menuBtn41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
-
-        consultationIDComboBoxInDelete.setBackground(new java.awt.Color(254, 254, 254));
-        consultationIDComboBoxInDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        consultationIDComboBoxInDelete.setFocusable(false);
-        consultationIDComboBoxInDelete.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        consultationIDComboBoxInDelete.setToolTipText("d");
-        consultationIDComboBoxInDelete.addActionListener(new java.awt.event.ActionListener() {
+        selectSubmissionComboBoxInModify.setBackground(new java.awt.Color(254, 254, 254));
+        selectSubmissionComboBoxInModify.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        selectSubmissionComboBoxInModify.setToolTipText("d");
+        selectSubmissionComboBoxInModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selectSubmissionComboBoxInModify.setFocusable(false);
+        selectSubmissionComboBoxInModify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultationIDComboBoxInDeleteActionPerformed(evt);
+                selectSubmissionComboBoxInModifyActionPerformed(evt);
             }
         });
-        Panel9.add(consultationIDComboBoxInDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
+        Panel11.add(selectSubmissionComboBoxInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 300, 35));
 
-        JField23.setEditable(false);
-        JField23.setBackground(new java.awt.Color(255, 255, 255));
-        JField23.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField23.setForeground(new java.awt.Color(1, 1, 1));
-        JField23.setText("Student Name");
-        JField23.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        JField23.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        Panel9.add(JField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
-
-        deleteConsultationBtnInDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        deleteConsultationBtnInDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
-        deleteConsultationBtnInDelete.setText("DELETE");
-        deleteConsultationBtnInDelete.setBackground(new java.awt.Color(254, 254, 254));
-        deleteConsultationBtnInDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deleteConsultationBtnInDelete.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        deleteConsultationBtnInDelete.setForeground(new java.awt.Color(1, 1, 1));
-        deleteConsultationBtnInDelete.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        deleteConsultationBtnInDelete.setOpaque(true);
-        deleteConsultationBtnInDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+        reportResultFieldInModify.setBackground(new java.awt.Color(255, 255, 255));
+        reportResultFieldInModify.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        reportResultFieldInModify.setForeground(new java.awt.Color(1, 1, 1));
+        reportResultFieldInModify.setText("Report Result");
+        reportResultFieldInModify.setBorder(null);
+        reportResultFieldInModify.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        reportResultFieldInModify.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteConsultationBtnInDeleteMouseClicked(evt);
+                reportResultFieldInModifyMouseClicked(evt);
             }
         });
-        Panel9.add(deleteConsultationBtnInDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 520, 170, 35));
+        Panel11.add(reportResultFieldInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 300, 35));
 
-        JSeparator42.setForeground(new java.awt.Color(1, 1, 1));
-        Panel9.add(JSeparator42, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 560, 170, 10));
+        menuBtn59.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn59.setText("REPORT RESULT");
+        menuBtn59.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn59.setOpaque(true);
+        Panel11.add(menuBtn59, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 300, 40));
 
-        MainTabbedPanel1.addTab("Delete", Panel9);
+        JField30.setEditable(false);
+        JField30.setBackground(new java.awt.Color(255, 255, 255));
+        JField30.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField30.setForeground(new java.awt.Color(1, 1, 1));
+        JField30.setText("Marking Status");
+        JField30.setBorder(null);
+        JField30.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel11.add(JField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 300, 35));
+
+        menuBtn60.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn60.setText("MARKING STATUS");
+        menuBtn60.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn60.setOpaque(true);
+        Panel11.add(menuBtn60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 40));
+
+        menuBtn61.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        menuBtn61.setText("LECTURER COMMENT");
+        menuBtn61.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn61.setOpaque(true);
+        Panel11.add(menuBtn61, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 300, 40));
+
+        lecturerCommentFieldInModify.setBackground(new java.awt.Color(255, 255, 255));
+        lecturerCommentFieldInModify.setColumns(20);
+        lecturerCommentFieldInModify.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        lecturerCommentFieldInModify.setForeground(new java.awt.Color(0, 0, 0));
+        lecturerCommentFieldInModify.setLineWrap(true);
+        lecturerCommentFieldInModify.setRows(5);
+        lecturerCommentFieldInModify.setText("Lecturer Comment");
+        lecturerCommentFieldInModify.setWrapStyleWord(true);
+        lecturerCommentFieldInModify.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        lecturerCommentFieldInModify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecturerCommentFieldInModifyMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(lecturerCommentFieldInModify);
+
+        Panel11.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 460, 120));
+
+        fetchSubmissionBtnInModify.setBackground(new java.awt.Color(254, 254, 254));
+        fetchSubmissionBtnInModify.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        fetchSubmissionBtnInModify.setForeground(new java.awt.Color(1, 1, 1));
+        fetchSubmissionBtnInModify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fetchSubmissionBtnInModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
+        fetchSubmissionBtnInModify.setText("FETCH SUBMISSION");
+        fetchSubmissionBtnInModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fetchSubmissionBtnInModify.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        fetchSubmissionBtnInModify.setOpaque(true);
+        fetchSubmissionBtnInModify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fetchSubmissionBtnInModifyMouseClicked(evt);
+            }
+        });
+        Panel11.add(fetchSubmissionBtnInModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 30));
+
+        JSeparator43.setForeground(new java.awt.Color(1, 1, 1));
+        Panel11.add(JSeparator43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 310, 10));
+
+        menuBtn62.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn62.setText("MODULE NAME");
+        menuBtn62.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn62.setOpaque(true);
+        Panel11.add(menuBtn62, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, 300, 30));
+
+        JField26.setEditable(false);
+        JField26.setBackground(new java.awt.Color(255, 255, 255));
+        JField26.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField26.setForeground(new java.awt.Color(1, 1, 1));
+        JField26.setText("Module Name");
+        JField26.setBorder(null);
+        JField26.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel11.add(JField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, 35));
+
+        MainTabbedPanel1.addTab("Modify Report Marks", Panel11);
 
         Panel2.add(MainTabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 630));
 
         MainTabbedPanel.addTab("Manage Submission (First Marker)", Panel2);
+
+        Panel3.setPreferredSize(new java.awt.Dimension(1050, 570));
+        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        MainTabbedPanel2.setBackground(new java.awt.Color(230, 230, 230));
+        MainTabbedPanel2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+
+        Panel12.setPreferredSize(new java.awt.Dimension(1050, 570));
+        Panel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        projectFileNameFieldInMarkReport2.setEditable(false);
+        projectFileNameFieldInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        projectFileNameFieldInMarkReport2.setForeground(new java.awt.Color(1, 1, 1));
+        projectFileNameFieldInMarkReport2.setText("Project File Name");
+        projectFileNameFieldInMarkReport2.setBorder(null);
+        projectFileNameFieldInMarkReport2.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel12.add(projectFileNameFieldInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 300, 40));
+
+        menuBtn63.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn63.setText("SELECT MODULE");
+        menuBtn63.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn63.setOpaque(true);
+        Panel12.add(menuBtn63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 300, 30));
+
+        menuBtn64.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn64.setText("ACTION :");
+        menuBtn64.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn64.setOpaque(true);
+        Panel12.add(menuBtn64, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 530, 90, 40));
+
+        selectModuleComboBoxInMarkReport2.setBackground(new java.awt.Color(254, 254, 254));
+        selectModuleComboBoxInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        selectModuleComboBoxInMarkReport2.setToolTipText("d");
+        selectModuleComboBoxInMarkReport2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selectModuleComboBoxInMarkReport2.setFocusable(false);
+        selectModuleComboBoxInMarkReport2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectModuleComboBoxInMarkReport2ActionPerformed(evt);
+            }
+        });
+        Panel12.add(selectModuleComboBoxInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 300, 35));
+
+        updateReportBtnInMarkReport2.setBackground(new java.awt.Color(254, 254, 254));
+        updateReportBtnInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        updateReportBtnInMarkReport2.setForeground(new java.awt.Color(1, 1, 1));
+        updateReportBtnInMarkReport2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updateReportBtnInMarkReport2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-orange-24x24.png"))); // NOI18N
+        updateReportBtnInMarkReport2.setText("UPDATE");
+        updateReportBtnInMarkReport2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateReportBtnInMarkReport2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        updateReportBtnInMarkReport2.setOpaque(true);
+        updateReportBtnInMarkReport2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateReportBtnInMarkReport2MouseClicked(evt);
+            }
+        });
+        Panel12.add(updateReportBtnInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 170, 35));
+
+        JSeparator42.setForeground(new java.awt.Color(1, 1, 1));
+        Panel12.add(JSeparator42, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 570, 170, 10));
+
+        JField33.setEditable(false);
+        JField33.setBackground(new java.awt.Color(255, 255, 255));
+        JField33.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField33.setForeground(new java.awt.Color(1, 1, 1));
+        JField33.setText("Student Name");
+        JField33.setBorder(null);
+        JField33.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel12.add(JField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 300, 35));
+
+        menuBtn65.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn65.setText("REPORT TYPE");
+        menuBtn65.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn65.setOpaque(true);
+        Panel12.add(menuBtn65, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 300, 40));
+
+        JField34.setEditable(false);
+        JField34.setBackground(new java.awt.Color(255, 255, 255));
+        JField34.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField34.setForeground(new java.awt.Color(1, 1, 1));
+        JField34.setText("Report Type");
+        JField34.setBorder(null);
+        JField34.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel12.add(JField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 300, 35));
+
+        menuBtn66.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn66.setText("SELECT SUBMISSION");
+        menuBtn66.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn66.setOpaque(true);
+        Panel12.add(menuBtn66, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 40));
+
+        menuBtn67.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        menuBtn67.setText("STUDENT NAME");
+        menuBtn67.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn67.setOpaque(true);
+        Panel12.add(menuBtn67, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 300, 40));
+
+        filePanelInMarkReport2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        filePanelInMarkReport2.setLayout(new java.awt.BorderLayout());
+        Panel12.add(filePanelInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 700, 360));
+
+        menuBtn68.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn68.setText("PROJECT FILE");
+        menuBtn68.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn68.setOpaque(true);
+        Panel12.add(menuBtn68, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 170, 40));
+
+        selectSubmissionComboBoxInMarkReport2.setBackground(new java.awt.Color(254, 254, 254));
+        selectSubmissionComboBoxInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        selectSubmissionComboBoxInMarkReport2.setToolTipText("d");
+        selectSubmissionComboBoxInMarkReport2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selectSubmissionComboBoxInMarkReport2.setFocusable(false);
+        selectSubmissionComboBoxInMarkReport2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSubmissionComboBoxInMarkReport2ActionPerformed(evt);
+            }
+        });
+        Panel12.add(selectSubmissionComboBoxInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 300, 35));
+
+        reportResultFieldInMarkReport2.setBackground(new java.awt.Color(255, 255, 255));
+        reportResultFieldInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        reportResultFieldInMarkReport2.setForeground(new java.awt.Color(1, 1, 1));
+        reportResultFieldInMarkReport2.setText("Report Result");
+        reportResultFieldInMarkReport2.setBorder(null);
+        reportResultFieldInMarkReport2.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        reportResultFieldInMarkReport2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportResultFieldInMarkReport2MouseClicked(evt);
+            }
+        });
+        Panel12.add(reportResultFieldInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 300, 35));
+
+        menuBtn69.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn69.setText("REPORT RESULT");
+        menuBtn69.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn69.setOpaque(true);
+        Panel12.add(menuBtn69, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 300, 40));
+
+        JField35.setEditable(false);
+        JField35.setBackground(new java.awt.Color(255, 255, 255));
+        JField35.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField35.setForeground(new java.awt.Color(1, 1, 1));
+        JField35.setText("Marking Status");
+        JField35.setBorder(null);
+        JField35.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel12.add(JField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 300, 35));
+
+        menuBtn70.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn70.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn70.setText("MARKING STATUS");
+        menuBtn70.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn70.setOpaque(true);
+        Panel12.add(menuBtn70, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 40));
+
+        menuBtn71.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        menuBtn71.setText("LECTURER COMMENT");
+        menuBtn71.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn71.setOpaque(true);
+        Panel12.add(menuBtn71, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 300, 40));
+
+        lecturerCommentFieldInMarkReport2.setBackground(new java.awt.Color(255, 255, 255));
+        lecturerCommentFieldInMarkReport2.setColumns(20);
+        lecturerCommentFieldInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        lecturerCommentFieldInMarkReport2.setForeground(new java.awt.Color(0, 0, 0));
+        lecturerCommentFieldInMarkReport2.setLineWrap(true);
+        lecturerCommentFieldInMarkReport2.setRows(5);
+        lecturerCommentFieldInMarkReport2.setText("Lecturer Comment");
+        lecturerCommentFieldInMarkReport2.setWrapStyleWord(true);
+        lecturerCommentFieldInMarkReport2.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        lecturerCommentFieldInMarkReport2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecturerCommentFieldInMarkReport2MouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(lecturerCommentFieldInMarkReport2);
+
+        Panel12.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 460, 120));
+
+        fetchSubmissionBtnInMarkReport2.setBackground(new java.awt.Color(254, 254, 254));
+        fetchSubmissionBtnInMarkReport2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        fetchSubmissionBtnInMarkReport2.setForeground(new java.awt.Color(1, 1, 1));
+        fetchSubmissionBtnInMarkReport2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fetchSubmissionBtnInMarkReport2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
+        fetchSubmissionBtnInMarkReport2.setText("FETCH SUBMISSION");
+        fetchSubmissionBtnInMarkReport2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fetchSubmissionBtnInMarkReport2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        fetchSubmissionBtnInMarkReport2.setOpaque(true);
+        fetchSubmissionBtnInMarkReport2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fetchSubmissionBtnInMarkReport2MouseClicked(evt);
+            }
+        });
+        Panel12.add(fetchSubmissionBtnInMarkReport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 30));
+
+        JSeparator44.setForeground(new java.awt.Color(1, 1, 1));
+        Panel12.add(JSeparator44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 310, 10));
+
+        menuBtn72.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn72.setText("MODULE NAME");
+        menuBtn72.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn72.setOpaque(true);
+        Panel12.add(menuBtn72, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, 300, 30));
+
+        JField36.setEditable(false);
+        JField36.setBackground(new java.awt.Color(255, 255, 255));
+        JField36.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        JField36.setForeground(new java.awt.Color(1, 1, 1));
+        JField36.setText("Module Name");
+        JField36.setBorder(null);
+        JField36.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        Panel12.add(JField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, 35));
+
+        MainTabbedPanel2.addTab("Mark Report", Panel12);
+
+        Panel3.add(MainTabbedPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 630));
+
+        MainTabbedPanel.addTab("Manage Submission (Second Marker)", Panel3);
 
         getContentPane().add(MainTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createConsultationBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createConsultationBtnMouseClicked
+    private void firstMarkerMarkReportBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMarkerMarkReportBtnMouseClicked
         MainTabbedPanel.setSelectedIndex(1);
         MainTabbedPanel1.setSelectedIndex(0);
-    }//GEN-LAST:event_createConsultationBtnMouseClicked
+    }//GEN-LAST:event_firstMarkerMarkReportBtnMouseClicked
 
     private void submissionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submissionComboBoxActionPerformed
         refreshSubmissionOverviewTable(submissionComboBox.getSelectedIndex());
@@ -1234,10 +1562,10 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         tr.setRowFilter(RowFilter.regexFilter(searchFieldInOverview.getText().trim()));
     }//GEN-LAST:event_searchBtnMouseClicked
 
-    private void editConsultationBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editConsultationBtnMouseClicked
+    private void firstMarkerModifyMarksBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMarkerModifyMarksBtnMouseClicked
         MainTabbedPanel.setSelectedIndex(1);
         MainTabbedPanel1.setSelectedIndex(1);
-    }//GEN-LAST:event_editConsultationBtnMouseClicked
+    }//GEN-LAST:event_firstMarkerModifyMarksBtnMouseClicked
 
     private void firstMarkerPendingMarkingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMarkerPendingMarkingMouseClicked
         submissionComboBox.setSelectedIndex(1);
@@ -1247,203 +1575,363 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         submissionComboBox.setSelectedIndex(2);
     }//GEN-LAST:event_secondMarkerPendingMarkingMouseClicked
 
-    private void deleteConsultationBtnInDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteConsultationBtnInDeleteMouseClicked
-        if (consultationIDComboBoxInDelete.getSelectedItem().equals("There is no consultation created.")) {
-            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
+    private void secondMarkerMarkReportBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_secondMarkerMarkReportBtnMouseClicked
+        MainTabbedPanel.setSelectedIndex(2);
+        MainTabbedPanel1.setSelectedIndex(0);
+    }//GEN-LAST:event_secondMarkerMarkReportBtnMouseClicked
+
+    private void fetchSubmissionBtnInMarkReport1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnInMarkReport1MouseClicked
+        selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem());
+        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());
+    }//GEN-LAST:event_fetchSubmissionBtnInMarkReport1MouseClicked
+
+    private void lecturerCommentFieldInMarkReport1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerCommentFieldInMarkReport1MouseClicked
+        if (lecturerCommentFieldInMarkReport1.getText().equals("Lecturer Comment")) {
+            lecturerCommentFieldInMarkReport1.setText("");
+        }
+    }//GEN-LAST:event_lecturerCommentFieldInMarkReport1MouseClicked
+
+    private void reportResultFieldInMarkReport1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportResultFieldInMarkReport1MouseClicked
+        if (reportResultFieldInMarkReport1.getText().equals("Report Result") || reportResultFieldInMarkReport1.getText().equals("0.0")) {
+            reportResultFieldInMarkReport1.setText("");
+        }
+    }//GEN-LAST:event_reportResultFieldInMarkReport1MouseClicked
+
+    private void selectSubmissionComboBoxInMarkReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSubmissionComboBoxInMarkReport1ActionPerformed
+        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());
+    }//GEN-LAST:event_selectSubmissionComboBoxInMarkReport1ActionPerformed
+
+    private void updateReportBtnInMarkReport1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateReportBtnInMarkReport1MouseClicked
+        if (selectModuleComboBoxInMarkReport1.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER))
+        {
+            //When there is no modules assigned to the lecturer
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
             return;
         }
-        
-        if (ConsultationController.deleteConsultationById(Integer.parseInt((String)consultationIDComboBoxInDelete.getSelectedItem()))) {
-            refresh();
+        if(!reportResultFieldInMarkReport1.getText().equals("Report Result") && (!lecturerCommentFieldInMarkReport1.getText().equals("") && !lecturerCommentFieldInMarkReport1.getText().equals("Lecturer Comment")))
+        {
+            //If the lecturer has entered report marks and comment
+            String reportMarksInput=reportResultFieldInMarkReport1.getText();
+            boolean flag=checkIsDouble(reportMarksInput);
+            if(flag == true)
+            {
+                Double reportMarks=Double.valueOf(reportResultFieldInMarkReport1.getText());
+                if(reportMarks >= 0 && reportMarks <= 100)
+                {
+                    if(Dialog.ConfirmationDialog(MessageConstant.WARNING_MARK_REPORT))
+                    {
+                        SubmissionController.updateSubmissionMarksByIdForFirstMarker(Integer.valueOf((String)selectSubmissionComboBoxInMarkReport1.getSelectedItem()),Double.valueOf(reportResultFieldInMarkReport1.getText()),lecturerCommentFieldInMarkReport1.getText());
+                        Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATED_SUBMISSION_MARKS);
+                        filePanelInMarkReport1.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
+                        filePanelInMarkReport1.revalidate(); // Recalculate layout
+                        filePanelInMarkReport1.repaint(); // Repaint
+                        selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem());
+                        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    Dialog.ErrorDialog(MessageConstant.ERROR_MARKS_EXCEED_RANGE);
+                }
+
+            }
+            else
+            {
+                Dialog.ErrorDialog(MessageConstant.ERROR_MARKS_FORMAT_INCORRECT);
+            }
         }
-    }//GEN-LAST:event_deleteConsultationBtnInDeleteMouseClicked
 
-    private void consultationIDComboBoxInDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationIDComboBoxInDeleteActionPerformed
-//        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());
-    }//GEN-LAST:event_consultationIDComboBoxInDeleteActionPerformed
-
-    private void completedConsultationBtnInEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedConsultationBtnInEditMouseClicked
-        if (consultationIDComboBox.getSelectedItem().equals("There is no scheduled consultation.")) {
-            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
-            return;
+        else if(selectSubmissionComboBoxInMarkReport1.getSelectedItem() != null)
+        {
+            //When lecturer has fetched modules, but there is no submission
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_SUBMISSION_SELECTED);
         }
 
-        if (ConsultationController.completeBookedConsultationById(Integer.valueOf((String)consultationIDComboBox.getSelectedItem()))) {
-            refresh();
+        else
+        {
+            //When the lecturer first time going in the page or switching modules, and havent fetch submission, and clicked the update button
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
         }
-    }//GEN-LAST:event_completedConsultationBtnInEditMouseClicked
-
-    private void consultationIDComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationIDComboBoxActionPerformed
-        refreshSelectModuleInMarkReport1(consultationIDComboBox.getSelectedItem());
-    }//GEN-LAST:event_consultationIDComboBoxActionPerformed
-
-    private void cancelConsultationBtnInEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelConsultationBtnInEditMouseClicked
-        if (consultationIDComboBox.getSelectedItem().equals("There is no scheduled consultation.")) {
-            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
-            return;
-        }
-
-        if (ConsultationController.cancelBookedConsultationById(Integer.valueOf((String)consultationIDComboBox.getSelectedItem()))) {
-            refresh();
-        }
-    }//GEN-LAST:event_cancelConsultationBtnInEditMouseClicked
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        DefaultTableModel dtm = (DefaultTableModel)createConsultationTbl.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
-        createConsultationTbl.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(searchFieldInCreateConsultation.getText().trim()));
-    }//GEN-LAST:event_jLabel12MouseClicked
-
-    private void searchFieldInCreateConsultationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldInCreateConsultationMouseClicked
-        if (searchFieldInCreateConsultation.getText().equals("Enter Keywords To Search")) {
-            searchFieldInCreateConsultation.setText("");
-        }
-    }//GEN-LAST:event_searchFieldInCreateConsultationMouseClicked
-
-    private void createNewConsutationBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createNewConsutationBtnMouseClicked
-        LocalDateTime selectedDateTime=consultationDateTimePicker.getDateTimePermissive();
-        ConsultationController.createConsultationSlotForLecturer(selectedDateTime);
-        refresh();
-    }//GEN-LAST:event_createNewConsutationBtnMouseClicked
-
-    private void deleteConsultationBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteConsultationBtnMouseClicked
-        MainTabbedPanel.setSelectedIndex(1);
-        MainTabbedPanel1.setSelectedIndex(2);
-    }//GEN-LAST:event_deleteConsultationBtnMouseClicked
+    }//GEN-LAST:event_updateReportBtnInMarkReport1MouseClicked
 
     private void selectModuleComboBoxInMarkReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectModuleComboBoxInMarkReport1ActionPerformed
         refreshSelectModuleInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem());
     }//GEN-LAST:event_selectModuleComboBoxInMarkReport1ActionPerformed
 
-    private void updateReportBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateReportBtnMouseClicked
-        if (selectModuleComboBoxInMarkReport1.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER) || selectSubmissionComboBoxInMarkReport1.getSelectedItem().equals(MessageConstant.CONDITION_NO_SUBMISSIONS_UNDER_MODULES)) {
-            Dialog.ErrorDialog(MessageConstant.CONDITION_EDIT_PROJECT_COMBOBOX);
+    private void selectModuleComboBoxInModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectModuleComboBoxInModifyActionPerformed
+        refreshSelectModuleInModify(selectModuleComboBoxInModify.getSelectedItem());
+    }//GEN-LAST:event_selectModuleComboBoxInModifyActionPerformed
+
+    private void updateReportBtnInModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateReportBtnInModifyMouseClicked
+        if (selectModuleComboBoxInModify.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER))
+        {
+            //When there is no modules assigned to the lecturer
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
             return;
         }
+        if(!reportResultFieldInModify.getText().equals("Report Result") && (!lecturerCommentFieldInModify.getText().equals("") && !lecturerCommentFieldInModify.getText().equals("Lecturer Comment")))
+        {
+            //If the lecturer has entered report marks and comment
+            String reportMarksInput=reportResultFieldInModify.getText();
+            boolean flag=checkIsDouble(reportMarksInput);
+            if(flag == true)
+            {
+                Double reportMarks=Double.valueOf(reportResultFieldInModify.getText());
+                if(reportMarks >= 0 && reportMarks <= 100)
+                {
+                    if(Dialog.ConfirmationDialog(MessageConstant.WARNING_MARK_REPORT))
+                    {
+                        SubmissionController.updateSubmissionMarksByIdForFirstMarker(Integer.valueOf((String)selectSubmissionComboBoxInModify.getSelectedItem()),Double.valueOf(reportResultFieldInModify.getText()),lecturerCommentFieldInModify.getText());
+                        Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATED_SUBMISSION_MARKS);
+                        filePanelInModify.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
+                        filePanelInModify.revalidate(); // Recalculate layout
+                        filePanelInModify.repaint(); // Repaint
+                        selectSubmissionComboBoxInModify(selectModuleComboBoxInModify.getSelectedItem());
+                        refreshSubmissionDetailsInModify(selectSubmissionComboBoxInModify.getSelectedItem());
+                    }
+                    else
+                    {
 
-//        filePanel.remove(pdfSubmissionPreview2); // Remove the panel 's' from jPanel2
-//        filePanel.revalidate(); // Recalculate layout
-//        filePanel.repaint(); // Repaint
+                    }
+                }
+                else
+                {
+                    Dialog.ErrorDialog(MessageConstant.ERROR_MARKS_EXCEED_RANGE);
+                }
 
-        if (SubmissionController.removeSubmissionById(Integer.parseInt(JField22.getText()))) {
-            refresh();
+            }
+            else
+            {
+                Dialog.ErrorDialog(MessageConstant.ERROR_MARKS_FORMAT_INCORRECT);
+            }
         }
-    }//GEN-LAST:event_updateReportBtnMouseClicked
 
-    private void selectSubmissionComboBoxInMarkReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSubmissionComboBoxInMarkReport1ActionPerformed
-        
-        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());     
-    }//GEN-LAST:event_selectSubmissionComboBoxInMarkReport1ActionPerformed
+        else if(selectSubmissionComboBoxInModify.getSelectedItem() != null)
+        {
+            //When lecturer has fetched modules, but there is no submission
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_SUBMISSION_SELECTED);
+        }
 
-    private void reportResultFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportResultFieldMouseClicked
-        if (lecturerCommentField.getText().equals("Lecturer Comment")) {
-            lecturerCommentField.setText("");
-        }     
-    }//GEN-LAST:event_reportResultFieldMouseClicked
+        else
+        {
+            //When the lecturer first time going in the page or switching modules, and havent fetch submission, and clicked the update button
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
+        }
+    }//GEN-LAST:event_updateReportBtnInModifyMouseClicked
 
-    private void lecturerCommentFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerCommentFieldMouseClicked
-        if (reportResultField.getText().equals("Report Result") || reportResultField.getText().equals("0.0")) {
-            reportResultField.setText("");
-        } 
-    }//GEN-LAST:event_lecturerCommentFieldMouseClicked
+    private void selectSubmissionComboBoxInModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSubmissionComboBoxInModifyActionPerformed
+        refreshSubmissionDetailsInModify(selectSubmissionComboBoxInModify.getSelectedItem());
+    }//GEN-LAST:event_selectSubmissionComboBoxInModifyActionPerformed
 
-    private void fetchSubmissionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnMouseClicked
-        selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem()); 
-        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());
-    }//GEN-LAST:event_fetchSubmissionBtnMouseClicked
+    private void reportResultFieldInModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportResultFieldInModifyMouseClicked
+        if (reportResultFieldInModify.getText().equals("Report Result") || reportResultFieldInModify.getText().equals("0.0")) {
+            reportResultFieldInModify.setText("");
+        }
+    }//GEN-LAST:event_reportResultFieldInModifyMouseClicked
+
+    private void lecturerCommentFieldInModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerCommentFieldInModifyMouseClicked
+        if (lecturerCommentFieldInModify.getText().equals("Lecturer Comment")) {
+            lecturerCommentFieldInModify.setText("");
+        }
+    }//GEN-LAST:event_lecturerCommentFieldInModifyMouseClicked
+
+    private void fetchSubmissionBtnInModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnInModifyMouseClicked
+        selectSubmissionComboBoxInModify(selectModuleComboBoxInModify.getSelectedItem());
+        refreshSubmissionDetailsInModify(selectSubmissionComboBoxInModify.getSelectedItem());
+    }//GEN-LAST:event_fetchSubmissionBtnInModifyMouseClicked
+
+    private void fetchSubmissionBtnInMarkReport2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnInMarkReport2MouseClicked
+        selectSubmissionComboBoxInMarkReport2(selectModuleComboBoxInMarkReport2.getSelectedItem());
+        refreshSubmissionDetailsInMarkReport2(selectSubmissionComboBoxInMarkReport2.getSelectedItem());
+    }//GEN-LAST:event_fetchSubmissionBtnInMarkReport2MouseClicked
+
+    private void lecturerCommentFieldInMarkReport2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerCommentFieldInMarkReport2MouseClicked
+        if (lecturerCommentFieldInMarkReport2.getText().equals("Lecturer Comment")) {
+            lecturerCommentFieldInMarkReport2.setText("");
+        }
+    }//GEN-LAST:event_lecturerCommentFieldInMarkReport2MouseClicked
+
+    private void reportResultFieldInMarkReport2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportResultFieldInMarkReport2MouseClicked
+        if (reportResultFieldInMarkReport2.getText().equals("Report Result") || reportResultFieldInMarkReport2.getText().equals("0.0")) {
+            reportResultFieldInMarkReport2.setText("");
+        }
+    }//GEN-LAST:event_reportResultFieldInMarkReport2MouseClicked
+
+    private void selectSubmissionComboBoxInMarkReport2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSubmissionComboBoxInMarkReport2ActionPerformed
+        refreshSubmissionDetailsInMarkReport2(selectSubmissionComboBoxInMarkReport2.getSelectedItem());
+    }//GEN-LAST:event_selectSubmissionComboBoxInMarkReport2ActionPerformed
+
+    private void updateReportBtnInMarkReport2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateReportBtnInMarkReport2MouseClicked
+        if (selectModuleComboBoxInMarkReport2.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER))
+        {
+            //When there is no modules assigned to the lecturer
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
+            return;
+        }
+        if(!reportResultFieldInMarkReport2.getText().equals("Report Result") && (!lecturerCommentFieldInMarkReport2.getText().equals("") && !lecturerCommentFieldInMarkReport2.getText().equals("Lecturer Comment")))
+        {
+            //If the lecturer has entered report marks and comment
+            String reportMarksInput=reportResultFieldInMarkReport2.getText();
+            boolean flag=checkIsDouble(reportMarksInput);
+            if(flag == true)
+            {
+                Double reportMarks=Double.valueOf(reportResultFieldInMarkReport2.getText());
+                if(reportMarks >= 0 && reportMarks <= 100)
+                {
+                    if(Dialog.ConfirmationDialog(MessageConstant.WARNING_MARK_REPORT))
+                    {
+                        SubmissionController.updateSubmissionMarksByIdForSecondMarker(Integer.valueOf((String)selectSubmissionComboBoxInMarkReport2.getSelectedItem()),Double.valueOf(reportResultFieldInMarkReport2.getText()),lecturerCommentFieldInMarkReport2.getText());
+                        Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATED_SUBMISSION_MARKS);
+                        filePanelInMarkReport2.remove(pdfSubmissionPreview); // Remove the panel 's' from jPanel
+                        filePanelInMarkReport2.revalidate(); // Recalculate layout
+                        filePanelInMarkReport2.repaint(); // Repaint
+                        selectSubmissionComboBoxInMarkReport2(selectModuleComboBoxInMarkReport2.getSelectedItem());
+                        refreshSubmissionDetailsInMarkReport2(selectSubmissionComboBoxInMarkReport2.getSelectedItem());
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    Dialog.ErrorDialog(MessageConstant.ERROR_MARKS_EXCEED_RANGE);
+                }
+
+            }
+            else
+            {
+                Dialog.ErrorDialog(MessageConstant.ERROR_MARKS_FORMAT_INCORRECT);
+            }
+        }
+
+        else if(selectSubmissionComboBoxInMarkReport2.getSelectedItem() != null)
+        {
+            //When lecturer has fetched modules, but there is no submission
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_SUBMISSION_SELECTED);
+        }
+
+        else
+        {
+            //When the lecturer first time going in the page or switching modules, and havent fetch submission, and clicked the update button
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
+        }
+    }//GEN-LAST:event_updateReportBtnInMarkReport2MouseClicked
+
+    private void selectModuleComboBoxInMarkReport2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectModuleComboBoxInMarkReport2ActionPerformed
+        refreshSelectModuleInMarkReport2(selectModuleComboBoxInMarkReport2.getSelectedItem());
+    }//GEN-LAST:event_selectModuleComboBoxInMarkReport2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JField18;
-    private javax.swing.JTextField JField19;
-    private javax.swing.JTextField JField20;
-    private javax.swing.JTextField JField21;
-    private javax.swing.JTextField JField22;
-    private javax.swing.JTextField JField23;
     private javax.swing.JTextField JField25;
+    private javax.swing.JTextField JField26;
     private javax.swing.JTextField JField27;
     private javax.swing.JTextField JField28;
+    private javax.swing.JTextField JField29;
+    private javax.swing.JTextField JField30;
     private javax.swing.JTextField JField31;
-    private javax.swing.JSeparator JSeparator33;
-    private javax.swing.JSeparator JSeparator37;
-    private javax.swing.JSeparator JSeparator38;
+    private javax.swing.JTextField JField32;
+    private javax.swing.JTextField JField33;
+    private javax.swing.JTextField JField34;
+    private javax.swing.JTextField JField35;
+    private javax.swing.JTextField JField36;
     private javax.swing.JSeparator JSeparator39;
     private javax.swing.JSeparator JSeparator40;
+    private javax.swing.JSeparator JSeparator41;
     private javax.swing.JSeparator JSeparator42;
+    private javax.swing.JSeparator JSeparator43;
+    private javax.swing.JSeparator JSeparator44;
     private javax.swing.JTabbedPane MainTabbedPanel;
     private javax.swing.JTabbedPane MainTabbedPanel1;
+    private javax.swing.JTabbedPane MainTabbedPanel2;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel10;
+    private javax.swing.JPanel Panel11;
+    private javax.swing.JPanel Panel12;
     private javax.swing.JPanel Panel2;
-    private javax.swing.JPanel Panel4;
-    private javax.swing.JPanel Panel8;
-    private javax.swing.JPanel Panel9;
-    private javax.swing.JLabel cancelConsultationBtnInEdit;
-    private javax.swing.JLabel completedConsultationBtnInEdit;
-    private com.github.lgooddatepicker.components.DateTimePicker consultationDateTimePicker;
-    private static javax.swing.JComboBox<String> consultationIDComboBox;
-    private static javax.swing.JComboBox<String> consultationIDComboBoxInDelete;
-    private javax.swing.JLabel createConsultationBtn;
-    private javax.swing.JTable createConsultationTbl;
-    private javax.swing.JLabel createNewConsutationBtn;
-    private javax.swing.JLabel deleteConsultationBtn;
-    private javax.swing.JLabel deleteConsultationBtnInDelete;
-    private javax.swing.JLabel editConsultationBtn;
-    private javax.swing.JLabel fetchSubmissionBtn;
-    private javax.swing.JPanel filePanel;
+    private javax.swing.JPanel Panel3;
+    private javax.swing.JLabel fetchSubmissionBtnInMarkReport1;
+    private javax.swing.JLabel fetchSubmissionBtnInMarkReport2;
+    private javax.swing.JLabel fetchSubmissionBtnInModify;
+    private javax.swing.JPanel filePanelInMarkReport1;
+    private javax.swing.JPanel filePanelInMarkReport2;
+    private javax.swing.JPanel filePanelInModify;
+    private javax.swing.JLabel firstMarkerMarkReportBtn;
+    private javax.swing.JLabel firstMarkerModifyMarksBtn;
     private static javax.swing.JLabel firstMarkerPendingMarking;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextArea lecturerCommentField;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTextArea lecturerCommentFieldInMarkReport1;
+    private javax.swing.JTextArea lecturerCommentFieldInMarkReport2;
+    private javax.swing.JTextArea lecturerCommentFieldInModify;
     private javax.swing.JLabel menuBtn11;
     private javax.swing.JLabel menuBtn14;
     private javax.swing.JLabel menuBtn15;
     private javax.swing.JLabel menuBtn16;
-    private javax.swing.JLabel menuBtn22;
-    private javax.swing.JLabel menuBtn23;
-    private javax.swing.JLabel menuBtn29;
     private javax.swing.JLabel menuBtn3;
-    private javax.swing.JLabel menuBtn30;
-    private javax.swing.JLabel menuBtn31;
-    private javax.swing.JLabel menuBtn32;
-    private javax.swing.JLabel menuBtn33;
-    private javax.swing.JLabel menuBtn34;
-    private javax.swing.JLabel menuBtn35;
-    private javax.swing.JLabel menuBtn36;
-    private javax.swing.JLabel menuBtn37;
-    private javax.swing.JLabel menuBtn38;
-    private javax.swing.JLabel menuBtn39;
     private javax.swing.JLabel menuBtn4;
-    private javax.swing.JLabel menuBtn40;
-    private javax.swing.JLabel menuBtn41;
     private javax.swing.JLabel menuBtn43;
     private javax.swing.JLabel menuBtn44;
     private javax.swing.JLabel menuBtn45;
     private javax.swing.JLabel menuBtn46;
     private javax.swing.JLabel menuBtn47;
+    private javax.swing.JLabel menuBtn48;
     private javax.swing.JLabel menuBtn49;
     private javax.swing.JLabel menuBtn50;
     private javax.swing.JLabel menuBtn51;
     private javax.swing.JLabel menuBtn52;
+    private javax.swing.JLabel menuBtn53;
     private javax.swing.JLabel menuBtn54;
-    private javax.swing.JTextField projectFileNameField;
-    private javax.swing.JTextField reportResultField;
+    private javax.swing.JLabel menuBtn55;
+    private javax.swing.JLabel menuBtn56;
+    private javax.swing.JLabel menuBtn57;
+    private javax.swing.JLabel menuBtn58;
+    private javax.swing.JLabel menuBtn59;
+    private javax.swing.JLabel menuBtn60;
+    private javax.swing.JLabel menuBtn61;
+    private javax.swing.JLabel menuBtn62;
+    private javax.swing.JLabel menuBtn63;
+    private javax.swing.JLabel menuBtn64;
+    private javax.swing.JLabel menuBtn65;
+    private javax.swing.JLabel menuBtn66;
+    private javax.swing.JLabel menuBtn67;
+    private javax.swing.JLabel menuBtn68;
+    private javax.swing.JLabel menuBtn69;
+    private javax.swing.JLabel menuBtn70;
+    private javax.swing.JLabel menuBtn71;
+    private javax.swing.JLabel menuBtn72;
+    private javax.swing.JTextField projectFileNameFieldInMarkReport1;
+    private javax.swing.JTextField projectFileNameFieldInMarkReport2;
+    private javax.swing.JTextField projectFileNameFieldInModify;
+    private javax.swing.JTextField reportResultFieldInMarkReport1;
+    private javax.swing.JTextField reportResultFieldInMarkReport2;
+    private javax.swing.JTextField reportResultFieldInModify;
     private javax.swing.JLabel searchBtn;
-    private javax.swing.JTextField searchFieldInCreateConsultation;
     private javax.swing.JTextField searchFieldInOverview;
+    private javax.swing.JLabel secondMarkerMarkReportBtn;
     private static javax.swing.JLabel secondMarkerPendingMarking;
     private javax.swing.JComboBox<String> selectModuleComboBoxInMarkReport1;
-    private static javax.swing.JComboBox<String> selectSubmissionComboBoxInMarkReport1;
+    private javax.swing.JComboBox<String> selectModuleComboBoxInMarkReport2;
+    private static javax.swing.JComboBox<String> selectModuleComboBoxInModify;
+    private javax.swing.JComboBox<String> selectSubmissionComboBoxInMarkReport1;
+    private javax.swing.JComboBox<String> selectSubmissionComboBoxInMarkReport2;
+    private static javax.swing.JComboBox<String> selectSubmissionComboBoxInModify;
     private static javax.swing.JComboBox<String> submissionComboBox;
     private javax.swing.JTable submissionOverviewTbl;
     private javax.swing.JTable upcomingSubmissionDueDateTbl;
-    private javax.swing.JLabel updateReportBtn;
+    private javax.swing.JLabel updateReportBtnInMarkReport1;
+    private javax.swing.JLabel updateReportBtnInMarkReport2;
+    private javax.swing.JLabel updateReportBtnInModify;
     // End of variables declaration//GEN-END:variables
 }

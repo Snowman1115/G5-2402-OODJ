@@ -36,6 +36,16 @@ public class ProjectModuleController {
     public static List getAllModuleDetailsBySecondMarkerId() {
         return projectModuleService.getAllModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
     }
+    
+    // Method to get module details with first marker ID
+    public static List getModuleDetailsByFirstMarkerId() {
+        return projectModuleService.getModuleDetailsByFirstMarkerId(getAuthenticatedUserId());
+    }
+    
+    // Method to get module details with second marker ID
+    public static List getModuleDetailsBySecondMarkerId() {
+        return projectModuleService.getModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
+    }
     //Jin Xun - Project Manager
     // Method to get all module details by project manager ID
     public static List getAllModuleDetailsByProjectManagerId() {

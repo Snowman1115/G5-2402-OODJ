@@ -78,12 +78,30 @@ public class SubmissionController {
     }
 
     /**
-     * Get All Submission Details By Module Id
+     * Get All Pending Marking Submission By Module Id
      * @param moduleId
      * @return List
      */
-    public static List getAllSubmissionByModuleId(Integer moduleId) {
-        return submissionService.getAllSubmissionByModuleId(moduleId);
+    public static List getPendingMarkingSubmissionByModuleId(Integer moduleId) {
+        return submissionService.getPendingMarkingSubmissionByModuleId(moduleId);
+    }
+    
+    /**
+     * Get All Marked_1 Submission By Module Id
+     * @param moduleId
+     * @return List
+     */
+    public static List getMarked1SubmissionByModuleId(Integer moduleId) {
+        return submissionService.getMarked1SubmissionByModuleId(moduleId);
+    }
+    
+    /**
+     * Get All Marked_2 Submission By Module Id
+     * @param moduleId
+     * @return List
+     */
+    public static List getMarked2SubmissionByModuleId(Integer moduleId) {
+        return submissionService.getMarked2SubmissionByModuleId(moduleId);
     }
     
     /**
@@ -96,6 +114,48 @@ public class SubmissionController {
     }
     
     /**
+     * Get Marked_1 Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */
+    public static List getMarked1SubmissionDetailsById(Integer submissionId) {
+        return submissionService.getMarked1SubmissionDetailsById(submissionId);
+    }
+    
+    /**
+     * Get Marked_2 Submission Details By Submission Id
+     * @param submissionId
+     * @return List
+     */
+    public static List getMarked2SubmissionDetailsById(Integer submissionId) {
+        return submissionService.getMarked2SubmissionDetailsById(submissionId);
+    }
+    
+    /**
+     * Update Submission Status To Marked_1 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    public static Boolean updateSubmissionMarksByIdForFirstMarker(Integer submissionId, Double marks, String comment) {
+        log.info("Submission with ID: " + submissionId + " is updated to MARKED_1");
+        return submissionService.updateSubmissionMarksByIdForFirstMarker(submissionId, marks, comment);
+    }
+    
+    /**
+     * Update Submission Status To Marked_2 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+    public static Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment) {
+        log.info("Submission with ID: " + submissionId + " is updated to MARKED_2");
+        return submissionService.updateSubmissionMarksByIdForSecondMarker(submissionId, marks, comment);
+    }
+    
+    /**
      * Get Authenticated UserId
      * @return userId
      */
@@ -104,6 +164,6 @@ public class SubmissionController {
     }
     
 //    public static void main(String[] args) {
-//        System.out.println(SubmissionController.getAllSubmissionByModuleId(36887009));
+//        System.out.println(SubmissionController.getPendingMarkingSubmissionByModuleId(36887009));
 //    }
 }

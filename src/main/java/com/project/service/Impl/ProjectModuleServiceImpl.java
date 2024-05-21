@@ -12,6 +12,7 @@ import com.project.dao.ModuleDAO;
 import com.project.dao.SubmissionDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.pojo.Intake;
+import com.project.pojo.ProjectModule;
 import com.project.pojo.Submission;
 import com.project.pojo.UserAccount;
 import com.project.service.ProjectModuleService;
@@ -127,6 +128,77 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     public List getModuleById(Integer moduleId) {
         return (List) moduleDAO.getModuleByModuleId(moduleId);
     }
+
+    /**
+     * Get Modules Detail By Lecturer Id
+     * @param lecturerId
+     * @return List
+     */
+    @Override    
+    public List getModuleDetailsByFirstMarkerId(Integer lecturerId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        //Get all module details by lecturer ID
+        List<ProjectModule> moduleList = moduleDAO.getModuleListByFirstMarkerId(lecturerId); 
+        for(ProjectModule module:moduleList)
+        {
+            List<Submission> submissionList=submissionDAO.getSubmissionListByModuleId(module.getModuleId());
+            for(Submission submission:submissionList)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getFirstMarker().equals(lecturerId))
+                { 
+                    Map<String,String> map = new HashMap<>();
+                    Integer studentId=submission.getStudentId();
+                    UserAccount student=userAccountDAO.getUserAccountById(studentId);
+                    String studentName=student.getFirstName()+" "+student.getLastName();
+                    map.put("id", module.getModuleId().toString());
+                    map.put("moduleCode", module.getModuleCode());
+                    map.put("studentId", studentId.toString());
+                    map.put("studentName", studentName);
+                    Intake studentIntake=intakeDAO.getIntakeById(module.getIntakeId());
+                    map.put("intakeCode", studentIntake.getIntakeCode());
+                    map.put("reportType", submission.getReportType().toString());
+                    map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                    map.put("submissionStatus", submission.getReportStatus().toString());
+                    mappedLists.add(map);
+                }
+            }
+        }
+        return mappedLists;
+    }
+    
+    @Override    
+    public List getModuleDetailsBySecondMarkerId(Integer lecturerId)
+    {
+        List<Map<String, String>> mappedLists = new ArrayList<>();
+        //Get all module details by lecturer ID
+        List<ProjectModule> moduleList = moduleDAO.getModuleListBySecondMarkerId(lecturerId); 
+        for(ProjectModule module:moduleList)
+        {
+            List<Submission> submissionList=submissionDAO.getSubmissionListByModuleId(module.getModuleId());
+            for(Submission submission:submissionList)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getSecondMarker().equals(lecturerId))
+                { 
+                    Map<String,String> map = new HashMap<>();
+                    Integer studentId=submission.getStudentId();
+                    UserAccount student=userAccountDAO.getUserAccountById(studentId);
+                    String studentName=student.getFirstName()+" "+student.getLastName();
+                    map.put("id", module.getModuleId().toString());
+                    map.put("moduleCode", module.getModuleCode());
+                    map.put("studentId", studentId.toString());
+                    map.put("studentName", studentName);
+                    Intake studentIntake=intakeDAO.getIntakeById(module.getIntakeId());
+                    map.put("intakeCode", studentIntake.getIntakeCode());
+                    map.put("reportType", submission.getReportType().toString());
+                    map.put("submissionDueDate", DateTimeUtils.formatStrDateTime(submission.getSubmissionDueDate()));
+                    map.put("submissionStatus", submission.getReportStatus().toString());
+                    mappedLists.add(map);
+                }
+            }
+        }
+        return mappedLists;
+    }
     
     public Boolean saveModuleDetails(List moduleDetails) {
         if (moduleDAO.saveModuleChanges(moduleDetails)) {
@@ -142,6 +214,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     }
 //    public static void main(String[] args) {
 //        ProjectModuleServiceImpl test=new ProjectModuleServiceImpl();
-//        System.out.println(test.getAllModuleDetailsByFirstMarkerId(88608036));
+//        System.out.println(test.getModuleDetailsByFirstMarkerId(88608036));
 //    }
 }

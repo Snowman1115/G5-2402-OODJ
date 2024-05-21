@@ -223,8 +223,6 @@ public class ModuleDAO {
     public Boolean saveModuleChanges(List<String> moduleDetails) {
         for (ProjectModule module : modules) {
             if (module.getModuleId().equals(parseInt(moduleDetails.get(0)))) {
-                System.out.println(moduleDetails.get(0));
-                System.out.println(moduleDetails.get(1));
                 update(parseInt(moduleDetails.get(0)), "firstMarker", moduleDetails.get(1));
                 update(parseInt(moduleDetails.get(0)), "secondMarker", moduleDetails.get(2));
                 update(parseInt(moduleDetails.get(0)), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
@@ -232,6 +230,23 @@ public class ModuleDAO {
             }
         }
         return false;
+    }
+
+
+    public static String getModuleNameById(Integer moduleId){
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(moduleId)) {
+                return module.getModuleCode();
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        ModuleDAO test=new ModuleDAO();
+//        System.out.println(test.getModuleByLecturerId(88608036));
+//        System.out.println(test.getModuleByProjectManagerId(39904006));
+        System.out.println(test.getModuleByModuleId(36887009));
     }
 
     /**

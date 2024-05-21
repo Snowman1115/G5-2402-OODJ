@@ -521,4 +521,36 @@ public class SubmissionServiceImpl implements SubmissionService {
 //        SubmissionServiceImpl test=new SubmissionServiceImpl();
 //        System.out.println(test.getPendingMarkingSubmissionByModuleId(36887009));
 //    }
+
+
+//
+//    public List getAssessmentByModuleId(Integer moduleId){
+//
+//    }
+
+    @Override
+    public List getAssessmentByModuleId(Integer moduleId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Boolean saveAssessmentType(Integer moduleId, String savedAssessment) {
+        System.out.println(moduleId);
+        System.out.println(savedAssessment);
+        if (submissionDAO.saveAssessmentTypeChanges(moduleId, savedAssessment)) {
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_ASSIGNED_SUPERVISOR);
+            return true;
+        } else {
+    //      log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.ERROR_EMPTY_MODULE);
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        SubmissionServiceImpl test = new SubmissionServiceImpl();
+        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
+
+        System.out.println(test.saveAssessmentType(36887009,"CAPSTONE_1"));
+    }
 }

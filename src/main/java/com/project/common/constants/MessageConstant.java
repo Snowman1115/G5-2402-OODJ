@@ -26,6 +26,8 @@ public class MessageConstant {
     public static final String SUCCESS_UPDATED_SUBMISSION_MARKS = "Submission Marks Successfully Updated.";
     public static final String SUCCESS_SUBMITTED_PROJECT = "Project File Submitted Successfully.";
     public static final String SUCCESS_ASSIGNED_SUPERVISOR = "Supervisor And Second Marker Assigned Successfully.";
+    public static final String SUCCESS_RESET_FIELD = "Field has been reset to default.";
+    public static final String SUCCESS_UPDATE_ASSESSMENT_TYPE = "Assessment Type Has Been Updated Successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";
@@ -76,6 +78,7 @@ public class MessageConstant {
                                                                      The DateTime requested is clashing with other booked presentation DateTime. 
                                                                      Please contact your student to choose another DateTime and this presentation is automatically rejected.
                                                                      """;
+    public static final String ERROR_EMPTY_MODULE = "No Module Found! Please select a module first.";
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations are available to book.";
@@ -89,6 +92,7 @@ public class MessageConstant {
     public static final String CONDITION_NO_SUBMITTED_PROJECT_COMBOBOX = "No marked project results to view.";
     
     public static final String CONDITION_NO_MODULES_UNDER_LECTURER = "No modules to show.";
+    public static final String CONDITION_NO_DATA_CHANGES = "No data changes detected.";
     public static final String CONDITION_NO_SUBMISSIONS_UNDER_MODULES = "No submissions to show.";
 
     /* WARNING */

@@ -21,6 +21,8 @@ import com.project.service.ProjectModuleService;
 import org.json.simple.JSONObject;
 
 import java.time.LocalDate;
+import static java.lang.Integer.parseInt;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -130,7 +132,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     // To filter the module details by project manager ID
     @Override
     public List getAllModuleDetailsByProjectManagerId(Integer ProjectManagerId){
-         List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Map<String, String>> mappedLists = new ArrayList<>();
         List<Map<String, String>> lists = moduleDAO.getModuleByProjectManagerId(ProjectManagerId);
         for (Map<String, String> list : lists){
             Map<String, String> mappedMap = new HashMap<>();
@@ -229,7 +231,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             return true;
         } else {
 //            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
-            Dialog.SuccessDialog(MessageConstant.UNEXPECTED_ERROR);
+            Dialog.SuccessDialog(MessageConstant.ERROR_EMPTY_MODULE);
             return false;
         }
 
@@ -238,6 +240,82 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
 //        ProjectModuleServiceImpl test=new ProjectModuleServiceImpl();
 //        System.out.println(test.getModuleDetailsByFirstMarkerId(88608036));
 //    }
+
+
+    @Override
+    public List getModuleTypeById(Integer moduleId) {
+        List<Map<String, String>> moduleDetails = moduleDAO.getModuleByModuleId(moduleId);
+        String assessmentType = submissionDAO.getAssessmentTypeByModuleId(moduleId);
+
+        // Adding the assessmentType to each module detail map
+        if (moduleDetails != null && assessmentType != null) {
+            for (Map<String, String> moduleDetail : moduleDetails) {
+                moduleDetail.put("assessmentType", assessmentType);
+            }
+        }
+        return moduleDetails;
+    }
+
+
+//    Get all report details for Table
+    @Override
+    public List getAllReportDetails(){
+//        List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Map<String, String>> reportLists = submissionDAO.getAllReport();
+//        Integer moduleId = lists.getModuleId();
+        System.out.println(reportLists);
+        if (reportLists != null) {
+            for (Map<String,String> reportList : reportLists) {
+                Integer moduleId = parseInt(reportList.get("moduleId"));
+                Integer studentId = parseInt(reportList.get("studentId"));
+
+                String module = moduleDAO.getModuleNameById(moduleId);
+                String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
+                reportList.put("moduleCode", module);
+                reportList.put("studentName", studentName);
+
+            }
+        }
+        return reportLists;
+    }
+
+    public List<Map<String, String>> getReportDetailsById(Integer reportId){
+        Submission reportDetails = submissionDAO.getSubmissionById(reportId);
+//        Integer moduleId = lists.getModuleId();
+        System.out.println(reportDetails);
+        if (reportDetails != null) {
+                Integer studentId = reportDetails.getStudentId();
+                Integer moduleId = reportDetails.getModuleId();
+//
+                String module = moduleDAO.getModuleNameById(moduleId);
+                String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
+                Map<String, String> mappedMap = new HashMap<>();
+                mappedMap.put("id", reportDetails.getSubmissionId().toString());
+                mappedMap.put("moduleId", moduleId.toString());
+                mappedMap.put("moduleCode", module);
+                mappedMap.put("studentId", studentId.toString());
+                mappedMap.put("studentName", studentName);
+                mappedMap.put("reportStatus", reportDetails.getReportStatus().toString());
+                mappedMap.put("reportType", reportDetails.getReportType().toString());
+                mappedMap.put("comment", reportDetails.getComment().toString());
+//                reportDetails.add("moduleCode", module);
+//                reportList.put("studentName", studentName);
+                return (List<Map<String, String>>) mappedMap;
+        }
+
+        return null;
+    }
+
+//    For debug purpose, run the below main method to view the data
+    public static void main(String[] args) {
+        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
+        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
+
+        System.out.println(prje.getReportDetailsById(2127241));
+    }
+
+
+
 }
 
 

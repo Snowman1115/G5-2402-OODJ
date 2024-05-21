@@ -29,6 +29,20 @@ public class SubmissionDAO {
         loadSubmissionData();
     }
 
+    public static List<Map<String, String>> getAllReport() {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Submission submission : submissions) {
+            Map map = new HashMap<>();
+            map.put("moduleId", submission.getModuleId().toString());
+            map.put("studentId", submission.getStudentId().toString());
+            map.put("reportStatus", submission.getReportStatus());
+            map.put("reportType", submission.getReportType().toString());
+            map.put("comment", submission.getComment().toString());
+            list.add(map);
+        }
+        return list;
+    }
+
     /**
      * Get Submission Details by ID
      *
@@ -59,6 +73,15 @@ public class SubmissionDAO {
         return null;
     }
     
+    public String getAssessmentTypeByModuleId(Integer moduleId) {
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                String assessmentType = submission.getReportType().toString();
+                return assessmentType;
+            }
+        }
+        return null;
+    }
      /**
      * Get All Submission Details By Module Id
      *
@@ -285,6 +308,23 @@ public class SubmissionDAO {
             submissions.add(submission);
         }
     }
+    /**
+     * Save Assessment Type into Submission
+     * @param moduleId
+     * @param savedAssessment
+     * @return Boolean
+     */
+    public boolean saveAssessmentTypeChanges(Integer moduleId, String savedAssessment) {
+        Boolean status = false;
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                update(submission.getSubmissionId(), "reportType", savedAssessment);
+                update(submission.getSubmissionId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                status = true;
+            }
+        }
+        return status;
+    }
 
 
     // Update consultation data
@@ -360,5 +400,9 @@ public class SubmissionDAO {
         userJson.encode(FileHandler.readFile(SUBMISSION_DATA));
         return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);
     }
+
+
+
+
 
 }

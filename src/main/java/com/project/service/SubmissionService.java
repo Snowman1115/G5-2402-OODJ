@@ -114,4 +114,9 @@ public interface SubmissionService {
      * @return Boolean
      */
     public Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment);
+
+    public List getAssessmentByModuleId(Integer moduleId);
+
+    public Boolean saveAssessmentType(Integer moduleId, String savedAssessment);
+
 }

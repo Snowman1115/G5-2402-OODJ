@@ -135,21 +135,6 @@ public class SubmissionServiceImpl implements SubmissionService {
         }
     }
     
-    public List getAllReportDetails(){
-        List<Map<String, String>> mappedLists = new ArrayList<>();
-//        List<Map<String, String>> lists = SubmissionDAO.getAllReport();
-//        for (Map<String, String> list : lists){
-//            Map<String, String> mappedMap = new HashMap<>();
-//            mappedMap.put("id", list.get("id"));
-//            mappedMap.put("moduleCode", list.get("moduleCode"));
-//            mappedMap.put("startDate", list.get("startDate"));
-//            mappedMap.put("endDate", list.get("endDate"));
-//            mappedMap.put("firstMarker", list.get("firstMarker"));
-//            mappedMap.put("secondMarker", list.get("secondMarker"));
-//            mappedLists.add(mappedMap);
-//        }
-        return mappedLists;
-    }
     
 //    
 //    public List getAssessmentByModuleId(Integer moduleId){

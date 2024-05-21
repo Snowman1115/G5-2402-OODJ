@@ -61,10 +61,6 @@ public class SubmissionController {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
     
-    private static List getAllReport(){
-        return submissionService.getAllReportDetails();
-    }
-
 //    public static List getAssessmentByModuleId(Integer moduleId) {
 //        return submissionService.getAssessmentByModuleId(moduleId);
 //    }

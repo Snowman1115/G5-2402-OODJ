@@ -67,4 +67,11 @@ public class ProjectModuleController {
         return projectModuleService.getModuleTypeById(moduleId);
     }
     
+    public static List getAllReport(){
+        return projectModuleService.getAllReportDetails();
+    }
+    
+    public static List getReportById(Integer reportId){
+        return projectModuleService.getReportDetailsById(reportId);
+    }
 }

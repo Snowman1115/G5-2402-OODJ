@@ -75,7 +75,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
 //                menuBtn8.setBackground(DefaultBtnColor);
 //                menuBtn9.setBackground(DefaultBtnColor);
 //                menuBtn10.setBackground(DefaultBtnColor);
-                 WindowsPane.add(new ManagerAssignMarker()).setVisible(true);
+                 WindowsPane.add(new ManagerViewReport()).setVisible(true);
             } 
             case "menuBtn4" -> {
                 menuBtn1.setBackground(DefaultBtnColor);

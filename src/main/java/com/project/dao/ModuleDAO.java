@@ -155,6 +155,15 @@ public class ModuleDAO {
         return false;
     }
     
+    public static String getModuleNameById(Integer moduleId){
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(moduleId)) {
+                return module.getModuleCode();
+            }
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         ModuleDAO test=new ModuleDAO();
 //        System.out.println(test.getModuleByLecturerId(88608036));

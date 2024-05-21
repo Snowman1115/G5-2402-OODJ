@@ -502,7 +502,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/success-24x24.png"))); // NOI18N
-        menuBtn4.setText("COMPLETED");
+        menuBtn4.setText(" ");
         menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn4.setOpaque(true);
 
@@ -541,7 +541,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
-        menuBtn3.setText("UPCOMING");
+        menuBtn3.setText("UNASSIGNED");
         menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn3.setOpaque(true);
 
@@ -746,7 +746,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
         menuBtn38.setText("MODULE NAME");
         menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn38.setOpaque(true);
@@ -758,7 +758,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn36.setText("SUPERVISOR");
         menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn36.setOpaque(true);
-        Panel2.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 300, 40));
+        Panel2.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 300, 40));
 
         spModuleSPComboBox.setBackground(new java.awt.Color(254, 254, 254));
         spModuleSPComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
@@ -770,7 +770,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 spModuleSPComboBoxActionPerformed(evt);
             }
         });
-        Panel2.add(spModuleSPComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 300, 35));
+        Panel2.add(spModuleSPComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 300, 35));
 
         jLabel36.setBackground(new java.awt.Color(254, 254, 254));
         jLabel36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -866,7 +866,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 spModuleSMComboBoxActionPerformed(evt);
             }
         });
-        Panel2.add(spModuleSMComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 300, 35));
+        Panel2.add(spModuleSMComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 300, 35));
 
         menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -924,7 +924,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn33.setText("SECOND MARKER");
         menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn33.setOpaque(true);
-        Panel2.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 300, 40));
+        Panel2.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 300, 40));
 
         JSeparator39.setForeground(new java.awt.Color(1, 1, 1));
         Panel2.add(JSeparator39, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 170, 10));
@@ -959,7 +959,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
         menuBtn40.setText("MODULE NAME");
         menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn40.setOpaque(true);
@@ -1078,11 +1078,11 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        menuBtn41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn41.setText("Assessment Type");
         menuBtn41.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn41.setOpaque(true);
-        jPanel1.add(menuBtn41, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 300, 40));
+        jPanel1.add(menuBtn41, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 300, 40));
 
         assessmentTypeComboBox.setBackground(new java.awt.Color(254, 254, 254));
         assessmentTypeComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
@@ -1094,7 +1094,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 assessmentTypeComboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(assessmentTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 35));
+        jPanel1.add(assessmentTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 300, 35));
 
         atStartDate.setEditable(false);
         atStartDate.setBackground(new java.awt.Color(255, 255, 255));

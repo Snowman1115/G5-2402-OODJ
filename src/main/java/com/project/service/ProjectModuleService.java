@@ -35,4 +35,8 @@ public interface ProjectModuleService {
     public Boolean saveModuleDetails(List moduleDetails);
 
     public List getModuleTypeById(Integer moduleId);
+    
+    public List getAllReportDetails();
+
+    public List getReportDetailsById(Integer reportId);
 }

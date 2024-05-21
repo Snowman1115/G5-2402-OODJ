@@ -26,24 +26,19 @@ public class SubmissionDAO {
         loadSubmissionData();
     }
 
-//    public static List<Map<String, String>> getAllReport() {
-////        List<Map<String, String>> list = new ArrayList<>();
-////        for (Submission submission : submissions) {
-////            Map map = new HashMap<>();
-////            map.put("moduleId", submission.getModuleId().toString());
-////            map.put("studentId", submission.getStudentId().toString());
-////            map.put("moduleCode", submission.getModuleCode());
-////            map.put("supervisorId", submission.getSupervisorId().toString());
-////            map.put("firstMarker", submission.getFirstMarker().toString());
-////            map.put("secondMarker", submission.getSecondMarker().toString());
-////            map.put("startDate", DateTimeUtils.formatStrDate(submission.getStartDate()));
-////            map.put("endDate", DateTimeUtils.formatStrDate(submission.getEndDate()));
-////            map.put("created_at", DateTimeUtils.formatStrDateTime(module.getCreatedAt()));
-////            map.put("updated_at", DateTimeUtils.formatStrDateTime(module.getUpdatedAt()));
-////            list.add(map);
-////        }
-//        return null;
-//    }
+    public static List<Map<String, String>> getAllReport() {
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Submission submission : submissions) {
+            Map map = new HashMap<>();
+            map.put("moduleId", submission.getModuleId().toString());
+            map.put("studentId", submission.getStudentId().toString());
+            map.put("reportStatus", submission.getReportStatus());
+            map.put("reportType", submission.getReportType().toString());
+            map.put("comment", submission.getComment().toString());
+            list.add(map);
+        }
+        return list;
+    }
 
     /**
      * Get Submission Details by ID

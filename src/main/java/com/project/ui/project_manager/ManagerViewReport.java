@@ -2,6 +2,7 @@ package com.project.ui.project_manager;
 
 import com.project.ui.student.*;
 import com.project.common.constants.MessageConstant;
+import com.project.common.constants.ReportStatus;
 import com.project.common.utils.Dialog;
 import com.project.common.utils.JsonHandler;
 import javax.swing.*;
@@ -31,7 +32,7 @@ import org.json.simple.JSONObject;
  */
 public class ManagerViewReport extends javax.swing.JInternalFrame {
 
-     private Integer moduleId;
+     private Integer reportId;
      private Map<String, String> currentModuleDetails;
      private String firstMarkerName, secondMarkerName;
      private JsonHandler lecturerLists;
@@ -54,11 +55,25 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
     private void refreshTable() {
         DefaultTableModel dtm =  (DefaultTableModel)jTableReportDetails.getModel();
         dtm.setRowCount(0);
-//        List<Map<String, String>> moduleLists = SubmissionController.getAllReport();
-//        for (Map<String,String> list : moduleLists) {
-//            String[] data = {list.get("id"),list.get("moduleCode"), list.get("startDate"),list.get("endDate"), list.get("firstMarker") , list.get("secondMarker"),};
-//            dtm.addRow(data);   
-//        }
+        List<Map<String, Object>> reportLists = ProjectModuleController.getAllReport();
+        for (Map<String, Object> list : reportLists) {
+                System.out.println(list); // Debugging line
+
+                String submissionId = list.get("id") != null ? list.get("id").toString() : "N/A";
+                String moduleCode = list.get("moduleCode") != null ? list.get("moduleCode").toString() : "N/A";
+                String studentId = list.get("studentId") != null ? list.get("studentId").toString() : "N/A";
+                String studentName = list.get("studentName") != null ? list.get("studentName").toString() : "N/A";
+                
+                // Convert ReportStatus to String
+                ReportStatus reportStatusObj = (ReportStatus) list.get("reportStatus");
+                String reportStatus = reportStatusObj != null ? reportStatusObj.toString() : "N/A";
+                
+                String reportType = list.get("reportType") != null ? list.get("reportType").toString() : "N/A";
+                String comment = list.get("comment") != null ? list.get("comment").toString() : "N/A";
+
+                String[] data = {submissionId, moduleCode, studentId, studentName, reportStatus, reportType, comment};
+                dtm.addRow(data);
+        }
     }
     
 //    private String getSelectedModuleId() {
@@ -71,11 +86,12 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 //    }
 //}
     
-        private void autofillModuleSupervisor(Integer moduleId) {
+        private void autofillReportDetails(Integer reportId) {
             // Get module detail by id
-            List<Map<String, String>> moduleLists = ProjectModuleController.getModuleById(moduleId);
+            List<Map<String, String>> reportDetails = ProjectModuleController.getReportById(reportId);
 //          Check if module List is empty 
-             Map<String, String> mLists = moduleLists.isEmpty() ? null : moduleLists.get(0);
+             Map<String, String> mLists = reportDetails.isEmpty() ? null : reportDetails.get(0);
+             System.out.println(mLists);
 //              if module list is not empty
                 if (mLists != null) {
                     //Store current module details
@@ -584,11 +600,11 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Module", "Student Id", "Student Name", "Report Status", "Report Type", "Comment"
+                "Report Id", "Module", "Student Id", "Student Name", "Report Status", "Report Type", "Comment"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -609,6 +625,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
             jTableReportDetails.getColumnModel().getColumn(3).setResizable(false);
             jTableReportDetails.getColumnModel().getColumn(4).setResizable(false);
             jTableReportDetails.getColumnModel().getColumn(5).setResizable(false);
+            jTableReportDetails.getColumnModel().getColumn(6).setResizable(false);
         }
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 1020, 360));
@@ -1082,9 +1099,9 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 //      add code to get row detail (Module Id)
         int selectedRow = jTableReportDetails.getSelectedRow();
         if (selectedRow != -1) {
-            moduleId = Integer.parseInt(jTableReportDetails.getValueAt(selectedRow, 0).toString());
+            reportId = Integer.parseInt(jTableReportDetails.getValueAt(selectedRow, 0).toString());
             MainTabbedPanel.setSelectedIndex(1);
-            autofillModuleSupervisor(moduleId);
+            autofillReportDetails(reportId);
         } else {
             Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
         }

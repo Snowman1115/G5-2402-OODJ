@@ -15,6 +15,7 @@ import com.project.pojo.Intake;
 import com.project.pojo.Submission;
 import com.project.pojo.UserAccount;
 import com.project.service.ProjectModuleService;
+import static java.lang.Integer.parseInt;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -149,12 +150,62 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return moduleDetails;
     }
     
+    
+//    Get all report details for Table
+    @Override
+    public List getAllReportDetails(){
+//        List<Map<String, String>> mappedLists = new ArrayList<>();
+        List<Map<String, String>> reportLists = submissionDAO.getAllReport();
+//        Integer moduleId = lists.getModuleId();
+        System.out.println(reportLists);
+        if (reportLists != null) {
+            for (Map<String,String> reportList : reportLists) {
+                Integer moduleId = parseInt(reportList.get("moduleId"));
+                Integer studentId = parseInt(reportList.get("studentId"));
+
+                String module = moduleDAO.getModuleNameById(moduleId);
+                String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
+                reportList.put("moduleCode", module);
+                reportList.put("studentName", studentName);
+
+            }
+        }
+        return reportLists;
+    }
+    
+    public List<Map<String, String>> getReportDetailsById(Integer reportId){
+        Submission reportDetails = submissionDAO.getSubmissionById(reportId);
+//        Integer moduleId = lists.getModuleId();
+        System.out.println(reportDetails);
+        if (reportDetails != null) {
+                Integer studentId = reportDetails.getStudentId();
+                Integer moduleId = reportDetails.getModuleId();
+//                
+                String module = moduleDAO.getModuleNameById(moduleId);
+                String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
+                Map<String, String> mappedMap = new HashMap<>();
+                mappedMap.put("id", reportDetails.getSubmissionId().toString());
+                mappedMap.put("moduleId", moduleId.toString());
+                mappedMap.put("moduleCode", module);
+                mappedMap.put("studentId", studentId.toString());
+                mappedMap.put("studentName", studentName);
+                mappedMap.put("reportStatus", reportDetails.getReportStatus().toString());
+                mappedMap.put("reportType", reportDetails.getReportType().toString());
+                mappedMap.put("comment", reportDetails.getComment().toString());
+//                reportDetails.add("moduleCode", module);
+//                reportList.put("studentName", studentName);
+                return (List<Map<String, String>>) mappedMap;
+        }
+        
+        return null;
+    }
+    
 //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
         // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
 
-        System.out.println(prje.getModuleTypeById(36887009));
+        System.out.println(prje.getReportDetailsById(2127241));
     }
 
 

@@ -15,13 +15,13 @@ import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 public class UserAccountServiceImpl implements UserAccountService {
-
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
 
     private UserAuthenticationDAO userAuthenticationDAO = new UserAuthenticationDAO();
@@ -31,6 +31,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     private IntakeDAO intakesDAO = new IntakeDAO();
     private ModuleDAO moduleDAO = new ModuleDAO();
     private SubmissionDAO submissionDAO = new SubmissionDAO();
+    private PresentationDAO presentationDAO = new PresentationDAO();
 
     /**
      * Login Authentication
@@ -73,6 +74,7 @@ public class UserAccountServiceImpl implements UserAccountService {
             case STUDENT -> { log.info("Redirecting (" + account + ") to Student Panel."); return UserRoleType.STUDENT; }
             default -> { return null; }
         }
+
     }
 
     public static void main(String[] args) {
@@ -302,16 +304,42 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public boolean registerNewUser(JsonHandler userData, UserRoleType roleType) {
         int userId = this.getNewId();
-        int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
-        List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
         String defSafeWord = userData.get("first_name")+userData.get("last_name"); //create default safeword
 
         try {
             userAccountDAO.add(userId, userData.get("username"), userData.get("first_name"), userData.get("last_name"), userData.get("email"), userData.get("password"), defSafeWord);
-            userRoleDAO.add(userId, UserRoleType.STUDENT);
-            intakesDAO.addNewStudent(intakeId, userId);
+            log.info("User Registration: " +
+                    "By - " + userAuthenticationDAO.checkUserAuthorization().getUserRoleType() + " " +
+                    userAuthenticationDAO.checkUserAuthorization().getUserId() + " " +
+                    userAuthenticationDAO.checkUserAuthorization().getUsername());
+
+            userRoleDAO.add(userId, roleType);
+            log.info("User Registration: New user registered as " + roleType + ". ");
+
+            switch (roleType) {
+                case STUDENT -> {
+                    int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
+                    LocalDate endDateOfIntake = intakesDAO.getIntakeById(intakeId).getEndDate();
+                    List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
+
+                    intakesDAO.addNewStudent(intakeId, userId);
+                    log.info("User Registration: New student registered into " + userData.get("intake") + " intake.");
+
+                    for (int moduleId : modulesInIntake) {
+                        submissionDAO.createSubmission(moduleId, userId, endDateOfIntake);
+                        presentationDAO.add(moduleId, 0, userId, endDateOfIntake);
+                    }
+                    log.info("User Registration: Module submission slots created for new student.");
+                    log.info("User Registration: Module presentation slots created for new student.");
+                }
+                case LECTURER -> {
+
+                }
+            }
+
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }

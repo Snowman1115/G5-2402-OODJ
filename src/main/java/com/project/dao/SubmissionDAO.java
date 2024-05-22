@@ -4,6 +4,7 @@ import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
 import com.project.common.constants.ReportStatus;
 import com.project.common.constants.ReportType;
+import com.project.common.utils.*;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
@@ -14,8 +15,10 @@ import com.project.pojo.ProjectModule;
 import com.project.pojo.Submission;
 import com.project.dao.ModuleDAO;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
 @Slf4j
@@ -192,6 +195,59 @@ public class SubmissionDAO {
             }
         }
         return list;
+    }
+
+    /**
+     * create new submission for new student
+     * @param moduleId
+     * @param studentId
+     * @param intakeEndDate
+     */
+    public void createSubmission(int moduleId, int studentId, LocalDate intakeEndDate) {
+        IDGenerator idGenerator = new LongIDGenerator();
+        List<Integer> currentSubmissionIds = new ArrayList<>();
+
+        for (Submission s : submissions) {
+            currentSubmissionIds.add(s.getSubmissionId());
+        }
+
+        int newSubmissionId = idGenerator.generateNewID(currentSubmissionIds);
+
+        Submission newSubmission = new Submission();
+        newSubmission.setSubmissionId(newSubmissionId);
+        newSubmission.setReportId(0);
+        newSubmission.setModuleId(moduleId);
+        newSubmission.setStudentId(studentId);
+        newSubmission.setSubmissionDueDate(intakeEndDate.atStartOfDay());
+        newSubmission.setReportStatus(ReportStatus.PENDING_SUBMIT);
+        newSubmission.setReportType(ReportType.REPORT);
+        newSubmission.setReportResult(0.0);
+        newSubmission.setComment("NA");
+        newSubmission.setSubmittedAt(LocalDateTime.now());
+        newSubmission.setMarkedAt(LocalDateTime.now());
+        newSubmission.setCreatedAt(LocalDateTime.now());
+        newSubmission.setUpdatedAt(LocalDateTime.now());
+        submissions.add(newSubmission);
+
+        JSONObject newSubmissionObj = new JSONObject();
+        newSubmissionObj.put("id", newSubmissionId);
+        newSubmissionObj.put("reportId", 0);
+        newSubmissionObj.put("moduleId", moduleId);
+        newSubmissionObj.put("studentId", studentId);
+        newSubmissionObj.put("submissionDueDate", DateTimeUtils.formatStrDateTime(intakeEndDate.atStartOfDay()));
+        newSubmissionObj.put("reportStatus", ReportStatus.PENDING_SUBMIT.toString());
+        newSubmissionObj.put("reportType", ReportType.REPORT.toString());
+        newSubmissionObj.put("reportResult", 0);
+        newSubmissionObj.put("comment", "NA");
+        newSubmissionObj.put("submitted_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        newSubmissionObj.put("marked_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        newSubmissionObj.put("created_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        newSubmissionObj.put("updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+
+        JsonHandler submissionJson = new JsonHandler();
+        submissionJson.encode(FileHandler.readFile(SUBMISSION_DATA));
+        submissionJson.addObject(newSubmissionObj, SUBMISSION_DATA);
+
     }
 
     /**
@@ -400,9 +456,5 @@ public class SubmissionDAO {
         userJson.encode(FileHandler.readFile(SUBMISSION_DATA));
         return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);
     }
-
-
-
-
 
 }

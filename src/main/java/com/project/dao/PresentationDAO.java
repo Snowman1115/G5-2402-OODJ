@@ -2,13 +2,12 @@ package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
-import com.project.common.utils.DateTimeUtils;
-import com.project.common.utils.FileHandler;
-import com.project.common.utils.JsonHandler;
-import com.project.common.utils.PropertiesReader;
+import com.project.common.utils.*;
 import com.project.pojo.Presentation;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -333,6 +332,45 @@ public class PresentationDAO {
 
             presentations.add(presentation);
         }
+    }
+
+    public void add(int moduleId, int lecturerId, int studentId, LocalDate moduleEndDate) {
+        List<Integer> currentIds = new ArrayList<>();
+        IDGenerator idGenerator = new LongIDGenerator();
+
+        for (Presentation p : presentations) {
+            currentIds.add(p.getPresentationId());
+        }
+
+        int newPresentationId = idGenerator.generateNewID(currentIds);
+        Presentation newPresentation = new Presentation();
+        newPresentation.setPresentationId(newPresentationId);
+        newPresentation.setModuleId(moduleId);
+        newPresentation.setLecturerId(lecturerId);
+        newPresentation.setStudentId(studentId);
+        newPresentation.setPresentationDueDate(moduleEndDate.atStartOfDay());
+        newPresentation.setPresentationDateTime(moduleEndDate.atStartOfDay());
+        newPresentation.setPresentationStatus(PresentationStatus.PENDING_BOOKING);
+        newPresentation.setPresentationResult(0.0);
+        newPresentation.setCreatedAt(LocalDateTime.now());
+        newPresentation.setUpdatedAt(LocalDateTime.now());
+        presentations.add(newPresentation);
+
+        JSONObject presentationObj = new JSONObject();
+        presentationObj.put("id", newPresentationId);
+        presentationObj.put("moduleId", moduleId);
+        presentationObj.put("lecturerId", lecturerId);
+        presentationObj.put("studentId", studentId);
+        presentationObj.put("presentationDueDate", DateTimeUtils.formatStrDateTime(moduleEndDate.atStartOfDay()));
+        presentationObj.put("presentationDateTime", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        presentationObj.put("presentationStatus", PresentationStatus.PENDING_BOOKING.toString());
+        presentationObj.put("presentationResult", 0);
+        presentationObj.put("created_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        presentationObj.put("updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+
+        JsonHandler presentationJson = new JsonHandler();
+        presentationJson.encode(FileHandler.readFile(PRESENTATION_DATA));
+        presentationJson.addObject(presentationObj, PRESENTATION_DATA);
     }
 
     // Update consultation data

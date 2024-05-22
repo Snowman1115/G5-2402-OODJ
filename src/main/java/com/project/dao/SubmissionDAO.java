@@ -237,7 +237,7 @@ public class SubmissionDAO {
         newSubmissionObj.put("submissionDueDate", DateTimeUtils.formatStrDateTime(intakeEndDate.atStartOfDay()));
         newSubmissionObj.put("reportStatus", ReportStatus.PENDING_SUBMIT.toString());
         newSubmissionObj.put("reportType", ReportType.REPORT.toString());
-        newSubmissionObj.put("reportResult", 0);
+        newSubmissionObj.put("reportResult", "0");
         newSubmissionObj.put("comment", "NA");
         newSubmissionObj.put("submitted_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
         newSubmissionObj.put("marked_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));

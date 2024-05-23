@@ -105,4 +105,6 @@ public class MessageConstant {
                                                            Once updated, you are not allowed to modify the marks !
                                                            """;
     public static final String WARNING_MARK_REPORT = "Are you sure you want to give the report marks and commment?";
+    public static final String WARNING_DEFAULT_SECURITY_PHRASE = "A default security phrase has been detected. Please change your security phrase immediately.";
+
 }

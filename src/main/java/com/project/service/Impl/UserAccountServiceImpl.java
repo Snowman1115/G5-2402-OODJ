@@ -67,6 +67,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         log.info("User: (" + account + ") ,Role: (" + userRoleType + ") login successful.");
 
+        // check User SecurityPhrase
+        if (userAccountDAO.checkUserSecurityPhrase(user.getUserId())) {
+            Dialog.AlertDialog(MessageConstant.WARNING_DEFAULT_SECURITY_PHRASE);
+        }
+
         switch (userRoleType) {
             case ADMIN -> { log.info("Redirecting (" + account + ") to Admin Panel."); return UserRoleType.ADMIN; }
             case PROJECT_MANAGER -> { log.info("Redirecting (" + account + ") to Project Manager Panel."); return UserRoleType.PROJECT_MANAGER; }

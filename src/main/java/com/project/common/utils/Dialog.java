@@ -84,6 +84,15 @@ public class Dialog {
         return result == JOptionPane.YES_OPTION;
     }
 
+    /**
+     * Prompt Alert Dialog
+     * @param message
+     */
+    public static void AlertDialog(String message){
+        ImageIcon aicon = new ImageIcon(ALERTICON);
+        JOptionPane.showMessageDialog(null,message, "Alert", JOptionPane.ERROR_MESSAGE,aicon);
+    }
+
     /*public static String InputCredentialDialog(String message){
         ImageIcon aicon = new ImageIcon("src/main/resources/Icons/Alert.png");
         String result = (String) JOptionPane.showInputDialog(null,"Please enter super admin credential","Alert",JOptionPane.WARNING_MESSAGE,aicon,null,null);

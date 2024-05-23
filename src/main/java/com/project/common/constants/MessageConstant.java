@@ -28,6 +28,7 @@ public class MessageConstant {
     public static final String SUCCESS_ASSIGNED_SUPERVISOR = "Supervisor And Second Marker Assigned Successfully.";
     public static final String SUCCESS_RESET_FIELD = "Field has been reset to default.";
     public static final String SUCCESS_UPDATE_ASSESSMENT_TYPE = "Assessment Type Has Been Updated Successfully.";
+    public static final String SUCCESS_SUBMIT_FEEDBACK = "Module Feedback Submitted Successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";
@@ -90,7 +91,7 @@ public class MessageConstant {
     public static final String CONDITION_EDIT_PROJECT_COMBOBOX = "No projects are available to edit.";
     public static final String CONDITION_PROJECT_RESULT_COMBOBOX = "No marked project results to view.";
     public static final String CONDITION_NO_SUBMITTED_PROJECT_COMBOBOX = "No marked project results to view.";
-    
+    public static final String CONDITION_NO_MODULE_CAN_FEEDBACK = "No module can feedback.";
     public static final String CONDITION_NO_MODULES_UNDER_LECTURER = "No modules to show.";
     public static final String CONDITION_NO_DATA_CHANGES = "No data changes detected.";
     public static final String CONDITION_NO_SUBMISSIONS_UNDER_MODULES = "No submissions to show.";

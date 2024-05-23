@@ -36,6 +36,20 @@ public class ModuleDAO {
     }
 
     /**
+     * Get Module by name
+     * @param moduleCode
+     * @return Module
+     */
+    public ProjectModule getModuleByCode(String moduleCode) {
+        for (ProjectModule module : modules) {
+            if (module.getModuleCode().equals(moduleCode)) {
+                return module;
+            }
+        }
+        return null;
+    }
+
+    /**
      * return all modules based on intake id
      * @param intakeId
      * @return

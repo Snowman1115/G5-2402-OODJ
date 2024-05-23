@@ -40,6 +40,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn1" -> {
                 menuBtn1.setBackground(ClickedBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -49,6 +50,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn2" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(ClickedBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -58,15 +60,17 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn3" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(ClickedBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
                 menuBtn8.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new AdminSalespersonManagement()).setVisible(true);
+                WindowsPane.add(new StudentFeedbackGui()).setVisible(true);
             } 
             case "menuBtn4" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -76,6 +80,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn5" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(ClickedBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -85,6 +90,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn6" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(ClickedBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -93,6 +99,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn7" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(ClickedBtnColor);
@@ -102,6 +109,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn8" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -111,6 +119,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn9" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -120,6 +129,7 @@ public class StudentGui extends javax.swing.JFrame {
             case "menuBtn10" -> {
                 menuBtn1.setBackground(DefaultBtnColor);
                 menuBtn2.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn6.setBackground(DefaultBtnColor);
                 menuBtn7.setBackground(DefaultBtnColor);
@@ -156,6 +166,9 @@ public class StudentGui extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        menuBtn3 = new javax.swing.JLabel();
         WindowsPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -285,7 +298,24 @@ public class StudentGui extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(230, 230, 230));
 
         jLabel5.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        jLabel5.setText(" Consultation Management");
+        jLabel5.setText(" Module Feedback");
+
+        jLabel6.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        jLabel6.setText(" Consultation Management");
+
+        jSeparator7.setForeground(new java.awt.Color(230, 230, 230));
+
+        menuBtn3.setBackground(new java.awt.Color(245, 245, 245));
+        menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuBtn3.setText("FEEDBACK");
+        menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn3.setOpaque(true);
+        menuBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
         MenuPanel.setLayout(MenuPanelLayout);
@@ -301,9 +331,19 @@ public class StudentGui extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator5)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSeparator6)
             .addComponent(menuBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))))
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jSeparator7)
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,12 +363,18 @@ public class StudentGui extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(menuBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(menuBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,6 +430,10 @@ public class StudentGui extends javax.swing.JFrame {
         ButtonClicked("menuBtn8");
     }//GEN-LAST:event_menuBtn8MouseClicked
 
+    private void menuBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn3MouseClicked
+        ButtonClicked("menuBtn3");
+    }//GEN-LAST:event_menuBtn3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -431,13 +481,16 @@ public class StudentGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private static javax.swing.JLabel menuBtn1;
     private static javax.swing.JLabel menuBtn2;
+    private static javax.swing.JLabel menuBtn3;
     private static javax.swing.JLabel menuBtn5;
     private static javax.swing.JLabel menuBtn6;
     private static javax.swing.JLabel menuBtn7;

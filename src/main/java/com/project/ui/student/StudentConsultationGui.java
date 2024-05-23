@@ -721,7 +721,7 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
 
         Panel2.add(MainTabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 630));
 
-        MainTabbedPanel.addTab("Concultation", Panel2);
+        MainTabbedPanel.addTab("Consultation", Panel2);
 
         getContentPane().add(MainTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 

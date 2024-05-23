@@ -77,12 +77,6 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     }
 
-    public static void main(String[] args) {
-        UserAccountService userAccountImp = new UserAccountServiceImpl();
-        System.out.println(userAccountImp.getUsersByRole(UserRoleType.LECTURER).getAll());
-
-    }
-
     /**
      * Verify User Security Phrase
      * @param account

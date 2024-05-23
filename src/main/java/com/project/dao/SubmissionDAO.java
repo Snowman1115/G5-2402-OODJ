@@ -101,11 +101,6 @@ public class SubmissionDAO {
         return list;
     }
 
-//    public static void main(String[] args) {
-//        SubmissionDAO sub = new SubmissionDAO();
-//        System.out.println(sub.getSubmissionByModuleId(36887009));  
-//    }
-
     /**
      * Get All Submission Status By Student Id
      *
@@ -362,6 +357,11 @@ public class SubmissionDAO {
             submission.setUpdatedAt(DateTimeUtils.formatDateTime(obj.get("updated_at")));
 
             submissions.add(submission);
+
+            if (submission.getSubmissionDueDate().isBefore(LocalDateTime.now()) && submission.getReportStatus().equals(ReportStatus.PENDING_SUBMIT)) {
+                update(submission.getSubmissionId(), "reportStatus", ReportStatus.OVERDUE.toString());
+                update(submission.getSubmissionId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+            }
         }
     }
     /**

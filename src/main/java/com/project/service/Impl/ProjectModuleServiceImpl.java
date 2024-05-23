@@ -236,10 +236,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         }
 
     }
-//    public static void main(String[] args) {
-//        ProjectModuleServiceImpl test=new ProjectModuleServiceImpl();
-//        System.out.println(test.getModuleDetailsByFirstMarkerId(88608036));
-//    }
 
 
     @Override
@@ -305,16 +301,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
 
         return null;
     }
-
-//    For debug purpose, run the below main method to view the data
-    public static void main(String[] args) {
-        ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
-        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
-
-        System.out.println(prje.getReportDetailsById(2127241));
-    }
-
-
 
 }
 

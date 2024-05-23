@@ -50,7 +50,7 @@ public class AddStudent extends javax.swing.JInternalFrame {
     }
 
     public String randomGenerator(int length) {
-        String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
         
@@ -290,7 +290,7 @@ public class AddStudent extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed
-        password.setText(randomGenerator(15));
+        password.setText(randomGenerator(8));
     }//GEN-LAST:event_generateBtnActionPerformed
 
 

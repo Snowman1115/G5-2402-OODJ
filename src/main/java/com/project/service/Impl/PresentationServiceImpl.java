@@ -68,8 +68,14 @@ public class PresentationServiceImpl implements PresentationService {
             ProjectModule module = moduleDAO.getModuleById(Integer.valueOf(map.get("moduleId")));
             mappedList.put("id", map.get("id"));
             mappedList.put("moduleName",module.getModuleCode().toString());
-            UserAccount userAccount = userAccountDAO.getUserAccountById(Integer.valueOf(map.get("lecturerId")));
-            mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
+
+            if(map.get("lecturerId").equals("0")) {
+                mappedList.put("lecturerName", "Lecturer Not Assigned.");
+            } else {
+                UserAccount userAccount = userAccountDAO.getUserAccountById(Integer.valueOf(map.get("lecturerId")));
+                mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
+            }
+
             mappedList.put("dueDate", map.get("dueDate"));
             if (map.get("Status").equals("PENDING_BOOKING")) {
                 mappedList.put("presentationDate", "EMPTY");

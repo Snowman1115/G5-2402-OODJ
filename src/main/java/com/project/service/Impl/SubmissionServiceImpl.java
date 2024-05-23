@@ -53,8 +53,12 @@ public class SubmissionServiceImpl implements SubmissionService {
             ProjectModule module = moduleDAO.getModuleById(Integer.parseInt(map.get("moduleId")));
             mappedList.put("moduleName", module.getModuleCode());
 
-            UserAccount userAccount = userAccountDAO.getUserAccountById(module.getFirstMarker());
-            mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
+            if(module.getFirstMarker().equals(0)) {
+                mappedList.put("lecturerName", "Lecturer Not Assigned.");
+            } else {
+                UserAccount userAccount = userAccountDAO.getUserAccountById(module.getFirstMarker());
+                mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
+            }
 
             mappedList.put("reportId", map.get("reportId"));
 

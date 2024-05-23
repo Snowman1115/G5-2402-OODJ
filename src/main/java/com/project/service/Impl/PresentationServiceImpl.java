@@ -350,8 +350,8 @@ public class PresentationServiceImpl implements PresentationService {
     }
         
     //For debug purpose, run the below main method to view the data
-    public static void main(String[] args) {
-        PresentationServiceImpl consult = new PresentationServiceImpl();
-        System.out.println(consult.getNotYetGradedPresentationByLecId(88608036));
-    }
+//    public static void main(String[] args) {
+//        PresentationServiceImpl consult = new PresentationServiceImpl();
+//        System.out.println(consult.getNotYetGradedPresentationByLecId(88608036));
+//    }
 }

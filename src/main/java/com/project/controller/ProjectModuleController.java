@@ -4,10 +4,13 @@
  */
 package com.project.controller;
 
+import com.project.common.utils.JsonHandler;
 import com.project.service.Impl.ProjectModuleServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.ProjectModuleService;
 import com.project.service.UserAuthenticationService;
+
+import java.time.LocalDate;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,13 +31,23 @@ public class ProjectModuleController {
      */
     
     // Method to get all module details with first marker ID
-    public static List getAllModuleDetailsByLecId() {
-        return projectModuleService.getAllModuleDetailsByLecId(getAuthenticatedUserId());
+    public static List getAllModuleDetailsByFirstMarkerId() {
+        return projectModuleService.getAllModuleDetailsByFirstMarkerId(getAuthenticatedUserId());
     }
     
     // Method to get all module details with second marker ID
     public static List getAllModuleDetailsBySecondMarkerId() {
         return projectModuleService.getAllModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
+    }
+
+    // Method to get module details with first marker ID
+    public static List getModuleDetailsByFirstMarkerId() {
+        return projectModuleService.getModuleDetailsByFirstMarkerId(getAuthenticatedUserId());
+    }
+
+    // Method to get module details with second marker ID
+    public static List getModuleDetailsBySecondMarkerId() {
+        return projectModuleService.getModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
     }
     //Jin Xun - Project Manager
     // Method to get all module details by project manager ID
@@ -45,9 +58,9 @@ public class ProjectModuleController {
     public static List getModuleById(Integer moduleId) {
         return projectModuleService.getModuleById(moduleId);
     }
-    
+
      /**
-     * Save Supervisor and Second Marker In Module 
+     * Save Supervisor and Second Marker In Module
      * @param moduleDetails
      * @return Boolean
      */
@@ -62,15 +75,29 @@ public class ProjectModuleController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
-    
+
+    /**
+     * add new module
+     * @param intakeId
+     * @param moduleCode
+     * @param projectManagerId
+     * @param startDate
+     * @param endDate
+     * @return boolean
+     */
+    public static boolean addNewModule (int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate) { return projectModuleService.addModule(intakeId, moduleCode, projectManagerId, startDate, endDate); }
+
+
+
+
     public static List getModuleTypeById(Integer moduleId) {
         return projectModuleService.getModuleTypeById(moduleId);
     }
-    
+
     public static List getAllReport(){
         return projectModuleService.getAllReportDetails();
     }
-    
+
     public static List getReportById(Integer reportId){
         return projectModuleService.getReportDetailsById(reportId);
     }

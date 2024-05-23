@@ -2,6 +2,7 @@ package com.project.ui.lecturer;
 
 import com.github.lgooddatepicker.optionalusertools.DateTimeChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent;
+import com.project.ui.student.*;
 import com.project.common.constants.MessageConstant;
 import com.project.common.utils.Dialog;
 import javax.swing.*;
@@ -12,6 +13,10 @@ import com.project.controller.ConsultationController;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import org.bouncycastle.tsp.TSPUtil;
+import org.icepdf.ri.common.ComponentKeyBinding;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -52,7 +57,7 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
     }
     
     private void refreshDashboard() {
-        Map<String, Integer> map = ConsultationController.getUpcomingNFinishedConsultationForLecturer();
+        Map<String, Integer> map = ConsultationController.getAvailableNScheduledConsultationForLecturer();
         availableConsultation.setText(map.get("available").toString());
         upcomingConsultation.setText(map.get("upcoming").toString());
 

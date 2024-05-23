@@ -326,7 +326,7 @@ public class ConsultationDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             Consultation consultation = new Consultation();
             consultation.setConsultationId(obj.getInt("id"));

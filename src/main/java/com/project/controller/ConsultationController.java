@@ -97,7 +97,7 @@ public class ConsultationController {
      * Get Number of Student's Upcoming and Finished Consultation
      * @return Map of Integer
      */
-    public static Map<String, Integer> getUpcomingNFinishedConsultationForLecturer() {
+    public static Map<String, Integer> getAvailableNScheduledConsultationForLecturer() {
         return consultationService.getAvailableNSchduledConsultationForLecturer(getAuthenticatedUserId());
     }
     

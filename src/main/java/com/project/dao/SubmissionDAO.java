@@ -10,7 +10,9 @@ import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.pojo.Intake;
 import com.project.pojo.Presentation;
+import com.project.pojo.ProjectModule;
 import com.project.pojo.Submission;
+import com.project.dao.ModuleDAO;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
@@ -21,6 +23,7 @@ public class SubmissionDAO {
 
     private static final String SUBMISSION_DATA = PropertiesReader.getProperty("SubmissionData");
     private static List<Submission> submissions = new ArrayList<>();
+    private ModuleDAO moduleDAO=new ModuleDAO();
 
     static {
         loadSubmissionData();
@@ -80,6 +83,22 @@ public class SubmissionDAO {
         }
         return null;
     }
+     /**
+     * Get All Submission Details By Module Id
+     *
+     * @param moduleId
+     * @return List of Submission
+     */
+    public List<Submission> getSubmissionListByModuleId(Integer moduleId) {
+        List<Submission> list = new ArrayList<>();
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                list.add(submission);
+            }
+        }
+        return list;
+    }
+
 //    public static void main(String[] args) {
 //        SubmissionDAO sub = new SubmissionDAO();
 //        System.out.println(sub.getSubmissionByModuleId(36887009));  
@@ -177,6 +196,90 @@ public class SubmissionDAO {
     }
 
     /**
+     * Get All Pending Marking Submission (First and Second Marker) By Lecturer ID
+     * @param lecturerId
+     * @return Map of Number
+     */
+    public Map<String, Integer> getPendingMarkingSubmissionForLecturer(Integer lecturerId) {
+        Map<String, Integer> map = new HashMap<>();
+        Integer pendingMarkingFirstMarkerSum = 0;
+        Integer pendingMarkingSecondMarkerSum = 0;
+        List<ProjectModule> moduleList1=moduleDAO.getModuleListByFirstMarkerId(lecturerId);
+        List<ProjectModule> moduleList2=moduleDAO.getModuleListBySecondMarkerId(lecturerId);
+        for(Submission submission:submissions)
+        {
+            for (ProjectModule module:moduleList1)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getFirstMarker().equals(lecturerId))
+                {
+                    if(submission.getReportStatus().equals(ReportStatus.PENDING_MARKING) || submission.getReportStatus().equals(ReportStatus.OVERDUE))
+                    {
+                        pendingMarkingFirstMarkerSum=pendingMarkingFirstMarkerSum+1;
+                        map.put("firstMarkerPendingMarking",pendingMarkingFirstMarkerSum);
+                    }
+                }
+            }
+            for(ProjectModule module:moduleList2)
+            {
+                if(submission.getModuleId().equals(module.getModuleId()) && module.getSecondMarker().equals(lecturerId))
+                {
+                    if(submission.getReportStatus().equals(ReportStatus.MARKED_1))
+                    {
+                        pendingMarkingSecondMarkerSum=pendingMarkingSecondMarkerSum+1;
+                    }
+                }
+            }
+        }
+        map.put("firstMarkerPendingMarking",pendingMarkingFirstMarkerSum);
+        map.put("secondMarkerPendingMarking",pendingMarkingSecondMarkerSum);
+        return map;
+    }
+
+    /**
+     * Update Submission Status To Marked_1 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+
+    public Boolean updateSubmissionMarksByIdForFirstMarker(Integer submissionId, Double marks, String comment)
+    {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                update(submissionId, "reportStatus", ReportStatus.MARKED_1.toString());
+                update(submissionId, "reportResult", marks.toString());
+                update(submissionId, "comment", comment);
+                update(submissionId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Update Submission Status To Marked_2 By Submission Id
+     * @param submissionId
+     * @param marks
+     * @param comment
+     * @return Boolean
+     */
+
+    public Boolean updateSubmissionMarksByIdForSecondMarker(Integer submissionId, Double marks, String comment)
+    {
+        for (Submission submission : submissions) {
+            if (submission.getSubmissionId().equals(submissionId)) {
+                update(submissionId, "reportStatus", ReportStatus.MARKED_2.toString());
+                update(submissionId, "reportResult", marks.toString());
+                update(submissionId, "comment", comment);
+                update(submissionId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Preload Data into presentations Array
      */
     private static void loadSubmissionData() {
@@ -185,7 +288,7 @@ public class SubmissionDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             Submission submission = new Submission();
 

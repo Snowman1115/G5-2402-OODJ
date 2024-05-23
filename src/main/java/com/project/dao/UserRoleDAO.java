@@ -6,8 +6,8 @@ import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.pojo.UserRole;
+import org.json.simple.JSONObject;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,11 +52,28 @@ public class UserRoleDAO {
     public List<Integer> filterUserByRole(UserRoleType roleType) {
         List<Integer> list = new ArrayList<>();
         for (UserRole userRole : user_roles) {
-            if (userRole.getUserRoleType().equals(roleType)) {
+            if (userRole.getUserRoleType().equals(roleType) && userRole.getAccountStatus().equals(AccountStatus.isActive)) {
                 list.add(userRole.getUserId());
             }
         }
         return list;
+    }
+
+    public void add(int userId, UserRoleType roleType) {
+        UserRole ur = new UserRole();
+        ur.setUserId(userId);
+        ur.setUserRoleType(roleType);
+        ur.setAccountStatus(AccountStatus.isActive);
+        user_roles.add(ur);
+
+        JSONObject newRecord = new JSONObject();
+        newRecord.put("id", userId);
+        newRecord.put("roleType", roleType.toString());
+        newRecord.put("status", AccountStatus.isActive.toString());
+
+        JsonHandler userRolesJson = new JsonHandler();
+        userRolesJson.encode(FileHandler.readFile(USER_ACCOUNT));
+        userRolesJson.addObject(newRecord, USER_ACCOUNT);
     }
 
     /**
@@ -69,7 +86,7 @@ public class UserRoleDAO {
 
         for (int i=0; i<(userRole.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userRole.getObject(i));
+            obj.setObject(userRole.getObject(i));
 
             UserRole ur = new UserRole();
             ur.setUserId(obj.getInt("id"));
@@ -89,5 +106,4 @@ public class UserRoleDAO {
             user_roles.add(ur);
         }
     }
-
 }

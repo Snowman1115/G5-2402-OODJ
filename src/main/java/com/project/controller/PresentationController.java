@@ -137,7 +137,7 @@ public class PresentationController {
     /**
      * Update Booked Presentation To Marked By Consultation Id
      * @param presentationId
-     * @param
+     * @param marks
      * @return Boolean
      */
     public static Boolean updatePresentationMarksById(Integer presentationId, Double marks) {

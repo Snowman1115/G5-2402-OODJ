@@ -1,16 +1,16 @@
 package com.project.dao;
 
-import com.project.common.utils.DateTimeUtils;
-import com.project.common.utils.FileHandler;
-import com.project.common.utils.JsonHandler;
-import com.project.common.utils.PropertiesReader;
+import com.project.common.utils.*;
 import com.project.pojo.Intake;
-import com.project.pojo.ProjectModule;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class IntakeDAO {
@@ -23,7 +23,10 @@ public class IntakeDAO {
     }
     
 //    public static void main(String[] args) {
-//        System.out.println(intakes);
+//        IntakeDAO intakes = new IntakeDAO();
+//        intakes.addNewStudent(41902888, 111222);
+//        intakes.addNewStudent(41902888, 222111);
+//        intakes.addNewStudent(41902888, 333222);
 //    }
 
     /**
@@ -41,6 +44,21 @@ public class IntakeDAO {
     }
 
     /**
+     * get intake id by intake code
+     * @param intakeCode
+     * @return
+     */
+    public int getIntakeIdByIntakeCode(String intakeCode) {
+        for (Intake i : intakes) {
+            if (i.getIntakeCode().equals(intakeCode)) {
+                return i.getIntakeId();
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      * Preload Data into presentations Array
      */
     private static void loadConsultationData() {
@@ -49,7 +67,7 @@ public class IntakeDAO {
 
         for (int i = 0; i < (userData.getAll().size()); i++) {
             JsonHandler obj = new JsonHandler();
-            obj.cloneObject(userData.getObject(i));
+            obj.setObject(userData.getObject(i));
 
             Intake intake = new Intake();
 
@@ -57,11 +75,14 @@ public class IntakeDAO {
             intake.setIntakeCode(obj.get("intakeCode"));
 
             String studentStr = obj.get("studentList");
-            String[] studentArray = studentStr.split(",");
-            List<String> studentListStr = Arrays.asList(studentArray);
             ArrayList<Integer> studentList = new ArrayList<>();
-            for (String list : studentListStr) {
-                studentList.add(Integer.parseInt(list));
+
+            if (!studentStr.isEmpty()) {
+                String[] studentArray = studentStr.split(",");
+                List<String> studentListStr = Arrays.asList(studentArray);
+                for (String list : studentListStr) {
+                    studentList.add(Integer.parseInt(list));
+                }
             }
 
             intake.setStudentList(studentList);
@@ -74,7 +95,68 @@ public class IntakeDAO {
         }
     }
 
+    /**
+     * get all intakes
+     * @return intakes
+     */
     public List<Intake> getAllIntakes() { return intakes; }
+
+    /**
+     * add new intake
+     * @param intakeCode
+     * @param startDate
+     * @param endDate
+     * @return int
+     */
+    public Integer addIntake(String intakeCode, LocalDate startDate, LocalDate endDate) {
+        JsonHandler intakesJson = new JsonHandler();
+        List<Integer> idList = new ArrayList<>();
+        IDGenerator idGenerator = new LongIDGenerator();
+
+        intakesJson.encode(FileHandler.readFile(INTAKE_DATA));
+
+        for (Intake itk : intakes) {
+            idList.add(itk.getIntakeId());
+        }
+        int newIntakeId = idGenerator.generateNewID(idList);
+
+        Intake newIntake = new Intake();
+        newIntake.setIntakeId(newIntakeId);
+        newIntake.setIntakeCode(intakeCode);
+        newIntake.setStudentList(new ArrayList<>());
+        newIntake.setStartDate(startDate);
+        newIntake.setEndDate(endDate);
+        newIntake.setCreatedAt(LocalDateTime.now());
+        newIntake.setUpdatedAt(LocalDateTime.now());
+        intakes.add(newIntake);
+
+        JSONObject newIntakeObj = new JSONObject();
+        newIntakeObj.put("id", newIntakeId);
+        newIntakeObj.put("intakeCode", intakeCode);
+        newIntakeObj.put("studentList", "");
+        newIntakeObj.put("startDate", DateTimeUtils.formatStrDate(startDate));
+        newIntakeObj.put("endDate", DateTimeUtils.formatStrDate(endDate));
+        newIntakeObj.put("created_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+        newIntakeObj.put("updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+
+        intakesJson.addObject(newIntakeObj, INTAKE_DATA);
+
+        return newIntakeId;
+    }
+
+    public void addNewStudent(int intakeId, int studentId) {
+        for (Intake itk : intakes) {
+            if (itk.getIntakeId() == intakeId) {
+                itk.getStudentList().add(studentId);
+                String students = itk.getStudentList().stream().map(String::valueOf).collect(Collectors.joining(","));
+
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(FileHandler.readFile(INTAKE_DATA));
+                userJson.update(itk.getIntakeId(), "studentList", students, INTAKE_DATA);
+                userJson.update(itk.getIntakeId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()), INTAKE_DATA);
+            }
+        }
+    }
 
     /*
 
@@ -122,20 +204,8 @@ public class IntakeDAO {
 
     }
 
-    *//**
-     * Store updated data into text file
-     * @param consultationId
-     * @param attribute
-     * @param value
-     * @return
-     *//*
-    private static boolean store(Integer consultationId, String attribute, String value) {
-        // System.out.println(consultationId + attribute + value);
-        JsonHandler userJson = new JsonHandler();
-        userJson.encode(FileHandler.readFile(CONSULTATION_DATA));
-        return userJson.update(consultationId, attribute, value, CONSULTATION_DATA);
-    }
-*/
+    */
+
 
 
 }

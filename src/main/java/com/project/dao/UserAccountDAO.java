@@ -1,10 +1,7 @@
 package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
-import com.project.common.utils.DateTimeUtils;
-import com.project.common.utils.FileHandler;
-import com.project.common.utils.PropertiesReader;
-import com.project.common.utils.JsonHandler;
+import com.project.common.utils.*;
 import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
 
@@ -387,6 +384,18 @@ public class UserAccountDAO {
         }
 
         log.error("Error: " + MessageConstant.ERROR_USER_NOT_FOUND);
+        return false;
+    }
+
+    public boolean checkUserSecurityPhrase(Integer userId) {
+        for (UserAccount user : users) {
+            if (user.getUserId().equals(userId)) {
+                String name = user.getFirstName()+user.getLastName();
+                if (name.equals(user.getSecurityPhrase())) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 

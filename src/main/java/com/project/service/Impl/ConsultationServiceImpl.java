@@ -292,9 +292,18 @@ public class ConsultationServiceImpl implements ConsultationService {
                 return false;
             }
         }
-        consultationDAO.createConsultationSlot(lecturerId, dateTime);
-        Dialog.SuccessDialog(MessageConstant.SUCCESS_CONSULTATION_CREATED);
-        return true;
+        try
+        {
+            consultationDAO.createConsultationSlot(lecturerId, dateTime);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_CONSULTATION_CREATED);
+            return true;
+        }
+        catch (Exception e)
+        {
+            Dialog.SuccessDialog(MessageConstant.ERROR_CREATE_CONSULTATION_FAILED);
+            return false;
+        }
+
     }
     
      /**

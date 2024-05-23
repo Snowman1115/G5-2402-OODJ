@@ -1089,6 +1089,8 @@
                     </Component>
                     <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="dateTimePicker1">
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DateTimePicker()"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="dateTimePicker1.datePicker.getComponentDateTextField().setEditable(false);&#xa;dateTimePicker1.timePicker.getComponentTimeTextField().setEditable(false);"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                       </AuxValues>
                       <Constraints>
@@ -1305,6 +1307,10 @@
                       </Constraints>
                     </Component>
                     <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="dateTimePicker2">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DateTimePicker()"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="dateTimePicker2.datePicker.getComponentDateTextField().setEditable(false);&#xa;dateTimePicker2.timePicker.getComponentTimeTextField().setEditable(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="390" y="170" width="330" height="35"/>
@@ -1689,6 +1695,10 @@
                       </Constraints>
                     </Component>
                     <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="dateTimePicker3">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DateTimePicker()"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="dateTimePicker3.datePicker.getComponentDateTextField().setEditable(false);&#xa;dateTimePicker3.timePicker.getComponentTimeTextField().setEditable(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="390" y="170" width="330" height="35"/>

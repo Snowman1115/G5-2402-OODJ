@@ -46,7 +46,10 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         dateTimePicker1.addDateTimeChangeListener(new DateTimeChangeListener() {
             @Override
             public void dateOrTimeChanged(DateTimeChangeEvent event) {
-                checkDateTime1();
+                try {
+                    checkDateTime1();
+                } catch (Exception e){
+                }
             }
 
         });
@@ -54,7 +57,10 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         dateTimePicker2.addDateTimeChangeListener(new DateTimeChangeListener() {
             @Override
             public void dateOrTimeChanged(DateTimeChangeEvent event) {
-                checkDateTime2();
+                try {
+                    checkDateTime2();
+                } catch (Exception e){
+                }
             }
 
         });
@@ -62,7 +68,10 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
         dateTimePicker3.addDateTimeChangeListener(new DateTimeChangeListener() {
             @Override
             public void dateOrTimeChanged(DateTimeChangeEvent event) {
-                checkDateTime3();
+                try {
+                    checkDateTime3();
+                } catch (Exception e){
+                }
             }
 
         });
@@ -164,6 +173,11 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     }
 
     private void checkDateTime1() {
+        if (dateTimePicker1.getDateTimePermissive() == null) {
+            LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(0, 0, 0));
+            dateTimePicker1.setDateTimePermissive(localDateTime);
+        }
+
         if (dateTimePicker1.getDateTimePermissive().toLocalDate().isBefore(LocalDate.now())) {
             Dialog.ErrorDialog(MessageConstant.ERROR_PAST_DATE_SELECTION);
             fillInDateTime();
@@ -180,6 +194,11 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     }
     
     private void checkDateTime2() {
+        if (dateTimePicker2.getDateTimePermissive() == null) {
+            LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(0, 0, 0));
+            dateTimePicker2.setDateTimePermissive(localDateTime);
+        }
+
         if (!presentationComboBox2.getSelectedItem().equals(MessageConstant.CONDITION_EDIT_PRESENTATION_COMBOBOX)) {
             if (dateTimePicker2.getDateTimePermissive().isAfter(DateTimeUtils.formatDateTime(JField30.getText()))) {
                 Dialog.ErrorDialog(MessageConstant.ERROR_OVER_DATE_SELECTION);
@@ -189,6 +208,11 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
     }
 
     private void checkDateTime3() {
+        if (dateTimePicker3.getDateTimePermissive() == null) {
+            LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(0, 0, 0));
+            dateTimePicker3.setDateTimePermissive(localDateTime);
+        }
+
         if (!presentationComboBox3.getSelectedItem().equals(MessageConstant.CONDITION_REJECT_PRESENTATION_COMBOBOX)) {
             if (dateTimePicker3.getDateTimePermissive().isAfter(DateTimeUtils.formatDateTime(JField34.getText()))) {
                 Dialog.ErrorDialog(MessageConstant.ERROR_OVER_DATE_SELECTION);
@@ -968,6 +992,9 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
             }
         });
         Panel4.add(JField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 330, 35));
+
+        dateTimePicker1.datePicker.getComponentDateTextField().setEditable(false);
+        dateTimePicker1.timePicker.getComponentTimeTextField().setEditable(false);
         Panel4.add(dateTimePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
 
         MainTabbedPanel1.addTab("Book", Panel4);
@@ -1054,6 +1081,9 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
             }
         });
         Panel8.add(JField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 35));
+
+        dateTimePicker2.datePicker.getComponentDateTextField().setEditable(false);
+        dateTimePicker2.timePicker.getComponentTimeTextField().setEditable(false);
         Panel8.add(dateTimePicker2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
 
         JField26.setEditable(false);
@@ -1211,6 +1241,9 @@ public class StudentPresentationGui extends javax.swing.JInternalFrame {
             }
         });
         Panel9.add(JField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 35));
+
+        dateTimePicker3.datePicker.getComponentDateTextField().setEditable(false);
+        dateTimePicker3.timePicker.getComponentTimeTextField().setEditable(false);
         Panel9.add(dateTimePicker3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 330, 35));
 
         JField32.setEditable(false);

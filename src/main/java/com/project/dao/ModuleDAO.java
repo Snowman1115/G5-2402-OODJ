@@ -38,6 +38,20 @@ public class ModuleDAO {
     }
 
     /**
+     * Get Module by name
+     * @param moduleCode
+     * @return Module
+     */
+    public ProjectModule getModuleByCode(String moduleCode) {
+        for (ProjectModule module : modules) {
+            if (module.getModuleCode().equals(moduleCode)) {
+                return module;
+            }
+        }
+        return null;
+    }
+
+    /**
      * return all modules based on intake id
      * @param intakeId
      * @return
@@ -242,13 +256,6 @@ public class ModuleDAO {
             }
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        ModuleDAO test=new ModuleDAO();
-//        System.out.println(test.getModuleByLecturerId(88608036));
-//        System.out.println(test.getModuleByProjectManagerId(39904006));
-        System.out.println(test.getModuleByModuleId(36887009));
     }
 
     /**

@@ -24,8 +24,6 @@ public class SubmissionServiceImpl implements SubmissionService {
     private ModuleDAO moduleDAO = new ModuleDAO();
     private ReportDAO reportDAO = new ReportDAO();
     private IntakeDAO intakeDAO = new IntakeDAO();
-    private static List<ProjectModule> modules = new ArrayList<>();
-//    private static List<Submission> submissions = new ArrayList<>();
 
     /**
      * Get All Submission Status By Student Id
@@ -53,8 +51,12 @@ public class SubmissionServiceImpl implements SubmissionService {
             ProjectModule module = moduleDAO.getModuleById(Integer.parseInt(map.get("moduleId")));
             mappedList.put("moduleName", module.getModuleCode());
 
-            UserAccount userAccount = userAccountDAO.getUserAccountById(module.getFirstMarker());
-            mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
+            if(module.getFirstMarker().equals(0)) {
+                mappedList.put("lecturerName", "Lecturer Not Assigned.");
+            } else {
+                UserAccount userAccount = userAccountDAO.getUserAccountById(module.getFirstMarker());
+                mappedList.put("lecturerName", userAccount.getFirstName() + " " + userAccount.getLastName());
+            }
 
             mappedList.put("reportId", map.get("reportId"));
 
@@ -517,16 +519,6 @@ public class SubmissionServiceImpl implements SubmissionService {
             return false;
         }        
     }
-//    public static void main(String[] args) {
-//        SubmissionServiceImpl test=new SubmissionServiceImpl();
-//        System.out.println(test.getPendingMarkingSubmissionByModuleId(36887009));
-//    }
-
-
-//
-//    public List getAssessmentByModuleId(Integer moduleId){
-//
-//    }
 
     @Override
     public List getAssessmentByModuleId(Integer moduleId) {
@@ -547,10 +539,4 @@ public class SubmissionServiceImpl implements SubmissionService {
         }
     }
 
-    public static void main(String[] args) {
-        SubmissionServiceImpl test = new SubmissionServiceImpl();
-        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
-
-        System.out.println(test.saveAssessmentType(36887009,"CAPSTONE_1"));
-    }
 }

@@ -164,6 +164,18 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     /**
+     * admin update user details
+     * @param userId
+     * @param firstName
+     * @param lastName
+     * @return
+     */
+    @Override
+    public boolean updateProfileById(Integer userId, String firstName, String lastName) {
+        return userAccountDAO.update(userId, "first_name", firstName) && userAccountDAO.update(userId, "last_name", lastName);
+    }
+
+    /**
      * Change Password
      * @param userId
      * @param oldPassword
@@ -342,5 +354,15 @@ public class UserAccountServiceImpl implements UserAccountService {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    /**
+     * Admin reset user password
+     * @param newPassword
+     * @return
+     */
+    @Override
+    public boolean resetPassword(int userId, String newPassword) {
+        return userAccountDAO.resetPasswordBySecurityPhrase(userId, newPassword);
     }
 }

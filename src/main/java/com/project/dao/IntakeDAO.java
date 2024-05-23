@@ -1,10 +1,14 @@
 package com.project.dao;
 
+import com.project.common.constants.MessageConstant;
 import com.project.common.utils.*;
 import com.project.pojo.Intake;
+import com.project.pojo.UserAccount;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -144,9 +148,14 @@ public class IntakeDAO {
         return newIntakeId;
     }
 
+    /**
+     * register new student into an intake
+     * @param intakeId
+     * @param studentId
+     */
     public void addNewStudent(int intakeId, int studentId) {
         for (Intake itk : intakes) {
-            if (itk.getIntakeId() == intakeId) {
+            if (itk.getIntakeId().equals(intakeId)) {
                 itk.getStudentList().add(studentId);
                 String students = itk.getStudentList().stream().map(String::valueOf).collect(Collectors.joining(","));
 
@@ -157,6 +166,26 @@ public class IntakeDAO {
             }
         }
     }
+
+    /**
+     * remove student from an intake
+     * @param intakeId
+     * @param studentId
+     */
+    public void removeStudent(int intakeId, int studentId) {
+        for (Intake itk : intakes) {
+            if (itk.getIntakeId().equals(intakeId)) {
+                itk.getStudentList().remove((Integer)studentId);
+                String students = itk.getStudentList().stream().map(String::valueOf).collect(Collectors.joining(","));
+
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(FileHandler.readFile(INTAKE_DATA));
+                userJson.update(itk.getIntakeId(), "studentList", students, INTAKE_DATA);
+                userJson.update(itk.getIntakeId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()), INTAKE_DATA);
+            }
+        }
+    }
+
 
     /*
 

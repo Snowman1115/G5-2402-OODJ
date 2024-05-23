@@ -29,6 +29,15 @@ public interface UserAccountService {
     boolean updateProfileById(Integer userId, String username, String firstName, String lastName, String email);
 
     /**
+     * admin update user details
+     * @param userId
+     * @param firstName
+     * @param lastName
+     * @return
+     */
+    boolean updateProfileById(Integer userId, String firstName, String lastName);
+
+    /**
      * Verify User Security Phrase
      * @param account
      * @param securityPhrase
@@ -87,6 +96,20 @@ public interface UserAccountService {
      * @return
      */
     public Integer getNewId();
+
+    /**
+     * register new user
+     * @param userData
+     * @param roleType
+     * @return
+     */
     public boolean registerNewUser(JsonHandler userData, UserRoleType roleType);
+
+    /**
+     * Admin reset password
+     * @param newPassword
+     * @return
+     */
+    public boolean resetPassword(int userId, String newPassword);
 
 }

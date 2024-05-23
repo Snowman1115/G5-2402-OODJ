@@ -29,5 +29,12 @@ public interface IntakeService {
      */
     public List<String> getDateValidIntakes();
 
+    /**
+     * get student intake code
+     * @param studentId
+     * @return
+     */
     public String getIntakeCodeByStudentId(int studentId);
+
+    public boolean updateIntake(int studentId, String newIntakeCode, String oldIntakeCode);
 }

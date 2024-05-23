@@ -9,6 +9,7 @@ package com.project.controller;
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.DataValidator;
 import com.project.common.utils.JsonHandler;
+import com.project.dao.UserAuthenticationDAO;
 import com.project.pojo.UserAccount;
 import com.project.pojo.UserAuthentication;
 import com.project.service.Impl.UserAccountServiceImpl;
@@ -89,7 +90,8 @@ public class UserAccountController {
                 || !DataValidator.validateEmail(email)) {
             return false;
         }
-        log.info("Update Profile: {} - {} {} {} {}", userId, username, firstName, lastName, email);
+        log.info("Update User Details: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
+        log.info("Update Profile: {} - {}", userId, username);
         return userAccountService.updateProfileById(userId, username, firstName, lastName, email);
     }
 
@@ -110,6 +112,7 @@ public class UserAccountController {
                 || !DataValidator.validatePasswordNConfirmPassword(newPassword,confirmPassword)) {
             return false;
         }
+
         log.info("User Change Password : " + userId);
         return userAccountService.changePasswordById(userId, oldPassword, newPassword);
     }
@@ -171,6 +174,16 @@ public class UserAccountController {
     }
 
     /**
+     * reset user account password
+     * @param userId
+     * @param newPassword
+     * @return
+     */
+    public static boolean resetPassword(int userId, String newPassword) {
+        return userAccountService.resetPassword(userId, newPassword);
+    }
+
+    /**
      * Logout Function
      */
     public static void logout() {
@@ -209,11 +222,7 @@ public class UserAccountController {
     public static JsonHandler getAdmins() {
         return userAccountService.getUsersByRole(UserRoleType.ADMIN);
     }
-    
-//    
-//    public static List getAllLecturer(){
-//        return userAccountService.getAllLecturer(UserRoleType.LECTURER);
-//    }
+
     
 
     /**
@@ -233,4 +242,10 @@ public class UserAccountController {
     public static boolean addStudent(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.STUDENT); }
     public static boolean addLecturer(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.LECTURER); }
     public static boolean addAdmin(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.ADMIN); }
+
+    public static boolean updateUserDetails(int userId, String firstName, String lastName) {
+        log.info("Update User Details: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
+        log.info("Update Profile: {} - {}", userId, firstName+" "+lastName);
+        return userAccountService.updateProfileById(userId, firstName, lastName);
+    }
 }

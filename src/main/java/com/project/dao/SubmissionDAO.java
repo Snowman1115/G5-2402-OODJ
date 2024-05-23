@@ -9,10 +9,7 @@ import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
-import com.project.pojo.Intake;
-import com.project.pojo.Presentation;
-import com.project.pojo.ProjectModule;
-import com.project.pojo.Submission;
+import com.project.pojo.*;
 import com.project.dao.ModuleDAO;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
@@ -457,4 +454,22 @@ public class SubmissionDAO {
         return userJson.update(consultationId, attribute, value, SUBMISSION_DATA);
     }
 
+    /**
+     * Delete submission data
+     * @param submissionId
+     * @return boolean
+     */
+    public boolean delete(Integer submissionId) {
+        for (Submission s : submissions) {
+            if (s.getSubmissionId().equals(submissionId)) {
+                submissions.remove(s);
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(FileHandler.readFile(SUBMISSION_DATA));
+                return userJson.delete(s.getSubmissionId(), SUBMISSION_DATA);
+            }
+        }
+
+        log.error("Error: " + MessageConstant.ERROR_USER_NOT_FOUND);
+        return false;
+    }
 }

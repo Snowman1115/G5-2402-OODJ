@@ -2,8 +2,10 @@ package com.project.dao;
 
 import com.project.common.constants.MessageConstant;
 import com.project.common.constants.PresentationStatus;
+import com.project.common.constants.ReportStatus;
 import com.project.common.utils.*;
 import com.project.pojo.Presentation;
+import com.project.pojo.Submission;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
@@ -296,7 +298,26 @@ public class PresentationDAO {
             }
         }
         return false;
-    } 
+    }
+
+    /**
+     * Delete presentation data
+     * @param presentationId
+     * @return boolean
+     */
+    public boolean delete(Integer presentationId) {
+        for (Presentation p : presentations) {
+            if (p.getPresentationId().equals(presentationId)) {
+                presentations.remove(p);
+                JsonHandler userJson = new JsonHandler();
+                userJson.encode(FileHandler.readFile(PRESENTATION_DATA));
+                return userJson.delete(p.getPresentationId(), PRESENTATION_DATA);
+            }
+        }
+
+        log.error("Error: " + MessageConstant.ERROR_USER_NOT_FOUND);
+        return false;
+    }
     
     /**
      * Preload Data into presentations Array

@@ -59,8 +59,6 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         lastName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        intakes = new javax.swing.JComboBox<>();
         emailField = new javax.swing.JLabel();
         resetPW = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
@@ -120,20 +118,6 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.setOpaque(true);
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 100, 35));
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Intake Code :");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel8.setOpaque(true);
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 100, 35));
-
-        intakes.setBackground(new java.awt.Color(254, 254, 254));
-        intakes.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        intakes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Intakes --" }));
-        intakes.setToolTipText("d");
-        intakes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        intakes.setFocusable(false);
-        jPanel1.add(intakes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 290, 35));
 
         emailField.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emailField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -208,12 +192,10 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
     private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel emailField;
     private javax.swing.JTextField firstName;
-    private javax.swing.JComboBox<String> intakes;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lastName;
     private javax.swing.JLabel pageTitle;

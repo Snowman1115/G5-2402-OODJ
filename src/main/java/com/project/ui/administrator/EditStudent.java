@@ -4,13 +4,16 @@
  */
 package com.project.ui.administrator;
 
+import com.project.common.utils.Dialog;
 import com.project.controller.IntakesController;
 import com.project.controller.UserAccountController;
 import com.project.pojo.UserAccount;
+import org.json.simple.JSONObject;
 
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -19,6 +22,7 @@ import java.util.List;
 public class EditStudent extends javax.swing.JInternalFrame {
 
     private int studentId;
+    private String newPassword, oldIntakeCode;
     /**
      * Creates new form EditStudent
      */
@@ -34,13 +38,18 @@ public class EditStudent extends javax.swing.JInternalFrame {
 
     private void setUpForm() {
         UserAccount studentAcc = UserAccountController.getUserDetailsByUserId(studentId);
-        List<String> intakes = IntakesController.getUpToDateIntakeCodes();
+        List<String> allIntakes = IntakesController.getUpToDateIntakeCodes();
         String studentIntake = IntakesController.getStudentIntake(studentId);
-//        usernameField.setText(studentAcc.getUsername());
-//        emailField.setText(studentAcc.getEmail());
-//        firstName.setText(studentAcc.getFirstName());
-//        lastName.setText(studentAcc.getLastName());
-        System.out.println(studentIntake);
+        usernameField.setText(studentAcc.getUsername());
+        emailField.setText(studentAcc.getEmail());
+        firstName.setText(studentAcc.getFirstName());
+        lastName.setText(studentAcc.getLastName());
+
+        for (String i : allIntakes) {
+            intakes.addItem(i);
+        }
+        intakes.setSelectedItem(studentIntake);
+        this.oldIntakeCode = studentIntake;
     }
     
     /**
@@ -132,6 +141,11 @@ public class EditStudent extends javax.swing.JInternalFrame {
         intakes.setToolTipText("d");
         intakes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         intakes.setFocusable(false);
+        intakes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                intakesActionPerformed(evt);
+            }
+        });
         jPanel1.add(intakes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 290, 35));
 
         emailField.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -210,19 +224,49 @@ public class EditStudent extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lastNameKeyReleased
 
     private void resetPWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetPWMouseClicked
-        
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i=0; i < 8; i++) {
+            int index = random.nextInt(characters.length());
+            char randomChar = characters.charAt(index);
+            sb.append(randomChar);
+        }
+
+        this.newPassword = sb.toString();
+
+        if (UserAccountController.resetPassword(this.studentId, this.newPassword)) {
+            Dialog.SuccessDialog("User password has been reset. Please send new password to user.\nNew Password: " + this.newPassword);
+        }
+
     }//GEN-LAST:event_resetPWMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
-        String confirmation = JOptionPane.showInputDialog(null, 
-                "Please enter your confirmation code:", 
-                "Confirmation Code", 
-                JOptionPane.QUESTION_MESSAGE);
+        if (firstName.getText().isEmpty() || lastName.getText().isEmpty() || intakes.getSelectedItem().equals("-- Intakes --")) {
+            Dialog.ErrorDialog("No empty fields are allowed!");
+        } else if (Dialog.ConfirmationDialog("Confirm update?")) {
+            if (!oldIntakeCode.equals(intakes.getSelectedItem())) {
+                IntakesController.changeIntake(studentId, intakes.getSelectedItem().toString(), oldIntakeCode);
+            }
+
+            if (UserAccountController.updateUserDetails(studentId, firstName.getText(), lastName.getText())) {
+                Dialog.SuccessDialog("Student details updated successfully!");
+            } else {
+                Dialog.ErrorDialog("An unexpected error has occurred.Contact IT department for assist.");
+            }
+
+        }
+
     }//GEN-LAST:event_updateBtnMouseClicked
 
     private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        // TODO add your handling code here:
+        AdminGui.ButtonClicked("student");
     }//GEN-LAST:event_cancelBtnMouseClicked
+
+    private void intakesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intakesActionPerformed
+
+    }//GEN-LAST:event_intakesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

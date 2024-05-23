@@ -184,8 +184,16 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
     }
     
     private void fillInDateTime() {
-        LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(0, 0, 0));
-        consultationDateTimePicker.setDateTimePermissive(localDateTime);
+        LocalDateTime now= LocalDateTime.now();
+        int minute=now.getMinute();
+        int nextHalfHourMinute = (minute < 30) ? 30 : 0;
+        
+        LocalDateTime nextSlot=now.withMinute(nextHalfHourMinute).withSecond(0).withNano(0);
+        if(nextHalfHourMinute == 0)
+        {
+            nextSlot=nextSlot.plusHours(1);
+        }
+        consultationDateTimePicker.setDateTimePermissive(nextSlot);
     }
     
     private void checkIfSelectedPastDate()
@@ -193,7 +201,7 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
         LocalDateTime selectedDateTime = consultationDateTimePicker.getDateTimePermissive();
         if(selectedDateTime != null)
         {
-            if (consultationDateTimePicker.getDateTimePermissive().toLocalDate().isBefore(LocalDate.now())) 
+            if (consultationDateTimePicker.getDateTimePermissive().isBefore(LocalDateTime.now())) 
             {
                 Dialog.ErrorDialog(MessageConstant.ERROR_PAST_DATE_SELECTION);
                 fillInDateTime();
@@ -689,6 +697,9 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
             }
         });
         Panel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 50, 40, 35));
+
+        consultationDateTimePicker.datePicker.getComponentDateTextField().setEditable(false);
+        consultationDateTimePicker.timePicker.getComponentTimeTextField().setEditable(false);
         Panel4.add(consultationDateTimePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 360, 40));
 
         menuBtn23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1051,7 +1062,7 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
         MainTabbedPanel1.setSelectedIndex(2);
     }//GEN-LAST:event_deleteConsultationBtnMouseClicked
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField18;
     private javax.swing.JTextField JField19;

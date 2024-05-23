@@ -40,10 +40,10 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
         refresh();
         fillInDateTime();
         consultationDateTimePicker.addDateTimeChangeListener(new DateTimeChangeListener()
-        {
+        {      
             @Override
             public void dateOrTimeChanged(DateTimeChangeEvent event) {
-                checkIfSelectedPastDate();
+                checkIfSelectedPastDate(); 
             }
         });
     }
@@ -190,10 +190,19 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
     
     private void checkIfSelectedPastDate()
     {
-        if (consultationDateTimePicker.getDateTimePermissive().toLocalDate().isBefore(LocalDate.now())) {
-            Dialog.ErrorDialog(MessageConstant.ERROR_PAST_DATE_SELECTION);
-            fillInDateTime();
-            return;
+        LocalDateTime selectedDateTime = consultationDateTimePicker.getDateTimePermissive();
+        if(selectedDateTime != null)
+        {
+            if (consultationDateTimePicker.getDateTimePermissive().toLocalDate().isBefore(LocalDate.now())) 
+            {
+                Dialog.ErrorDialog(MessageConstant.ERROR_PAST_DATE_SELECTION);
+                fillInDateTime();
+            }
+        }
+        else
+        {
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_DATETIME_SELECTED);
+            fillInDateTime(); 
         }
     }
     private void refreshConsultationTableInCreate() {
@@ -825,77 +834,77 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
         Panel9.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
         menuBtn35.setText("STUDENT NAME");
         menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn35.setOpaque(true);
         Panel9.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
 
-        menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-24x24.png"))); // NOI18N
         menuBtn38.setText("DATE");
         menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn38.setOpaque(true);
         Panel9.add(menuBtn38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
 
         JField21.setEditable(false);
-        JField21.setBackground(new java.awt.Color(255, 255, 255));
         JField21.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField21.setForeground(new java.awt.Color(1, 1, 1));
         JField21.setText("Consultation Date");
+        JField21.setBackground(new java.awt.Color(255, 255, 255));
         JField21.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField21.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField21.setForeground(new java.awt.Color(1, 1, 1));
         Panel9.add(JField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
 
-        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn31.setText("DELETE CONSULTATION");
         menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn31.setOpaque(true);
         Panel9.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
-        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
         menuBtn39.setText("CONSULTATION ID");
         menuBtn39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn39.setOpaque(true);
         Panel9.add(menuBtn39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
 
-        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
         menuBtn40.setText("ACTION :");
         menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn40.setOpaque(true);
         Panel9.add(menuBtn40, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, 90, 40));
 
         JField22.setEditable(false);
-        JField22.setBackground(new java.awt.Color(255, 255, 255));
         JField22.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField22.setForeground(new java.awt.Color(1, 1, 1));
         JField22.setText("Consultation Status");
+        JField22.setBackground(new java.awt.Color(255, 255, 255));
         JField22.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField22.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField22.setForeground(new java.awt.Color(1, 1, 1));
         Panel9.add(JField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 300, 35));
 
-        menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
         menuBtn41.setText("STATUS");
         menuBtn41.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn41.setOpaque(true);
         Panel9.add(menuBtn41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
 
         consultationIDComboBoxInDelete.setBackground(new java.awt.Color(254, 254, 254));
-        consultationIDComboBoxInDelete.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        consultationIDComboBoxInDelete.setToolTipText("d");
         consultationIDComboBoxInDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consultationIDComboBoxInDelete.setFocusable(false);
+        consultationIDComboBoxInDelete.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        consultationIDComboBoxInDelete.setToolTipText("d");
         consultationIDComboBoxInDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultationIDComboBoxInDeleteActionPerformed(evt);
@@ -904,21 +913,21 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
         Panel9.add(consultationIDComboBoxInDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
         JField23.setEditable(false);
-        JField23.setBackground(new java.awt.Color(255, 255, 255));
         JField23.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField23.setForeground(new java.awt.Color(1, 1, 1));
         JField23.setText("Student Name");
+        JField23.setBackground(new java.awt.Color(255, 255, 255));
         JField23.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField23.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField23.setForeground(new java.awt.Color(1, 1, 1));
         Panel9.add(JField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
 
-        deleteConsultationBtnInDelete.setBackground(new java.awt.Color(254, 254, 254));
-        deleteConsultationBtnInDelete.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        deleteConsultationBtnInDelete.setForeground(new java.awt.Color(1, 1, 1));
         deleteConsultationBtnInDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deleteConsultationBtnInDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
         deleteConsultationBtnInDelete.setText("DELETE");
+        deleteConsultationBtnInDelete.setBackground(new java.awt.Color(254, 254, 254));
         deleteConsultationBtnInDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteConsultationBtnInDelete.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        deleteConsultationBtnInDelete.setForeground(new java.awt.Color(1, 1, 1));
         deleteConsultationBtnInDelete.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         deleteConsultationBtnInDelete.setOpaque(true);
         deleteConsultationBtnInDelete.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1066,8 +1075,8 @@ public class LecturerConsultation extends javax.swing.JInternalFrame {
     private javax.swing.JLabel completedConsultationBtnInEdit;
     private static javax.swing.JComboBox<String> consultationComboBox;
     private com.github.lgooddatepicker.components.DateTimePicker consultationDateTimePicker;
-    private javax.swing.JComboBox<String> consultationIDComboBox;
-    private javax.swing.JComboBox<String> consultationIDComboBoxInDelete;
+    private static javax.swing.JComboBox<String> consultationIDComboBox;
+    private static javax.swing.JComboBox<String> consultationIDComboBoxInDelete;
     private javax.swing.JTable consultationOverviewTbl;
     private javax.swing.JLabel createConsultationBtn;
     private javax.swing.JTable createConsultationTbl;

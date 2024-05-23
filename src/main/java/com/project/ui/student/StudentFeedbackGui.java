@@ -74,6 +74,7 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         menuBtn33 = new javax.swing.JLabel();
         menuBtn34 = new javax.swing.JLabel();
         JField18 = new javax.swing.JTextField();
@@ -90,29 +91,31 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
         menuBtn33.setText("MODULE ID");
         menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn33.setOpaque(true);
-        getContentPane().add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
+        jPanel1.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
 
-        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
         menuBtn34.setText("LECTURER NAME");
         menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn34.setOpaque(true);
-        getContentPane().add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
+        jPanel1.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
 
         JField18.setEditable(false);
-        JField18.setBackground(new java.awt.Color(255, 255, 255));
         JField18.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField18.setForeground(new java.awt.Color(1, 1, 1));
         JField18.setText("Lecturer Name");
+        JField18.setBackground(new java.awt.Color(255, 255, 255));
         JField18.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField18.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField18.setForeground(new java.awt.Color(1, 1, 1));
         JField18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JField18MouseClicked(evt);
@@ -123,43 +126,43 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
                 JField18ActionPerformed(evt);
             }
         });
-        getContentPane().add(JField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
+        jPanel1.add(JField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
 
-        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
         menuBtn32.setText("MODULE");
         menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn32.setOpaque(true);
-        getContentPane().add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
+        jPanel1.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
 
-        menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
         menuBtn37.setText("ACTION :");
         menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn37.setOpaque(true);
-        getContentPane().add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, 90, 40));
+        jPanel1.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, 90, 40));
 
         moduleFeedbackComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        moduleFeedbackComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        moduleFeedbackComboBox.setToolTipText("d");
         moduleFeedbackComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         moduleFeedbackComboBox.setFocusable(false);
+        moduleFeedbackComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        moduleFeedbackComboBox.setToolTipText("d");
         moduleFeedbackComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moduleFeedbackComboBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(moduleFeedbackComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
+        jPanel1.add(moduleFeedbackComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
-        jLabel40.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(1, 1, 1));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-green-24x24.png"))); // NOI18N
         jLabel40.setText("SUBMIT");
+        jLabel40.setBackground(new java.awt.Color(254, 254, 254));
         jLabel40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(1, 1, 1));
         jLabel40.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel40.setOpaque(true);
         jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,40 +170,40 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
                 jLabel40MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 590, 170, 35));
+        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 590, 170, 35));
 
         JSeparator37.setForeground(new java.awt.Color(1, 1, 1));
-        getContentPane().add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 630, 170, 10));
+        jPanel1.add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 630, 170, 10));
 
         JField19.setEditable(false);
-        JField19.setBackground(new java.awt.Color(255, 255, 255));
         JField19.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        JField19.setForeground(new java.awt.Color(1, 1, 1));
         JField19.setText("Module Id");
+        JField19.setBackground(new java.awt.Color(255, 255, 255));
         JField19.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         JField19.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JField19.setForeground(new java.awt.Color(1, 1, 1));
         JField19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JField19MouseClicked(evt);
             }
         });
-        getContentPane().add(JField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
+        jPanel1.add(JField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 300, 35));
 
-        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/summary-24.png"))); // NOI18N
         menuBtn36.setText("COMMENT");
         menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn36.setOpaque(true);
-        getContentPane().add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
+        jPanel1.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
 
-        menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn30.setText("MODULE FEEDBACK");
         menuBtn30.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn30.setOpaque(true);
-        getContentPane().add(menuBtn30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
+        jPanel1.add(menuBtn30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -212,7 +215,9 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 310, 220));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 310, 220));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -257,6 +262,7 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JField19;
     private javax.swing.JSeparator JSeparator37;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel menuBtn30;

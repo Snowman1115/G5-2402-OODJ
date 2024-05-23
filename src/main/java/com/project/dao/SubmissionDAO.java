@@ -30,6 +30,7 @@ public class SubmissionDAO {
         List<Map<String, String>> list = new ArrayList<>();
         for (Submission submission : submissions) {
             Map map = new HashMap<>();
+            map.put("submissionId", submission.getSubmissionId().toString());
             map.put("moduleId", submission.getModuleId().toString());
             map.put("studentId", submission.getStudentId().toString());
             map.put("reportStatus", submission.getReportStatus());

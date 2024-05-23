@@ -173,30 +173,34 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return reportLists;
     }
     
-    public List<Map<String, String>> getReportDetailsById(Integer reportId){
+    public List<Map<String, String>> getReportDetailsById(Integer reportId) {
         Submission reportDetails = submissionDAO.getSubmissionById(reportId);
-//        Integer moduleId = lists.getModuleId();
         System.out.println(reportDetails);
+
         if (reportDetails != null) {
-                Integer studentId = reportDetails.getStudentId();
-                Integer moduleId = reportDetails.getModuleId();
-//                
-                String module = moduleDAO.getModuleNameById(moduleId);
-                String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
-                Map<String, String> mappedMap = new HashMap<>();
-                mappedMap.put("id", reportDetails.getSubmissionId().toString());
-                mappedMap.put("moduleId", moduleId.toString());
-                mappedMap.put("moduleCode", module);
-                mappedMap.put("studentId", studentId.toString());
-                mappedMap.put("studentName", studentName);
-                mappedMap.put("reportStatus", reportDetails.getReportStatus().toString());
-                mappedMap.put("reportType", reportDetails.getReportType().toString());
-                mappedMap.put("comment", reportDetails.getComment().toString());
-//                reportDetails.add("moduleCode", module);
-//                reportList.put("studentName", studentName);
-                return (List<Map<String, String>>) mappedMap;
+            Integer studentId = reportDetails.getStudentId();
+            Integer moduleId = reportDetails.getModuleId();
+
+            String module = moduleDAO.getModuleNameById(moduleId);
+            String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + " " + userAccountDAO.getUserAccountById(studentId).getLastName();
+
+            Map<String, String> mappedMap = new HashMap<>();
+            mappedMap.put("id", reportDetails.getSubmissionId().toString());
+            mappedMap.put("moduleId", moduleId.toString());
+            mappedMap.put("moduleCode", module);
+            mappedMap.put("studentId", studentId.toString());
+            mappedMap.put("studentName", studentName);
+            mappedMap.put("reportStatus", reportDetails.getReportStatus().toString());
+            mappedMap.put("reportType", reportDetails.getReportType().toString());
+            mappedMap.put("comment", reportDetails.getComment() != null ? reportDetails.getComment().toString() : ""); // Handle possible null comment
+
+            // Create a list and add the map to it
+            List<Map<String, String>> reportList = new ArrayList<>();
+            reportList.add(mappedMap);
+
+            return reportList;
         }
-        
+
         return null;
     }
     

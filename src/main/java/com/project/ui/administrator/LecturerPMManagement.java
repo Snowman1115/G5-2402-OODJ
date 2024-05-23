@@ -4,56 +4,44 @@
  */
 package com.project.ui.administrator;
 
-import com.project.common.utils.Dialog;
-import com.project.common.utils.JsonHandler;
-import com.project.controller.UserAccountController;
-import org.json.simple.JSONObject;
-
-import java.util.List;
-
+import com.project.common.constants.UserRoleType;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
-import javax.swing.RowFilter;
-import java.util.regex.Pattern;
-
 
 /**
- * student management - Admin
- * @author AU YIK HOE
- * @version 1.0, Last edited on 2024-05-23
- * @since 2024-05-01
+ *
+ * @author Dell Technologies
  */
-public class StudentManagement extends javax.swing.JInternalFrame {
-    DefaultTableModel table;
+public class LecturerPMManagement extends javax.swing.JInternalFrame {
+
+    private UserRoleType roleType;
     /**
-     * Creates new form StudentManagement
+     * Creates new form LecturerPMManagement
+     * @param roleType
      */
-    public StudentManagement() {
+    public LecturerPMManagement(UserRoleType roleType) {
+        this.roleType = roleType;
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
-        refreshData();
+        
+        setUpPage();
     }
 
-    private void refreshData() {
-        List<String> intakeList = UserAccountController.getIntakes();
-
-        for (String intake : intakeList) {
-            filterByIntake.addItem(intake);
-        }
-
-        JsonHandler students = UserAccountController.getStudents();
-        table = (DefaultTableModel) studentTable.getModel();
-        table.setRowCount(0);
-
-        for (int i = 0; i < students.getAll().size(); i++) {
-            JSONObject student = (JSONObject) students.getAll().get(i);
-            table.addRow(new Object[] {student.get("id"), student.get("username"), student.get("firstName"), student.get("lastName"), student.get("intake")});
+    private void setUpPage() {
+        switch (this.roleType) {
+            case LECTURER -> {
+                pageTitle.setText("LECTURER DETAILS");
+                roleAssignmentBtn.setText("Promote");
+            }
+            case PROJECT_MANAGER -> {
+                pageTitle.setText("PROJECT MANAGER DETAILS");
+                roleAssignmentBtn.setText("Reassign");
+                
+            }
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,13 +57,14 @@ public class StudentManagement extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
-        filterByIntake = new javax.swing.JComboBox<>();
-        menuBtn17 = new javax.swing.JLabel();
+        filterByModule = new javax.swing.JComboBox<>();
+        pageTitle = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        roleAssignmentBtn = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1093, 695));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -115,32 +104,32 @@ public class StudentManagement extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Username", "First Name", "Last Name", "Intake"
+                "ID", "Username", "First Name", "Last Name", "Modules"
             }
         ));
         jScrollPane3.setViewportView(studentTable);
 
         MainPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1020, 440));
 
-        filterByIntake.setBackground(new java.awt.Color(254, 254, 254));
-        filterByIntake.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        filterByIntake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        filterByIntake.setToolTipText("d");
-        filterByIntake.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        filterByIntake.setFocusable(false);
-        filterByIntake.addActionListener(new java.awt.event.ActionListener() {
+        filterByModule.setBackground(new java.awt.Color(254, 254, 254));
+        filterByModule.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        filterByModule.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        filterByModule.setToolTipText("d");
+        filterByModule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        filterByModule.setFocusable(false);
+        filterByModule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterByIntakeActionPerformed(evt);
+                filterByModuleActionPerformed(evt);
             }
         });
-        MainPanel.add(filterByIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 330, 35));
+        MainPanel.add(filterByModule, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 330, 35));
 
-        menuBtn17.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn17.setText("STUDENT DETAILS");
-        menuBtn17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn17.setOpaque(true);
-        MainPanel.add(menuBtn17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 670, 40));
+        pageTitle.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pageTitle.setText("LECTURER DETAILS");
+        pageTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pageTitle.setOpaque(true);
+        MainPanel.add(pageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 670, 40));
 
         addBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-24.png"))); // NOI18N
         addBtn.setText("Add");
@@ -181,48 +170,43 @@ public class StudentManagement extends javax.swing.JInternalFrame {
         jLabel13.setOpaque(true);
         MainPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 35));
 
+        roleAssignmentBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        roleAssignmentBtn.setText("Promote");
+        roleAssignmentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                roleAssignmentBtnMouseClicked(evt);
+            }
+        });
+        MainPanel.add(roleAssignmentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 110, 40));
+
         getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-        String searchKey = searchField.getText();
-
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(table);
-        studentTable.setRowSorter(sorter);
-        String regex = "(?i).*" + Pattern.quote(searchKey) + ".*";
-
-        sorter.setRowFilter(RowFilter.regexFilter(regex));
+        
     }//GEN-LAST:event_searchFieldKeyReleased
 
+    private void filterByModuleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterByModuleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filterByModuleActionPerformed
+
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-        AdminGui.ButtonClicked("addStudent");
+        
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked
-        int selectedRow = studentTable.getSelectedRow();
-        if (selectedRow < 0) {
-            Dialog.ErrorDialog("Please select a record to edit!");
-        } else {
-            int studentId = Integer.parseInt(studentTable.getValueAt(selectedRow, 0).toString());
-            AdminGui.editStudent(studentId);
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_editBtnMouseClicked
 
     private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnMouseClicked
 
-    private void filterByIntakeActionPerformed(java.awt.event.ActionEvent evt) {
-        String selectedIntake = (String) filterByIntake.getSelectedItem();
-
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(table);
-        studentTable.setRowSorter(sorter);
-        String regex = selectedIntake.equals("All") ? ".*" : Pattern.quote(selectedIntake);
-
-        sorter.setRowFilter(RowFilter.regexFilter(regex, table.findColumn("Intake")));
-    }
+    private void roleAssignmentBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roleAssignmentBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roleAssignmentBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -230,13 +214,14 @@ public class StudentManagement extends javax.swing.JInternalFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
-    private static javax.swing.JComboBox<String> filterByIntake;
+    private static javax.swing.JComboBox<String> filterByModule;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel menuBtn16;
-    private javax.swing.JLabel menuBtn17;
+    private javax.swing.JLabel pageTitle;
+    private javax.swing.JButton roleAssignmentBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JTable studentTable;
     // End of variables declaration//GEN-END:variables

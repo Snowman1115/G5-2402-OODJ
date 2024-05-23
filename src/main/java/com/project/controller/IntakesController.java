@@ -16,4 +16,5 @@ public class IntakesController {
     public static boolean registerNewIntake(String intakeCode, LocalDate startDate, LocalDate endDate, JsonHandler assignedModules) { return intakeService.saveIntake(intakeCode, startDate, endDate, assignedModules); }
 
     public static List<String> getUpToDateIntakeCodes() { return intakeService.getDateValidIntakes(); }
+    public static String getStudentIntake(int studentId) { return intakeService.getIntakeCodeByStudentId(studentId); }
 }

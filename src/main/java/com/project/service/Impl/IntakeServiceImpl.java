@@ -65,4 +65,17 @@ public class IntakeServiceImpl implements IntakeService {
 
         return intakeList;
     }
+
+    @Override
+    public String getIntakeCodeByStudentId(int studentId) {
+        for (Intake itk : intakesDAO.getAllIntakes()) {
+            String intake_code = itk.getIntakeCode();
+            List<Integer> students = itk.getStudentList();
+
+            if (students.contains(studentId)) {
+                return intake_code;
+            }
+        }
+        return null;
+    }
 }

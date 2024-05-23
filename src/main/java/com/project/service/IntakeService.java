@@ -28,4 +28,6 @@ public interface IntakeService {
      * @return List<String> intakeCodes
      */
     public List<String> getDateValidIntakes();
+
+    public String getIntakeCodeByStudentId(int studentId);
 }

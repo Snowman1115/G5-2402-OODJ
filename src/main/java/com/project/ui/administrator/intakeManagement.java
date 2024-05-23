@@ -56,7 +56,7 @@ public class intakeManagement extends javax.swing.JInternalFrame {
             PM4.addItem(projectManager);
 
         }
-
+        
         jPanel4.setVisible(false);
     }
 
@@ -545,9 +545,10 @@ public class intakeManagement extends javax.swing.JInternalFrame {
         String newIntakeCode = intakeCode.getText();
         LocalDate startDate = datePicker2.getDate();
         LocalDate endDate = datePicker1.getDate();
-
-        if (newIntakeCode.isEmpty() || startDate == null || endDate == null) {
+        if (newIntakeCode.isEmpty() || startDate == null || endDate == null ) {
             Dialog.ErrorDialog("No empty fields are allowed!");
+        } else if (startDate.isBefore(LocalDate.now()) || endDate.isBefore(LocalDate.now())) {
+            Dialog.ErrorDialog("Date selected must be present or future date!");
         } else {
             if (IntakesController.validateNewIntakeCode(newIntakeCode) && ChronoUnit.YEARS.between(startDate, endDate) >= 1) {
                 this.newIntakeCode = newIntakeCode;

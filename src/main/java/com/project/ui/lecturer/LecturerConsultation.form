@@ -839,6 +839,10 @@
                       </Constraints>
                     </Component>
                     <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="consultationDateTimePicker">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DateTimePicker()"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="consultationDateTimePicker.datePicker.getComponentDateTextField().setEditable(false);&#xa;consultationDateTimePicker.timePicker.getComponentTimeTextField().setEditable(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="50" width="360" height="40"/>

@@ -268,39 +268,32 @@ public class ConsultationDAO {
      * @return Boolean
      */
     public Boolean createConsultationSlot(Integer lecturerId, LocalDateTime consultationDateTime) {
-        for(Consultation consultation:consultations)
-        {
-            if(consultation.getLecturerId().equals(lecturerId))
-            {
-                Integer newConsultationId = shortIdGenerator.generateNewID(getAllConsultationId());
-                Consultation newConsultation=new Consultation();
-                newConsultation.setConsultationId(newConsultationId);
-                newConsultation.setLecturerId(lecturerId);
-                newConsultation.setStudentId(Integer.valueOf("0"));
-                newConsultation.setConsultationDateTime(consultationDateTime);
-                newConsultation.setConsultationStatus(ConsultationStatus.AVAILABLE);
-                newConsultation.setCreatedAt(LocalDateTime.now());
-                newConsultation.setUpdatedAt(LocalDateTime.now());
+        Integer newConsultationId = shortIdGenerator.generateNewID(getAllConsultationId());
+        Consultation newConsultation=new Consultation();
+        newConsultation.setConsultationId(newConsultationId);
+        newConsultation.setLecturerId(lecturerId);
+        newConsultation.setStudentId(Integer.valueOf("0"));
+        newConsultation.setConsultationDateTime(consultationDateTime);
+        newConsultation.setConsultationStatus(ConsultationStatus.AVAILABLE);
+        newConsultation.setCreatedAt(LocalDateTime.now());
+        newConsultation.setUpdatedAt(LocalDateTime.now());
 
-                consultations.add(newConsultation);
-            
-                JSONObject newConsultationJSON = new JSONObject();
-                newConsultationJSON.put("id", newConsultation.getConsultationId());
-                newConsultationJSON.put("lecturerId", newConsultation.getLecturerId());
-                newConsultationJSON.put("studentId", newConsultation.getStudentId());
-                newConsultationJSON.put("consultationDateTime", DateTimeUtils.formatStrDateTime(newConsultation.getConsultationDateTime()));
-                newConsultationJSON.put("consultationStatus", newConsultation.getConsultationStatus().toString());
-                newConsultationJSON.put("created_at", DateTimeUtils.formatStrDateTime(newConsultation.getCreatedAt()));
-                newConsultationJSON.put("updated_at", DateTimeUtils.formatStrDateTime(newConsultation.getUpdatedAt()));
+        consultations.add(newConsultation);
 
-                JsonHandler consultationJSON = new JsonHandler();
-                consultationJSON.encode(FileHandler.readFile(CONSULTATION_DATA));
-                consultationJSON.addObject(newConsultationJSON, CONSULTATION_DATA);   
-                return true;
+        JSONObject newConsultationJSON = new JSONObject();
+        newConsultationJSON.put("id", newConsultation.getConsultationId());
+        newConsultationJSON.put("lecturerId", newConsultation.getLecturerId());
+        newConsultationJSON.put("studentId", newConsultation.getStudentId());
+        newConsultationJSON.put("consultationDateTime", DateTimeUtils.formatStrDateTime(newConsultation.getConsultationDateTime()));
+        newConsultationJSON.put("consultationStatus", newConsultation.getConsultationStatus().toString());
+        newConsultationJSON.put("created_at", DateTimeUtils.formatStrDateTime(newConsultation.getCreatedAt()));
+        newConsultationJSON.put("updated_at", DateTimeUtils.formatStrDateTime(newConsultation.getUpdatedAt()));
+
+        JsonHandler consultationJSON = new JsonHandler();
+        consultationJSON.encode(FileHandler.readFile(CONSULTATION_DATA));
+        consultationJSON.addObject(newConsultationJSON, CONSULTATION_DATA);   
+        return true;
             }
-        }
-        return false;
-        }
     /**
      * Remove Consultation Data
      * @param consultationId

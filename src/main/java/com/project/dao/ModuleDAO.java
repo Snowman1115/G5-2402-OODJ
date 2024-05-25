@@ -247,7 +247,20 @@ public class ModuleDAO {
         }
         return false;
     }
-
+    
+    public Boolean saveModuleDateChanges(Integer moduleId, LocalDate startDate, LocalDate endDate){
+        String strStartDate =  startDate.toString();
+        String strEndDate = endDate.toString();
+        for (ProjectModule module : modules) {
+            if (module.getModuleId().equals(moduleId)) {
+                update(moduleId, "startDate", strStartDate);
+                update(moduleId, "endDate", strEndDate);
+                update(moduleId, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static String getModuleNameById(Integer moduleId){
         for (ProjectModule module : modules) {

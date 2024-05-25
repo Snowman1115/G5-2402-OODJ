@@ -68,6 +68,10 @@ public class ProjectModuleController {
         //log info
         return projectModuleService.saveModuleDetails(moduleDetails);
     }
+    
+    public static Boolean saveModuleDate(Integer moduleId, LocalDate startDate, LocalDate endDate){
+        return projectModuleService.saveModuleDate(moduleId, startDate, endDate);
+    }
     /**
      * Get Authenticated UserId
      * @return userId

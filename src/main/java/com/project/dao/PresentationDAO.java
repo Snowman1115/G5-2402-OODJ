@@ -6,6 +6,7 @@ import com.project.common.constants.ReportStatus;
 import com.project.common.utils.*;
 import com.project.pojo.Presentation;
 import com.project.pojo.Submission;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
@@ -317,7 +318,7 @@ public class PresentationDAO {
 
         log.error("Error: " + MessageConstant.ERROR_USER_NOT_FOUND);
         return false;
-    }
+    } 
     
     /**
      * Preload Data into presentations Array
@@ -353,6 +354,19 @@ public class PresentationDAO {
 
             presentations.add(presentation);
         }
+    }
+
+    public Boolean savePresentationDueDate(Integer moduleId, LocalDate endDate){
+        Boolean status = false;
+        String strEndDate = endDate.toString();
+        for (Presentation presentation : presentations) {
+            if (presentation.getModuleId().equals(moduleId)) {
+                update(presentation.getPresentationId(), "presentationDueDate", strEndDate);
+                update(presentation.getPresentationId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                status = true;
+            }
+        }
+        return status;
     }
 
     public void add(int moduleId, int lecturerId, int studentId, LocalDate moduleEndDate) {

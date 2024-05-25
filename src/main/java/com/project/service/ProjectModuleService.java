@@ -58,4 +58,6 @@ public interface ProjectModuleService {
     public List getAllReportDetails();
 
     public List getReportDetailsById(Integer reportId);
+
+    public Boolean saveModuleDate(Integer moduleId, LocalDate startDate, LocalDate endDate);
 }

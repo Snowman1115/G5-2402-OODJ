@@ -11,6 +11,7 @@ import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.pojo.*;
 import com.project.dao.ModuleDAO;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 
@@ -33,6 +34,7 @@ public class SubmissionDAO {
         List<Map<String, String>> list = new ArrayList<>();
         for (Submission submission : submissions) {
             Map map = new HashMap<>();
+            map.put("submissionId", submission.getSubmissionId().toString());
             map.put("moduleId", submission.getModuleId().toString());
             map.put("studentId", submission.getStudentId().toString());
             map.put("reportStatus", submission.getReportStatus());
@@ -379,7 +381,19 @@ public class SubmissionDAO {
         return status;
     }
 
-
+    public Boolean saveSubmissionDueDate(Integer moduleId, LocalDate endDate){
+        Boolean status = false;
+        String strEndDate = endDate.toString();
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                update(submission.getSubmissionId(), "submissionDueDate", strEndDate);
+                update(submission.getSubmissionId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                status = true;
+            }
+        }
+        return status;
+    }
+    
     // Update consultation data
     public static boolean update(Integer submissionId, String field, String value) {
         // System.out.println(value);

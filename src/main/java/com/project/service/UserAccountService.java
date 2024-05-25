@@ -112,4 +112,12 @@ public interface UserAccountService {
      */
     public boolean resetPassword(int userId, String newPassword);
 
+    /**
+     * remove users based on role type and user id
+     * @param roleType
+     * @param userId
+     * @return
+     */
+    public boolean remove(UserRoleType roleType, Integer userId);
+
 }

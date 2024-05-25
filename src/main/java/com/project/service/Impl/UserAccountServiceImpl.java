@@ -19,6 +19,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @Slf4j
 public class UserAccountServiceImpl implements UserAccountService {
@@ -276,6 +278,22 @@ public class UserAccountServiceImpl implements UserAccountService {
 
                 return PMsJson;
             }
+            case ADMIN -> {
+                JsonHandler adminJson = new JsonHandler();
+
+                for (UserAccount ua : userAccounts) {
+                    JSONObject projectManager = new JSONObject();
+                    projectManager.put("id", ua.getUserId());
+                    projectManager.put("username", ua.getUsername());
+                    projectManager.put("first_name", ua.getFirstName());
+                    projectManager.put("last_name", ua.getLastName());
+                    projectManager.put("email", ua.getEmail());
+
+                    adminJson.addObject(projectManager);
+                }
+
+                return adminJson;
+            }
         }
 
         return null;
@@ -363,5 +381,42 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public boolean resetPassword(int userId, String newPassword) {
         return userAccountDAO.resetPasswordBySecurityPhrase(userId, newPassword);
+    }
+
+    @Override
+    public boolean remove(UserRoleType roleType, Integer userId) {
+        switch (roleType) {
+            case STUDENT -> {
+                try {
+                    List<Map<String, String>> studentSubmissionsList = submissionDAO.getAllSubmissionDetailsByStudentId(userId);
+                    List<Integer> studentSubmissionsIds = new ArrayList<>();
+                    for (Map<String, String> i : studentSubmissionsList) {
+                        submissionDAO.delete(Integer.parseInt(i.get("id")));
+                    }
+
+                    List<Map<String, String>> studentPresentationsList = presentationDAO.getAllPresentationDetailsByStudentId(userId);
+                    List<Integer> studentPresentationsIds = new ArrayList<>();
+                    for (Map<String, String> i : studentPresentationsList) {
+                        presentationDAO.delete(Integer.parseInt(i.get("id")));
+                    }
+
+                    for (Intake i : intakesDAO.getAllIntakes()) {
+                        if (i.getStudentList().contains(userId)) {
+                            intakesDAO.removeStudent(i.getIntakeId(), userId);
+                        }
+                    }
+
+                    userRoleDAO.remove(userId);
+                    userAccountDAO.delete(userId);
+
+                    return true;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+
+            }
+        }
+        return false;
     }
 }

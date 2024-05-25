@@ -49,6 +49,11 @@ public class UserRoleDAO {
         return null;
     }
 
+    /**
+     * filter users by role
+     * @param roleType
+     * @return
+     */
     public List<Integer> filterUserByRole(UserRoleType roleType) {
         List<Integer> list = new ArrayList<>();
         for (UserRole userRole : user_roles) {
@@ -59,6 +64,11 @@ public class UserRoleDAO {
         return list;
     }
 
+    /**
+     * add new user and their role
+     * @param userId
+     * @param roleType
+     */
     public void add(int userId, UserRoleType roleType) {
         UserRole ur = new UserRole();
         ur.setUserId(userId);
@@ -74,6 +84,23 @@ public class UserRoleDAO {
         JsonHandler userRolesJson = new JsonHandler();
         userRolesJson.encode(FileHandler.readFile(USER_ACCOUNT));
         userRolesJson.addObject(newRecord, USER_ACCOUNT);
+    }
+
+    /**
+     * remove user
+     * @param userId
+     */
+    public boolean remove(int userId) {
+        for (UserRole ur : user_roles) {
+            if (ur.getUserId().equals(userId)) {
+                user_roles.remove(ur);
+                JsonHandler userRoleJson = new JsonHandler();
+                userRoleJson.encode(FileHandler.readFile(USER_ACCOUNT));
+                return userRoleJson.delete(userId, USER_ACCOUNT);
+            }
+        }
+
+        return false;
     }
 
     /**

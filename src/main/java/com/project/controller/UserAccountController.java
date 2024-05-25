@@ -248,4 +248,10 @@ public class UserAccountController {
         log.info("Update Profile: {} - {}", userId, firstName+" "+lastName);
         return userAccountService.updateProfileById(userId, firstName, lastName);
     }
+
+    public static boolean removeStudent(int studentId) {
+        log.info("Remove Student Account: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
+        log.info("Remove Student Account: Account removed - {}", studentId);
+        return userAccountService.remove(UserRoleType.STUDENT, studentId);
+    }
 }

@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.project.common.utils.JsonHandler;
 import com.project.dao.IntakeDAO;
 import com.project.dao.ModuleDAO;
+import com.project.dao.PresentationDAO;
 import com.project.dao.SubmissionDAO;
 import com.project.dao.UserAccountDAO;
 import com.project.pojo.Intake;
@@ -39,7 +40,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     private IntakeDAO intakeDAO = new IntakeDAO();
     private UserAccountDAO userAccountDAO = new UserAccountDAO();
     private SubmissionDAO submissionDAO = new SubmissionDAO();
-
+    private PresentationDAO presentationDAO = new PresentationDAO();
 
     //TODO: Based on selection of module, need to find the intake name
     //TODO: Get all supervisee based on module ID
@@ -231,16 +232,12 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             return true;
         } else {
 //            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
-            Dialog.SuccessDialog(MessageConstant.ERROR_EMPTY_MODULE);
+            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
             return false;
         }
 
     }
-//    public static void main(String[] args) {
-//        ProjectModuleServiceImpl test=new ProjectModuleServiceImpl();
-//        System.out.println(test.getModuleDetailsByFirstMarkerId(88608036));
-//    }
-
+    
 
     @Override
     public List getModuleTypeById(Integer moduleId) {
@@ -290,8 +287,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
 
             String module = moduleDAO.getModuleNameById(moduleId);
             String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + " " + userAccountDAO.getUserAccountById(studentId).getLastName();
-
-            Map<String, String> mappedMap = new HashMap<>();
+            Map<String, String> mappedMap = new HashMap<>();    
             mappedMap.put("id", reportDetails.getSubmissionId().toString());
             mappedMap.put("moduleId", moduleId.toString());
             mappedMap.put("moduleCode", module);
@@ -311,6 +307,22 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return null;
     }
 
+    public Boolean saveModuleDate(Integer moduleId, LocalDate startDate, LocalDate endDate){
+        Boolean mdao = moduleDAO.saveModuleDateChanges(moduleId, startDate, endDate);
+        Boolean sdao = submissionDAO.saveSubmissionDueDate(moduleId, endDate);
+        Boolean pdao = presentationDAO.savePresentationDueDate(moduleId, endDate);
+        System.out.println("Module: " + mdao + " ,Submission: " + sdao + " ,Presentation: " + pdao);
+        if (mdao == true && sdao == true && pdao == true) {
+//            log.info("Module Changes Has Been Saved! : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
+            Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATE_DATE);
+            return true;
+        } else {
+//            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
+            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
+            return false;
+        }
+    }
+    
 //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();

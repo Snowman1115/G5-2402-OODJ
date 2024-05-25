@@ -701,10 +701,10 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JField12MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-//        DefaultTableModel dtm = (DefaultTableModel)jTableModuleDetails.getModel();
-//        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
-//        jTableModuleDetails.setRowSorter(tr);
-//        tr.setRowFilter(RowFilter.regexFilter(JField12.getText().trim()));
+        DefaultTableModel dtm = (DefaultTableModel)jTableReportDetails.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        jTableReportDetails.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(JField12.getText().trim()));
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void rdReportIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdReportIdMouseClicked

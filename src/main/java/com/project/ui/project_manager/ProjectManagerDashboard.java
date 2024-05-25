@@ -60,18 +60,9 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         jPanel7 = new javax.swing.JPanel();
         menuBtn2 = new javax.swing.JLabel();
         menuBtn14 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        menuBtn3 = new javax.swing.JLabel();
-        menuBtn12 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         menuBtn1 = new javax.swing.JLabel();
         menuBtn15 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        menuBtn4 = new javax.swing.JLabel();
-        menuBtn13 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        menuBtn8 = new javax.swing.JLabel();
-        menuBtn19 = new javax.swing.JLabel();
         menuBtn20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         menuBtn21 = new javax.swing.JLabel();
@@ -85,9 +76,6 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         jPanel14 = new javax.swing.JPanel();
         menuBtn31 = new javax.swing.JLabel();
         menuBtn32 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        menuBtn23 = new javax.swing.JLabel();
-        menuBtn24 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         menuBtn25 = new javax.swing.JLabel();
         menuBtn26 = new javax.swing.JLabel();
@@ -99,7 +87,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         menuBtn9.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn9.setText("SALES DETAILS");
+        menuBtn9.setText("Student Feedback");
         menuBtn9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn9.setOpaque(true);
         MainPanel.add(menuBtn9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 1020, 40));
@@ -116,7 +104,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         menuBtn5.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn5.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn5.setText("SALES");
+        menuBtn5.setText("Viewed");
         menuBtn5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn5.setOpaque(true);
 
@@ -197,7 +185,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         menuBtn7.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn7.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn7.setText("SUCCESSFUL");
+        menuBtn7.setText("Total");
         menuBtn7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn7.setOpaque(true);
 
@@ -268,45 +256,6 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         MainPanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 240, -1));
 
-        jPanel6.setBackground(new java.awt.Color(254, 254, 254));
-
-        menuBtn3.setBackground(new java.awt.Color(250, 250, 250));
-        menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn3.setText("Available Lecturers");
-        menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn3.setOpaque(true);
-
-        menuBtn12.setBackground(new java.awt.Color(254, 254, 254));
-        menuBtn12.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn12.setText("0");
-        menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn12.setOpaque(true);
-        menuBtn12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn12MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuBtn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addComponent(menuBtn12, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(menuBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn12, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-
-        MainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 240, 120));
-
         jPanel8.setBackground(new java.awt.Color(254, 254, 254));
 
         menuBtn1.setBackground(new java.awt.Color(250, 250, 250));
@@ -345,82 +294,6 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         );
 
         MainPanel.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 240, 120));
-
-        jPanel10.setBackground(new java.awt.Color(254, 254, 254));
-
-        menuBtn4.setBackground(new java.awt.Color(250, 250, 250));
-        menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn4.setText("SALES PERSON");
-        menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn4.setOpaque(true);
-
-        menuBtn13.setBackground(new java.awt.Color(254, 254, 254));
-        menuBtn13.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn13.setText("0");
-        menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn13.setOpaque(true);
-        menuBtn13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn13MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addComponent(menuBtn13, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(menuBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBtn13, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-        );
-
-        MainPanel.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 240, 120));
-
-        jPanel4.setBackground(new java.awt.Color(254, 254, 254));
-
-        menuBtn8.setBackground(new java.awt.Color(250, 250, 250));
-        menuBtn8.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn8.setText("CANCELLED");
-        menuBtn8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn8.setOpaque(true);
-
-        menuBtn19.setBackground(new java.awt.Color(254, 254, 254));
-        menuBtn19.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn19.setText("0");
-        menuBtn19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn19.setOpaque(true);
-        menuBtn19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuBtn19MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuBtn8, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addComponent(menuBtn19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(menuBtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(menuBtn19, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        MainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 430, -1, -1));
 
         menuBtn20.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -562,39 +435,6 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         MainPanel.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
 
-        jPanel9.setBackground(new java.awt.Color(254, 254, 254));
-
-        menuBtn23.setBackground(new java.awt.Color(250, 250, 250));
-        menuBtn23.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn23.setText("XXXX");
-        menuBtn23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuBtn23.setOpaque(true);
-
-        menuBtn24.setBackground(new java.awt.Color(254, 254, 254));
-        menuBtn24.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn24.setText("0");
-        menuBtn24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBtn24.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuBtn23, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addComponent(menuBtn24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(menuBtn23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(menuBtn24, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        MainPanel.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, -1, -1));
-
         jPanel11.setBackground(new java.awt.Color(254, 254, 254));
 
         menuBtn25.setBackground(new java.awt.Color(250, 250, 250));
@@ -664,25 +504,10 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         ProjectManagerGui.ButtonClicked("menuBtn8");
     }//GEN-LAST:event_menuBtn14MouseClicked
 
-    private void menuBtn12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn12MouseClicked
-        this.dispose();
-        ProjectManagerGui.ButtonClicked("menuBtn2");
-    }//GEN-LAST:event_menuBtn12MouseClicked
-
     private void menuBtn15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn15MouseClicked
         this.dispose();
         ProjectManagerGui.ButtonClicked("menuBtn8");
     }//GEN-LAST:event_menuBtn15MouseClicked
-
-    private void menuBtn13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn13MouseClicked
-        this.dispose();
-        ProjectManagerGui.ButtonClicked("menuBtn3");
-    }//GEN-LAST:event_menuBtn13MouseClicked
-
-    private void menuBtn19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn19MouseClicked
-        this.dispose();
-        ProjectManagerGui.ButtonClicked("menuBtn7");
-    }//GEN-LAST:event_menuBtn19MouseClicked
 
     private void menuBtn27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn27MouseClicked
         // TODO add your handling code here:
@@ -693,49 +518,37 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel adminPanelVersionLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel menuBtn1;
     private javax.swing.JLabel menuBtn10;
-    private static javax.swing.JLabel menuBtn12;
-    private static javax.swing.JLabel menuBtn13;
     private static javax.swing.JLabel menuBtn14;
     private static javax.swing.JLabel menuBtn15;
     private static javax.swing.JLabel menuBtn16;
     private static javax.swing.JLabel menuBtn17;
     private static javax.swing.JLabel menuBtn18;
-    private static javax.swing.JLabel menuBtn19;
     private javax.swing.JLabel menuBtn2;
     private javax.swing.JLabel menuBtn20;
     private javax.swing.JLabel menuBtn21;
     private static javax.swing.JLabel menuBtn22;
-    private javax.swing.JLabel menuBtn23;
-    private static javax.swing.JLabel menuBtn24;
     private javax.swing.JLabel menuBtn25;
     private static javax.swing.JLabel menuBtn26;
     private javax.swing.JLabel menuBtn27;
     private static javax.swing.JLabel menuBtn28;
     private javax.swing.JLabel menuBtn29;
-    private javax.swing.JLabel menuBtn3;
     private static javax.swing.JLabel menuBtn30;
     private javax.swing.JLabel menuBtn31;
     private static javax.swing.JLabel menuBtn32;
-    private javax.swing.JLabel menuBtn4;
     private javax.swing.JLabel menuBtn5;
     private javax.swing.JLabel menuBtn6;
     private javax.swing.JLabel menuBtn7;
-    private javax.swing.JLabel menuBtn8;
     private javax.swing.JLabel menuBtn9;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,6 +28,7 @@ public class MessageConstant {
     public static final String SUCCESS_ASSIGNED_SUPERVISOR = "Supervisor And Second Marker Assigned Successfully.";
     public static final String SUCCESS_RESET_FIELD = "Field has been reset to default.";
     public static final String SUCCESS_UPDATE_ASSESSMENT_TYPE = "Assessment Type Has Been Updated Successfully.";
+     public static final String SUCCESS_UPDATE_DATE = "The module date, submission due date, and presentation due date UPDATED SUCCESSFULLY.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";
@@ -79,6 +80,7 @@ public class MessageConstant {
                                                                      Please contact your student to choose another DateTime and this presentation is automatically rejected.
                                                                      """;
     public static final String ERROR_EMPTY_MODULE = "No Module Found! Please select a module first.";
+    public static final String ERROR_DATE_INVALID = "The start date must be earlier than the end date.";
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations are available to book.";

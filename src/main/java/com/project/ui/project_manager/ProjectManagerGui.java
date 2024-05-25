@@ -291,7 +291,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         menuBtn2.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn2.setText("Manage Intake Module");
+        menuBtn2.setText("View Student Feedback");
         menuBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn2.setOpaque(true);
         menuBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,7 +322,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
         menuBtn4.setBackground(new java.awt.Color(245, 245, 245));
         menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuBtn4.setText("View Module");
+        menuBtn4.setText("Manage Module");
         menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn4.setOpaque(true);
         menuBtn4.addMouseListener(new java.awt.event.MouseAdapter() {

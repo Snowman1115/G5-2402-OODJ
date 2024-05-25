@@ -7,6 +7,7 @@ import com.project.common.utils.FileHandler;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.PropertiesReader;
 import com.project.pojo.Presentation;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
@@ -123,7 +124,7 @@ public class PresentationDAO {
 
         return true;
     }
-
+    
     /**
      * Cancel Presentation Slot By Presentation Id (Student)
      *
@@ -333,6 +334,19 @@ public class PresentationDAO {
 
             presentations.add(presentation);
         }
+    }
+    
+    public Boolean savePresentationDueDate(Integer moduleId, LocalDate endDate){     
+        Boolean status = false;
+        String strEndDate = endDate.toString();
+        for (Presentation presentation : presentations) {
+            if (presentation.getModuleId().equals(moduleId)) {
+                update(presentation.getPresentationId(), "presentationDueDate", strEndDate);
+                update(presentation.getPresentationId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                status = true;
+            }
+        }
+        return status;
     }
 
     // Update consultation data

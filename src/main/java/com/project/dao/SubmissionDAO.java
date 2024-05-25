@@ -13,6 +13,7 @@ import com.project.pojo.Presentation;
 import com.project.pojo.ProjectModule;
 import com.project.pojo.Submission;
 import com.project.dao.ModuleDAO;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
@@ -327,7 +328,19 @@ public class SubmissionDAO {
         return status;
     }
 
-
+    public Boolean saveSubmissionDueDate(Integer moduleId, LocalDate endDate){
+        Boolean status = false;
+        String strEndDate = endDate.toString();
+        for (Submission submission : submissions) {
+            if (submission.getModuleId().equals(moduleId)) {
+                update(submission.getSubmissionId(), "submissionDueDate", strEndDate);
+                update(submission.getSubmissionId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                status = true;
+            }
+        }
+        return status;
+    }
+    
     // Update consultation data
     public static boolean update(Integer submissionId, String field, String value) {
         // System.out.println(value);

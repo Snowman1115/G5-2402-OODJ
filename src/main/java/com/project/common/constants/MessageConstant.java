@@ -72,6 +72,7 @@ public class MessageConstant {
     public static final String ERROR_NO_SUBMISSION_SELECTED = "Please select a submission to be marked.";
     public static final String ERROR_NO_MODULES_SELECTED = "Please select a module and fetch all the submissions first.";
     public static final String ERROR_SUBMISSION_DUE_DATE_IS_OVER = "Submission Due Date is Over, modification are not allowed.";
+    public static final String ERROR_CREATE_CONSULTATION_FAILED = "Failed to create a new consultation. Please try again";
     public static final String ERROR_CONSULTATION_DATETIME_CLASHED = """
                                                                      The DateTime selected is clashing with other existing consultation DateTime.
                                                                      Please select another DateTime.

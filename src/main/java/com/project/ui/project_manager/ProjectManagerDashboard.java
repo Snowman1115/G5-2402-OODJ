@@ -110,6 +110,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menuBtn9.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn9.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn9.setText("Student Feedback");
         menuBtn9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -117,6 +118,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(menuBtn9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 1020, 40));
 
         menuBtn10.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn10.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn10.setText("LECTURER DETAILS");
         menuBtn10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -124,9 +126,11 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(menuBtn10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 500, 40));
 
         jPanel7.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel7.setForeground(new java.awt.Color(0, 0, 0));
 
         menuBtn2.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn2.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn2.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn2.setText("Second Markers");
         menuBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -134,6 +138,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         menuBtn14.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn14.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn14.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn14.setText("0");
         menuBtn14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -162,9 +167,11 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 240, -1));
 
         jPanel8.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel8.setForeground(new java.awt.Color(0, 0, 0));
 
         menuBtn1.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn1.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn1.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn1.setText("Supervisor");
         menuBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -172,6 +179,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         menuBtn15.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn15.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn15.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn15.setText("0");
         menuBtn15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -201,6 +209,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 240, 120));
 
         menuBtn20.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn20.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn20.setText("MODULES");
         menuBtn20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -208,9 +217,11 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(menuBtn20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 1020, 40));
 
         jPanel5.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel5.setForeground(new java.awt.Color(0, 0, 0));
 
         menuBtn21.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn21.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn21.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn21.setText("Total Modules");
         menuBtn21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -218,10 +229,16 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         menuBtn22.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn22.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn22.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn22.setText("0");
         menuBtn22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn22.setOpaque(true);
+        menuBtn22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn22MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -241,9 +258,11 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 180, 120));
 
         jPanel12.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel12.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn27.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn27.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn27.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn27.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn27.setText("Unassigned Modules");
         menuBtn27.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -254,12 +273,18 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
             }
         });
 
-        menuBtn28.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn28.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn28.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn28.setText("0");
         menuBtn28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn28.setOpaque(true);
+        menuBtn28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn28MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -279,20 +304,28 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 180, -1));
 
         jPanel11.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel11.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn25.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn25.setBackground(new java.awt.Color(204, 255, 204));
         menuBtn25.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn25.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn25.setText("Active Modules");
         menuBtn25.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn25.setOpaque(true);
 
-        menuBtn26.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn26.setBackground(new java.awt.Color(204, 255, 204));
         menuBtn26.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn26.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn26.setText("0");
         menuBtn26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn26.setOpaque(true);
+        menuBtn26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn26MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -309,7 +342,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
                 .addComponent(menuBtn26, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        MainPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 180, 120));
+        MainPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 180, 120));
 
         adminPanelVersionLabel.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
         adminPanelVersionLabel.setForeground(new java.awt.Color(80, 80, 80));
@@ -319,20 +352,28 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(adminPanelVersionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 628, 620, 30));
 
         jPanel15.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel15.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn33.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn33.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn33.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn33.setText("Completed Modules");
         menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn33.setOpaque(true);
 
-        menuBtn34.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn34.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn34.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn34.setText("0");
         menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn34.setOpaque(true);
+        menuBtn34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn34MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -349,23 +390,31 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
                 .addComponent(menuBtn34, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        MainPanel.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 180, 120));
+        MainPanel.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, 180, 120));
 
         jPanel16.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel16.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn35.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn35.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn35.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn35.setText("Upcoming Modules");
         menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn35.setOpaque(true);
 
-        menuBtn36.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn36.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn36.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn36.setText("0");
         menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBtn36.setOpaque(true);
+        menuBtn36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBtn36MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -382,12 +431,14 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
                 .addComponent(menuBtn36, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        MainPanel.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, 180, 120));
+        MainPanel.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 180, 120));
 
         jPanel6.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
 
         menuBtn23.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn23.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn23.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn23.setText("Total Report");
         menuBtn23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -395,6 +446,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
         menuBtn24.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn24.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn24.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn24.setText("0");
         menuBtn24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -418,9 +470,11 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 180, 120));
 
         jPanel13.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel13.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn29.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn29.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn29.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn29.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn29.setText("Pending Submit");
         menuBtn29.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -431,8 +485,9 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
             }
         });
 
-        menuBtn30.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn30.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn30.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn30.setText("0");
         menuBtn30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -456,16 +511,19 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 180, -1));
 
         jPanel14.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel14.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn31.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn31.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn31.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn31.setText("Pending Marking");
         menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn31.setOpaque(true);
 
-        menuBtn32.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn32.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn32.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn32.setText("0");
         menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -489,16 +547,19 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
         MainPanel.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 180, 120));
 
         jPanel17.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel17.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn37.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn37.setBackground(new java.awt.Color(255, 102, 102));
         menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn37.setForeground(new java.awt.Color(255, 255, 255));
         menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn37.setText("Overdue");
         menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn37.setOpaque(true);
 
-        menuBtn38.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn38.setBackground(new java.awt.Color(255, 102, 102));
         menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn38.setForeground(new java.awt.Color(255, 255, 255));
         menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn38.setText("0");
         menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -519,19 +580,22 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
                 .addComponent(menuBtn38, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        MainPanel.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, 180, 120));
+        MainPanel.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 180, 120));
 
         jPanel18.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel18.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn39.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn39.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn39.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn39.setText("Marked");
         menuBtn39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn39.setOpaque(true);
 
-        menuBtn40.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn40.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn40.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn40.setText("0");
         menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -552,7 +616,7 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
                 .addComponent(menuBtn40, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        MainPanel.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 180, 120));
+        MainPanel.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, 180, 120));
 
         getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
@@ -561,12 +625,12 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
 
     private void menuBtn14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn14MouseClicked
         this.dispose();
-        ProjectManagerGui.ButtonClicked("menuBtn8");
+        ProjectManagerGui.ButtonClicked("menuBtn4");
     }//GEN-LAST:event_menuBtn14MouseClicked
 
     private void menuBtn15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn15MouseClicked
         this.dispose();
-        ProjectManagerGui.ButtonClicked("menuBtn8");
+        ProjectManagerGui.ButtonClicked("menuBtn4");
     }//GEN-LAST:event_menuBtn15MouseClicked
 
     private void menuBtn27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn27MouseClicked
@@ -576,6 +640,36 @@ public class ProjectManagerDashboard extends javax.swing.JInternalFrame {
     private void menuBtn29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn29MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_menuBtn29MouseClicked
+
+    private void menuBtn22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn22MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        ProjectManagerGui.ButtonClicked("menuBtn4");
+    }//GEN-LAST:event_menuBtn22MouseClicked
+
+    private void menuBtn28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn28MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        ProjectManagerGui.ButtonClicked("menuBtn4");
+    }//GEN-LAST:event_menuBtn28MouseClicked
+
+    private void menuBtn36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn36MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        ProjectManagerGui.ButtonClicked("menuBtn4");
+    }//GEN-LAST:event_menuBtn36MouseClicked
+
+    private void menuBtn26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn26MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        ProjectManagerGui.ButtonClicked("menuBtn4");
+    }//GEN-LAST:event_menuBtn26MouseClicked
+
+    private void menuBtn34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtn34MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        ProjectManagerGui.ButtonClicked("menuBtn4");
+    }//GEN-LAST:event_menuBtn34MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

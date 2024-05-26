@@ -381,7 +381,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         private void saveModuleDate(){
             String saveModuleId = mdModuleId.getText();
             System.out.println(mdModuleId);
-            if(mdModuleId != null){
+            if(moduleId != null){
                 Integer saveIntModuleId = parseInt(saveModuleId);
                 LocalDate startDate = mdStartDatePicker.getDate();
                 LocalDate endDate = mdEndDatePicker.getDate();
@@ -614,6 +614,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         ModuleTabbedPanel.setBackground(new java.awt.Color(230, 230, 230));
         ModuleTabbedPanel.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        ModuleTabbedPanel.setForeground(new java.awt.Color(0, 0, 0));
         ModuleTabbedPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ModuleTabbedPanelMouseClicked(evt);
@@ -625,16 +626,18 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         jPanel10.setBackground(new java.awt.Color(254, 254, 254));
 
-        menuBtn4.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn4.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn4.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/success-24x24.png"))); // NOI18N
         menuBtn4.setText("TOTAL");
         menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn4.setOpaque(true);
 
-        menuBtn13.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn13.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn13.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn13.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn13.setText("0");
         menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -662,18 +665,21 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         Panel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 240, 90));
 
-        jPanel6.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
 
-        menuBtn3.setBackground(new java.awt.Color(250, 250, 250));
+        menuBtn3.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn3.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
         menuBtn3.setText("UNASSIGNED");
         menuBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn3.setOpaque(true);
 
-        menuBtn12.setBackground(new java.awt.Color(254, 254, 254));
+        menuBtn12.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn12.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn12.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn12.setText("0");
         menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -767,7 +773,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn15.setOpaque(true);
         Panel1.add(menuBtn15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 420, 40));
 
-        jPanel7.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel7.setBackground(new java.awt.Color(204, 204, 255));
 
         manageSupervisor.setBackground(new java.awt.Color(105, 105, 105));
         manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -1501,6 +1507,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             ModuleTabbedPanel.setSelectedIndex(1);
             autofillModuleSupervisor(moduleId);
             autofillAssessment(moduleId);
+            autofillStartEndDate(moduleId);
         } else {
             Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
         }
@@ -1552,6 +1559,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             ModuleTabbedPanel.setSelectedIndex(2);
             autofillModuleSupervisor(moduleId);
             autofillAssessment(moduleId);
+            autofillStartEndDate(moduleId);
         } else {
             Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
         }

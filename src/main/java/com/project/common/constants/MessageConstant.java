@@ -30,6 +30,7 @@ public class MessageConstant {
     public static final String SUCCESS_UPDATE_ASSESSMENT_TYPE = "Assessment Type Has Been Updated Successfully.";
      public static final String SUCCESS_UPDATE_DATE = "The module date, submission due date, and presentation due date UPDATED SUCCESSFULLY.";
     public static final String SUCCESS_SUBMIT_FEEDBACK = "Module Feedback Submitted Successfully.";
+    public static final String SUCCESS_GENERATE_PDF = "Student Feedback PDF has been generated successfully.";
 
     /* ERROR */
     public static final String ERROR_NOT_LOGIN = "Unusual activity detected. Please log in.";

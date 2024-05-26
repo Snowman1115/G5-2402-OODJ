@@ -298,7 +298,7 @@ public class SubmissionServiceImpl implements SubmissionService {
                 String studentName=student.getFirstName()+" "+student.getLastName();
                 map.put("studentName", studentName);
                 
-                map.put("reportType", submission.getSubmissionId().toString());
+                map.put("reportType", submission.getReportType().toString());
                 map.put("markingStatus", submission.getReportStatus().toString());
                 map.put("reportMarks", submission.getReportResult().toString());
                 map.put("lecturerComment", submission.getComment());
@@ -329,7 +329,7 @@ public class SubmissionServiceImpl implements SubmissionService {
                 String studentName=student.getFirstName()+" "+student.getLastName();
                 map.put("studentName", studentName);
                 
-                map.put("reportType", submission.getSubmissionId().toString());
+                map.put("reportType", submission.getReportType().toString());
                 map.put("markingStatus", submission.getReportStatus().toString());
                 map.put("reportMarks", submission.getReportResult().toString());
                 map.put("lecturerComment", submission.getComment());
@@ -360,7 +360,7 @@ public class SubmissionServiceImpl implements SubmissionService {
                 String studentName=student.getFirstName()+" "+student.getLastName();
                 map.put("studentName", studentName);
                 
-                map.put("reportType", submission.getSubmissionId().toString());
+                map.put("reportType", submission.getReportType().toString());
                 map.put("markingStatus", submission.getReportStatus().toString());
                 map.put("reportMarks", submission.getReportResult().toString());
                 map.put("lecturerComment", submission.getComment());
@@ -380,7 +380,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     {
         List<Map<String, String>> mappedLists = new ArrayList<>();
         Submission submission = submissionDAO.getSubmissionById(submissionId);
-        if(submission.getSubmissionId().equals(submissionId) && submission.getReportStatus().equals(ReportStatus.PENDING_MARKING))
+        if(submission.getSubmissionId().equals(submissionId) && (submission.getReportStatus().equals(ReportStatus.PENDING_MARKING) || submission.getReportStatus().equals(ReportStatus.OVERDUE)))
             {
                 Map<String,String> map = new HashMap<>();
                 map.put("id", submission.getSubmissionId().toString());
@@ -538,5 +538,4 @@ public class SubmissionServiceImpl implements SubmissionService {
             return false;
         }
     }
-
 }

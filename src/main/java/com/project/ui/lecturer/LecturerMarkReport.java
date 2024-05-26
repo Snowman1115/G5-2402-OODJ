@@ -225,9 +225,12 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     SwingViewBuilder vb1 = new SwingViewBuilder(ctr1);
                     pdfSubmissionPreview = vb1.buildViewerPanel();
                     ComponentKeyBinding.install(ctr1, pdfSubmissionPreview);
-                    Path destinationPath1 = Paths.get(list.get("filePath")); 
-                    ctr1.openDocument(String.valueOf(destinationPath1));
-                    filePanelInMarkReport1.add(pdfSubmissionPreview);   
+                    if(list.get("filePath") != null)
+                    {
+                        Path destinationPath1 = Paths.get(list.get("filePath")); 
+                        ctr1.openDocument(String.valueOf(destinationPath1));
+                        filePanelInMarkReport1.add(pdfSubmissionPreview);   
+                    }
                 }
             }
         }
@@ -254,9 +257,13 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     SwingViewBuilder vb2 = new SwingViewBuilder(ctr2);
                     pdfSubmissionPreview = vb2.buildViewerPanel();
                     ComponentKeyBinding.install(ctr2, pdfSubmissionPreview);
-                    Path destinationPath2 = Paths.get(list.get("filePath")); 
-                    ctr2.openDocument(String.valueOf(destinationPath2));
-                    filePanelInMarkReport2.add(pdfSubmissionPreview);   
+                    if(list.get("filePath") != null)
+                    {
+                        Path destinationPath2 = Paths.get(list.get("filePath")); 
+                        ctr2.openDocument(String.valueOf(destinationPath2));
+                        filePanelInMarkReport2.add(pdfSubmissionPreview);                         
+                    }
+  
                 }
             }
         }
@@ -283,9 +290,12 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
                     SwingViewBuilder vb3 = new SwingViewBuilder(ctr3);
                     pdfSubmissionPreview = vb3.buildViewerPanel();
                     ComponentKeyBinding.install(ctr3, pdfSubmissionPreview);
-                    Path destinationPath3 = Paths.get(list.get("filePath")); 
-                    ctr3.openDocument(String.valueOf(destinationPath3));
-                    filePanelInModify.add(pdfSubmissionPreview);   
+                    if(list.get("filePath") != null)
+                    {
+                        Path destinationPath3 = Paths.get(list.get("filePath")); 
+                        ctr3.openDocument(String.valueOf(destinationPath3));
+                        filePanelInModify.add(pdfSubmissionPreview);                          
+                    } 
                 }
             }
         }

@@ -972,7 +972,7 @@ public class LecturerPresentation extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_presentationIDComboBoxInUpdateActionPerformed
 
     private void acceptPresentationBtnInManageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptPresentationBtnInManageMouseClicked
-        if (presentationIDComboBox.getSelectedItem().equals("There is no requested presentation.")) {
+        if (presentationIDComboBox.getSelectedItem().equals("There is no pending confirm presentation.")) {
             Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
             return;
         }
@@ -990,7 +990,7 @@ public class LecturerPresentation extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_presentationIDComboBoxActionPerformed
 
     private void rejectPresentationBtnInManageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rejectPresentationBtnInManageMouseClicked
-        if (presentationIDComboBox.getSelectedItem().equals("There is no pending confirm consultation.")) {
+        if (presentationIDComboBox.getSelectedItem().equals("There is no pending confirm presentation.")) {
             Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
             return;
         }

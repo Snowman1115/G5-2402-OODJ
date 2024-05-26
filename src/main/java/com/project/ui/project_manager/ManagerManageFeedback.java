@@ -252,8 +252,8 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         manageSupervisor.setBackground(new java.awt.Color(204, 204, 255));
         manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         manageSupervisor.setForeground(new java.awt.Color(1, 1, 1));
-        manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exportCsv-24x24.png"))); // NOI18N
-        manageSupervisor.setText("Export Student Feedback");
+        manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exportPdf.png"))); // NOI18N
+        manageSupervisor.setText(" Export Student Feedback");
         manageSupervisor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageSupervisor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -778,7 +778,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         manageSupervisor.setBackground(new java.awt.Color(105, 105, 105));
         manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         manageSupervisor.setForeground(new java.awt.Color(1, 1, 1));
-        manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
         manageSupervisor.setText("MANAGE MARKER");
         manageSupervisor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageSupervisor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -790,7 +790,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         manageAssessmentType.setBackground(new java.awt.Color(105, 105, 105));
         manageAssessmentType.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         manageAssessmentType.setForeground(new java.awt.Color(1, 1, 1));
-        manageAssessmentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        manageAssessmentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         manageAssessmentType.setText("MANAGE ASSESSMENT TYPES");
         manageAssessmentType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageAssessmentType.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -802,7 +802,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         manageModuleDate.setBackground(new java.awt.Color(105, 105, 105));
         manageModuleDate.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         manageModuleDate.setForeground(new java.awt.Color(1, 1, 1));
-        manageModuleDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        manageModuleDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/moduleDate.png"))); // NOI18N
         manageModuleDate.setText("MANAGE MODULE DATE");
         manageModuleDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageModuleDate.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1096,7 +1096,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         jLabel42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(1, 1, 1));
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel-24x24_1.png"))); // NOI18N
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/resetDefault.png"))); // NOI18N
         jLabel42.setText("RESET TO DEFAULT");
         jLabel42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel42.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -1313,7 +1313,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         jLabel43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(1, 1, 1));
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel-24x24_1.png"))); // NOI18N
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/resetDefault.png"))); // NOI18N
         jLabel43.setText("RESET TO DEFAULT");
         jLabel43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel43.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -1470,7 +1470,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         jLabel45.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(1, 1, 1));
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel-24x24_1.png"))); // NOI18N
+        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/resetDefault.png"))); // NOI18N
         jLabel45.setText("RESET TO DEFAULT");
         jLabel45.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel45.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);

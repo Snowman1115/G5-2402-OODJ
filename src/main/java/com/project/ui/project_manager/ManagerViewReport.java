@@ -444,7 +444,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
                 manageSupervisorMouseClicked(evt);
             }
         });
-        jPanel7.add(manageSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 30));
+        jPanel7.add(manageSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 30));
 
         Panel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 250, 35));
 
@@ -492,7 +492,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
         menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/document-24.png"))); // NOI18N
+        menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/reportType.png"))); // NOI18N
         menuBtn40.setText("REPORT STATUS :");
         menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn40.setOpaque(true);
@@ -690,7 +690,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/view-24x24.png"))); // NOI18N
+        menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/reportType.png"))); // NOI18N
         menuBtn35.setText("REPORT STATUS");
         menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn35.setOpaque(true);
@@ -706,7 +706,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/view-24x24.png"))); // NOI18N
+        menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn36.setText("REPORT TYPE");
         menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn36.setOpaque(true);

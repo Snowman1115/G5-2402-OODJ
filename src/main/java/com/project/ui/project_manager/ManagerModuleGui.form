@@ -404,7 +404,7 @@
                       <Color blue="1" green="1" red="1" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/user-24x24.png"/>
+                      <Image iconType="3" name="/Icons/officer-24x24.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MANAGE MARKER"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -427,7 +427,7 @@
                       <Color blue="1" green="1" red="1" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/user-24x24.png"/>
+                      <Image iconType="3" name="/Icons/bill-24x24.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MANAGE ASSESSMENT TYPES"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -450,7 +450,7 @@
                       <Color blue="1" green="1" red="1" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/user-24x24.png"/>
+                      <Image iconType="3" name="/Icons/moduleDate.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MANAGE MODULE DATE"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -1053,7 +1053,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/cancel-24x24_1.png"/>
+                  <Image iconType="3" name="/Icons/resetDefault.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="RESET TO DEFAULT"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -1548,7 +1548,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/cancel-24x24_1.png"/>
+                  <Image iconType="3" name="/Icons/resetDefault.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="RESET TO DEFAULT"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -1918,7 +1918,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/cancel-24x24_1.png"/>
+                  <Image iconType="3" name="/Icons/resetDefault.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="RESET TO DEFAULT"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

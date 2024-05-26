@@ -157,9 +157,9 @@
                       <Color blue="1" green="1" red="1" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/exportCsv-24x24.png"/>
+                      <Image iconType="3" name="/Icons/exportPdf.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Export Student Feedback"/>
+                    <Property name="text" type="java.lang.String" value=" Export Student Feedback"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>

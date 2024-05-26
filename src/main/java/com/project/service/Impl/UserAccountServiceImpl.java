@@ -8,7 +8,9 @@ import com.project.common.utils.IDGenerator;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.LongIDGenerator;
 import com.project.dao.*;
+import com.project.pojo.Consultation;
 import com.project.pojo.Intake;
+import com.project.pojo.ModuleFeedback;
 import com.project.pojo.UserAccount;
 import com.project.service.UserAccountService;
 import lombok.extern.java.Log;
@@ -34,6 +36,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     private ModuleDAO moduleDAO = new ModuleDAO();
     private SubmissionDAO submissionDAO = new SubmissionDAO();
     private PresentationDAO presentationDAO = new PresentationDAO();
+    private ConsultationDAO consultationDAO = new ConsultationDAO();
+    private ModuleFeedbackDAO moduleFeedbackDAO = new ModuleFeedbackDAO();
 
     /**
      * Login Authentication
@@ -405,6 +409,9 @@ public class UserAccountServiceImpl implements UserAccountService {
                             intakesDAO.removeStudent(i.getIntakeId(), userId);
                         }
                     }
+
+                    consultationDAO.getAllConsultations().removeIf(consultation -> consultation.getStudentId().equals(userId));
+                    moduleFeedbackDAO.deleteAllFeedbacksByStudentId(userId);
 
                     userRoleDAO.remove(userId);
                     userAccountDAO.delete(userId);

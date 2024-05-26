@@ -13,14 +13,14 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author Dell Technologies
  */
-public class EditLecturerPM extends javax.swing.JInternalFrame {
+public class EditStaff extends javax.swing.JInternalFrame {
 
     private UserRoleType roleType;
     private int userId;
     /**
      * Creates new form EditLecturerPM
      */
-    public EditLecturerPM(UserRoleType roleType, int userId) {
+    public EditStaff(UserRoleType roleType, int userId) {
         this.roleType = roleType;
         this.userId = userId;
         initComponents();
@@ -74,7 +74,7 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         pageTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pageTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        pageTitle.setText("EDIT LECTURER DETAILS");
+        pageTitle.setText("EDIT STAFF DETAILS");
         pageTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pageTitle.setOpaque(true);
         jPanel1.add(pageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 700, 70));

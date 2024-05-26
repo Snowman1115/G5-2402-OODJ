@@ -259,7 +259,11 @@ public class ConsultationDAO {
             }
         }
         return null;
-    }    
+    }
+
+    public List<Consultation> getAllConsultations() {
+        return consultations;
+    }
     
     /**
      * Create A New Consultation Slot And Save Into System Resources

@@ -4,22 +4,15 @@
  */
 package com.project.ui.administrator;
 
-import com.project.common.constants.UserRoleType;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
  * @author Dell Technologies
  */
-public class LecturerPMManagement extends javax.swing.JInternalFrame {
+public class StaffManagement extends javax.swing.JInternalFrame {
 
-    private UserRoleType roleType;
-    /**
-     * Creates new form LecturerPMManagement
-     * @param roleType
-     */
-    public LecturerPMManagement(UserRoleType roleType) {
-        this.roleType = roleType;
+    public StaffManagement() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
@@ -29,17 +22,7 @@ public class LecturerPMManagement extends javax.swing.JInternalFrame {
     }
 
     private void setUpPage() {
-        switch (this.roleType) {
-            case LECTURER -> {
-                pageTitle.setText("LECTURER DETAILS");
-                roleAssignmentBtn.setText("Promote");
-            }
-            case PROJECT_MANAGER -> {
-                pageTitle.setText("PROJECT MANAGER DETAILS");
-                roleAssignmentBtn.setText("Reassign");
-                
-            }
-        }
+        
     }
     
     /**
@@ -57,7 +40,7 @@ public class LecturerPMManagement extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
-        filterByModule = new javax.swing.JComboBox<>();
+        filterByRole = new javax.swing.JComboBox<>();
         pageTitle = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
@@ -104,29 +87,29 @@ public class LecturerPMManagement extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Username", "First Name", "Last Name", "Modules"
+                "ID", "Username", "First Name", "Last Name", "Role"
             }
         ));
         jScrollPane3.setViewportView(studentTable);
 
         MainPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1020, 440));
 
-        filterByModule.setBackground(new java.awt.Color(254, 254, 254));
-        filterByModule.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
-        filterByModule.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        filterByModule.setToolTipText("d");
-        filterByModule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        filterByModule.setFocusable(false);
-        filterByModule.addActionListener(new java.awt.event.ActionListener() {
+        filterByRole.setBackground(new java.awt.Color(254, 254, 254));
+        filterByRole.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        filterByRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        filterByRole.setToolTipText("d");
+        filterByRole.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        filterByRole.setFocusable(false);
+        filterByRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterByModuleActionPerformed(evt);
+                filterByRoleActionPerformed(evt);
             }
         });
-        MainPanel.add(filterByModule, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 330, 35));
+        MainPanel.add(filterByRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 330, 35));
 
         pageTitle.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        pageTitle.setText("LECTURER DETAILS");
+        pageTitle.setText("STAFF DETAILS");
         pageTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pageTitle.setOpaque(true);
         MainPanel.add(pageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 670, 40));
@@ -171,7 +154,7 @@ public class LecturerPMManagement extends javax.swing.JInternalFrame {
         MainPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 35));
 
         roleAssignmentBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        roleAssignmentBtn.setText("Promote");
+        roleAssignmentBtn.setText("Assign");
         roleAssignmentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 roleAssignmentBtnMouseClicked(evt);
@@ -188,9 +171,9 @@ public class LecturerPMManagement extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_searchFieldKeyReleased
 
-    private void filterByModuleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterByModuleActionPerformed
+    private void filterByRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterByRoleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_filterByModuleActionPerformed
+    }//GEN-LAST:event_filterByRoleActionPerformed
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
         
@@ -214,7 +197,7 @@ public class LecturerPMManagement extends javax.swing.JInternalFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
-    private static javax.swing.JComboBox<String> filterByModule;
+    private static javax.swing.JComboBox<String> filterByRole;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

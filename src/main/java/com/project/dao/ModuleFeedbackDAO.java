@@ -37,6 +37,16 @@ public class ModuleFeedbackDAO {
         }
         return lists;
     }
+    
+    public List<ModuleFeedback> getAllFeedbackByModuleId(Integer moduleId) {
+        List<ModuleFeedback> lists = new ArrayList<>();
+        for (ModuleFeedback feedback : feedbacks) {
+            if (feedback.getModuleId().equals(moduleId)) {
+                lists.add(feedback);
+            }
+        }
+        return lists;
+    }
 
     /**
      * Preload Data into presentations Array

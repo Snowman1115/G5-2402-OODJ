@@ -56,11 +56,13 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
     private void refresh() {
         moduleId = null;
-        System.out.println(moduleId);
         refreshTable();
         fillspModuleComboBox();
         fillAssessmentComboBox();
         ModuleTabbedPanel.setSelectedIndex(0);
+        Map<String, Integer> moduleStatus = ProjectModuleController.getModuleStatusForPM();
+        menuBtn12.setText(String.valueOf(moduleStatus.get("unassigned")));
+        menuBtn13.setText(String.valueOf(moduleStatus.get("total")));
     }
     
     private void refreshTable() {
@@ -378,23 +380,27 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         private void saveModuleDate(){
             String saveModuleId = mdModuleId.getText();
-            Integer saveIntModuleId = parseInt(saveModuleId);
-            LocalDate startDate = mdStartDatePicker.getDate();
-            LocalDate endDate = mdEndDatePicker.getDate();
-             if (startDate == null || endDate == null) {
-                Dialog.ErrorDialog("Start date or end date cannot be null.");
-                return;
-            }
-
-            if (startDate.isBefore(endDate)) {
-                if(ProjectModuleController.saveModuleDate(saveIntModuleId, startDate, endDate)){
-                        System.out.println("Success");
-                        refresh();
-                } else {
-                    Dialog.ErrorDialog(MessageConstant.UNEXPECTED_ERROR);
+            System.out.println(mdModuleId);
+            if(mdModuleId != null){
+                Integer saveIntModuleId = parseInt(saveModuleId);
+                LocalDate startDate = mdStartDatePicker.getDate();
+                LocalDate endDate = mdEndDatePicker.getDate();
+                if (startDate == null || endDate == null) {
+                    Dialog.ErrorDialog("Start date or end date cannot be null.");
+                    return;
                 }
-            } else {
-                Dialog.ErrorDialog(MessageConstant.ERROR_DATE_INVALID);
+                if (startDate.isBefore(endDate)) {
+                    if(ProjectModuleController.saveModuleDate(saveIntModuleId, startDate, endDate)){
+                            System.out.println("Success");
+                            refresh();
+                    } else {
+                        Dialog.ErrorDialog(MessageConstant.UNEXPECTED_ERROR);
+                    }
+                } else {
+                    Dialog.ErrorDialog(MessageConstant.ERROR_DATE_INVALID);
+                }
+            }else {
+                    Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
             }
         }
 
@@ -623,7 +629,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/success-24x24.png"))); // NOI18N
-        menuBtn4.setText(" ");
+        menuBtn4.setText("TOTAL");
         menuBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn4.setOpaque(true);
 

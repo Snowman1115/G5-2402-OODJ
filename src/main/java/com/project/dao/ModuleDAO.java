@@ -208,6 +208,16 @@ public class ModuleDAO {
         }
         return list;
     }
+    
+    public List getModuleIdByProjectManagerId(Integer ProjectManagerId) {
+        List list = new ArrayList<>();
+        for (ProjectModule module : modules) {
+            if (module.getSupervisorId().equals(ProjectManagerId)) {
+                list.add(module.getModuleId());
+            }
+        }
+        return list;
+    }
 
        public List getModuleByModuleId(Integer moduleId) {
         List<Map<String, String>> list = new ArrayList<>();
@@ -297,7 +307,51 @@ public class ModuleDAO {
             modules.add(projectModule);
         }
     }
-
+    
+    public Map<String, Integer> getModuleStatusForPM(Integer pmId) {
+        int unassigned = 0;
+        int completed = 0;
+        int total = 0;
+        int active = 0;
+        int upcoming = 0;
+        int firstMarker = 0;
+        int secondMarker = 0;
+        for (ProjectModule module : modules) {
+            if (module.getSupervisorId().equals(pmId)) {
+                total = total + 1;
+                LocalDate startDate = module.getStartDate();
+                LocalDate endDate = module.getEndDate();
+                LocalDate currentDate = LocalDate.now();
+                if (module.getFirstMarker() == 0 || module.getFirstMarker() == null || module.getSecondMarker() == 0 || module.getSecondMarker() == null) {
+                    unassigned = unassigned + 1;
+                } 
+                if (module.getFirstMarker() != 0 && module.getFirstMarker() != null){
+                    firstMarker = firstMarker + 1;
+                }
+                if (module.getSecondMarker() != 0 && module.getSecondMarker() != null){
+                    secondMarker = secondMarker + 1;
+                }
+                if (endDate.isBefore(currentDate)) {
+                    completed = completed + 1;
+                } 
+                if (currentDate.isAfter(startDate) && currentDate.isBefore(endDate)) {
+                    active = active + 1;
+                } 
+                if (currentDate.isBefore(startDate)) {
+                    upcoming = upcoming + 1;
+                }
+            }
+        }
+        Map<String, Integer> map = new HashMap<>();
+        map.put("total", total);
+        map.put("unassigned", unassigned);
+        map.put("completed", completed);
+        map.put("active", active);
+        map.put("firstMarker", firstMarker);
+        map.put("secondMarker", secondMarker);
+        map.put("upcoming", upcoming);
+        return map;
+    }
    
 
     // Update consultation data

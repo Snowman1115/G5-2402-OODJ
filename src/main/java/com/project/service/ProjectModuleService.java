@@ -8,6 +8,7 @@ import com.project.common.utils.JsonHandler;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -55,9 +56,13 @@ public interface ProjectModuleService {
 
     public List getModuleTypeById(Integer moduleId);
     
-    public List getAllReportDetails();
+    public List getAllReportDetails(Integer authenticatedUserId);
 
     public List getReportDetailsById(Integer reportId);
 
     public Boolean saveModuleDate(Integer moduleId, LocalDate startDate, LocalDate endDate);
+
+    public Map<String, Integer> getModuleStatusForPM(Integer authenticatedUserId);
+
+    public Map<String, Integer> getReportStatusForPM(Integer authenticatedUserId);
 }

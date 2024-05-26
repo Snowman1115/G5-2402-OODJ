@@ -5,6 +5,7 @@
 package com.project.service.Impl;
 
 import com.project.common.constants.MessageConstant;
+import com.project.common.constants.ReportStatus;
 import com.project.common.utils.DateTimeUtils;
 import com.project.common.utils.Dialog;
 import lombok.extern.slf4j.Slf4j;
@@ -117,6 +118,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return mappedLists;
     }
 
+    @Override
     public boolean addModule(int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate) {
         try {
             moduleDAO.addModule(intakeId, moduleCode, projectManagerId, startDate, endDate);
@@ -225,6 +227,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     }
 
 
+    @Override
     public Boolean saveModuleDetails(List moduleDetails) {
         if (moduleDAO.saveModuleChanges(moduleDetails)) {
 //            log.info("Module Changes Has Been Saved! : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
@@ -256,27 +259,40 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
 
 //    Get all report details for Table
     @Override
-    public List getAllReportDetails(){
-//        List<Map<String, String>> mappedLists = new ArrayList<>();
-        List<Map<String, String>> reportLists = submissionDAO.getAllReport();
-//        Integer moduleId = lists.getModuleId();
-        System.out.println(reportLists);
-        if (reportLists != null) {
-            for (Map<String,String> reportList : reportLists) {
-                Integer moduleId = parseInt(reportList.get("moduleId"));
-                Integer studentId = parseInt(reportList.get("studentId"));
+    public List<Map<String, String>> getAllReportDetails(Integer authenticatedUserId) {
+      List<Map<String, String>> mappedList = new ArrayList<>();
+      List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(authenticatedUserId);
 
-                String module = moduleDAO.getModuleNameById(moduleId);
-                String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
-                reportList.put("moduleCode", module);
-                reportList.put("studentName", studentName);
+      for (Map<String, String> module : modules) {
+          Integer moduleId = Integer.parseInt(module.get("id"));
+          List<Submission> reportLists = submissionDAO.getSubmissionListByModuleId(moduleId);
 
-            }
-        }
-        return reportLists;
-    }
+          for (Submission report : reportLists) {
+              Integer studentId = report.getStudentId();
+
+              String moduleCode = moduleDAO.getModuleNameById(moduleId);
+              UserAccount studentAccount = userAccountDAO.getUserAccountById(studentId);
+              String studentName = studentAccount.getFirstName() + " " + studentAccount.getLastName();
+
+              Map<String, String> reportMap = new HashMap<>();
+              reportMap.put("submissionId", report.getSubmissionId().toString());
+              reportMap.put("moduleId", module.get("id"));
+              reportMap.put("moduleCode", moduleCode);
+              reportMap.put("studentId", studentId.toString());
+              reportMap.put("studentName", studentName);
+              reportMap.put("reportStatus", report.getReportStatus().toString());
+              reportMap.put("reportType", report.getReportType().toString());
+              reportMap.put("comment", report.getComment());
+
+              mappedList.add(reportMap);
+          }
+      }
+      return mappedList;
+  }
 
 
+
+    @Override
     public List<Map<String, String>> getReportDetailsById(Integer reportId) {
         Submission reportDetails = submissionDAO.getSubmissionById(reportId);
         System.out.println(reportDetails);
@@ -295,7 +311,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             mappedMap.put("studentName", studentName);
             mappedMap.put("reportStatus", reportDetails.getReportStatus().toString());
             mappedMap.put("reportType", reportDetails.getReportType().toString());
-            mappedMap.put("comment", reportDetails.getComment() != null ? reportDetails.getComment().toString() : ""); // Handle possible null comment
+            mappedMap.put("comment", reportDetails.getComment() != null ? reportDetails.getComment() : ""); // Handle possible null comment
 
             // Create a list and add the map to it
             List<Map<String, String>> reportList = new ArrayList<>();
@@ -307,6 +323,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return null;
     }
 
+    @Override
     public Boolean saveModuleDate(Integer moduleId, LocalDate startDate, LocalDate endDate){
         Boolean mdao = moduleDAO.saveModuleDateChanges(moduleId, startDate, endDate);
         Boolean sdao = submissionDAO.saveSubmissionDueDate(moduleId, endDate);
@@ -322,13 +339,59 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             return false;
         }
     }
-
+    
+    @Override
+    public Map<String, Integer> getModuleStatusForPM(Integer pmId) {
+        return moduleDAO.getModuleStatusForPM(pmId);
+    }
+    
+    @Override
+    public Map<String, Integer> getReportStatusForPM(Integer pmId) {
+        List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(pmId);
+        int total = 0;
+        int pendingSubmit = 0;
+        int pendingMarking = 0;
+        int marked = 0;
+        int overdue = 0;
+        for (Map<String, String> module : modules) {
+            Integer moduleId = Integer.valueOf(module.get("id"));
+            List<Submission> reportLists = submissionDAO.getSubmissionListByModuleId(moduleId);
+            for(Submission reportList : reportLists){
+                total = total + 1;
+                ReportStatus reportStatus = reportList.getReportStatus();
+                switch (reportStatus) {
+                    case PENDING_SUBMIT  -> {
+                        pendingSubmit = pendingSubmit + 1;
+                    }
+                    case PENDING_MARKING  -> {
+                        pendingMarking = pendingMarking + 1;
+                    }
+                    case MARKED_1  -> {
+                        marked = marked + 1;
+                    }
+                    case MARKED_2  -> {
+                        marked = marked + 1;
+                    }
+                    case OVERDUE  -> {
+                        overdue = overdue + 1;
+                    }
+                }
+            }
+        }
+        Map<String, Integer> map = new HashMap<>();
+        map.put("total", total);
+        map.put("pendingSubmit", pendingSubmit);
+        map.put("pendingMarking", pendingMarking);
+        map.put("marked", marked);
+        map.put("overdue", overdue);
+        return map;
+    }
 //    For debug purpose, run the below main method to view the data
     public static void main(String[] args) {
         ProjectModuleServiceImpl prje = new ProjectModuleServiceImpl();
         // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
 
-        System.out.println(prje.getReportDetailsById(2127241));
+        System.out.println(prje.getAllReportDetails(39904006));
     }
 
 

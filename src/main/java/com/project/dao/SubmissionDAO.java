@@ -74,7 +74,7 @@ public class SubmissionDAO {
         }
         return null;
     }
-    
+        
     public String getAssessmentTypeByModuleId(Integer moduleId) {
         for (Submission submission : submissions) {
             if (submission.getModuleId().equals(moduleId)) {

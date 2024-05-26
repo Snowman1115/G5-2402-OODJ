@@ -12,6 +12,7 @@ import com.project.pojo.Submission;
 import com.project.pojo.UserAccount;
 import com.project.service.ModuleFeedbackService;
 import com.project.service.ProjectModuleService;
+import static java.lang.Integer.parseInt;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.message.Message;
 
@@ -85,6 +86,42 @@ public class ModuleFeedbackServiceImpl implements ModuleFeedbackService {
             log.info(MessageConstant.UNEXPECTED_ERROR);
             return false;
         }
+    }
+    
+     /**
+     * Get All Feedback For Project Manager
+     * @param pmId
+     * @return List of Map
+     */
+    @Override
+     public List<Map<String, String>> getAllFeedbackForPM(Integer pmId) {
+        List<Map<String, String>> mappedList = new ArrayList<>();
+        List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(pmId);
+        
+        for (Map<String,String> module : modules) {
+            Integer moduleId = parseInt(module.get("id"));
+            List<ModuleFeedback> feedbacks = moduleFeedbackDAO.getAllFeedbackByModuleId(moduleId);
+            for (ModuleFeedback feedback : feedbacks) {
+                    Integer studentId = feedback.getStudentId();
+                    String studentName = userAccountDAO.getUserAccountById(studentId).getFirstName() + userAccountDAO.getUserAccountById(studentId).getLastName();
+                    Map<String, String> map = new HashMap<>();
+                    map.put("moduleId", module.get("id"));
+                    map.put("moduleCode", module.get("moduleCode"));
+                    map.put("studentId", studentId.toString());
+                    map.put("studentName", studentName);
+                    map.put("comments", feedback.getComments());
+                    mappedList.add(map);
+                }
+            }
+
+        return mappedList;
+    }
+     
+    public static void main(String[] args) {
+        ModuleFeedbackServiceImpl prje = new ModuleFeedbackServiceImpl();
+        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
+
+        System.out.println(prje.getAllFeedbackForPM(39904006));
     }
 
 }

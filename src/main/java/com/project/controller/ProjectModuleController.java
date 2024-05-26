@@ -12,6 +12,7 @@ import com.project.service.UserAuthenticationService;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -98,11 +99,19 @@ public class ProjectModuleController {
         return projectModuleService.getModuleTypeById(moduleId);
     }
 
-    public static List getAllReport(){
-        return projectModuleService.getAllReportDetails();
+    public static List getAllReportByPM(){
+        return projectModuleService.getAllReportDetails(getAuthenticatedUserId());
     }
 
     public static List getReportById(Integer reportId){
         return projectModuleService.getReportDetailsById(reportId);
+    }
+    
+    public static Map<String, Integer> getModuleStatusForPM() {
+        return projectModuleService.getModuleStatusForPM(getAuthenticatedUserId());  
+    }
+    
+    public static Map<String, Integer> getReportStatusForPM() {
+        return projectModuleService.getReportStatusForPM(getAuthenticatedUserId());  
     }
 }

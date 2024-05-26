@@ -50,6 +50,14 @@ public class ModuleFeedbackController {
     private static Integer getAuthenticatedUserId() {
         return userAuthenticationService.getAuthenticationUserDetails().getUserId();
     }
-
+    
+    
+    /**
+     * Get Available Feedback Module For PM
+     * @return List of Map
+     */
+    public static List<Map<String,String>> getAllFeedbackForPM() {
+        return moduleFeedbackService.getAllFeedbackForPM(getAuthenticatedUserId());
+    }
 
 }

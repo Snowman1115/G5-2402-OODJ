@@ -15,4 +15,6 @@ public interface ModuleFeedbackService {
     Map<String,String> getProjectModuleByCode(String moduleCode);
 
     Boolean submitModuleFeedback(Integer studentId,Integer moduleId, String commets);
+
+    public List<Map<String, String>> getAllFeedbackForPM(Integer authenticatedUserId);
 }

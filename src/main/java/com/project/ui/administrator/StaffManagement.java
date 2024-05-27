@@ -4,7 +4,20 @@
  */
 package com.project.ui.administrator;
 
+import com.project.common.constants.UserRoleType;
+import com.project.common.utils.Dialog;
+import com.project.common.utils.JsonHandler;
+import com.project.controller.UserAccountController;
+import org.json.simple.JSONObject;
+
+import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -12,6 +25,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class StaffManagement extends javax.swing.JInternalFrame {
 
+    DefaultTableModel table;
     public StaffManagement() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
@@ -22,7 +36,42 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     }
 
     private void setUpPage() {
-        
+        JsonHandler lecturers = UserAccountController.getLecturers();
+        JsonHandler projectManagers = UserAccountController.getPMs();
+        JsonHandler admins = UserAccountController.getAdmins();
+
+        table = (DefaultTableModel) staffTable.getModel();
+        table.setRowCount(0);
+
+        for (int i = 0; i < lecturers.getAll().size(); i++) {
+            JSONObject lecturer = (JSONObject) lecturers.getAll().get(i);
+            table.addRow(new Object[] {lecturer.get("id"), lecturer.get("username"), lecturer.get("first_name"), lecturer.get("last_name"), lecturer.get("roleType")});
+        }
+        for (int i = 0; i < projectManagers.getAll().size(); i++) {
+            JSONObject projectManager = (JSONObject) projectManagers.getAll().get(i);
+            table.addRow(new Object[] {projectManager.get("id"), projectManager.get("username"), projectManager.get("first_name"), projectManager.get("last_name"), projectManager.get("roleType")});
+        }
+        for (int i = 0; i < admins.getAll().size(); i++) {
+            JSONObject admin = (JSONObject) admins.getAll().get(i);
+            table.addRow(new Object[] {admin.get("id"), admin.get("username"), admin.get("first_name"), admin.get("last_name"), admin.get("roleType")});
+        }
+
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table);
+        staffTable.setRowSorter(sorter);
+
+        sorter.setSortKeys(List.of(new RowSorter.SortKey(2, SortOrder.ASCENDING)));
+        sorter.sort();
+
+        List<String> userRoles = new ArrayList<>();
+        userRoles.add(UserRoleType.ADMIN.toString());
+        userRoles.add(UserRoleType.PROJECT_MANAGER.toString().replace("_", " "));
+        userRoles.add(UserRoleType.LECTURER.toString());
+
+        for (String s : userRoles) {
+            filterByRole.addItem(s);
+        }
+
+
     }
     
     /**
@@ -39,7 +88,7 @@ public class StaffManagement extends javax.swing.JInternalFrame {
         searchField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        studentTable = new javax.swing.JTable();
+        staffTable = new javax.swing.JTable();
         filterByRole = new javax.swing.JComboBox<>();
         pageTitle = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
@@ -79,7 +128,7 @@ public class StaffManagement extends javax.swing.JInternalFrame {
         jLabel11.setOpaque(true);
         MainPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 80, 35));
 
-        studentTable.setModel(new javax.swing.table.DefaultTableModel(
+        staffTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -90,7 +139,7 @@ public class StaffManagement extends javax.swing.JInternalFrame {
                 "ID", "Username", "First Name", "Last Name", "Role"
             }
         ));
-        jScrollPane3.setViewportView(studentTable);
+        jScrollPane3.setViewportView(staffTable);
 
         MainPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1020, 440));
 
@@ -168,11 +217,23 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-        
+        String searchKey = searchField.getText();
+
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(table);
+        staffTable.setRowSorter(sorter);
+        String regex = "(?i).*" + Pattern.quote(searchKey) + ".*";
+
+        sorter.setRowFilter(RowFilter.regexFilter(regex));
     }//GEN-LAST:event_searchFieldKeyReleased
 
     private void filterByRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterByRoleActionPerformed
-        // TODO add your handling code here:
+        String selectedIntake = (String) filterByRole.getSelectedItem();
+
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(table);
+        staffTable.setRowSorter(sorter);
+        String regex = selectedIntake.equals("All") ? ".*" : Pattern.quote(selectedIntake);
+
+        sorter.setRowFilter(RowFilter.regexFilter(regex, table.findColumn("Role")));
     }//GEN-LAST:event_filterByRoleActionPerformed
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
@@ -180,7 +241,14 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked
-        // TODO add your handling code here:
+        int selectedRow = staffTable.getSelectedRow();
+        if (selectedRow < 0) {
+            Dialog.ErrorDialog("Please select a record to edit!");
+        } else {
+            int staffId = Integer.parseInt(staffTable.getValueAt(selectedRow, 0).toString());
+            String staffRole = staffTable.getValueAt(selectedRow, 4).toString();
+            AdminGui.editStaff(staffId, staffRole);
+        }
     }//GEN-LAST:event_editBtnMouseClicked
 
     private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
@@ -206,6 +274,6 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     private javax.swing.JLabel pageTitle;
     private javax.swing.JButton roleAssignmentBtn;
     private javax.swing.JTextField searchField;
-    private javax.swing.JTable studentTable;
+    private javax.swing.JTable staffTable;
     // End of variables declaration//GEN-END:variables
 }

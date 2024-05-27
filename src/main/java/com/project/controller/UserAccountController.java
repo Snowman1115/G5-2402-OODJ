@@ -12,6 +12,7 @@ import com.project.common.utils.JsonHandler;
 import com.project.dao.UserAuthenticationDAO;
 import com.project.pojo.UserAccount;
 import com.project.pojo.UserAuthentication;
+import com.project.service.Impl.AdminAccountServiceImpl;
 import com.project.service.Impl.UserAccountServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.UserAccountService;
@@ -27,6 +28,8 @@ public class UserAccountController {
     private static UserAccountService userAccountService = new UserAccountServiceImpl();
 
     private static UserAuthenticationService userAuthenticationService = new UserAuthenticationServiceImpl();
+
+    private static AdminAccountServiceImpl adminAccountService = new AdminAccountServiceImpl();
 
     /**
      * Login Authentication
@@ -219,9 +222,7 @@ public class UserAccountController {
      * get all admins
      * @return admins
      */
-    public static JsonHandler getAdmins() {
-        return userAccountService.getUsersByRole(UserRoleType.ADMIN);
-    }
+    public static JsonHandler getAdmins() { return adminAccountService.getAdmins(); }
 
     
 

@@ -5,6 +5,9 @@
 package com.project.ui.administrator;
 
 import com.project.common.constants.UserRoleType;
+import com.project.controller.UserAccountController;
+import com.project.pojo.UserAccount;
+
 import static com.project.common.constants.UserRoleType.LECTURER;
 import static com.project.common.constants.UserRoleType.PROJECT_MANAGER;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -15,12 +18,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class EditStaff extends javax.swing.JInternalFrame {
 
-    private UserRoleType roleType;
+    private String roleType;
     private int userId;
     /**
      * Creates new form EditLecturerPM
      */
-    public EditStaff(UserRoleType roleType, int userId) {
+    public EditStaff(int userId, String roleType) {
         this.roleType = roleType;
         this.userId = userId;
         initComponents();
@@ -32,15 +35,26 @@ public class EditStaff extends javax.swing.JInternalFrame {
     }
     
     private void setUpForm() {
+        UserAccount staffAcc = UserAccountController.getUserDetailsByUserId(this.userId);
+        usernameField.setText(staffAcc.getUsername());
+        emailField.setText(staffAcc.getEmail());
+        firstName.setText(staffAcc.getFirstName());
+        lastName.setText(staffAcc.getLastName());
+
         switch (this.roleType) {
-            case LECTURER -> {
+            case "LECTURER" -> {
                 pageTitle.setText("LECTURER DETAILS");
             }
-            case PROJECT_MANAGER -> {
+            case "PROJECT MANAGER" -> {
                 pageTitle.setText("PROJECT MANAGER DETAILS");
                 
             }
+            case "ADMIN" -> {
+                pageTitle.setText("ADMIN DETAILS");
+            }
         }
+
+
     }
 
     /**

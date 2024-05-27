@@ -251,49 +251,62 @@ public class UserAccountServiceImpl implements UserAccountService {
                 return studentsJson;
             }
             case LECTURER -> {
+                List<Integer> lecturerList = userRoleDAO.filterUserByRole(roleType);
+
                 JsonHandler lecturersJson = new JsonHandler();
 
                 for (UserAccount ua : userAccounts) {
-                    JSONObject lecturer = new JSONObject();
-                    lecturer.put("id", ua.getUserId());
-                    lecturer.put("username", ua.getUsername());
-                    lecturer.put("first_name", ua.getFirstName());
-                    lecturer.put("last_name", ua.getLastName());
-                    lecturer.put("email", ua.getEmail());
+                    if (lecturerList.contains(ua.getUserId())) {
+                        JSONObject lecturer = new JSONObject();
+                        lecturer.put("id", ua.getUserId());
+                        lecturer.put("username", ua.getUsername());
+                        lecturer.put("first_name", ua.getFirstName());
+                        lecturer.put("last_name", ua.getLastName());
+                        lecturer.put("email", ua.getEmail());
+                        lecturer.put("roleType", roleType.toString());
 
-                    lecturersJson.addObject(lecturer);
+                        lecturersJson.addObject(lecturer);
+                    }
                 }
 
                 return lecturersJson;
             }
             case PROJECT_MANAGER -> {
+                List<Integer> pmList = userRoleDAO.filterUserByRole(roleType);
                 JsonHandler PMsJson = new JsonHandler();
 
                 for (UserAccount ua : userAccounts) {
-                    JSONObject projectManager = new JSONObject();
-                    projectManager.put("id", ua.getUserId());
-                    projectManager.put("username", ua.getUsername());
-                    projectManager.put("first_name", ua.getFirstName());
-                    projectManager.put("last_name", ua.getLastName());
-                    projectManager.put("email", ua.getEmail());
+                    if (pmList.contains(ua.getUserId())) {
+                        JSONObject projectManager = new JSONObject();
+                        projectManager.put("id", ua.getUserId());
+                        projectManager.put("username", ua.getUsername());
+                        projectManager.put("first_name", ua.getFirstName());
+                        projectManager.put("last_name", ua.getLastName());
+                        projectManager.put("email", ua.getEmail());
+                        projectManager.put("roleType", roleType.toString().replace("_", " "));
 
-                    PMsJson.addObject(projectManager);
+                        PMsJson.addObject(projectManager);
+                    }
                 }
 
                 return PMsJson;
             }
             case ADMIN -> {
+                List<Integer> adminList = userRoleDAO.filterUserByRole(roleType);
                 JsonHandler adminJson = new JsonHandler();
 
                 for (UserAccount ua : userAccounts) {
-                    JSONObject projectManager = new JSONObject();
-                    projectManager.put("id", ua.getUserId());
-                    projectManager.put("username", ua.getUsername());
-                    projectManager.put("first_name", ua.getFirstName());
-                    projectManager.put("last_name", ua.getLastName());
-                    projectManager.put("email", ua.getEmail());
+                    if (adminList.contains(ua.getUserId())  && !ua.getUserId().equals(userAuthenticationDAO.checkUserAuthorization().getUserId())) {
+                        JSONObject admin = new JSONObject();
+                        admin.put("id", ua.getUserId());
+                        admin.put("username", ua.getUsername());
+                        admin.put("first_name", ua.getFirstName());
+                        admin.put("last_name", ua.getLastName());
+                        admin.put("email", ua.getEmail());
+                        admin.put("roleType", roleType.toString());
 
-                    adminJson.addObject(projectManager);
+                        adminJson.addObject(admin);
+                    }
                 }
 
                 return adminJson;

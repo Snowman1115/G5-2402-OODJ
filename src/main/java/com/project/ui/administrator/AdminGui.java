@@ -9,7 +9,7 @@ import com.project.controller.UserAccountController;
 import com.project.ui.authentication.LoginGui;
 import com.project.ui.authentication.UserProfileGui;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * User Interface - Admin
@@ -110,6 +110,16 @@ public class AdminGui extends javax.swing.JFrame {
     public static void editStudent(int studentId) {
         WindowsPane.removeAll();
         WindowsPane.add(new EditStudent(studentId)).setVisible(true);
+    }
+
+    /**
+     * open edit staff panel
+     * @param staffId
+     * @param userRole
+     */
+    public static void editStaff(int staffId, String userRole) {
+        WindowsPane.removeAll();
+        WindowsPane.add(new EditStaff(staffId, userRole)).setVisible(true);
     }
 
     /**

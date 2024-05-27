@@ -1489,7 +1489,11 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         menuBtn57.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuBtn57.setOpaque(true);
         Panel3.add(menuBtn57, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 90, 40));
+
+        mdEndDatePicker.getComponentDateTextField().setEditable(false);
         Panel3.add(mdEndDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 300, 40));
+
+        mdStartDatePicker.getComponentDateTextField().setEditable(false);
         Panel3.add(mdStartDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 40));
 
         ModuleTabbedPanel.addTab("Manage Module Date", Panel3);

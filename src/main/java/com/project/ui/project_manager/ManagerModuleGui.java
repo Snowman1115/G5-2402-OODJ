@@ -59,6 +59,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         refreshTable();
         fillspModuleComboBox();
         fillAssessmentComboBox();
+        refreshTextField();
         ModuleTabbedPanel.setSelectedIndex(0);
         Map<String, Integer> moduleStatus = ProjectModuleController.getModuleStatusForPM();
         menuBtn12.setText(String.valueOf(moduleStatus.get("unassigned")));
@@ -73,6 +74,24 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             String[] data = {list.get("id"),list.get("moduleCode"), list.get("startDate"),list.get("endDate"), list.get("firstMarker") , list.get("secondMarker"),};
             dtm.addRow(data);   
         }
+    }
+    
+    private void refreshTextField(){
+        spModuleId.setText(null);
+        spModuleName.setText(null);
+        spStartDate.setText(null);
+        spEndDate.setText(null);
+        spModuleSPComboBox.setSelectedIndex(-1);
+        spModuleSMComboBox.setSelectedIndex(-1);
+        atModuleId.setText(null);
+        atModuleName.setText(null);
+        atStartDate.setText(null);
+        atEndDate.setText(null);
+        assessmentTypeComboBox.setSelectedIndex(-1);
+        mdModuleId.setText(null);
+        mdModuleName.setText(null);
+        mdStartDatePicker.setDate(null);
+        mdEndDatePicker.setDate(null);
     }
     
     private void refreshTableByFilter(Integer option) {
@@ -948,6 +967,9 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 spSaveButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                spSaveButtonMouseEntered(evt);
+            }
         });
         Panel2.add(spSaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, 170, 35));
 
@@ -1721,6 +1743,10 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
     private void moduleStatusComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moduleStatusComboBoxMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_moduleStatusComboBoxMouseClicked
+
+    private void spSaveButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spSaveButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_spSaveButtonMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

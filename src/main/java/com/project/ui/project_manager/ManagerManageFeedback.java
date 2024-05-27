@@ -61,6 +61,7 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
 
     private void refresh() {
         refreshTable();
+        refreshTextField();
     }
     
     private void refreshTable() {
@@ -73,9 +74,25 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         }
     }
     
+    private void refreshTextField(){
+        fbModuleId.setText(null);
+        fbModuleName.setText(null);
+        fbStudentId.setText(null);
+        fbStudentName.setText(null);
+        fbComment.setText(null);
+    }
+    
+    private void autofillStudentFeedback(String moduleId, String moduleName,String studentId,String studentName,String comment){
+        fbModuleId.setText(moduleId);
+        fbModuleName.setText(moduleName);
+        fbStudentId.setText(studentId);
+        fbStudentName.setText(studentName);
+        fbComment.setText(comment);
+    }
+    
     private void exportToPdf(){
-        int selectedRow = jTableStudentFeedback.getSelectedRow();
-        if (selectedRow != -1) {
+        String moduleId = fbModuleId.getText();
+        if (moduleId != null && moduleId != "") {
             try {
                 generateFeedbackPdf();
                 Dialog.SuccessDialog(MessageConstant.SUCCESS_GENERATE_PDF);
@@ -83,17 +100,17 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
                 Dialog.ErrorDialog("Error creating PDF: " + e.getMessage());
             }
         } else {
-            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
+            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_FEEDBACK);
         }
     }
     
     private void generateFeedbackPdf() throws FileNotFoundException{
         int selectedRow = jTableStudentFeedback.getSelectedRow();
-        String moduleId = jTableStudentFeedback.getValueAt(selectedRow, 0).toString();
-        String moduleName = jTableStudentFeedback.getValueAt(selectedRow, 1).toString();
-        String studentId = jTableStudentFeedback.getValueAt(selectedRow, 2).toString();
-        String studentName = jTableStudentFeedback.getValueAt(selectedRow, 3).toString();
-        String comments = jTableStudentFeedback.getValueAt(selectedRow, 4).toString();
+        String moduleId = fbModuleId.getText();
+        String moduleName = fbModuleName.getText();
+        String studentId = fbStudentId.getText();
+        String studentName = fbStudentName.getText();
+        String comments = fbComment.getText();
         
         
         
@@ -195,6 +212,25 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableStudentFeedback = new javax.swing.JTable();
         menuBtn17 = new javax.swing.JLabel();
+        Panel2 = new javax.swing.JPanel();
+        menuBtn38 = new javax.swing.JLabel();
+        fbStudentId = new javax.swing.JTextField();
+        fbModuleId = new javax.swing.JTextField();
+        JSeparator37 = new javax.swing.JSeparator();
+        jLabel40 = new javax.swing.JLabel();
+        menuBtn37 = new javax.swing.JLabel();
+        menuBtn30 = new javax.swing.JLabel();
+        fbStudentName = new javax.swing.JTextField();
+        menuBtn32 = new javax.swing.JLabel();
+        menuBtn34 = new javax.swing.JLabel();
+        menuBtn33 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        fbComment = new javax.swing.JTextArea();
+        menuBtn31 = new javax.swing.JLabel();
+        atSaveButton = new javax.swing.JLabel();
+        JSeparator34 = new javax.swing.JSeparator();
+        menuBtn35 = new javax.swing.JLabel();
+        fbModuleName = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -209,17 +245,17 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         Panel1.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn14.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn14.setText("Student Feedback");
         menuBtn14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn14.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn14.setOpaque(true);
         Panel1.add(menuBtn14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
-        jLabel11.setBackground(new java.awt.Color(254, 254, 254));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search-24x24.png"))); // NOI18N
+        jLabel11.setBackground(new java.awt.Color(254, 254, 254));
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel11.setOpaque(true);
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -249,12 +285,12 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         jPanel7.setBackground(new java.awt.Color(204, 204, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/view-24x24.png"))); // NOI18N
+        manageSupervisor.setText(" View Student Feedback");
         manageSupervisor.setBackground(new java.awt.Color(204, 204, 255));
+        manageSupervisor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         manageSupervisor.setForeground(new java.awt.Color(1, 1, 1));
-        manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exportPdf.png"))); // NOI18N
-        manageSupervisor.setText(" Export Student Feedback");
-        manageSupervisor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageSupervisor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 manageSupervisorMouseClicked(evt);
@@ -264,10 +300,10 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
 
         Panel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 250, 35));
 
-        menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn16.setText("VIEW STUDENT FEEDBACK");
         menuBtn16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setOpaque(true);
         Panel1.add(menuBtn16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 230, 40));
 
@@ -304,14 +340,203 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 1020, 360));
 
-        menuBtn17.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn17.setText("ACTION");
         menuBtn17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn17.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn17.setOpaque(true);
         Panel1.add(menuBtn17, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, 250, 40));
 
         MainTabbedPanel.addTab("View Feedback", Panel1);
+
+        Panel2.setPreferredSize(new java.awt.Dimension(1050, 570));
+        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/name-24x24.png"))); // NOI18N
+        menuBtn38.setText("STUDENT ID");
+        menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn38.setOpaque(true);
+        Panel2.add(menuBtn38, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 300, 40));
+
+        fbStudentId.setEditable(false);
+        fbStudentId.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        fbStudentId.setBackground(new java.awt.Color(255, 255, 255));
+        fbStudentId.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        fbStudentId.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        fbStudentId.setForeground(new java.awt.Color(1, 1, 1));
+        fbStudentId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fbStudentIdMouseClicked(evt);
+            }
+        });
+        fbStudentId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fbStudentIdActionPerformed(evt);
+            }
+        });
+        Panel2.add(fbStudentId, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 340, 35));
+
+        fbModuleId.setEditable(false);
+        fbModuleId.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        fbModuleId.setBackground(new java.awt.Color(255, 255, 255));
+        fbModuleId.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        fbModuleId.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        fbModuleId.setForeground(new java.awt.Color(1, 1, 1));
+        fbModuleId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fbModuleIdMouseClicked(evt);
+            }
+        });
+        fbModuleId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fbModuleIdActionPerformed(evt);
+            }
+        });
+        Panel2.add(fbModuleId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 340, 35));
+
+        JSeparator37.setForeground(new java.awt.Color(1, 1, 1));
+        Panel2.add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 590, 170, 10));
+
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
+        jLabel40.setText("Back");
+        jLabel40.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel40.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel40.setOpaque(true);
+        jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel40MouseClicked(evt);
+            }
+        });
+        Panel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, 170, 35));
+
+        menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn37.setText("ACTION :");
+        menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn37.setOpaque(true);
+        Panel2.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 550, 90, 40));
+
+        menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
+        menuBtn30.setText("View Feedback");
+        menuBtn30.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn30.setOpaque(true);
+        Panel2.add(menuBtn30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
+
+        fbStudentName.setEditable(false);
+        fbStudentName.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        fbStudentName.setBackground(new java.awt.Color(255, 255, 255));
+        fbStudentName.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        fbStudentName.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        fbStudentName.setForeground(new java.awt.Color(1, 1, 1));
+        fbStudentName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fbStudentNameMouseClicked(evt);
+            }
+        });
+        fbStudentName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fbStudentNameActionPerformed(evt);
+            }
+        });
+        Panel2.add(fbStudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 340, 35));
+
+        menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn32.setText("MODULE ID");
+        menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn32.setOpaque(true);
+        Panel2.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
+
+        menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
+        menuBtn34.setText("STUDENT NAME");
+        menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn34.setOpaque(true);
+        Panel2.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 300, 40));
+
+        menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-24x24.png"))); // NOI18N
+        menuBtn33.setText("STUDENT FEEDBACK");
+        menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn33.setOpaque(true);
+        Panel2.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 300, 40));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        fbComment.setColumns(20);
+        fbComment.setRows(5);
+        fbComment.setBackground(new java.awt.Color(255, 255, 255));
+        fbComment.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(fbComment);
+
+        Panel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 340, 120));
+
+        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
+        menuBtn31.setText("ACTION :");
+        menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn31.setOpaque(true);
+        Panel2.add(menuBtn31, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 470, 90, 40));
+
+        atSaveButton.setBackground(new java.awt.Color(254, 254, 254));
+        atSaveButton.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        atSaveButton.setForeground(new java.awt.Color(1, 1, 1));
+        atSaveButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        atSaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exportPdf.png"))); // NOI18N
+        atSaveButton.setText("EXPORT PDF");
+        atSaveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atSaveButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        atSaveButton.setOpaque(true);
+        atSaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atSaveButtonMouseClicked(evt);
+            }
+        });
+        Panel2.add(atSaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, 170, 35));
+
+        JSeparator34.setForeground(new java.awt.Color(1, 1, 1));
+        Panel2.add(JSeparator34, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, 170, 10));
+
+        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
+        menuBtn35.setText("MODULE NAME");
+        menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn35.setOpaque(true);
+        Panel2.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 300, 40));
+
+        fbModuleName.setEditable(false);
+        fbModuleName.setBackground(new java.awt.Color(255, 255, 255));
+        fbModuleName.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
+        fbModuleName.setForeground(new java.awt.Color(1, 1, 1));
+        fbModuleName.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        fbModuleName.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        fbModuleName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fbModuleNameMouseClicked(evt);
+            }
+        });
+        fbModuleName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fbModuleNameActionPerformed(evt);
+            }
+        });
+        Panel2.add(fbModuleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 340, 35));
+
+        MainTabbedPanel.addTab("Feedback Details", Panel2);
 
         getContentPane().add(MainTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
@@ -320,7 +545,18 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
 
     private void manageSupervisorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupervisorMouseClicked
 //      add code to get row detail (Module Id)
-        exportToPdf();
+        int selectedRow = jTableStudentFeedback.getSelectedRow();
+        if (selectedRow != -1) {
+            String moduleId = jTableStudentFeedback.getValueAt(selectedRow, 0).toString();
+            String moduleName = jTableStudentFeedback.getValueAt(selectedRow, 1).toString();
+            String studentId = jTableStudentFeedback.getValueAt(selectedRow, 2).toString();
+            String studentName = jTableStudentFeedback.getValueAt(selectedRow, 3).toString();
+            String comment = jTableStudentFeedback.getValueAt(selectedRow, 4).toString();
+            MainTabbedPanel.setSelectedIndex(1);
+            autofillStudentFeedback(moduleId, moduleName, studentId, studentName, comment);
+        } else {
+            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
+        }
     }//GEN-LAST:event_manageSupervisorMouseClicked
 
     private void JField12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JField12MouseClicked
@@ -344,19 +580,81 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JField12ActionPerformed
 
+    private void fbStudentIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fbStudentIdMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbStudentIdMouseClicked
+
+    private void fbStudentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fbStudentIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbStudentIdActionPerformed
+
+    private void fbModuleIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fbModuleIdMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbModuleIdMouseClicked
+
+    private void fbModuleIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fbModuleIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbModuleIdActionPerformed
+
+    private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
+
+        MainTabbedPanel.setSelectedIndex(0);
+        refresh();
+    }//GEN-LAST:event_jLabel40MouseClicked
+
+    private void fbStudentNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fbStudentNameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbStudentNameMouseClicked
+
+    private void fbStudentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fbStudentNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbStudentNameActionPerformed
+
+    private void atSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atSaveButtonMouseClicked
+        // Save Assessment Type button
+        exportToPdf();
+    }//GEN-LAST:event_atSaveButtonMouseClicked
+
+    private void fbModuleNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fbModuleNameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbModuleNameMouseClicked
+
+    private void fbModuleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fbModuleNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fbModuleNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JField12;
+    private javax.swing.JSeparator JSeparator34;
+    private javax.swing.JSeparator JSeparator37;
     private javax.swing.JTabbedPane MainTabbedPanel;
     private javax.swing.JPanel Panel1;
+    private javax.swing.JPanel Panel2;
+    private javax.swing.JLabel atSaveButton;
+    private javax.swing.JTextArea fbComment;
+    private javax.swing.JTextField fbModuleId;
+    private javax.swing.JTextField fbModuleName;
+    private javax.swing.JTextField fbStudentId;
+    private javax.swing.JTextField fbStudentName;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableStudentFeedback;
     private javax.swing.JLabel manageSupervisor;
     private javax.swing.JLabel menuBtn14;
     private javax.swing.JLabel menuBtn16;
     private javax.swing.JLabel menuBtn17;
+    private javax.swing.JLabel menuBtn30;
+    private javax.swing.JLabel menuBtn31;
+    private javax.swing.JLabel menuBtn32;
+    private javax.swing.JLabel menuBtn33;
+    private javax.swing.JLabel menuBtn34;
+    private javax.swing.JLabel menuBtn35;
+    private javax.swing.JLabel menuBtn37;
+    private javax.swing.JLabel menuBtn38;
     // End of variables declaration//GEN-END:variables
 
 

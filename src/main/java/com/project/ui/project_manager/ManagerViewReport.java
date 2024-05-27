@@ -51,6 +51,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
     private void refresh() {
         refreshTable();
+        refreshTextField();
         MainTabbedPanel.setSelectedIndex(0);
         Map<String, Integer> reportStatus = ProjectModuleController.getReportStatusForPM();
         System.out.println(reportStatus);
@@ -78,6 +79,15 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
             String[] data = {submissionId, moduleCode, studentId, studentName, reportStatus, reportType, comment};
             dtm.addRow(data);
         }
+    }
+    
+    private void refreshTextField(){
+        rdReportId.setText(null);
+        rdStudentId.setText(null);
+        rdStudentName.setText(null);
+        rdReportStatus.setText(null);
+        rdReportType.setText(null);
+        rdComment.setText(null);
     }
     
     private void refreshTableByFilter(Integer option) {
@@ -373,17 +383,17 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         Panel1.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn14.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn14.setText("Student Report Summary");
         menuBtn14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn14.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn14.setOpaque(true);
         Panel1.add(menuBtn14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
-        jLabel11.setBackground(new java.awt.Color(254, 254, 254));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search-24x24.png"))); // NOI18N
+        jLabel11.setBackground(new java.awt.Color(254, 254, 254));
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel11.setOpaque(true);
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -410,12 +420,12 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         });
         Panel1.add(JField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 250, 35));
 
-        statusFilterComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        statusFilterComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
         statusFilterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Submit", "Pending Marking", "Overdue", "Marked" }));
-        statusFilterComboBox.setToolTipText("d");
+        statusFilterComboBox.setBackground(new java.awt.Color(254, 254, 254));
         statusFilterComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         statusFilterComboBox.setFocusable(false);
+        statusFilterComboBox.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        statusFilterComboBox.setToolTipText("d");
         statusFilterComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statusFilterComboBoxActionPerformed(evt);
@@ -423,22 +433,22 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         });
         Panel1.add(statusFilterComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 250, 35));
 
-        menuBtn15.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn15.setText("ACTION");
         menuBtn15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn15.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn15.setOpaque(true);
         Panel1.add(menuBtn15, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 160, 420, 40));
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageSupervisor.setBackground(new java.awt.Color(105, 105, 105));
-        manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        manageSupervisor.setForeground(new java.awt.Color(1, 1, 1));
         manageSupervisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/view-24x24.png"))); // NOI18N
         manageSupervisor.setText("View Report Details");
+        manageSupervisor.setBackground(new java.awt.Color(105, 105, 105));
         manageSupervisor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        manageSupervisor.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        manageSupervisor.setForeground(new java.awt.Color(1, 1, 1));
         manageSupervisor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 manageSupervisorMouseClicked(evt);
@@ -448,10 +458,10 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         Panel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 250, 35));
 
-        menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn16.setText("STUDENT REPORT TABLE");
         menuBtn16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn16.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn16.setOpaque(true);
         Panel1.add(menuBtn16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 670, 40));
 
@@ -490,30 +500,30 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         Panel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 1020, 340));
 
-        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
         menuBtn40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/reportType.png"))); // NOI18N
         menuBtn40.setText("REPORT STATUS :");
         menuBtn40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
         menuBtn40.setOpaque(true);
         Panel1.add(menuBtn40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 160, 40));
 
         jPanel6.setBackground(new java.awt.Color(254, 254, 254));
 
-        menuBtn23.setBackground(new java.awt.Color(250, 250, 250));
-        menuBtn23.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn23.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn23.setText("Total Report");
+        menuBtn23.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn23.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn23.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn23.setOpaque(true);
 
-        menuBtn24.setBackground(new java.awt.Color(254, 254, 254));
-        menuBtn24.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn24.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn24.setText("0");
+        menuBtn24.setBackground(new java.awt.Color(254, 254, 254));
         menuBtn24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn24.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn24.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn24.setOpaque(true);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -536,12 +546,12 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 153));
 
-        menuBtn29.setBackground(new java.awt.Color(255, 255, 153));
-        menuBtn29.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn29.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn29.setText("Pending Submit");
+        menuBtn29.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn29.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn29.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn29.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn29.setOpaque(true);
         menuBtn29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -549,12 +559,12 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
             }
         });
 
-        menuBtn31.setBackground(new java.awt.Color(255, 255, 153));
-        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn31.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn31.setText("0");
+        menuBtn31.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn31.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn31.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn31.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn31.setOpaque(true);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -577,20 +587,20 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 153));
 
-        menuBtn39.setBackground(new java.awt.Color(255, 255, 153));
-        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn39.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn39.setText("Pending Marking");
+        menuBtn39.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn39.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn39.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn39.setOpaque(true);
 
-        menuBtn41.setBackground(new java.awt.Color(255, 255, 153));
-        menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn41.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn41.setText("0");
+        menuBtn41.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn41.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn41.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn41.setOpaque(true);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -613,20 +623,20 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         jPanel17.setBackground(new java.awt.Color(255, 102, 102));
 
-        menuBtn42.setBackground(new java.awt.Color(255, 102, 102));
-        menuBtn42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn42.setForeground(new java.awt.Color(255, 255, 255));
         menuBtn42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn42.setText("Overdue");
+        menuBtn42.setBackground(new java.awt.Color(255, 102, 102));
         menuBtn42.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn42.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn42.setForeground(new java.awt.Color(255, 255, 255));
         menuBtn42.setOpaque(true);
 
-        menuBtn43.setBackground(new java.awt.Color(255, 102, 102));
-        menuBtn43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn43.setForeground(new java.awt.Color(255, 255, 255));
         menuBtn43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn43.setText("0");
+        menuBtn43.setBackground(new java.awt.Color(255, 102, 102));
         menuBtn43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn43.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn43.setForeground(new java.awt.Color(255, 255, 255));
         menuBtn43.setOpaque(true);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -649,20 +659,20 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         jPanel18.setBackground(new java.awt.Color(153, 255, 153));
 
-        menuBtn44.setBackground(new java.awt.Color(153, 255, 153));
-        menuBtn44.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn44.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn44.setText("Marked");
+        menuBtn44.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn44.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn44.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        menuBtn44.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn44.setOpaque(true);
 
-        menuBtn45.setBackground(new java.awt.Color(153, 255, 153));
-        menuBtn45.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn45.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn45.setText("0");
+        menuBtn45.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn45.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuBtn45.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
+        menuBtn45.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn45.setOpaque(true);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -688,27 +698,27 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         Panel2.setPreferredSize(new java.awt.Dimension(1050, 570));
         Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/reportType.png"))); // NOI18N
         menuBtn35.setText("REPORT STATUS");
         menuBtn35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn35.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn35.setOpaque(true);
         Panel2.add(menuBtn35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 40));
 
-        menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/name-24x24.png"))); // NOI18N
         menuBtn38.setText("STUDENT ID");
         menuBtn38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn38.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn38.setOpaque(true);
         Panel2.add(menuBtn38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 40));
 
-        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
         menuBtn36.setText("REPORT TYPE");
         menuBtn36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn36.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn36.setOpaque(true);
         Panel2.add(menuBtn36, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 300, 40));
 
@@ -764,13 +774,13 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         JSeparator37.setForeground(new java.awt.Color(1, 1, 1));
         Panel2.add(JSeparator37, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, 170, 10));
 
-        jLabel40.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(1, 1, 1));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete-red-24x24.png"))); // NOI18N
         jLabel40.setText("Back");
+        jLabel40.setBackground(new java.awt.Color(254, 254, 254));
         jLabel40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel40.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(1, 1, 1));
         jLabel40.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel40.setOpaque(true);
         jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -780,19 +790,19 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         });
         Panel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, 170, 35));
 
-        menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
         menuBtn37.setText("ACTION :");
         menuBtn37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn37.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn37.setOpaque(true);
         Panel2.add(menuBtn37, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 90, 40));
 
-        menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/bill-24x24.png"))); // NOI18N
-        menuBtn30.setText("Manage Supervisor & Second Marker");
+        menuBtn30.setText("View Report Details");
         menuBtn30.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn30.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn30.setOpaque(true);
         Panel2.add(menuBtn30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 500, 40));
 
@@ -814,27 +824,27 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         });
         Panel2.add(rdStudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 300, 35));
 
-        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/quantity-24x24.png"))); // NOI18N
         menuBtn32.setText("REPORT ID");
         menuBtn32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn32.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn32.setOpaque(true);
         Panel2.add(menuBtn32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 300, 40));
 
-        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-24x24.png"))); // NOI18N
         menuBtn34.setText("STUDENT NAME");
         menuBtn34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn34.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn34.setOpaque(true);
         Panel2.add(menuBtn34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
 
-        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuBtn33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-24x24.png"))); // NOI18N
         menuBtn33.setText("COMMENT");
         menuBtn33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuBtn33.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
         menuBtn33.setOpaque(true);
         Panel2.add(menuBtn33, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 120, 300, 40));
 
@@ -898,15 +908,9 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rdReportIdMouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
-//        if (consultationComboBox2.getSelectedItem().equals("There is no scheduled consultation.")) {
-//            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
-//            return;
-//        }
-//
-//        if (ConsultationController.cancelBookedConsultationById(Integer.parseInt((String) consultationComboBox2.getSelectedItem()))) {
-//            refresh();
-//        }
+
         MainTabbedPanel.setSelectedIndex(0);
+        refresh();
     }//GEN-LAST:event_jLabel40MouseClicked
 
     private void rdStudentNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdStudentNameMouseClicked

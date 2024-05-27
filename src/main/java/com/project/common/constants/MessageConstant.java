@@ -85,6 +85,7 @@ public class MessageConstant {
     public static final String ERROR_EMPTY_MODULE = "No Module Found! Please select a module first.";
     public static final String ERROR_DATE_INVALID = "The start date must be earlier than the end date.";
     public static final String ERROR_NO_DATETIME_SELECTED = "Please select a date & time.";
+    public static final String ERROR_EMPTY_FEEDBACK = "No Feedback Found! Please select a feedback first.";
 
     /* CONDITION */
     public static final String CONDITION_PRESENTATION_COMBOBOX = "No presentations are available to book.";

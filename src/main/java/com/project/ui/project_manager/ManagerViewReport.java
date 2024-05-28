@@ -66,18 +66,20 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
         DefaultTableModel dtm =  (DefaultTableModel)jTableReportDetails.getModel();
         dtm.setRowCount(0);
         List<Map<String, Object>> reportLists = ProjectModuleController.getAllReportByPM();
-        for (Map<String, Object> list : reportLists) {
-            String submissionId = list.get("submissionId") != null ? list.get("submissionId").toString() : "N/A";
-            String moduleCode = list.get("moduleCode") != null ? list.get("moduleCode").toString() : "N/A";
-            String studentId = list.get("studentId") != null ? list.get("studentId").toString() : "N/A";
-            String studentName = list.get("studentName") != null ? list.get("studentName").toString() : "N/A";
-            // Convert ReportStatus to String
-            String reportStatus = list.get("reportStatus") != null ? list.get("reportStatus").toString() : "N/A";
-            String reportType = list.get("reportType") != null ? list.get("reportType").toString() : "N/A";
-            String comment = list.get("comment") != null ? list.get("comment").toString() : "N/A";
+        if (reportLists != null){
+            for (Map<String, Object> list : reportLists) {
+                String submissionId = list.get("submissionId") != null ? list.get("submissionId").toString() : "N/A";
+                String moduleCode = list.get("moduleCode") != null ? list.get("moduleCode").toString() : "N/A";
+                String studentId = list.get("studentId") != null ? list.get("studentId").toString() : "N/A";
+                String studentName = list.get("studentName") != null ? list.get("studentName").toString() : "N/A";
+                // Convert ReportStatus to String
+                String reportStatus = list.get("reportStatus") != null ? list.get("reportStatus").toString() : "N/A";
+                String reportType = list.get("reportType") != null ? list.get("reportType").toString() : "N/A";
+                String comment = list.get("comment") != null ? list.get("comment").toString() : "N/A";
 
-            String[] data = {submissionId, moduleCode, studentId, studentName, reportStatus, reportType, comment};
-            dtm.addRow(data);
+                String[] data = {submissionId, moduleCode, studentId, studentName, reportStatus, reportType, comment};
+                dtm.addRow(data);
+            }
         }
     }
     
@@ -100,6 +102,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
 
         List<Map<String, Object>> lists = ProjectModuleController.getAllReportByPM();
         //"Overdue", "Pending Marking", "Pending Submit", "Marked"
+        if (lists != null){
         switch (option) {
             case 0 -> {
                 for (Map<String, Object> list : lists) {
@@ -175,6 +178,7 @@ public class ManagerViewReport extends javax.swing.JInternalFrame {
                     }
                 }
             }
+        }
         }
     }
 

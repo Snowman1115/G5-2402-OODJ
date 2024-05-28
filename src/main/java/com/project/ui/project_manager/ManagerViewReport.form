@@ -61,6 +61,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="menuBtn14">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/bill-24x24.png"/>
@@ -68,9 +71,6 @@
                 <Property name="text" type="java.lang.String" value="Student Report Summary"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -82,12 +82,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fe" green="fe" red="fe" type="rgb"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/search-24x24.png"/>
-                </Property>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fe" green="fe" red="fe" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -131,20 +131,20 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="statusFilterComboBox">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;All&quot;, &quot;Pending Submit&quot;, &quot;Pending Marking&quot;, &quot;Overdue&quot;, &quot;Marked&quot; })" type="code"/>
-                </Property>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="fe" green="fe" red="fe" type="rgb"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="12" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;All&quot;, &quot;Pending Submit&quot;, &quot;Pending Marking&quot;, &quot;Overdue&quot;, &quot;Marked&quot; })" type="code"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="d"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="12" style="0"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="d"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statusFilterComboBoxActionPerformed"/>
@@ -161,13 +161,13 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn15">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="ACTION"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -195,21 +195,21 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="manageSupervisor">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/view-24x24.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="View Report Details"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="69" green="69" red="69" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1" green="1" red="1" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Icons/view-24x24.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="View Report Details"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -225,13 +225,13 @@
             </Container>
             <Component class="javax.swing.JLabel" name="menuBtn16">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="STUDENT REPORT TABLE"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -318,6 +318,9 @@
             </Container>
             <Component class="javax.swing.JLabel" name="menuBtn40">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="12" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/reportType.png"/>
@@ -325,9 +328,6 @@
                 <Property name="text" type="java.lang.String" value="REPORT STATUS :"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="12" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -370,13 +370,8 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="menuBtn23">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Total Report"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fa" green="fa" red="fa" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
@@ -384,24 +379,29 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Total Report"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="menuBtn24">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="fe" red="fe" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="18" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -444,19 +444,19 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="menuBtn29">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Pending Submit"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Pending Submit"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -466,19 +466,19 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="menuBtn31">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="18" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -521,13 +521,8 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="menuBtn39">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Pending Marking"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
@@ -535,24 +530,29 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Pending Marking"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="menuBtn41">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="18" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -595,13 +595,8 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="menuBtn42">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Overdue"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
@@ -609,24 +604,29 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Overdue"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="menuBtn43">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="18" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -669,13 +669,8 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="menuBtn44">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Marked"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="99" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
@@ -683,24 +678,29 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Marked"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="menuBtn45">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="99" type="rgb"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Alibaba PuHuiTi M" size="18" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -732,6 +732,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="menuBtn35">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/reportType.png"/>
@@ -739,9 +742,6 @@
                 <Property name="text" type="java.lang.String" value="REPORT STATUS"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -753,6 +753,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn38">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/name-24x24.png"/>
@@ -760,9 +763,6 @@
                 <Property name="text" type="java.lang.String" value="STUDENT ID"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -774,6 +774,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn36">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/bill-24x24.png"/>
@@ -781,9 +784,6 @@
                 <Property name="text" type="java.lang.String" value="REPORT TYPE"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -899,22 +899,22 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel40">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/delete-red-24x24.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Back"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="fe" green="fe" red="fe" type="rgb"/>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="1" green="1" red="1" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/delete-red-24x24.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Back"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="opaque" type="boolean" value="true"/>
@@ -930,6 +930,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn37">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/action-24x24.png"/>
@@ -937,9 +940,6 @@
                 <Property name="text" type="java.lang.String" value="ACTION :"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -951,6 +951,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn30">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/bill-24x24.png"/>
@@ -958,9 +961,6 @@
                 <Property name="text" type="java.lang.String" value="View Report Details"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -1003,6 +1003,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn32">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/quantity-24x24.png"/>
@@ -1010,9 +1013,6 @@
                 <Property name="text" type="java.lang.String" value="REPORT ID"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -1024,6 +1024,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn34">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/user-24x24.png"/>
@@ -1031,9 +1034,6 @@
                 <Property name="text" type="java.lang.String" value="STUDENT NAME"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -1045,6 +1045,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="menuBtn33">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/edit-24x24.png"/>
@@ -1052,9 +1055,6 @@
                 <Property name="text" type="java.lang.String" value="COMMENT"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Alibaba PuHuiTi M" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>

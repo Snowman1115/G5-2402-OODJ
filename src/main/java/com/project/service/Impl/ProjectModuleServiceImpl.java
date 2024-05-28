@@ -262,9 +262,10 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     public List<Map<String, String>> getAllReportDetails(Integer authenticatedUserId) {
         List<Map<String, String>> mappedList = new ArrayList<>();
         List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(authenticatedUserId);
-
+        
+        if (modules != null) {
         for (Map<String, String> module : modules) {
-            Integer moduleId = Integer.parseInt(module.get("id"));
+            Integer moduleId = Integer.valueOf(module.get("id"));
             List<Submission> reportLists = submissionDAO.getSubmissionListByModuleId(moduleId);
 
             if (reportLists != null) {
@@ -288,8 +289,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
                     mappedList.add(reportMap);
                 }
             }
-        }
-
+        }}
         return mappedList.isEmpty() ? null : mappedList;
     }
 
@@ -300,7 +300,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     public List<Map<String, String>> getReportDetailsById(Integer reportId) {
         Submission reportDetails = submissionDAO.getSubmissionById(reportId);
         System.out.println(reportDetails);
-
+        
         if (reportDetails != null) {
             Integer studentId = reportDetails.getStudentId();
             Integer moduleId = reportDetails.getModuleId();

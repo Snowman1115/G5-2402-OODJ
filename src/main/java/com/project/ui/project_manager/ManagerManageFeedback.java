@@ -92,7 +92,9 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
     
     private void exportToPdf(){
         String moduleId = fbModuleId.getText();
-        if (moduleId != null && moduleId != "") {
+        String stdFeedback = fbComment.getText();
+        System.out.println("Module: " + moduleId);
+        if (moduleId != null && !moduleId.equals("") && stdFeedback != null && !stdFeedback.equals("")) {
             try {
                 generateFeedbackPdf();
                 Dialog.SuccessDialog(MessageConstant.SUCCESS_GENERATE_PDF);
@@ -105,7 +107,6 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
     }
     
     private void generateFeedbackPdf() throws FileNotFoundException{
-        int selectedRow = jTableStudentFeedback.getSelectedRow();
         String moduleId = fbModuleId.getText();
         String moduleName = fbModuleName.getText();
         String studentId = fbStudentId.getText();

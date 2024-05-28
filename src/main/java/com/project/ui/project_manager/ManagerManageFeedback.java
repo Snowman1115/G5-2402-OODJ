@@ -171,6 +171,12 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         Table signature = new Table(twocolumnWidth);
         signature.addCell(getCellDetail("Project Manager: ___________________", true));
         signature.addCell(getCellDetail("Supervisor: ___________________", true));
+        Cell signCell1 = getCellDetail("(Sign Here)", true);
+        signCell1.setPaddingLeft(130f);
+        Cell signCell2 = getCellDetail("(Sign Here)", true);
+        signCell1.setPaddingLeft(100f);
+        signature.addCell(signCell1);
+        signature.addCell(signCell2);
         document.add(signature);
         document.close();
         System.out.println("PDF generated successfully: " + fileName);

@@ -260,35 +260,39 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
 //    Get all report details for Table
     @Override
     public List<Map<String, String>> getAllReportDetails(Integer authenticatedUserId) {
-      List<Map<String, String>> mappedList = new ArrayList<>();
-      List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(authenticatedUserId);
+        List<Map<String, String>> mappedList = new ArrayList<>();
+        List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(authenticatedUserId);
 
-      for (Map<String, String> module : modules) {
-          Integer moduleId = Integer.parseInt(module.get("id"));
-          List<Submission> reportLists = submissionDAO.getSubmissionListByModuleId(moduleId);
+        for (Map<String, String> module : modules) {
+            Integer moduleId = Integer.parseInt(module.get("id"));
+            List<Submission> reportLists = submissionDAO.getSubmissionListByModuleId(moduleId);
 
-          for (Submission report : reportLists) {
-              Integer studentId = report.getStudentId();
+            if (reportLists != null) {
+                for (Submission report : reportLists) {
+                    Integer studentId = report.getStudentId();
 
-              String moduleCode = moduleDAO.getModuleNameById(moduleId);
-              UserAccount studentAccount = userAccountDAO.getUserAccountById(studentId);
-              String studentName = studentAccount.getFirstName() + " " + studentAccount.getLastName();
+                    String moduleCode = moduleDAO.getModuleNameById(moduleId);
+                    UserAccount studentAccount = userAccountDAO.getUserAccountById(studentId);
+                    String studentName = studentAccount.getFirstName() + " " + studentAccount.getLastName();
 
-              Map<String, String> reportMap = new HashMap<>();
-              reportMap.put("submissionId", report.getSubmissionId().toString());
-              reportMap.put("moduleId", module.get("id"));
-              reportMap.put("moduleCode", moduleCode);
-              reportMap.put("studentId", studentId.toString());
-              reportMap.put("studentName", studentName);
-              reportMap.put("reportStatus", report.getReportStatus().toString());
-              reportMap.put("reportType", report.getReportType().toString());
-              reportMap.put("comment", report.getComment());
+                    Map<String, String> reportMap = new HashMap<>();
+                    reportMap.put("submissionId", report.getSubmissionId().toString());
+                    reportMap.put("moduleId", module.get("id"));
+                    reportMap.put("moduleCode", moduleCode);
+                    reportMap.put("studentId", studentId.toString());
+                    reportMap.put("studentName", studentName);
+                    reportMap.put("reportStatus", report.getReportStatus().toString());
+                    reportMap.put("reportType", report.getReportType().toString());
+                    reportMap.put("comment", report.getComment());
 
-              mappedList.add(reportMap);
-          }
-      }
-      return mappedList;
-  }
+                    mappedList.add(reportMap);
+                }
+            }
+        }
+
+        return mappedList.isEmpty() ? null : mappedList;
+    }
+
 
 
 
@@ -356,24 +360,26 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         for (Map<String, String> module : modules) {
             Integer moduleId = Integer.valueOf(module.get("id"));
             List<Submission> reportLists = submissionDAO.getSubmissionListByModuleId(moduleId);
-            for(Submission reportList : reportLists){
-                total = total + 1;
-                ReportStatus reportStatus = reportList.getReportStatus();
-                switch (reportStatus) {
-                    case PENDING_SUBMIT  -> {
-                        pendingSubmit = pendingSubmit + 1;
-                    }
-                    case PENDING_MARKING  -> {
-                        pendingMarking = pendingMarking + 1;
-                    }
-                    case MARKED_1  -> {
-                        marked = marked + 1;
-                    }
-                    case MARKED_2  -> {
-                        marked = marked + 1;
-                    }
-                    case OVERDUE  -> {
-                        overdue = overdue + 1;
+            if (reportLists != null){
+                for(Submission reportList : reportLists){
+                    total = total + 1;
+                    ReportStatus reportStatus = reportList.getReportStatus();
+                    switch (reportStatus) {
+                        case PENDING_SUBMIT  -> {
+                            pendingSubmit = pendingSubmit + 1;
+                        }
+                        case PENDING_MARKING  -> {
+                            pendingMarking = pendingMarking + 1;
+                        }
+                        case MARKED_1  -> {
+                            marked = marked + 1;
+                        }
+                        case MARKED_2  -> {
+                            marked = marked + 1;
+                        }
+                        case OVERDUE  -> {
+                            overdue = overdue + 1;
+                        }
                     }
                 }
             }

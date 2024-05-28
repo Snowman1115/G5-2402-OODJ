@@ -97,6 +97,9 @@ public class SubmissionDAO {
                 list.add(submission);
             }
         }
+        if (list.isEmpty()){
+            return null;
+        }
         return list;
     }
 

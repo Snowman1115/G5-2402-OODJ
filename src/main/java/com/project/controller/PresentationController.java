@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import com.project.service.Impl.PresentationServiceImpl;
+import com.project.service.Impl.PresentationServiceImpl2;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.PresentationService;
 import com.project.service.UserAuthenticationService;
@@ -14,7 +15,8 @@ import java.util.Map;
 public class PresentationController {
 
     private static UserAuthenticationService userAuthenticationService = new UserAuthenticationServiceImpl();
-    private static PresentationService presentationService = new PresentationServiceImpl();
+    private static PresentationServiceImpl presentationService = new PresentationServiceImpl();
+    private static PresentationServiceImpl2 presentationService2 = new PresentationServiceImpl2();
 
     /**
      * Get All Presentation Status By Student Id
@@ -93,7 +95,7 @@ public class PresentationController {
      * @return List
      */
     public static List getAllBookedPresentationByLecId() {
-        return presentationService.getAllBookedPresentationByLecId(getAuthenticatedUserId());
+        return presentationService2.getAllBookedPresentationByLecId(getAuthenticatedUserId());
     } 
     
     /**
@@ -101,7 +103,7 @@ public class PresentationController {
      * @return List
      */
     public static List getAllPendingConfirmPresentationByLecId() {
-        return presentationService.getAllPendingConfirmPresentationByLecId(getAuthenticatedUserId());
+        return presentationService2.getAllPendingConfirmPresentationByLecId(getAuthenticatedUserId());
     } 
     
     /**
@@ -109,7 +111,7 @@ public class PresentationController {
      * @return List
      */
     public static List getNotYetGradedPresentationByLecId() {
-        return presentationService.getNotYetGradedPresentationByLecId(getAuthenticatedUserId());
+        return presentationService2.getNotYetGradedPresentationByLecId(getAuthenticatedUserId());
     }    
 
     /**
@@ -120,7 +122,7 @@ public class PresentationController {
      */
     public static Boolean acceptPresentationById(Integer presentationId, LocalDateTime dateTime) {
         log.info("Pending Confirm Presentation with ID: " + presentationId + " is accepted");
-        return presentationService.acceptPresentationById(presentationId, dateTime, getAuthenticatedUserId());
+        return presentationService2.acceptPresentationById(presentationId, dateTime, getAuthenticatedUserId());
     }
     
     /**
@@ -131,7 +133,7 @@ public class PresentationController {
      */
     public static Boolean rejectPresentationById(Integer presentationId) {
         log.info("Pending Confirm Presentation with ID: " + presentationId + " is rejected");
-        return presentationService.rejectPresentationById(presentationId);
+        return presentationService2.rejectPresentationById(presentationId);
     }
     
     /**
@@ -142,7 +144,7 @@ public class PresentationController {
      */
     public static Boolean updatePresentationMarksById(Integer presentationId, Double marks) {
         log.info("Booked Presentation with ID: " + presentationId + " is updated to MARKED");
-        return presentationService.updatePresentationMarksById(presentationId, marks);
+        return presentationService2.updatePresentationMarksById(presentationId, marks);
     }
     
     /**

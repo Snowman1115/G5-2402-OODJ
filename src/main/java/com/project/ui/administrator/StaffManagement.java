@@ -96,7 +96,6 @@ public class StaffManagement extends javax.swing.JInternalFrame {
         deleteBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        roleAssignmentBtn = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1093, 695));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -202,15 +201,6 @@ public class StaffManagement extends javax.swing.JInternalFrame {
         jLabel13.setOpaque(true);
         MainPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 35));
 
-        roleAssignmentBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
-        roleAssignmentBtn.setText("Assign");
-        roleAssignmentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                roleAssignmentBtnMouseClicked(evt);
-            }
-        });
-        MainPanel.add(roleAssignmentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 110, 40));
-
         getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
@@ -255,10 +245,6 @@ public class StaffManagement extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnMouseClicked
 
-    private void roleAssignmentBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roleAssignmentBtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roleAssignmentBtnMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
@@ -272,7 +258,6 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel menuBtn16;
     private javax.swing.JLabel pageTitle;
-    private javax.swing.JButton roleAssignmentBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JTable staffTable;
     // End of variables declaration//GEN-END:variables

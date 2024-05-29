@@ -35,6 +35,11 @@ public class EditStaff extends javax.swing.JInternalFrame {
     }
     
     private void setUpForm() {
+        jLabel6.setVisible(false);
+        jLabel9.setVisible(false);
+        reassignBtn.setVisible(false);
+        replacement.setVisible(false);
+        
         UserAccount staffAcc = UserAccountController.getUserDetailsByUserId(this.userId);
         usernameField.setText(staffAcc.getUsername());
         emailField.setText(staffAcc.getEmail());
@@ -44,10 +49,16 @@ public class EditStaff extends javax.swing.JInternalFrame {
         switch (this.roleType) {
             case "LECTURER" -> {
                 pageTitle.setText("LECTURER DETAILS");
+                jLabel9.setVisible(true);
+                reassignBtn.setVisible(true);
             }
             case "PROJECT MANAGER" -> {
                 pageTitle.setText("PROJECT MANAGER DETAILS");
-                
+                jLabel6.setVisible(true);
+                jLabel9.setVisible(true);
+                reassignBtn.setVisible(true);
+                replacement.setVisible(true);
+                replacement.setEnabled(false);
             }
             case "ADMIN" -> {
                 pageTitle.setText("ADMIN DETAILS");
@@ -79,6 +90,10 @@ public class EditStaff extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         usernameField = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        reassignBtn = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        replacement = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(1093, 695));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,10 +137,10 @@ public class EditStaff extends javax.swing.JInternalFrame {
         jPanel1.add(lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 290, 35));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Last Name :");
+        jLabel6.setText("Replacement  :");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.setOpaque(true);
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 100, 35));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 100, 35));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Email :");
@@ -176,6 +191,40 @@ public class EditStaff extends javax.swing.JInternalFrame {
         });
         jPanel1.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 580, 110, 40));
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Last Name :");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.setOpaque(true);
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 100, 35));
+
+        reassignBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        reassignBtn.setText("Change");
+        reassignBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reassignBtnMouseClicked(evt);
+            }
+        });
+        reassignBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reassignBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reassignBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 120, 40));
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Role :");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.setOpaque(true);
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 100, 35));
+
+        replacement.setBackground(new java.awt.Color(254, 254, 254));
+        replacement.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        replacement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Project Managers --" }));
+        replacement.setToolTipText("d");
+        replacement.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        replacement.setFocusable(false);
+        jPanel1.add(replacement, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 290, 35));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
@@ -198,8 +247,16 @@ public class EditStaff extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_updateBtnMouseClicked
 
     private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        // TODO add your handling code here:
+        AdminGui.ButtonClicked("staff");
     }//GEN-LAST:event_cancelBtnMouseClicked
+
+    private void reassignBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reassignBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reassignBtnMouseClicked
+
+    private void reassignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reassignBtnActionPerformed
+        
+    }//GEN-LAST:event_reassignBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -210,9 +267,13 @@ public class EditStaff extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lastName;
     private javax.swing.JLabel pageTitle;
+    private javax.swing.JButton reassignBtn;
+    private static javax.swing.JComboBox<String> replacement;
     private javax.swing.JButton resetPW;
     private javax.swing.JButton updateBtn;
     private javax.swing.JLabel usernameField;

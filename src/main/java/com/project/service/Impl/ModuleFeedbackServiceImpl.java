@@ -116,12 +116,5 @@ public class ModuleFeedbackServiceImpl implements ModuleFeedbackService {
 
         return mappedList;
     }
-     
-    public static void main(String[] args) {
-        ModuleFeedbackServiceImpl prje = new ModuleFeedbackServiceImpl();
-        // System.out.println(prje.getAllModuleDetailsByLecId(88608036));
-
-        System.out.println(prje.getAllFeedbackForPM(39904006));
-    }
 
 }

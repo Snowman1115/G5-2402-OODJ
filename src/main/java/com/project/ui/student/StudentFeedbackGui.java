@@ -58,10 +58,18 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
 
     private void refreshDetails() {
         if (moduleFeedbackComboBox.getSelectedItem() != null) {
-            Map<String,String> map = ModuleFeedbackController.getProjectModuleByCode((String) moduleFeedbackComboBox.getSelectedItem());
-            JField19.setText(map.get("moduleId"));
-            JField18.setText(map.get("lecturerName"));
+            if (moduleFeedbackComboBox.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULE_CAN_FEEDBACK)) {
+                JField19.setText("Module ID");
+                JField18.setText("Lecturer Name");
+                jTextArea1.setText("Please Enter Your Feedback.");
+            } else {
+                Map<String,String> map = ModuleFeedbackController.getProjectModuleByCode((String) moduleFeedbackComboBox.getSelectedItem());
+                    JField19.setText(map.get("moduleId"));
+                    JField18.setText(map.get("lecturerName"));
+                    jTextArea1.setText("Please Enter Your Feedback.");
             }
+        }
+
     }
 
 
@@ -233,6 +241,11 @@ public class StudentFeedbackGui extends javax.swing.JInternalFrame {
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
        if (moduleFeedbackComboBox.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULE_CAN_FEEDBACK)) {
            Dialog.ErrorDialog(MessageConstant.ERROR_SELECTION_EMPTY);
+           return;
+       }
+
+       if (jTextArea1.getText().equals("Please Enter Your Feedback.")) {
+           Dialog.ErrorDialog("Please Enter Your Feedback.");
            return;
        }
 

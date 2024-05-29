@@ -53,12 +53,18 @@ public class StudentConsultationGui extends javax.swing.JInternalFrame {
 
     private void refreshDetails(Object value) {
         if (consultationComboBox2.getSelectedItem() != null) {
-            List<Map<String, String>> lists = ConsultationController.getAllScheduledConsultationIdByStudentId();
-            for (Map<String, String> list : lists) {
-                if (value.equals(list.get("id"))) {
-                    JField19.setText(list.get("lecturer"));
-                    JField18.setText(list.get("date"));
-                    JField20.setText(list.get("status"));
+            if (consultationComboBox2.getSelectedItem().equals("There is no scheduled consultation.")) {
+                JField19.setText("Lecturer");
+                JField18.setText("Date");
+                JField20.setText("Status");
+            } else {
+                List<Map<String, String>> lists = ConsultationController.getAllScheduledConsultationIdByStudentId();
+                for (Map<String, String> list : lists) {
+                    if (value.equals(list.get("id"))) {
+                        JField19.setText(list.get("lecturer"));
+                        JField18.setText(list.get("date"));
+                        JField20.setText(list.get("status"));
+                    }
                 }
             }
         }

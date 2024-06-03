@@ -240,16 +240,59 @@ public class UserAccountController {
      * @return
      */
     public static Integer getNewUserId() { return userAccountService.getNewId(); }
+
+    /**
+     * get counts for each user roles
+     * @return
+     */
+    public static JSONObject getCounts() { return userAccountService.getUserCountsByRoles(); }
+
+    /**
+     * Add new student
+     * @param userData
+     * @return
+     */
     public static boolean addStudent(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.STUDENT); }
+
+    /**
+     * add new lecturer
+     * @param userData
+     * @return
+     */
     public static boolean addLecturer(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.LECTURER); }
+
+    /**
+     * add new admin
+     * @param userData
+     * @return
+     */
     public static boolean addAdmin(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.ADMIN); }
 
+    /**
+     * add new project manager
+     * @param userData
+     * @return
+     */
+    public static boolean addPM(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.PROJECT_MANAGER); }
+
+    /**
+     * update user details
+     * @param userId
+     * @param firstName
+     * @param lastName
+     * @return
+     */
     public static boolean updateUserDetails(int userId, String firstName, String lastName) {
         log.info("Update User Details: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
         log.info("Update Profile: {} - {}", userId, firstName+" "+lastName);
         return userAccountService.updateProfileById(userId, firstName, lastName);
     }
 
+    /**
+     * delete user record
+     * @param studentId
+     * @return
+     */
     public static boolean removeStudent(int studentId) {
         log.info("Remove Student Account: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
         log.info("Remove Student Account: Account removed - {}", studentId);

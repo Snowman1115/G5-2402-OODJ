@@ -100,6 +100,9 @@ public class AdminGui extends javax.swing.JFrame {
             case "addStudent" -> {
                 WindowsPane.add(new AddStudent()).setVisible(true);
             }
+            case "addStaff" -> {
+                WindowsPane.add(new AddStaff()).setVisible(true);
+            }
         }
     }
 

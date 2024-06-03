@@ -4,13 +4,17 @@
  */
 package com.project.ui.administrator;
 
+
 import com.project.common.constants.UserRoleType;
+import com.project.common.utils.Dialog;
+import com.project.controller.ProjectModuleController;
 import com.project.controller.UserAccountController;
 import com.project.pojo.UserAccount;
 
-import static com.project.common.constants.UserRoleType.LECTURER;
-import static com.project.common.constants.UserRoleType.PROJECT_MANAGER;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.util.List;
+import java.util.Map;
+
 
 /**
  *
@@ -20,6 +24,7 @@ public class EditStaff extends javax.swing.JInternalFrame {
 
     private String roleType;
     private int userId;
+    private boolean reassignmentFlag = false;
     /**
      * Creates new form EditLecturerPM
      */
@@ -54,11 +59,16 @@ public class EditStaff extends javax.swing.JInternalFrame {
             }
             case "PROJECT MANAGER" -> {
                 pageTitle.setText("PROJECT MANAGER DETAILS");
-                jLabel6.setVisible(true);
                 jLabel9.setVisible(true);
                 reassignBtn.setVisible(true);
-                replacement.setVisible(true);
-                replacement.setEnabled(false);
+
+                List moduleList = ProjectModuleController.getAllModuleDetailsByProjectManagerId(this.userId);
+                if (!moduleList.isEmpty()) {
+                    jLabel6.setVisible(true);
+                    replacement.setVisible(true);
+                    replacement.setEnabled(false);
+                    reassignBtn.setText("Reassign");
+                }
             }
             case "ADMIN" -> {
                 pageTitle.setText("ADMIN DETAILS");
@@ -251,7 +261,16 @@ public class EditStaff extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cancelBtnMouseClicked
 
     private void reassignBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reassignBtnMouseClicked
-        // TODO add your handling code here:
+        String confirmMsg = "";
+        if (this.roleType.equals("LECTURER")) {
+            confirmMsg = "Are you sure to change user role (Lecturer => Project Manager)? ";
+        } else {
+            confirmMsg = "Are you sure to change user role (Project Manager => Lecturer)? ";
+        }
+
+        if (Dialog.ConfirmationDialog(confirmMsg)) {
+            // reassign logic
+        }
     }//GEN-LAST:event_reassignBtnMouseClicked
 
     private void reassignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reassignBtnActionPerformed

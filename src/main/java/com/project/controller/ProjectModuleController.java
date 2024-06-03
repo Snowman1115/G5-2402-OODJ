@@ -50,10 +50,15 @@ public class ProjectModuleController {
         return projectModuleService.getModuleDetailsBySecondMarkerId(getAuthenticatedUserId());
     }
     //Jin Xun - Project Manager
-    // Method to get all module details by project manager ID
     public static List getAllModuleDetailsByProjectManagerId() {
         return projectModuleService.getAllModuleDetailsByProjectManagerId(getAuthenticatedUserId());
     }
+
+    public static List getAllModuleDetailsByProjectManagerId(int userId) {
+        return projectModuleService.getAllModuleDetailsByProjectManagerId(userId);
+    }
+    // Method to get all module details by project manager ID
+
 
     public static List getModuleById(Integer moduleId) {
         return projectModuleService.getModuleById(moduleId);

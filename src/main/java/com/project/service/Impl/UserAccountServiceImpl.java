@@ -8,10 +8,7 @@ import com.project.common.utils.IDGenerator;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.LongIDGenerator;
 import com.project.dao.*;
-import com.project.pojo.Consultation;
-import com.project.pojo.Intake;
-import com.project.pojo.ModuleFeedback;
-import com.project.pojo.UserAccount;
+import com.project.pojo.*;
 import com.project.service.UserAccountService;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
@@ -19,10 +16,7 @@ import org.json.simple.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 @Slf4j
 public class UserAccountServiceImpl implements UserAccountService {
@@ -215,6 +209,37 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     /**
+     * get user counts
+     * @return
+     */
+    @Override
+    public JSONObject getUserCountsByRoles() {
+        JSONObject counts = new JSONObject();
+        counts.put("student", 0);
+        counts.put("lecturer", 0);
+        counts.put("pm", 0);
+        counts.put("admin", 0);
+        List<UserRole> ur =  userRoleDAO.getAllUserRoles();
+        for (UserRole r : ur) {
+            switch (r.getUserRoleType()) {
+                case STUDENT -> {
+                    counts.replace("student", (int) counts.get("student") + 1);
+                }
+                case LECTURER -> {
+                    counts.replace("lecturer", (int) counts.get("lecturer") + 1);
+                }
+                case PROJECT_MANAGER -> {
+                    counts.replace("pm", (int) counts.get("pm") + 1);
+                }
+                case ADMIN -> {
+                    counts.replace("admin", (int) counts.get("admin") + 1);
+                }
+            }
+        }
+        return counts;
+    }
+
+    /**
      * get users by role
      * @param roleType
      * @return Userlist
@@ -362,25 +387,20 @@ public class UserAccountServiceImpl implements UserAccountService {
             userRoleDAO.add(userId, roleType);
             log.info("User Registration: New user registered as " + roleType + ". ");
 
-            switch (roleType) {
-                case STUDENT -> {
-                    int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
-                    LocalDate endDateOfIntake = intakesDAO.getIntakeById(intakeId).getEndDate();
-                    List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
+            if (roleType == UserRoleType.STUDENT) {
+                int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
+                LocalDate endDateOfIntake = intakesDAO.getIntakeById(intakeId).getEndDate();
+                List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
 
-                    intakesDAO.addNewStudent(intakeId, userId);
-                    log.info("User Registration: New student registered into " + userData.get("intake") + " intake.");
+                intakesDAO.addNewStudent(intakeId, userId);
+                log.info("User Registration: New student registered into " + userData.get("intake") + " intake.");
 
-                    for (int moduleId : modulesInIntake) {
-                        submissionDAO.createSubmission(moduleId, userId, endDateOfIntake);
-                        presentationDAO.add(moduleId, 0, userId, endDateOfIntake);
-                    }
-                    log.info("User Registration: Module submission slots created for new student.");
-                    log.info("User Registration: Module presentation slots created for new student.");
+                for (int moduleId : modulesInIntake) {
+                    submissionDAO.createSubmission(moduleId, userId, endDateOfIntake);
+                    presentationDAO.add(moduleId, 0, userId, endDateOfIntake);
                 }
-                case LECTURER -> {
-
-                }
+                log.info("User Registration: Module submission slots created for new student.");
+                log.info("User Registration: Module presentation slots created for new student.");
             }
 
             return true;

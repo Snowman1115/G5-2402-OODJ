@@ -64,6 +64,10 @@ public class UserRoleDAO {
         return list;
     }
 
+    public List<UserRole> getAllUserRoles() {
+        return user_roles;
+    }
+
     /**
      * add new user and their role
      * @param userId

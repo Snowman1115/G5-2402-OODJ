@@ -227,7 +227,7 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_filterByRoleActionPerformed
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-        
+        AdminGui.ButtonClicked("addStaff");
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked

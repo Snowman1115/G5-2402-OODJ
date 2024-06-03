@@ -4,6 +4,9 @@
  */
 package com.project.ui.administrator;
 
+import com.project.controller.UserAccountController;
+import org.json.simple.JSONObject;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -27,14 +30,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
     }
 
     public static void dashboardRefresh(){
-        // menuBtn12.setText(String.valueOf(UserAccountOperator.checkTotalActiveOfficer()));
-        // menuBtn13.setText(String.valueOf(UserAccountOperator.checkTotalActiveSalesPerson()));
-        // menuBtn15.setText(String.valueOf(checkTotalFurniture()));
-        // menuBtn14.setText(String.valueOf(checkStockAlertsFurniture()));
-        // menuBtn16.setText(String.valueOf(SalesOperator.getTotalSalesAmount()));
-        // menuBtn17.setText(String.valueOf(SalesOperator.getTotalPendingSales()));
-        // menuBtn18.setText(String.valueOf(SalesOperator.getTotalSuccessfulSales()));
-        // menuBtn19.setText(String.valueOf(SalesOperator.getTotalCancelledSales()));
+        JSONObject counts =  UserAccountController.getCounts();
+        studentBtn.setText(counts.get("student").toString());
+        lecturersBtn.setText(counts.get("lecturer").toString());
+        PMBtn.setText(counts.get("pm").toString());
+        adminBtn.setText(counts.get("admin").toString());
     }
 
     /**
@@ -243,7 +243,7 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private static javax.swing.JLabel PMBtn;
-    private javax.swing.JLabel adminBtn;
+    private static javax.swing.JLabel adminBtn;
     private javax.swing.JLabel adminPanelVersionLabel;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

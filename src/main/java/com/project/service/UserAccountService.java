@@ -80,6 +80,12 @@ public interface UserAccountService {
     boolean changeSecurityPhraseById(Integer userId, String oldSecurityPhrase, String confirmSecurityPhrase);
 
     /**
+     * get user counts by role
+     * @return
+     */
+    JSONObject getUserCountsByRoles();
+
+    /**
      * get users by role
      * @return user
      */

@@ -331,4 +331,10 @@ public class UserAccountController {
      * @return
      */
     public static boolean removeStaff(int staffId, UserRoleType roleType) { return userAccountService.remove(roleType, staffId); }
+
+    /**
+     * get system logs
+     * @return
+     */
+    public static String getLogs() { return adminAccountService.getSystemLogs(); }
 }

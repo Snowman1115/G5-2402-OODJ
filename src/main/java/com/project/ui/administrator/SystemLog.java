@@ -5,6 +5,7 @@
 package com.project.ui.administrator;
 
 import com.project.common.utils.FileHandler;
+import com.project.controller.UserAccountController;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,9 +26,9 @@ public class SystemLog extends javax.swing.JInternalFrame {
     }
 
     private void fetchLogs() {
-        String log;
+        String log = UserAccountController.getLogs();
 
-//        System.out.println(log);
+        jTextArea1.setText(log);
     }
 
     /**

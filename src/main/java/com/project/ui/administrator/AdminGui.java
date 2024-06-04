@@ -85,7 +85,7 @@ public class AdminGui extends javax.swing.JFrame {
                 menuBtn5.setBackground(DefaultBtnColor);
                 menuBtn10.setBackground(ClickedBtnColor);
                 menuBtn11.setBackground(DefaultBtnColor);
-                // WindowsPane.add(new OrderGui()).setVisible(true);
+                WindowsPane.add(new SystemLog()).setVisible(true);
             }
             case "intakes" -> {
                 menuBtn1.setBackground(DefaultBtnColor);

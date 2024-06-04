@@ -4,6 +4,12 @@
  */
 package com.project.ui.administrator;
 
+import com.project.common.utils.FileHandler;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author Dell Technologies
@@ -15,6 +21,13 @@ public class SystemLog extends javax.swing.JInternalFrame {
      */
     public SystemLog() {
         initComponents();
+        fetchLogs();
+    }
+
+    private void fetchLogs() {
+        String log;
+
+//        System.out.println(log);
     }
 
     /**

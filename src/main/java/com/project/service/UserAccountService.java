@@ -80,6 +80,12 @@ public interface UserAccountService {
     boolean changeSecurityPhraseById(Integer userId, String oldSecurityPhrase, String confirmSecurityPhrase);
 
     /**
+     * get user counts by role
+     * @return
+     */
+    JSONObject getUserCountsByRoles();
+
+    /**
      * get users by role
      * @return user
      */
@@ -112,4 +118,32 @@ public interface UserAccountService {
      */
     public boolean resetPassword(int userId, String newPassword);
 
+    /**
+     * remove users based on role type and user id
+     * @param roleType
+     * @param userId
+     * @return
+     */
+    public boolean remove(UserRoleType roleType, Integer userId);
+
+    /**
+     * validate lecturer availability to become project manager
+     * @param lecturerId
+     * @return
+     */
+    boolean checkLecturerAvailability(int lecturerId);
+
+    /**
+     * change user role
+     * @param userId
+     * @return
+     */
+    boolean changeRole(int userId);
+
+    /**
+     * check project manager
+     * @param projectManagerId
+     * @return
+     */
+    boolean checkPMAvailability(int projectManagerId);
 }

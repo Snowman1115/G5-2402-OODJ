@@ -65,4 +65,6 @@ public interface ProjectModuleService {
     public Map<String, Integer> getModuleStatusForPM(Integer authenticatedUserId);
 
     public Map<String, Integer> getReportStatusForPM(Integer authenticatedUserId);
+
+    boolean projectManagerReassignment(int userId, int newPMId);
 }

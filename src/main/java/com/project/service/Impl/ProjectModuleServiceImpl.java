@@ -118,7 +118,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return mappedLists;
     }
 
-    @Override
     public boolean addModule(int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate) {
         try {
             moduleDAO.addModule(intakeId, moduleCode, projectManagerId, startDate, endDate);
@@ -262,7 +261,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     public List<Map<String, String>> getAllReportDetails(Integer authenticatedUserId) {
         List<Map<String, String>> mappedList = new ArrayList<>();
         List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(authenticatedUserId);
-        
+
         if (modules != null) {
         for (Map<String, String> module : modules) {
             Integer moduleId = Integer.valueOf(module.get("id"));
@@ -300,7 +299,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     public List<Map<String, String>> getReportDetailsById(Integer reportId) {
         Submission reportDetails = submissionDAO.getSubmissionById(reportId);
         System.out.println(reportDetails);
-        
+
         if (reportDetails != null) {
             Integer studentId = reportDetails.getStudentId();
             Integer moduleId = reportDetails.getModuleId();
@@ -343,12 +342,12 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             return false;
         }
     }
-    
+
     @Override
     public Map<String, Integer> getModuleStatusForPM(Integer pmId) {
         return moduleDAO.getModuleStatusForPM(pmId);
     }
-    
+
     @Override
     public Map<String, Integer> getReportStatusForPM(Integer pmId) {
         List<Map<String, String>> modules = moduleDAO.getModuleByProjectManagerId(pmId);
@@ -391,6 +390,25 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         map.put("marked", marked);
         map.put("overdue", overdue);
         return map;
+    }
+
+    /**
+     * reassign modules to new project manager
+     * @param userId
+     * @param newPMId
+     * @return
+     */
+    @Override
+    public boolean projectManagerReassignment(int userId, int newPMId) {
+        List<ProjectModule> projectModuleList = moduleDAO.getAllModules();
+
+        for (ProjectModule m : projectModuleList) {
+            if (m.getSupervisorId().equals(userId)) {
+                moduleDAO.update(m.getModuleId(), "supervisorId", String.valueOf(newPMId));
+            }
+        }
+
+        return true;
     }
 
 }

@@ -211,7 +211,19 @@ public class StudentManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_editBtnMouseClicked
 
     private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
-        // TODO add your handling code here:
+        int selectedRow = studentTable.getSelectedRow();
+        if (selectedRow < 0) {
+            Dialog.ErrorDialog("Please select a record to remove!");
+        } else {
+            if (Dialog.ConfirmationDialog("Warning", "This action cannot be undone! Confirm to proceed.")) {
+                int studentId = Integer.parseInt(studentTable.getValueAt(selectedRow, 0).toString());
+                if (UserAccountController.removeStudent(studentId)) {
+                    AdminGui.ButtonClicked("student");
+                } else {
+                    Dialog.ErrorDialog("An unexpected error has occurred. Please contact technical department for assistance.");
+                }
+            }
+        }
     }//GEN-LAST:event_deleteBtnMouseClicked
 
     private void filterByIntakeActionPerformed(java.awt.event.ActionEvent evt) {

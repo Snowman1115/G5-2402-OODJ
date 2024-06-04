@@ -4,6 +4,9 @@
  */
 package com.project.ui.administrator;
 
+import com.project.controller.UserAccountController;
+import org.json.simple.JSONObject;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -27,14 +30,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
     }
 
     public static void dashboardRefresh(){
-        // menuBtn12.setText(String.valueOf(UserAccountOperator.checkTotalActiveOfficer()));
-        // menuBtn13.setText(String.valueOf(UserAccountOperator.checkTotalActiveSalesPerson()));
-        // menuBtn15.setText(String.valueOf(checkTotalFurniture()));
-        // menuBtn14.setText(String.valueOf(checkStockAlertsFurniture()));
-        // menuBtn16.setText(String.valueOf(SalesOperator.getTotalSalesAmount()));
-        // menuBtn17.setText(String.valueOf(SalesOperator.getTotalPendingSales()));
-        // menuBtn18.setText(String.valueOf(SalesOperator.getTotalSuccessfulSales()));
-        // menuBtn19.setText(String.valueOf(SalesOperator.getTotalCancelledSales()));
+        JSONObject counts =  UserAccountController.getCounts();
+        studentBtn.setText(counts.get("student").toString());
+        lecturersBtn.setText(counts.get("lecturer").toString());
+        PMBtn.setText(counts.get("pm").toString());
+        adminBtn.setText(counts.get("admin").toString());
     }
 
     /**
@@ -73,6 +73,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         lecturersBtn.setText("0");
         lecturersBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lecturersBtn.setOpaque(true);
+        lecturersBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecturersBtnMouseClicked(evt);
+            }
+        });
 
         menuBtn28.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -146,6 +151,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         adminPanelVersionLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         adminPanelVersionLabel.setText("AdminPanel @Version x.x Built On xx xx xxxx");
         adminPanelVersionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        adminBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminBtnMouseClicked(evt);
+            }
+        });
         MainPanel.add(adminPanelVersionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 628, 620, 30));
 
         jPanel7.setBackground(new java.awt.Color(254, 254, 254));
@@ -199,6 +209,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         PMBtn.setText("0");
         PMBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PMBtn.setOpaque(true);
+        PMBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PMBtnMouseClicked(evt);
+            }
+        });
 
         menuBtn26.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn26.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -239,11 +254,26 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         AdminGui.ButtonClicked("student");
     }
 
+    private void lecturersBtnMouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+        AdminGui.ButtonClicked("staff");
+    }
+
+    private void adminBtnMouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+        AdminGui.ButtonClicked("staff");
+    }
+
+    private void PMBtnMouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+        AdminGui.ButtonClicked("staff");
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private static javax.swing.JLabel PMBtn;
-    private javax.swing.JLabel adminBtn;
+    private static javax.swing.JLabel adminBtn;
     private javax.swing.JLabel adminPanelVersionLabel;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

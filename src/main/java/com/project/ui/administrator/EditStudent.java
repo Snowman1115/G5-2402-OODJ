@@ -252,6 +252,7 @@ public class EditStudent extends javax.swing.JInternalFrame {
 
             if (UserAccountController.updateUserDetails(studentId, firstName.getText(), lastName.getText())) {
                 Dialog.SuccessDialog("Student details updated successfully!");
+                AdminGui.ButtonClicked("student");
             } else {
                 Dialog.ErrorDialog("An unexpected error has occurred.Contact IT department for assist.");
             }

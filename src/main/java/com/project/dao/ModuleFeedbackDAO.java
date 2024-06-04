@@ -48,6 +48,18 @@ public class ModuleFeedbackDAO {
         return lists;
     }
 
+    public void deleteAllFeedbacksByStudentId(Integer studentId) {
+        for (ModuleFeedback mf : feedbacks) {
+            if (mf.getStudentId().equals(studentId)) {
+                feedbacks.remove(mf);
+
+                JsonHandler jsonHandler = new JsonHandler();
+                jsonHandler.encode(FileHandler.readFile(FEEDBACK_DATA));
+                jsonHandler.delete(mf.getFeedbackId(), FEEDBACK_DATA);
+            }
+        }
+    }
+
     /**
      * Preload Data into presentations Array
      */

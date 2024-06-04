@@ -409,7 +409,7 @@ public class PresentationDAO {
     }
 
     // Update consultation data
-    public static boolean update(Integer presentationId, String field, String value) {
+    public boolean update(Integer presentationId, String field, String value) {
         // System.out.println(value);
         for (Presentation presentation : presentations) {
             if (presentation.getPresentationId().equals(presentationId)) {

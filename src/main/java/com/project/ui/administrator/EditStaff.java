@@ -4,23 +4,34 @@
  */
 package com.project.ui.administrator;
 
+
 import com.project.common.constants.UserRoleType;
-import static com.project.common.constants.UserRoleType.LECTURER;
-import static com.project.common.constants.UserRoleType.PROJECT_MANAGER;
+import com.project.common.utils.Dialog;
+import com.project.common.utils.JsonHandler;
+import com.project.controller.IntakesController;
+import com.project.controller.ProjectModuleController;
+import com.project.controller.UserAccountController;
+import com.project.pojo.UserAccount;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 
 /**
  *
  * @author Dell Technologies
  */
-public class EditLecturerPM extends javax.swing.JInternalFrame {
+public class EditStaff extends javax.swing.JInternalFrame {
 
-    private UserRoleType roleType;
+    private String roleType;
     private int userId;
+    private boolean reassignmentFlag = false;
     /**
      * Creates new form EditLecturerPM
      */
-    public EditLecturerPM(UserRoleType roleType, int userId) {
+    public EditStaff(int userId, String roleType) {
         this.roleType = roleType;
         this.userId = userId;
         initComponents();
@@ -32,15 +43,50 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
     }
     
     private void setUpForm() {
+        jLabel6.setVisible(false);
+        jLabel9.setVisible(false);
+        reassignBtn.setVisible(false);
+        replacement.setVisible(false);
+        
+        UserAccount staffAcc = UserAccountController.getUserDetailsByUserId(this.userId);
+        usernameField.setText(staffAcc.getUsername());
+        emailField.setText(staffAcc.getEmail());
+        firstName.setText(staffAcc.getFirstName());
+        lastName.setText(staffAcc.getLastName());
+
         switch (this.roleType) {
-            case LECTURER -> {
+            case "LECTURER" -> {
                 pageTitle.setText("LECTURER DETAILS");
+                jLabel9.setVisible(true);
+                reassignBtn.setVisible(true);
             }
-            case PROJECT_MANAGER -> {
+            case "PROJECT MANAGER" -> {
                 pageTitle.setText("PROJECT MANAGER DETAILS");
-                
+                jLabel9.setVisible(true);
+                reassignBtn.setVisible(true);
+
+                JsonHandler PMs = UserAccountController.getPMs();
+                for (int i = 0; i < PMs.getAll().size(); i++) {
+                    if (!PMs.getObject(i).get("id").equals(userId)) {
+                        String projectManager = PMs.getObject(i).get("first_name") + " " + PMs.getObject(i).get("last_name") + "-" + PMs.getObject(i).get("id");
+                        replacement.addItem(projectManager);
+                    }
+                }
+
+                List moduleList = ProjectModuleController.getAllModuleDetailsByProjectManagerId(this.userId);
+                if (!moduleList.isEmpty()) {
+                    jLabel6.setVisible(true);
+                    replacement.setVisible(true);
+                    replacement.setEnabled(false);
+                    reassignBtn.setText("Reassign");
+                }
+            }
+            case "ADMIN" -> {
+                pageTitle.setText("ADMIN DETAILS");
             }
         }
+
+
     }
 
     /**
@@ -65,6 +111,10 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         usernameField = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        reassignBtn = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        replacement = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(1093, 695));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,7 +124,7 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         pageTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pageTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/action-24x24.png"))); // NOI18N
-        pageTitle.setText("EDIT LECTURER DETAILS");
+        pageTitle.setText("EDIT STAFF DETAILS");
         pageTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pageTitle.setOpaque(true);
         jPanel1.add(pageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 700, 70));
@@ -108,10 +158,10 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         jPanel1.add(lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 290, 35));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Last Name :");
+        jLabel6.setText("Replacement  :");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.setOpaque(true);
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 100, 35));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 100, 35));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Email :");
@@ -162,6 +212,40 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
         });
         jPanel1.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 580, 110, 40));
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Last Name :");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.setOpaque(true);
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 100, 35));
+
+        reassignBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/officer-24x24.png"))); // NOI18N
+        reassignBtn.setText("Change");
+        reassignBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reassignBtnMouseClicked(evt);
+            }
+        });
+        reassignBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reassignBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reassignBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 120, 40));
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Role :");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.setOpaque(true);
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 100, 35));
+
+        replacement.setBackground(new java.awt.Color(254, 254, 254));
+        replacement.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 12)); // NOI18N
+        replacement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Project Managers --" }));
+        replacement.setToolTipText("d");
+        replacement.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        replacement.setFocusable(false);
+        jPanel1.add(replacement, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 290, 35));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         pack();
@@ -176,16 +260,78 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lastNameKeyReleased
 
     private void resetPWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetPWMouseClicked
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
 
+        for (int i=0; i < 8; i++) {
+            int index = random.nextInt(characters.length());
+            char randomChar = characters.charAt(index);
+            sb.append(randomChar);
+        }
+
+        String newPassword = sb.toString();
+
+        if (UserAccountController.resetPassword(this.userId, newPassword)) {
+            Dialog.SuccessDialog("User password has been reset. Please send new password to user.\nNew Password: " + newPassword);
+        }
     }//GEN-LAST:event_resetPWMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
-        
+        if (firstName.getText().isEmpty() || lastName.getText().isEmpty()) {
+            Dialog.ErrorDialog("No empty fields are allowed!");
+        } else if (reassignmentFlag && replacement.getSelectedItem().equals("-- Project Managers --") && replacement.isVisible()) {
+            Dialog.ErrorDialog("Please select a project manager for reassignment!");
+        } else if (Dialog.ConfirmationDialog("Confirm update?")) {
+            if (reassignmentFlag) {
+                if (replacement.isVisible()) {
+                    int newPM = Integer.parseInt(replacement.getSelectedItem().toString().split("-")[1]);
+                    ProjectModuleController.reassign(userId, newPM);
+                    UserAccountController.changeRole(userId);
+                } else {
+                    UserAccountController.changeRole(userId);
+                }
+            }
+
+            if (UserAccountController.updateUserDetails(userId, firstName.getText(), lastName.getText())) {
+                Dialog.SuccessDialog("Staff details updated successfully!");
+                AdminGui.ButtonClicked("staff");
+            } else {
+                Dialog.ErrorDialog("An unexpected error has occurred.Contact IT department for assistance.");
+            }
+        }
     }//GEN-LAST:event_updateBtnMouseClicked
 
     private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        // TODO add your handling code here:
+        if (Dialog.ConfirmationDialog("Are you sure? Unsaved changes will be lost.")) {
+            AdminGui.ButtonClicked("staff");
+        }
     }//GEN-LAST:event_cancelBtnMouseClicked
+
+    private void reassignBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reassignBtnMouseClicked
+        if (!reassignBtn.isEnabled()) {
+            return;
+        }
+
+        String confirmMsg = "";
+        if (this.roleType.equals("LECTURER")) {
+            confirmMsg = "Are you sure to change user role (Lecturer => Project Manager)? ";
+        } else {
+            confirmMsg = "Are you sure to change user role (Project Manager => Lecturer)? ";
+        }
+
+        if (Dialog.ConfirmationDialog(confirmMsg) && UserAccountController.checkUserRoleAvailability(userId)) {
+            this.reassignmentFlag = true;
+            reassignBtn.setEnabled(false);
+            replacement.setEnabled(true);
+        } else if (!UserAccountController.checkUserRoleAvailability(userId)) {
+            Dialog.ErrorDialog("Lecturer to be assigned as Project Manager\nmust NOT be in responsibilities of ongoing modules!");
+        }
+    }//GEN-LAST:event_reassignBtnMouseClicked
+
+    private void reassignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reassignBtnActionPerformed
+        
+    }//GEN-LAST:event_reassignBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -196,9 +342,13 @@ public class EditLecturerPM extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lastName;
     private javax.swing.JLabel pageTitle;
+    private javax.swing.JButton reassignBtn;
+    private static javax.swing.JComboBox<String> replacement;
     private javax.swing.JButton resetPW;
     private javax.swing.JButton updateBtn;
     private javax.swing.JLabel usernameField;

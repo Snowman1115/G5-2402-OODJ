@@ -8,8 +8,7 @@ import com.project.common.utils.IDGenerator;
 import com.project.common.utils.JsonHandler;
 import com.project.common.utils.LongIDGenerator;
 import com.project.dao.*;
-import com.project.pojo.Intake;
-import com.project.pojo.UserAccount;
+import com.project.pojo.*;
 import com.project.service.UserAccountService;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +16,8 @@ import org.json.simple.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.chrono.ChronoLocalDate;
+import java.util.*;
 
 @Slf4j
 public class UserAccountServiceImpl implements UserAccountService {
@@ -32,6 +31,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     private ModuleDAO moduleDAO = new ModuleDAO();
     private SubmissionDAO submissionDAO = new SubmissionDAO();
     private PresentationDAO presentationDAO = new PresentationDAO();
+    private ConsultationDAO consultationDAO = new ConsultationDAO();
+    private ModuleFeedbackDAO moduleFeedbackDAO = new ModuleFeedbackDAO();
 
     /**
      * Login Authentication
@@ -209,6 +210,37 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     /**
+     * get user counts
+     * @return
+     */
+    @Override
+    public JSONObject getUserCountsByRoles() {
+        JSONObject counts = new JSONObject();
+        counts.put("student", 0);
+        counts.put("lecturer", 0);
+        counts.put("pm", 0);
+        counts.put("admin", 0);
+        List<UserRole> ur =  userRoleDAO.getAllUserRoles();
+        for (UserRole r : ur) {
+            switch (r.getUserRoleType()) {
+                case STUDENT -> {
+                    counts.replace("student", (int) counts.get("student") + 1);
+                }
+                case LECTURER -> {
+                    counts.replace("lecturer", (int) counts.get("lecturer") + 1);
+                }
+                case PROJECT_MANAGER -> {
+                    counts.replace("pm", (int) counts.get("pm") + 1);
+                }
+                case ADMIN -> {
+                    counts.replace("admin", (int) counts.get("admin") + 1);
+                }
+            }
+        }
+        return counts;
+    }
+
+    /**
      * get users by role
      * @param roleType
      * @return Userlist
@@ -245,36 +277,65 @@ public class UserAccountServiceImpl implements UserAccountService {
                 return studentsJson;
             }
             case LECTURER -> {
+                List<Integer> lecturerList = userRoleDAO.filterUserByRole(roleType);
+
                 JsonHandler lecturersJson = new JsonHandler();
 
                 for (UserAccount ua : userAccounts) {
-                    JSONObject lecturer = new JSONObject();
-                    lecturer.put("id", ua.getUserId());
-                    lecturer.put("username", ua.getUsername());
-                    lecturer.put("first_name", ua.getFirstName());
-                    lecturer.put("last_name", ua.getLastName());
-                    lecturer.put("email", ua.getEmail());
+                    if (lecturerList.contains(ua.getUserId())) {
+                        JSONObject lecturer = new JSONObject();
+                        lecturer.put("id", ua.getUserId());
+                        lecturer.put("username", ua.getUsername());
+                        lecturer.put("first_name", ua.getFirstName());
+                        lecturer.put("last_name", ua.getLastName());
+                        lecturer.put("email", ua.getEmail());
+                        lecturer.put("roleType", roleType.toString());
 
-                    lecturersJson.addObject(lecturer);
+                        lecturersJson.addObject(lecturer);
+                    }
                 }
 
                 return lecturersJson;
             }
             case PROJECT_MANAGER -> {
+                List<Integer> pmList = userRoleDAO.filterUserByRole(roleType);
                 JsonHandler PMsJson = new JsonHandler();
 
                 for (UserAccount ua : userAccounts) {
-                    JSONObject projectManager = new JSONObject();
-                    projectManager.put("id", ua.getUserId());
-                    projectManager.put("username", ua.getUsername());
-                    projectManager.put("first_name", ua.getFirstName());
-                    projectManager.put("last_name", ua.getLastName());
-                    projectManager.put("email", ua.getEmail());
+                    if (pmList.contains(ua.getUserId())) {
+                        JSONObject projectManager = new JSONObject();
+                        projectManager.put("id", ua.getUserId());
+                        projectManager.put("username", ua.getUsername());
+                        projectManager.put("first_name", ua.getFirstName());
+                        projectManager.put("last_name", ua.getLastName());
+                        projectManager.put("email", ua.getEmail());
+                        projectManager.put("roleType", roleType.toString().replace("_", " "));
 
-                    PMsJson.addObject(projectManager);
+                        PMsJson.addObject(projectManager);
+                    }
                 }
 
                 return PMsJson;
+            }
+            case ADMIN -> {
+                List<Integer> adminList = userRoleDAO.filterUserByRole(roleType);
+                JsonHandler adminJson = new JsonHandler();
+
+                for (UserAccount ua : userAccounts) {
+                    if (adminList.contains(ua.getUserId())  && !ua.getUserId().equals(userAuthenticationDAO.checkUserAuthorization().getUserId())) {
+                        JSONObject admin = new JSONObject();
+                        admin.put("id", ua.getUserId());
+                        admin.put("username", ua.getUsername());
+                        admin.put("first_name", ua.getFirstName());
+                        admin.put("last_name", ua.getLastName());
+                        admin.put("email", ua.getEmail());
+                        admin.put("roleType", roleType.toString());
+
+                        adminJson.addObject(admin);
+                    }
+                }
+
+                return adminJson;
             }
         }
 
@@ -327,25 +388,20 @@ public class UserAccountServiceImpl implements UserAccountService {
             userRoleDAO.add(userId, roleType);
             log.info("User Registration: New user registered as " + roleType + ". ");
 
-            switch (roleType) {
-                case STUDENT -> {
-                    int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
-                    LocalDate endDateOfIntake = intakesDAO.getIntakeById(intakeId).getEndDate();
-                    List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
+            if (roleType == UserRoleType.STUDENT) {
+                int intakeId = intakesDAO.getIntakeIdByIntakeCode(userData.get("intake"));
+                LocalDate endDateOfIntake = intakesDAO.getIntakeById(intakeId).getEndDate();
+                List<Integer> modulesInIntake = moduleDAO.getModulesByIntakeId(intakeId);
 
-                    intakesDAO.addNewStudent(intakeId, userId);
-                    log.info("User Registration: New student registered into " + userData.get("intake") + " intake.");
+                intakesDAO.addNewStudent(intakeId, userId);
+                log.info("User Registration: New student registered into " + userData.get("intake") + " intake.");
 
-                    for (int moduleId : modulesInIntake) {
-                        submissionDAO.createSubmission(moduleId, userId, endDateOfIntake);
-                        presentationDAO.add(moduleId, 0, userId, endDateOfIntake);
-                    }
-                    log.info("User Registration: Module submission slots created for new student.");
-                    log.info("User Registration: Module presentation slots created for new student.");
+                for (int moduleId : modulesInIntake) {
+                    submissionDAO.createSubmission(moduleId, userId, endDateOfIntake);
+                    presentationDAO.add(moduleId, 0, userId, endDateOfIntake);
                 }
-                case LECTURER -> {
-
-                }
+                log.info("User Registration: Module submission slots created for new student.");
+                log.info("User Registration: Module presentation slots created for new student.");
             }
 
             return true;
@@ -363,5 +419,148 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public boolean resetPassword(int userId, String newPassword) {
         return userAccountDAO.resetPasswordBySecurityPhrase(userId, newPassword);
+    }
+
+    @Override
+    public boolean remove(UserRoleType roleType, Integer userId) {
+        switch (roleType) {
+            case STUDENT -> {
+                try {
+                    List<Map<String, String>> studentSubmissionsList = submissionDAO.getAllSubmissionDetailsByStudentId(userId);
+                    for (Map<String, String> i : studentSubmissionsList) {
+                        submissionDAO.delete(Integer.parseInt(i.get("id")));
+                    }
+
+                    List<Map<String, String>> studentPresentationsList = presentationDAO.getAllPresentationDetailsByStudentId(userId);
+                    for (Map<String, String> i : studentPresentationsList) {
+                        presentationDAO.delete(Integer.parseInt(i.get("id")));
+                    }
+
+                    for (Intake i : intakesDAO.getAllIntakes()) {
+                        if (i.getStudentList().contains(userId)) {
+                            intakesDAO.removeStudent(i.getIntakeId(), userId);
+                        }
+                    }
+
+                    consultationDAO.getAllConsultations().removeIf(consultation -> consultation.getStudentId().equals(userId));
+                    moduleFeedbackDAO.deleteAllFeedbacksByStudentId(userId);
+
+                    userRoleDAO.remove(userId);
+                    userAccountDAO.delete(userId);
+
+                    return true;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+
+            }
+            case LECTURER -> {
+                try {
+                    consultationDAO.getAllConsultations().removeIf(consultation -> consultation.getLecturerId().equals(userId));
+
+                    List<ProjectModule> modules1 = moduleDAO.getModuleListByFirstMarkerId(userId);
+                    List<ProjectModule> modules2 = moduleDAO.getModuleListBySecondMarkerId(userId);
+
+                    for (ProjectModule m : modules1) {
+                        moduleDAO.update(m.getModuleId(), "firstMarker", "0");
+                    }
+
+                    for (ProjectModule m : modules2) {
+                        moduleDAO.update(m.getModuleId(), "secondMarker", "0");
+                    }
+
+                    List<Map<String, String>> presentations = presentationDAO.getPresentationByLecturerId(userId);
+                    for (Map<String, String> p : presentations) {
+                        presentationDAO.update(Integer.parseInt(p.get("id")), "lecturerId", "0");
+                    }
+
+                    userRoleDAO.remove(userId);
+                    userAccountDAO.delete(userId);
+
+                    return true;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+            }
+            case PROJECT_MANAGER, ADMIN -> {
+                try {
+                    userRoleDAO.remove(userId);
+                    userAccountDAO.delete(userId);
+                    return true;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * check lecturer availability
+     * @param lecturerId
+     * @return
+     */
+    @Override
+    public boolean checkLecturerAvailability(int lecturerId) {
+        List<ProjectModule> projectModuleList = moduleDAO.getAllModules();
+        int counter = 0;
+
+        for (ProjectModule m : projectModuleList) {
+            if ((m.getFirstMarker().equals(lecturerId) || m.getSecondMarker().equals(lecturerId)) && m.getEndDate().isAfter(LocalDate.now())) {
+                counter++;
+            }
+        }
+
+        if (counter == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * change pm & lecturer role
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean changeRole(int userId) {
+        UserRoleType userRole = userRoleDAO.checkRoleType(userId);
+
+        try {
+            if (userRole.equals(UserRoleType.LECTURER)) {
+                log.info("Staff Role Change: New role - " + UserRoleType.PROJECT_MANAGER);
+                return userRoleDAO.update(userId, "roleType", UserRoleType.PROJECT_MANAGER.toString());
+            } else {
+                log.info("Staff Role Change: New role - " + UserRoleType.LECTURER);
+                return userRoleDAO.update(userId, "roleType", UserRoleType.LECTURER.toString());
+            }
+
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean checkPMAvailability(int projectManagerId) {
+        List<ProjectModule> projectModuleList = moduleDAO.getAllModules();
+        int counter = 0;
+
+        for (ProjectModule m : projectModuleList) {
+            if (m.getSupervisorId().equals(projectManagerId)) {
+                counter++;
+            }
+        }
+
+        if (counter == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

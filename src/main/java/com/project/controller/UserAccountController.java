@@ -12,6 +12,7 @@ import com.project.common.utils.JsonHandler;
 import com.project.dao.UserAuthenticationDAO;
 import com.project.pojo.UserAccount;
 import com.project.pojo.UserAuthentication;
+import com.project.service.Impl.AdminAccountServiceImpl;
 import com.project.service.Impl.UserAccountServiceImpl;
 import com.project.service.Impl.UserAuthenticationServiceImpl;
 import com.project.service.UserAccountService;
@@ -27,6 +28,8 @@ public class UserAccountController {
     private static UserAccountService userAccountService = new UserAccountServiceImpl();
 
     private static UserAuthenticationService userAuthenticationService = new UserAuthenticationServiceImpl();
+
+    private static AdminAccountServiceImpl adminAccountService = new AdminAccountServiceImpl();
 
     /**
      * Login Authentication
@@ -219,9 +222,7 @@ public class UserAccountController {
      * get all admins
      * @return admins
      */
-    public static JsonHandler getAdmins() {
-        return userAccountService.getUsersByRole(UserRoleType.ADMIN);
-    }
+    public static JsonHandler getAdmins() { return adminAccountService.getAdmins(); }
 
     
 
@@ -239,13 +240,95 @@ public class UserAccountController {
      * @return
      */
     public static Integer getNewUserId() { return userAccountService.getNewId(); }
+
+    /**
+     * get counts for each user roles
+     * @return
+     */
+    public static JSONObject getCounts() { return userAccountService.getUserCountsByRoles(); }
+
+    /**
+     * Add new student
+     * @param userData
+     * @return
+     */
     public static boolean addStudent(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.STUDENT); }
+
+    /**
+     * add new lecturer
+     * @param userData
+     * @return
+     */
     public static boolean addLecturer(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.LECTURER); }
+
+    /**
+     * add new admin
+     * @param userData
+     * @return
+     */
     public static boolean addAdmin(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.ADMIN); }
 
+    /**
+     * add new project manager
+     * @param userData
+     * @return
+     */
+    public static boolean addPM(JsonHandler userData) { return userAccountService.registerNewUser(userData, UserRoleType.PROJECT_MANAGER); }
+
+    /**
+     * update user details
+     * @param userId
+     * @param firstName
+     * @param lastName
+     * @return
+     */
     public static boolean updateUserDetails(int userId, String firstName, String lastName) {
         log.info("Update User Details: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
         log.info("Update Profile: {} - {}", userId, firstName+" "+lastName);
         return userAccountService.updateProfileById(userId, firstName, lastName);
     }
+
+    /**
+     * delete user record
+     * @param studentId
+     * @return
+     */
+    public static boolean removeStudent(int studentId) {
+        log.info("Remove Student Account: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
+        log.info("Remove Student Account: Account removed - {}", studentId);
+        return userAccountService.remove(UserRoleType.STUDENT, studentId);
+    }
+
+    /**
+     * check lecturer availability to become project manager
+     * @param lecturerId
+     * @return
+     */
+    public static boolean checkUserRoleAvailability(int lecturerId) { return userAccountService.checkLecturerAvailability(lecturerId); }
+
+    /**
+     * change lecturer and project manager role
+     * @param userId
+     * @return
+     */
+    public static boolean changeRole(int userId) {
+        log.info("Staff Role Change: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
+        log.info("Staff Role Change: User - {}", userId);
+        return userAccountService.changeRole(userId);
+    }
+
+    /**
+     * check project manager responsibilities
+     * @param pmId
+     * @return
+     */
+    public static boolean checkPM(int pmId) { return userAccountService.checkPMAvailability(pmId); }
+
+    /**
+     * remove staff
+     * @param staffId
+     * @param roleType
+     * @return
+     */
+    public static boolean removeStaff(int staffId, UserRoleType roleType) { return userAccountService.remove(roleType, staffId); }
 }

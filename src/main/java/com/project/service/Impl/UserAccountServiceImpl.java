@@ -16,6 +16,7 @@ import org.json.simple.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 @Slf4j
@@ -426,13 +427,11 @@ public class UserAccountServiceImpl implements UserAccountService {
             case STUDENT -> {
                 try {
                     List<Map<String, String>> studentSubmissionsList = submissionDAO.getAllSubmissionDetailsByStudentId(userId);
-                    List<Integer> studentSubmissionsIds = new ArrayList<>();
                     for (Map<String, String> i : studentSubmissionsList) {
                         submissionDAO.delete(Integer.parseInt(i.get("id")));
                     }
 
                     List<Map<String, String>> studentPresentationsList = presentationDAO.getAllPresentationDetailsByStudentId(userId);
-                    List<Integer> studentPresentationsIds = new ArrayList<>();
                     for (Map<String, String> i : studentPresentationsList) {
                         presentationDAO.delete(Integer.parseInt(i.get("id")));
                     }
@@ -456,7 +455,112 @@ public class UserAccountServiceImpl implements UserAccountService {
                 }
 
             }
+            case LECTURER -> {
+                try {
+                    consultationDAO.getAllConsultations().removeIf(consultation -> consultation.getLecturerId().equals(userId));
+
+                    List<ProjectModule> modules1 = moduleDAO.getModuleListByFirstMarkerId(userId);
+                    List<ProjectModule> modules2 = moduleDAO.getModuleListBySecondMarkerId(userId);
+
+                    for (ProjectModule m : modules1) {
+                        moduleDAO.update(m.getModuleId(), "firstMarker", "0");
+                    }
+
+                    for (ProjectModule m : modules2) {
+                        moduleDAO.update(m.getModuleId(), "secondMarker", "0");
+                    }
+
+                    List<Map<String, String>> presentations = presentationDAO.getPresentationByLecturerId(userId);
+                    for (Map<String, String> p : presentations) {
+                        presentationDAO.update(Integer.parseInt(p.get("id")), "lecturerId", "0");
+                    }
+
+                    userRoleDAO.remove(userId);
+                    userAccountDAO.delete(userId);
+
+                    return true;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+            }
+            case PROJECT_MANAGER, ADMIN -> {
+                try {
+                    userRoleDAO.remove(userId);
+                    userAccountDAO.delete(userId);
+                    return true;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+            }
         }
         return false;
+    }
+
+    /**
+     * check lecturer availability
+     * @param lecturerId
+     * @return
+     */
+    @Override
+    public boolean checkLecturerAvailability(int lecturerId) {
+        List<ProjectModule> projectModuleList = moduleDAO.getAllModules();
+        int counter = 0;
+
+        for (ProjectModule m : projectModuleList) {
+            if ((m.getFirstMarker().equals(lecturerId) || m.getSecondMarker().equals(lecturerId)) && m.getEndDate().isAfter(LocalDate.now())) {
+                counter++;
+            }
+        }
+
+        if (counter == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * change pm & lecturer role
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean changeRole(int userId) {
+        UserRoleType userRole = userRoleDAO.checkRoleType(userId);
+
+        try {
+            if (userRole.equals(UserRoleType.LECTURER)) {
+                log.info("Staff Role Change: New role - " + UserRoleType.PROJECT_MANAGER);
+                return userRoleDAO.update(userId, "roleType", UserRoleType.PROJECT_MANAGER.toString());
+            } else {
+                log.info("Staff Role Change: New role - " + UserRoleType.LECTURER);
+                return userRoleDAO.update(userId, "roleType", UserRoleType.LECTURER.toString());
+            }
+
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean checkPMAvailability(int projectManagerId) {
+        List<ProjectModule> projectModuleList = moduleDAO.getAllModules();
+        int counter = 0;
+
+        for (ProjectModule m : projectModuleList) {
+            if (m.getSupervisorId().equals(projectManagerId)) {
+                counter++;
+            }
+        }
+
+        if (counter == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

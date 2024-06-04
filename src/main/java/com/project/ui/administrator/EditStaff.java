@@ -7,6 +7,8 @@ package com.project.ui.administrator;
 
 import com.project.common.constants.UserRoleType;
 import com.project.common.utils.Dialog;
+import com.project.common.utils.JsonHandler;
+import com.project.controller.IntakesController;
 import com.project.controller.ProjectModuleController;
 import com.project.controller.UserAccountController;
 import com.project.pojo.UserAccount;
@@ -14,6 +16,7 @@ import com.project.pojo.UserAccount;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 
 /**
@@ -61,6 +64,14 @@ public class EditStaff extends javax.swing.JInternalFrame {
                 pageTitle.setText("PROJECT MANAGER DETAILS");
                 jLabel9.setVisible(true);
                 reassignBtn.setVisible(true);
+
+                JsonHandler PMs = UserAccountController.getPMs();
+                for (int i = 0; i < PMs.getAll().size(); i++) {
+                    if (!PMs.getObject(i).get("id").equals(userId)) {
+                        String projectManager = PMs.getObject(i).get("first_name") + " " + PMs.getObject(i).get("last_name") + "-" + PMs.getObject(i).get("id");
+                        replacement.addItem(projectManager);
+                    }
+                }
 
                 List moduleList = ProjectModuleController.getAllModuleDetailsByProjectManagerId(this.userId);
                 if (!moduleList.isEmpty()) {
@@ -249,18 +260,59 @@ public class EditStaff extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lastNameKeyReleased
 
     private void resetPWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetPWMouseClicked
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
 
+        for (int i=0; i < 8; i++) {
+            int index = random.nextInt(characters.length());
+            char randomChar = characters.charAt(index);
+            sb.append(randomChar);
+        }
+
+        String newPassword = sb.toString();
+
+        if (UserAccountController.resetPassword(this.userId, newPassword)) {
+            Dialog.SuccessDialog("User password has been reset. Please send new password to user.\nNew Password: " + newPassword);
+        }
     }//GEN-LAST:event_resetPWMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
-        
+        if (firstName.getText().isEmpty() || lastName.getText().isEmpty()) {
+            Dialog.ErrorDialog("No empty fields are allowed!");
+        } else if (reassignmentFlag && replacement.getSelectedItem().equals("-- Project Managers --") && replacement.isVisible()) {
+            Dialog.ErrorDialog("Please select a project manager for reassignment!");
+        } else if (Dialog.ConfirmationDialog("Confirm update?")) {
+            if (reassignmentFlag) {
+                if (replacement.isVisible()) {
+                    int newPM = Integer.parseInt(replacement.getSelectedItem().toString().split("-")[1]);
+                    ProjectModuleController.reassign(userId, newPM);
+                    UserAccountController.changeRole(userId);
+                } else {
+                    UserAccountController.changeRole(userId);
+                }
+            }
+
+            if (UserAccountController.updateUserDetails(userId, firstName.getText(), lastName.getText())) {
+                Dialog.SuccessDialog("Staff details updated successfully!");
+                AdminGui.ButtonClicked("staff");
+            } else {
+                Dialog.ErrorDialog("An unexpected error has occurred.Contact IT department for assistance.");
+            }
+        }
     }//GEN-LAST:event_updateBtnMouseClicked
 
     private void cancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBtnMouseClicked
-        AdminGui.ButtonClicked("staff");
+        if (Dialog.ConfirmationDialog("Are you sure? Unsaved changes will be lost.")) {
+            AdminGui.ButtonClicked("staff");
+        }
     }//GEN-LAST:event_cancelBtnMouseClicked
 
     private void reassignBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reassignBtnMouseClicked
+        if (!reassignBtn.isEnabled()) {
+            return;
+        }
+
         String confirmMsg = "";
         if (this.roleType.equals("LECTURER")) {
             confirmMsg = "Are you sure to change user role (Lecturer => Project Manager)? ";
@@ -268,8 +320,12 @@ public class EditStaff extends javax.swing.JInternalFrame {
             confirmMsg = "Are you sure to change user role (Project Manager => Lecturer)? ";
         }
 
-        if (Dialog.ConfirmationDialog(confirmMsg)) {
-            // reassign logic
+        if (Dialog.ConfirmationDialog(confirmMsg) && UserAccountController.checkUserRoleAvailability(userId)) {
+            this.reassignmentFlag = true;
+            reassignBtn.setEnabled(false);
+            replacement.setEnabled(true);
+        } else if (!UserAccountController.checkUserRoleAvailability(userId)) {
+            Dialog.ErrorDialog("Lecturer to be assigned as Project Manager\nmust NOT be in responsibilities of ongoing modules!");
         }
     }//GEN-LAST:event_reassignBtnMouseClicked
 

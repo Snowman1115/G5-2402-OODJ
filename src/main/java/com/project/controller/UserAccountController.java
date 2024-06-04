@@ -298,4 +298,37 @@ public class UserAccountController {
         log.info("Remove Student Account: Account removed - {}", studentId);
         return userAccountService.remove(UserRoleType.STUDENT, studentId);
     }
+
+    /**
+     * check lecturer availability to become project manager
+     * @param lecturerId
+     * @return
+     */
+    public static boolean checkUserRoleAvailability(int lecturerId) { return userAccountService.checkLecturerAvailability(lecturerId); }
+
+    /**
+     * change lecturer and project manager role
+     * @param userId
+     * @return
+     */
+    public static boolean changeRole(int userId) {
+        log.info("Staff Role Change: By - {} {} {}", userAuthenticationService.getAuthenticationUserDetails().getUserRoleType(), userAuthenticationService.getAuthenticationUserDetails().getUserId(), userAuthenticationService.getAuthenticationUserDetails().getUsername());
+        log.info("Staff Role Change: User - {}", userId);
+        return userAccountService.changeRole(userId);
+    }
+
+    /**
+     * check project manager responsibilities
+     * @param pmId
+     * @return
+     */
+    public static boolean checkPM(int pmId) { return userAccountService.checkPMAvailability(pmId); }
+
+    /**
+     * remove staff
+     * @param staffId
+     * @param roleType
+     * @return
+     */
+    public static boolean removeStaff(int staffId, UserRoleType roleType) { return userAccountService.remove(roleType, staffId); }
 }

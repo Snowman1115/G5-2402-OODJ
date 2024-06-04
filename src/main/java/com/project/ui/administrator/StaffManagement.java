@@ -242,7 +242,39 @@ public class StaffManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_editBtnMouseClicked
 
     private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
-        // TODO add your handling code here:
+        int selectedRow = staffTable.getSelectedRow();
+        if (selectedRow < 0) {
+            Dialog.ErrorDialog("Please select a record to remove!");
+        } else {
+            if (Dialog.ConfirmationDialog("Warning", "This action cannot be undone! Confirm to proceed.")) {
+                int staffId = Integer.parseInt(staffTable.getValueAt(selectedRow, 0).toString());
+                UserRoleType roleType = switch (staffTable.getValueAt(selectedRow, 4).toString()) {
+                    case "LECTURER" -> {
+                        yield UserRoleType.LECTURER;
+                    }
+                    case "PROJECT MANAGER" -> {
+                        yield UserRoleType.PROJECT_MANAGER;
+                    }
+                    case "ADMIN" -> {
+                        yield UserRoleType.ADMIN;
+                    }
+                    default -> {
+                        throw new RuntimeException("User role type undefined!");
+                    }
+                };
+
+                if (roleType.equals(UserRoleType.PROJECT_MANAGER) && !UserAccountController.checkPM(staffId)) {
+                    Dialog.ErrorDialog("Project Manager responsibilities must be reassigned before removing!");
+                    return;
+                }
+
+                if (UserAccountController.removeStaff(staffId, roleType)) {
+                    AdminGui.ButtonClicked("staff");
+                } else {
+                    Dialog.ErrorDialog("An unexpected error has occurred. Please contact technical department for assistance.");
+                }
+            }
+        }
     }//GEN-LAST:event_deleteBtnMouseClicked
 
 

@@ -288,7 +288,7 @@ public class ModuleDAO {
    
 
     // Update consultation data
-    public static boolean update(Integer moduleId, String field, String value) {
+    public boolean update(Integer moduleId, String field, String value) {
         // System.out.println(value);
         for (ProjectModule module : modules) {
             if (module.getModuleId().equals(moduleId)) {

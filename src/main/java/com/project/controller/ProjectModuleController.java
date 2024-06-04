@@ -92,7 +92,13 @@ public class ProjectModuleController {
      */
     public static boolean addNewModule (int intakeId, String moduleCode, int projectManagerId, LocalDate startDate, LocalDate endDate) { return projectModuleService.addModule(intakeId, moduleCode, projectManagerId, startDate, endDate); }
 
-
+    /**
+     * reassign new pm to modules
+     * @param userId
+     * @param newPMId
+     * @return
+     */
+    public static boolean reassign(int userId, int newPMId) { return projectModuleService.projectManagerReassignment(userId, newPMId); }
 
 
     public static List getModuleTypeById(Integer moduleId) {

@@ -73,6 +73,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         lecturersBtn.setText("0");
         lecturersBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lecturersBtn.setOpaque(true);
+        lecturersBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecturersBtnMouseClicked(evt);
+            }
+        });
 
         menuBtn28.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn28.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -146,6 +151,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         adminPanelVersionLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         adminPanelVersionLabel.setText("AdminPanel @Version x.x Built On xx xx xxxx");
         adminPanelVersionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        adminBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminBtnMouseClicked(evt);
+            }
+        });
         MainPanel.add(adminPanelVersionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 628, 620, 30));
 
         jPanel7.setBackground(new java.awt.Color(254, 254, 254));
@@ -199,6 +209,11 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
         PMBtn.setText("0");
         PMBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PMBtn.setOpaque(true);
+        PMBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PMBtnMouseClicked(evt);
+            }
+        });
 
         menuBtn26.setBackground(new java.awt.Color(250, 250, 250));
         menuBtn26.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
@@ -237,6 +252,21 @@ public class AdminDashboard extends javax.swing.JInternalFrame {
     private void studentBtnMouseClicked(java.awt.event.MouseEvent evt) {
         this.dispose();
         AdminGui.ButtonClicked("student");
+    }
+
+    private void lecturersBtnMouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+        AdminGui.ButtonClicked("staff");
+    }
+
+    private void adminBtnMouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+        AdminGui.ButtonClicked("staff");
+    }
+
+    private void PMBtnMouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+        AdminGui.ButtonClicked("staff");
     }
 
 

@@ -302,6 +302,25 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         return null;
     }
 
+    /**
+     * reassign modules to new project manager
+     * @param userId
+     * @param newPMId
+     * @return
+     */
+    @Override
+    public boolean projectManagerReassignment(int userId, int newPMId) {
+        List<ProjectModule> projectModuleList = moduleDAO.getAllModules();
+
+        for (ProjectModule m : projectModuleList) {
+            if (m.getSupervisorId().equals(userId)) {
+                moduleDAO.update(m.getModuleId(), "supervisorId", String.valueOf(newPMId));
+            }
+        }
+
+        return true;
+    }
+
 }
 
 

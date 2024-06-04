@@ -58,4 +58,6 @@ public interface ProjectModuleService {
     public List getAllReportDetails();
 
     public List getReportDetailsById(Integer reportId);
+
+    boolean projectManagerReassignment(int userId, int newPMId);
 }

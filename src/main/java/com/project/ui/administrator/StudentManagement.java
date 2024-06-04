@@ -218,7 +218,7 @@ public class StudentManagement extends javax.swing.JInternalFrame {
             if (Dialog.ConfirmationDialog("Warning", "This action cannot be undone! Confirm to proceed.")) {
                 int studentId = Integer.parseInt(studentTable.getValueAt(selectedRow, 0).toString());
                 if (UserAccountController.removeStudent(studentId)) {
-                    refreshData();
+                    AdminGui.ButtonClicked("student");
                 } else {
                     Dialog.ErrorDialog("An unexpected error has occurred. Please contact technical department for assistance.");
                 }

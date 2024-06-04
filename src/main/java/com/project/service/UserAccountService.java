@@ -126,4 +126,24 @@ public interface UserAccountService {
      */
     public boolean remove(UserRoleType roleType, Integer userId);
 
+    /**
+     * validate lecturer availability to become project manager
+     * @param lecturerId
+     * @return
+     */
+    boolean checkLecturerAvailability(int lecturerId);
+
+    /**
+     * change user role
+     * @param userId
+     * @return
+     */
+    boolean changeRole(int userId);
+
+    /**
+     * check project manager
+     * @param projectManagerId
+     * @return
+     */
+    boolean checkPMAvailability(int projectManagerId);
 }

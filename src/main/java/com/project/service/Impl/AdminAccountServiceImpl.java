@@ -18,12 +18,19 @@ public class AdminAccountServiceImpl extends UserAccountServiceImpl {
         return super.getUsersByRole(UserRoleType.ADMIN);
     }
 
+    /**
+     * get system logs
+     * @return
+     */
     public String getSystemLogs() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/main/resources/Data/Logback/logback.log"));
             List<String> logList = new ArrayList<>();
-            while (br.readLine() != null) {
-                logList.add(br.readLine());
+
+            String line = br.readLine();
+            while (line != null && !line.isEmpty()) {
+                logList.add(line);
+                line = br.readLine();
             }
 
             return String.join("\n", logList);

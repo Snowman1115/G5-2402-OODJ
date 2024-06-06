@@ -6,6 +6,7 @@ import com.project.common.constants.ReportStatus;
 import com.project.common.utils.*;
 import com.project.pojo.Presentation;
 import com.project.pojo.Submission;
+import static java.lang.String.valueOf;
 import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
@@ -326,10 +327,12 @@ public class PresentationDAO {
     public boolean saveSupervisorChanges(List<Object> moduleDetails) {
         boolean status = false;
         int moduleIdFromDetails = Integer.parseInt((String) moduleDetails.get(0));
+        String lecturerId = valueOf(moduleDetails.get(1));
+        System.out.println(lecturerId);
         for (Presentation p : presentations) {
             if (p.getModuleId().equals(moduleIdFromDetails)) { // Use .equals() for string comparison
-                update(moduleIdFromDetails, "lecturerId", (String) moduleDetails.get(1));
-                update(moduleIdFromDetails, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                update(p.getPresentationId(), "lecturerId", lecturerId);
+                update(p.getPresentationId(), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
                 status = true;
             }
         }

@@ -239,7 +239,7 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
             }
         } else {
 //            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
-            Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);
+            Dialog.ErrorDialog(MessageConstant.UNEXPECTED_ERROR);
             return false;
         }
 

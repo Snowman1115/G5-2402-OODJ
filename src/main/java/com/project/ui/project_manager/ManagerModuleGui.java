@@ -343,6 +343,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                     savedModule.add(spId != null ? spId : "");
                     savedModule.add(smId != null ? smId : "");
                     
+                    System.out.println(spId + "Seperator ...." + smId);
                     if(ProjectModuleController.saveModuleDetails(savedModule)){
                         refresh();
                     }

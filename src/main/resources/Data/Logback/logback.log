@@ -104,3 +104,271 @@
 2024-06-06 12:06:31 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
 2024-06-06 12:09:40 [main] INFO  com.project.Main - Project Management System Starting...
 2024-06-06 12:09:42 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:23:34 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:23:36 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:23:47 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : projectManager1@gmail.com
+2024-06-06 12:23:48 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (projectManager1@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-06 12:24:15 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:24:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:24:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:24:18 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:24:18 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:24:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:24:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:24:49 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : ChanHoongJian21243341
+2024-06-06 12:24:49 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (ChanHoongJian21243341) ,Role: (STUDENT) login successful.
+2024-06-06 12:24:51 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (ChanHoongJian21243341) to Student Panel.
+2024-06-06 12:24:51 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:24:51 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (ChanHoongJian21243341) authorization passed.
+2024-06-06 12:26:48 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 67064543
+2024-06-06 12:26:48 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\SOFTWARE DEVELOPMENT METHODS (APD2F2707SE)\d583b944-b2ce-4caf-a9ea-f90e824cb3c8.pdf
+2024-06-06 12:27:05 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 67064543
+2024-06-06 12:27:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Successfully : 67064543
+2024-06-06 12:27:24 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 45273251
+2024-06-06 12:27:24 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\DEEP LEARNING (APD2F2707SE)\c3988962-1554-4076-b25d-5322115830ee.pdf
+2024-06-06 12:28:00 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Book Presentation Slot : 49335861
+2024-06-06 12:28:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : The presentation slot is already booked.
+2024-06-06 12:28:12 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Book Presentation Slot : 31705604
+2024-06-06 12:28:12 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : The presentation slot is already booked.
+2024-06-06 12:28:24 [AWT-EventQueue-0] INFO  c.p.c.ModuleFeedbackController - Student Submit Feedback : 
+2024-06-06 12:28:26 [AWT-EventQueue-0] INFO  c.p.s.Impl.ModuleFeedbackServiceImpl - Student Feedback Submit Successful : 78492385
+2024-06-06 12:28:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-06 12:28:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 78492385
+2024-06-06 12:28:28 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:28:28 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:28:30 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : lecturer1@gmail.com
+2024-06-06 12:28:31 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (lecturer1@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-06 12:28:53 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 12:28:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 12:28:55 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 12:28:55 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:28:55 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 12:29:54 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:29:54 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:29:57 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : projectManager1@gmail.com
+2024-06-06 12:30:01 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (projectManager1@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-06 12:30:19 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:30:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:30:21 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:30:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:30:21 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:30:55 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:30:55 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:31:04 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 12:31:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 12:31:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 12:31:04 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:31:04 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 12:31:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:31:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:31:53 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:31:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:31:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:31:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:31:56 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:34:51 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:34:53 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:48:27 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:48:29 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:48:33 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : projectManager1@gmail.com
+2024-06-06 12:48:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (projectManager1@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-06 12:48:54 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:48:54 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:48:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:48:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:48:56 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:55:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 12:55:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 12:55:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 12:55:08 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:55:08 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 12:55:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:55:26 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:56:15 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:56:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:56:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:56:18 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:56:18 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:56:31 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:56:31 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:56:53 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 12:56:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 12:56:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 12:56:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:56:56 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 12:57:14 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:57:14 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:57:17 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 12:57:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 12:57:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 12:57:17 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:57:17 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 12:57:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 19786430
+2024-06-06 12:57:33 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-06 12:57:33 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 19786430 - Mah Hai
+2024-06-06 12:57:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:57:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:57:52 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:57:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:57:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:57:57 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:57:57 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:59:04 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 12:59:04 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 12:59:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 12:59:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 12:59:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 12:59:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:59:32 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 13:00:01 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-06 13:00:01 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 19786430
+2024-06-06 17:43:15 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 17:43:17 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 17:43:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-06-06 17:43:24 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student1@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-06 17:44:06 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : ChanHoongJian21243341
+2024-06-06 17:44:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (ChanHoongJian21243341) ,Role: (STUDENT) login successful.
+2024-06-06 17:44:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (ChanHoongJian21243341) to Student Panel.
+2024-06-06 17:44:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:44:07 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (ChanHoongJian21243341) authorization passed.
+2024-06-06 17:44:10 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-06 17:44:10 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 78492385
+2024-06-06 17:44:20 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - STUDENT 78492385 ChanHoongJian21243341
+2024-06-06 17:44:20 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 78492385 - CHJ123
+2024-06-06 17:44:20 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-06 17:44:20 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-06 17:44:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 78492385 update success
+2024-06-06 17:44:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-06 17:44:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 78492385
+2024-06-06 17:45:14 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 67064543
+2024-06-06 17:45:14 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\SOFTWARE DEVELOPMENT METHODS (APD2F2707SE)\b57488e8-2cb3-4e09-ba27-7469b6602028.pdf
+2024-06-06 17:45:28 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 24124963
+2024-06-06 17:45:28 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\PROGRAMMING WITH C (APD2F2707SE)\38ef8b01-81f5-45fc-a0c1-ffdc66fc7cca.pdf
+2024-06-06 17:45:41 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Book Presentation Slot : 50470141
+2024-06-06 17:45:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : The presentation slot is already booked.
+2024-06-06 17:45:48 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Book Presentation Slot : 95939700
+2024-06-06 17:45:48 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : The presentation slot is already booked.
+2024-06-06 17:46:09 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Edit Presentation Slot : 50470141
+2024-06-06 17:46:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : Presentation Slot Successfully Booked.
+2024-06-06 17:46:28 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 17:46:28 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 17:46:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 17:46:45 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 17:46:45 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 17:46:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:46:45 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 17:47:59 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission with ID: 67064543 is updated to MARKED_1
+2024-06-06 17:47:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Status Update To Marked_1 Successfully: 67064543
+2024-06-06 17:52:10 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 17:52:10 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 17:52:13 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 17:52:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 17:52:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 17:52:13 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:52:13 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 17:52:49 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 62068033
+2024-06-06 17:53:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 17:53:32 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 17:53:44 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : DavidJohnson15712289
+2024-06-06 17:53:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (DavidJohnson15712289) ,Role: (LECTURER) login successful.
+2024-06-06 17:53:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (DavidJohnson15712289) to Lecturer Panel.
+2024-06-06 17:53:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:53:46 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (DavidJohnson15712289) authorization passed.
+2024-06-06 17:55:04 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission with ID: 67064543 is updated to MARKED_2
+2024-06-06 17:55:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Status Update To Marked_2 Successfully: 67064543
+2024-06-06 17:55:19 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - New consultation slot for the lecturer with lecturerID : 62068033 has created successfully
+2024-06-06 17:55:28 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - New consultation slot for the lecturer with lecturerID : 62068033 has created successfully
+2024-06-06 17:55:32 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - New consultation slot for the lecturer with lecturerID : 62068033 has created successfully
+2024-06-06 17:55:36 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - New consultation slot for the lecturer with lecturerID : 62068033 has created successfully
+2024-06-06 17:55:41 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - New consultation slot for the lecturer with lecturerID : 62068033 has created successfully
+2024-06-06 17:55:49 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 17:55:49 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 17:56:09 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 17:56:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 17:56:09 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 17:56:09 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:56:09 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 17:56:50 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 17:56:50 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 17:57:03 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : CHJ123
+2024-06-06 17:57:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (CHJ123) ,Role: (STUDENT) login successful.
+2024-06-06 17:57:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (CHJ123) to Student Panel.
+2024-06-06 17:57:04 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:57:04 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (CHJ123) authorization passed.
+2024-06-06 17:58:54 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 70273
+2024-06-06 17:58:54 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 70273 + 78492385
+2024-06-06 17:58:57 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 68528
+2024-06-06 17:58:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 68528 + 78492385
+2024-06-06 17:59:03 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 70273
+2024-06-06 17:59:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 70273
+2024-06-06 17:59:14 [AWT-EventQueue-0] INFO  c.p.c.ModuleFeedbackController - Student Submit Feedback : 
+2024-06-06 17:59:16 [AWT-EventQueue-0] INFO  c.p.s.Impl.ModuleFeedbackServiceImpl - Student Feedback Submit Successful : 78492385
+2024-06-06 17:59:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 17:59:21 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 17:59:29 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : DavidJohnson15712289
+2024-06-06 17:59:29 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (DavidJohnson15712289) ,Role: (LECTURER) login successful.
+2024-06-06 17:59:30 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (DavidJohnson15712289) to Lecturer Panel.
+2024-06-06 17:59:30 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 17:59:30 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (DavidJohnson15712289) authorization passed.
+2024-06-06 18:00:19 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Booked Consultation with ID: 68528 is completed
+2024-06-06 18:00:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Status Update To Completed Successfully: 68528
+2024-06-06 18:03:38 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-06 18:03:38 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 62068033
+2024-06-06 18:03:39 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 18:03:39 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 18:04:05 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 18:04:06 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 18:04:19 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : CHJ123
+2024-06-06 18:04:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (CHJ123) ,Role: (STUDENT) login successful.
+2024-06-06 18:04:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (CHJ123) to Student Panel.
+2024-06-06 18:04:22 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 18:04:22 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (CHJ123) authorization passed.
+2024-06-06 18:06:05 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 45273251
+2024-06-06 18:06:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Cancelled : 45273251
+2024-06-06 18:06:17 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 24124963
+2024-06-06 18:06:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Cancelled : 24124963
+2024-06-06 18:06:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 18:06:26 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 18:06:57 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : CHJ123
+2024-06-06 18:06:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (CHJ123) ,Role: (STUDENT) login successful.
+2024-06-06 18:06:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (CHJ123) to Student Panel.
+2024-06-06 18:06:58 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 18:06:58 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (CHJ123) authorization passed.
+2024-06-06 18:07:25 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 18:07:26 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 18:07:41 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : CHJ123
+2024-06-06 18:07:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (CHJ123) ,Role: (STUDENT) login successful.
+2024-06-06 18:07:43 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (CHJ123) to Student Panel.
+2024-06-06 18:07:43 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 18:07:43 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (CHJ123) authorization passed.
+2024-06-06 18:10:45 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 18:10:46 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 18:11:02 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : CHJ123
+2024-06-06 18:11:02 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (CHJ123) ,Role: (STUDENT) login successful.
+2024-06-06 18:11:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (CHJ123) to Student Panel.
+2024-06-06 18:11:03 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 18:11:03 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (CHJ123) authorization passed.
+2024-06-06 18:12:32 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 4315512
+2024-06-06 18:12:33 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\DATA ANALYSIS (APD2F2707SE)\10c61f7a-fb25-4c1e-b214-673f4e056e3e.pdf
+2024-06-06 18:13:05 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 4315512
+2024-06-06 18:13:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Successfully : 4315512
+2024-06-06 18:13:37 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 4315512
+2024-06-06 18:13:37 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\DATA ANALYSIS (APD2F2707SE)\72be5638-d278-4218-acd1-4b99555d8c53.pdf
+2024-06-06 18:13:46 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 45273251
+2024-06-06 18:13:47 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Successfully : 45273251
+2024-06-06 18:13:51 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 24124963
+2024-06-06 18:13:53 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Successfully : 24124963
+2024-06-06 18:14:14 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 45273251
+2024-06-06 18:14:14 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2707SE\DEEP LEARNING (APD2F2707SE)\03b79800-279b-4b6d-ad43-9499cf67afa3.pdf
+2024-06-06 18:16:18 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 18:16:18 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 18:16:41 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 18:16:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 18:16:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 18:16:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 18:16:42 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 18:17:20 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-06 18:17:20 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 19786430
+2024-06-06 18:17:21 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 18:17:21 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 18:17:22 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.

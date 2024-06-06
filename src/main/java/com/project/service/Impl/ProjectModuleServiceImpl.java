@@ -232,8 +232,9 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
 //            log.info("Module Changes Has Been Saved! : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
             if(presentationDAO.saveSupervisorChanges(moduleDetails)){
                 Dialog.SuccessDialog(MessageConstant.SUCCESS_ASSIGNED_SUPERVISOR);
-            return true;
+                return true;
             } else {
+                Dialog.ErrorDialog(MessageConstant.UNEXPECTED_ERROR);
                 return false;
             }
         } else {

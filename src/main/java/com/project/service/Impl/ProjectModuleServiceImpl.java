@@ -230,8 +230,12 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     public Boolean saveModuleDetails(List moduleDetails) {
         if (moduleDAO.saveModuleChanges(moduleDetails)) {
 //            log.info("Module Changes Has Been Saved! : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
-            Dialog.SuccessDialog(MessageConstant.SUCCESS_ASSIGNED_SUPERVISOR);
+            if(presentationDAO.saveSupervisorChanges(moduleDetails)){
+                Dialog.SuccessDialog(MessageConstant.SUCCESS_ASSIGNED_SUPERVISOR);
             return true;
+            } else {
+                return false;
+            }
         } else {
 //            log.warn("UNEXPECTED ERROR : " + MessageConstant.UNEXPECTED_ERROR);
             Dialog.ErrorDialog(MessageConstant.ERROR_EMPTY_MODULE);

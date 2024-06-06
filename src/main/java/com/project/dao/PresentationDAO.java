@@ -320,6 +320,22 @@ public class PresentationDAO {
         return false;
     } 
     
+     /**
+     * Save Supervisor while lecturer change
+     */
+    public boolean saveSupervisorChanges(List<Object> moduleDetails) {
+        String moduleId = (String) moduleDetails.get(0);
+        for (Presentation p : presentations) {
+            if (p.getModuleId().equals(moduleId)) { // Use .equals() for string comparison
+                update(Integer.valueOf(moduleId), "firstMarker", (String) moduleDetails.get(1));
+                update(Integer.valueOf(moduleId), "secondMarker", (String) moduleDetails.get(2));
+                update(Integer.valueOf(moduleId), "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * Preload Data into presentations Array
      */
@@ -477,4 +493,6 @@ public class PresentationDAO {
         userJson.encode(FileHandler.readFile(PRESENTATION_DATA));
         return userJson.update(consultationId, attribute, value, PRESENTATION_DATA);
     }
+
+    
 }

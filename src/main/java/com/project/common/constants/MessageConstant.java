@@ -101,6 +101,7 @@ public class MessageConstant {
     public static final String CONDITION_NO_MODULES_UNDER_LECTURER = "No modules to show.";
     public static final String CONDITION_NO_DATA_CHANGES = "No data changes detected.";
     public static final String CONDITION_NO_SUBMISSIONS_UNDER_MODULES = "No submissions to show.";
+    public static final String SAME_MARKER_SUPERVISOR = "The supervisor and the second marker could not be same";
 
     /* WARNING */
     public static final String WARNING_REMOVE_CONFIRMATION = "Are you sure you want to delete ?";

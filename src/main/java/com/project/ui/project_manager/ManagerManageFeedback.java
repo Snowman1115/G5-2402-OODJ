@@ -93,7 +93,6 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
     private void exportToPdf(){
         String moduleId = fbModuleId.getText();
         String stdFeedback = fbComment.getText();
-        System.out.println("Module: " + moduleId);
         if (moduleId != null && !moduleId.equals("") && stdFeedback != null && !stdFeedback.equals("")) {
             try {
                 generateFeedbackPdf();
@@ -179,7 +178,6 @@ public class ManagerManageFeedback extends javax.swing.JInternalFrame {
         signature.addCell(signCell2);
         document.add(signature);
         document.close();
-        System.out.println("PDF generated successfully: " + fileName);
     }
   
     static Cell getFeedbackTitleCell(String textValue){

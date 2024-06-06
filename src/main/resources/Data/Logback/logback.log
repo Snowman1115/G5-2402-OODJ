@@ -1,0 +1,106 @@
+2024-06-06 11:30:00 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:30:01 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:30:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 11:30:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 11:30:25 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 11:30:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:30:25 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 11:33:51 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:33:53 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:33:58 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 11:33:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 11:33:58 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 11:33:58 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:33:58 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 11:35:08 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:35:09 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:35:18 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 11:35:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 11:35:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 11:35:18 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:35:18 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 11:36:26 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:36:27 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:36:35 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 11:36:36 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 11:36:36 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 11:36:36 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:36:36 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 11:39:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: By - ADMIN 68560653 admin1
+2024-06-06 11:39:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New user registered as PROJECT_MANAGER. 
+2024-06-06 11:40:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: By - ADMIN 68560653 admin1
+2024-06-06 11:40:08 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New user registered as LECTURER. 
+2024-06-06 11:42:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: By - ADMIN 68560653 admin1
+2024-06-06 11:42:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New user registered as STUDENT. 
+2024-06-06 11:42:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New student registered into APD2F2707SE intake.
+2024-06-06 11:42:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: Module submission slots created for new student.
+2024-06-06 11:42:57 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: Module presentation slots created for new student.
+2024-06-06 11:43:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: By - ADMIN 68560653 admin1
+2024-06-06 11:43:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New user registered as LECTURER. 
+2024-06-06 11:43:29 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 11:43:29 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 11:43:59 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 11:44:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (TangJinXun37765504) login fail error: Invalid password. Please try again.
+2024-06-06 11:44:20 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 11:44:22 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (TangJinXun37765504) login fail error: Invalid password. Please try again.
+2024-06-06 11:44:49 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : MahChaoHai3590004
+2024-06-06 11:44:49 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (MahChaoHai3590004) ,Role: (LECTURER) login successful.
+2024-06-06 11:44:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (MahChaoHai3590004) to Lecturer Panel.
+2024-06-06 11:44:52 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:44:52 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (MahChaoHai3590004) authorization passed.
+2024-06-06 11:44:55 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 11:44:55 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 11:45:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-06 11:45:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-06 11:45:00 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-06 11:45:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:45:00 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-06 11:45:05 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 27908770
+2024-06-06 11:45:38 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-06 11:45:38 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 27908770 - Tang Jin Xun
+2024-06-06 11:45:41 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-06 11:45:41 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-06 11:46:01 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 11:46:01 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 11:46:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 11:46:03 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:46:03 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 11:46:31 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:46:32 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:47:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 11:47:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 11:47:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 11:47:13 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:47:13 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 11:50:09 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:50:10 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:50:13 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 11:50:15 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 11:52:03 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 11:52:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 11:52:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 11:52:06 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 11:52:06 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:00:02 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:00:04 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:00:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:00:46 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:00:48 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:00:48 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:00:48 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:01:51 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:01:52 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:03:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:03:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:03:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:03:15 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:03:15 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:06:14 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:06:15 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-06 12:06:29 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : TangJinXun37765504
+2024-06-06 12:06:29 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (TangJinXun37765504) ,Role: (PROJECT_MANAGER) login successful.
+2024-06-06 12:06:31 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (TangJinXun37765504) to Project Manager Panel.
+2024-06-06 12:06:31 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-06 12:06:31 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (TangJinXun37765504) authorization passed.
+2024-06-06 12:09:40 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-06 12:09:42 [main] INFO  com.project.Main - Project Management System Ready.

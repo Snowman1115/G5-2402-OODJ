@@ -356,7 +356,6 @@ public class ModuleDAO {
 
     // Update consultation data
     public boolean update(Integer moduleId, String field, String value) {
-        // System.out.println(value);
         for (ProjectModule module : modules) {
             if (module.getModuleId().equals(moduleId)) {
                 try {
@@ -418,7 +417,6 @@ public class ModuleDAO {
      * @return
      */
     private static boolean store(Integer consultationId, String attribute, String value) {
-        // System.out.println(consultationId + attribute + value);
         JsonHandler userJson = new JsonHandler();
         userJson.encode(FileHandler.readFile(MODULE_DATA));
         return userJson.update(consultationId, attribute, value, MODULE_DATA);

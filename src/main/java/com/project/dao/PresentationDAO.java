@@ -324,17 +324,16 @@ public class PresentationDAO {
      * Save Supervisor while lecturer change
      */
     public boolean saveSupervisorChanges(List<Object> moduleDetails) {
+        boolean status = false;
         int moduleIdFromDetails = Integer.parseInt((String) moduleDetails.get(0));
         for (Presentation p : presentations) {
             if (p.getModuleId().equals(moduleIdFromDetails)) { // Use .equals() for string comparison
-                System.out.println("Hi");
                 update(moduleIdFromDetails, "lecturerId", (String) moduleDetails.get(1));
                 update(moduleIdFromDetails, "updated_at", DateTimeUtils.formatStrDateTime(LocalDateTime.now()));
-                return true;
+                status = true;
             }
         }
-        System.out.println("Bye");
-        return false;
+        return status;
     }
     
     /**

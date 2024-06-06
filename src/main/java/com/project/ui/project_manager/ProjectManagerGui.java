@@ -90,19 +90,16 @@ public class ProjectManagerGui extends javax.swing.JFrame {
 //                menuBtn10.setBackground(DefaultBtnColor);
                 WindowsPane.add(new ManagerModuleGui()).setVisible(true);
             } 
-//            case "menuBtn5" -> {
-//                menuBtn1.setBackground(DefaultBtnColor);
-//                menuBtn3.setBackground(DefaultBtnColor);
-//                menuBtn3.setBackground(DefaultBtnColor);
-//                menuBtn4.setBackground(DefaultBtnColor);
-//                menuBtn5.setBackground(ClickedBtnColor);
-//                menuBtn6.setBackground(DefaultBtnColor);
-//                menuBtn2.setBackground(DefaultBtnColor);
-//                menuBtn8.setBackground(DefaultBtnColor);
-//                menuBtn9.setBackground(DefaultBtnColor);
-//                menuBtn10.setBackground(DefaultBtnColor);
-//                WindowsPane.add(new UserProfileGui()).setVisible(true);
-//            } 
+            case "menuBtn5" -> {
+                menuBtn1.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
+                menuBtn3.setBackground(DefaultBtnColor);
+                menuBtn4.setBackground(DefaultBtnColor);
+                menuBtn5.setBackground(ClickedBtnColor);
+                menuBtn6.setBackground(DefaultBtnColor);
+                menuBtn2.setBackground(DefaultBtnColor);
+                WindowsPane.add(new UserProfileGui()).setVisible(true);
+            }
 //            case "menuBtn6" -> {
 //                menuBtn1.setBackground(DefaultBtnColor);
 //                menuBtn3.setBackground(DefaultBtnColor);

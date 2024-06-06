@@ -328,7 +328,6 @@ public class PresentationDAO {
         boolean status = false;
         int moduleIdFromDetails = Integer.parseInt((String) moduleDetails.get(0));
         String lecturerId = valueOf(moduleDetails.get(1));
-        System.out.println(lecturerId);
         for (Presentation p : presentations) {
             if (p.getModuleId().equals(moduleIdFromDetails)) { // Use .equals() for string comparison
                 update(p.getPresentationId(), "lecturerId", lecturerId);

@@ -28,7 +28,7 @@ public class ProjectManagerGui extends javax.swing.JFrame {
             new LoginGui();
             this.dispose();
         } else {
-            setTitle("Project Management System - Admin Panel");
+            setTitle("Project Management System - Project Manager Panel");
             setVisible(true);
             initComponents();
             ButtonClicked("menuBtn1");

@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class PresentationServiceImpl2 extends PresentationServiceImpl{
+public class PresentationServiceImpl2 extends PresentationServiceImpl {
 
     private PresentationDAO presentationDAO = new PresentationDAO();
 

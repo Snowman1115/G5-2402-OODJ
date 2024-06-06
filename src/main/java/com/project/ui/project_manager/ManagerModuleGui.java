@@ -304,6 +304,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         }
         
         private void fillAssessmentComboBox(){
+            assessmentTypeComboBox.removeAllItems();
             assessmentTypeComboBox.addItem("None");
             assessmentTypeComboBox.addItem("Internship");
             assessmentTypeComboBox.addItem("Investigation Report");

@@ -24,7 +24,6 @@ public class PresentationServiceImpl {
         return presentationDAO.getAllPresentationStatusByStudentId(studentId);
     }
 
-
     private PresentationDAO presentationDAO = new PresentationDAO();
 
     private UserAccountDAO userAccountDAO = new UserAccountDAO();

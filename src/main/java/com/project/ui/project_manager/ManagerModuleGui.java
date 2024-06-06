@@ -147,7 +147,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 for (Map<String, String> list : lists) {
                     String fm = list.get("firstMarker");
                     String sm = list.get("secondMarker");
-                    System.out.println(fm + sm);
                     if ("0".equals(fm) || fm == null || "0".equals(sm) || sm == null) {
                         String[] data = {list.get("id"),list.get("moduleCode"), list.get("startDate"),list.get("endDate"), list.get("firstMarker") , list.get("secondMarker"),};
                         dtm.addRow(data);
@@ -226,7 +225,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                         case "INTERNSHIP":
                             assessmentTypeComboBox.setSelectedItem("Internship");
                             break;
-                            
+                         
                         case "INVESTIGATION":
                             assessmentTypeComboBox.setSelectedItem("Investigation Report");
                             break;
@@ -258,7 +257,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             List<Map<String, String>> moduleLists = ProjectModuleController.getModuleById(moduleId);
             Map<String, String> mLists = moduleLists.isEmpty() ? null : moduleLists.get(0);
 //              if module list is not empty
-            System.out.println(moduleLists);
                 if (mLists != null) {
                     //Store current module details
                     currentModuleDetails = mLists;
@@ -275,6 +273,8 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         
         private void fillspModuleComboBox(){
             // Create list to store all lectures name
+            spModuleSPComboBox.removeAllItems();
+            spModuleSMComboBox.removeAllItems();
             lecturerLists = UserAccountController.getLecturers();
             List<String> lecturersName = new ArrayList<>();
             
@@ -330,6 +330,7 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
             //check if module exist
             if(currentModuleDetails != null){
                 if (saveSelectedSP != firstMarkerName || saveSelectedSM != secondMarkerName){
+                    if(saveSelectedSP != saveSelectedSM){
                     List<String> savedModule = new ArrayList<>();
                     savedModule.add(saveModuleId);
                     //Break full name to first name and last name
@@ -342,9 +343,12 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                     savedModule.add(spId != null ? spId : "");
                     savedModule.add(smId != null ? smId : "");
                     
+                    System.out.println(spId + "Seperator ...." + smId);
                     if(ProjectModuleController.saveModuleDetails(savedModule)){
-                        System.out.println("Success");
                         refresh();
+                    }
+                    } else{
+                        Dialog.ErrorDialog(MessageConstant.SAME_MARKER_SUPERVISOR);
                     }
                 } else{
                     Dialog.ErrorDialog(MessageConstant.CONDITION_NO_DATA_CHANGES);
@@ -386,7 +390,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                     }
 
                     if(SubmissionController.saveAssessmentType(moduleId, savedAssessment)){
-                        System.out.println("Success");
                         refresh();
                     }
                 } else{
@@ -399,7 +402,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         private void saveModuleDate(){
             String saveModuleId = mdModuleId.getText();
-            System.out.println(mdModuleId);
             if(moduleId != null){
                 Integer saveIntModuleId = parseInt(saveModuleId);
                 LocalDate startDate = mdStartDatePicker.getDate();
@@ -410,7 +412,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
                 }
                 if (startDate.isBefore(endDate)) {
                     if(ProjectModuleController.saveModuleDate(saveIntModuleId, startDate, endDate)){
-                            System.out.println("Success");
                             refresh();
                     } else {
                         Dialog.ErrorDialog(MessageConstant.UNEXPECTED_ERROR);
@@ -633,7 +634,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         ModuleTabbedPanel.setBackground(new java.awt.Color(230, 230, 230));
         ModuleTabbedPanel.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        ModuleTabbedPanel.setForeground(new java.awt.Color(0, 0, 0));
         ModuleTabbedPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ModuleTabbedPanelMouseClicked(evt);
@@ -647,7 +647,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn4.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn4.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn4.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/success-24x24.png"))); // NOI18N
         menuBtn4.setText("TOTAL");
@@ -656,7 +655,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn13.setBackground(new java.awt.Color(153, 255, 153));
         menuBtn13.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn13.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn13.setText("0");
         menuBtn13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -685,11 +683,9 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         Panel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 240, 90));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 153));
-        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
 
         menuBtn3.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn3.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 14)); // NOI18N
-        menuBtn3.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/status-24x24.png"))); // NOI18N
         menuBtn3.setText("UNASSIGNED");
@@ -698,7 +694,6 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
 
         menuBtn12.setBackground(new java.awt.Color(255, 255, 153));
         menuBtn12.setFont(new java.awt.Font("Alibaba PuHuiTi M", 0, 18)); // NOI18N
-        menuBtn12.setForeground(new java.awt.Color(0, 0, 0));
         menuBtn12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBtn12.setText("0");
         menuBtn12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -974,11 +969,11 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         Panel2.add(spSaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, 170, 35));
 
         spModuleName.setEditable(false);
-        spModuleName.setBackground(new java.awt.Color(255, 255, 255));
         spModuleName.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        spModuleName.setForeground(new java.awt.Color(1, 1, 1));
+        spModuleName.setBackground(new java.awt.Color(255, 255, 255));
         spModuleName.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         spModuleName.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spModuleName.setForeground(new java.awt.Color(1, 1, 1));
         spModuleName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 spModuleNameMouseClicked(evt);
@@ -1010,11 +1005,11 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         Panel2.add(spModuleId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 35));
 
         spEndDate.setEditable(false);
-        spEndDate.setBackground(new java.awt.Color(255, 255, 255));
         spEndDate.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        spEndDate.setForeground(new java.awt.Color(1, 1, 1));
+        spEndDate.setBackground(new java.awt.Color(255, 255, 255));
         spEndDate.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         spEndDate.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        spEndDate.setForeground(new java.awt.Color(1, 1, 1));
         spEndDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 spEndDateMouseClicked(evt);
@@ -1167,11 +1162,11 @@ public class ManagerModuleGui extends javax.swing.JInternalFrame {
         jPanel1.add(menuBtn42, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 90, 40));
 
         atModuleId.setEditable(false);
-        atModuleId.setBackground(new java.awt.Color(255, 255, 255));
         atModuleId.setFont(new java.awt.Font("Alibaba PuHuiTi R", 0, 12)); // NOI18N
-        atModuleId.setForeground(new java.awt.Color(1, 1, 1));
+        atModuleId.setBackground(new java.awt.Color(255, 255, 255));
         atModuleId.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         atModuleId.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        atModuleId.setForeground(new java.awt.Color(1, 1, 1));
         atModuleId.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 atModuleIdMouseClicked(evt);

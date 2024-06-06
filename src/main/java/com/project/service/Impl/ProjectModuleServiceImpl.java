@@ -303,7 +303,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
     @Override
     public List<Map<String, String>> getReportDetailsById(Integer reportId) {
         Submission reportDetails = submissionDAO.getSubmissionById(reportId);
-        System.out.println(reportDetails);
 
         if (reportDetails != null) {
             Integer studentId = reportDetails.getStudentId();
@@ -336,7 +335,6 @@ public class ProjectModuleServiceImpl implements ProjectModuleService {
         Boolean mdao = moduleDAO.saveModuleDateChanges(moduleId, startDate, endDate);
         Boolean sdao = submissionDAO.saveSubmissionDueDate(moduleId, endDate);
         Boolean pdao = presentationDAO.savePresentationDueDate(moduleId, endDate);
-        System.out.println("Module: " + mdao + " ,Submission: " + sdao + " ,Presentation: " + pdao);
         if (mdao == true && sdao == true && pdao == true) {
 //            log.info("Module Changes Has Been Saved! : " + MessageConstant.ERROR_PRESENTATION_SLOT_BOOKED);
             Dialog.SuccessDialog(MessageConstant.SUCCESS_UPDATE_DATE);

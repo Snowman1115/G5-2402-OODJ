@@ -426,3 +426,185 @@
 2024-06-06 23:58:20 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 88608036
 2024-06-06 23:58:25 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
 2024-06-06 23:58:25 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-07 02:38:35 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-07 02:38:35 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-07 03:03:38 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-06-07 03:03:38 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-06-07 03:03:38 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-06-07 03:03:38 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 03:03:38 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-06-07 03:07:34 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 98294670
+2024-06-07 03:07:34 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2402SE\WORKPLACE PROFESSIONAL COMMUNICATION SKILLS\71b916cd-bd30-4016-a0a1-62888b55b20f.pdf
+2024-06-07 03:11:33 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Book Presentation Slot : 20005532
+2024-06-07 03:11:33 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : The presentation slot is already booked.
+2024-06-07 03:12:07 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Edit Presentation Slot : 20005532
+2024-06-07 03:12:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : Presentation Slot Successfully Booked.
+2024-06-07 03:12:15 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Cancel Presentation Slot : 20005532
+2024-06-07 03:12:15 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Cancelled Successfully : Presentation Slot Successfully Cancelled.
+2024-06-07 03:13:51 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 3268572
+2024-06-07 03:13:51 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 3268572 + 59262392
+2024-06-07 03:13:59 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 71021535
+2024-06-07 03:13:59 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 71021535
+2024-06-07 03:14:28 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 99641852
+2024-06-07 03:14:28 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 99641852 + 59262392
+2024-06-07 03:14:42 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 99641852
+2024-06-07 03:14:42 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 99641852
+2024-06-07 03:15:11 [AWT-EventQueue-0] INFO  c.p.c.ModuleFeedbackController - Student Submit Feedback : 
+2024-06-07 03:15:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.ModuleFeedbackServiceImpl - Student Feedback Submit Successful : 59262392
+2024-06-07 03:27:15 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-07 03:27:15 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-07 17:07:06 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-07 17:07:07 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-07 17:07:11 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-06-07 17:07:15 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-07 17:07:16 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-07 17:07:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:07:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-07 17:07:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-07 17:07:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 17:07:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-07 17:07:30 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 57235498
+2024-06-07 17:07:57 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-07 17:07:57 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-07 17:08:03 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : howardtan@gmail.com
+2024-06-07 17:08:04 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (howardtan@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-07 17:08:09 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : howardtan@gmail.com
+2024-06-07 17:08:10 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (howardtan@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-07 17:08:16 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : howardtan@gmail.com
+2024-06-07 17:08:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (howardtan@gmail.com) login fail error: Invalid username/email. Please try again.
+2024-06-07 17:08:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:08:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin1@gmail.com) login fail error: Invalid password. Please try again.
+2024-06-07 17:08:30 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:08:44 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin1@gmail.com) login fail error: Invalid password. Please try again.
+2024-06-07 17:08:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gx
+2024-06-07 17:09:18 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin1@gx) login fail error: Invalid username/email. Please try again.
+2024-06-07 17:09:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:09:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-07 17:09:27 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-07 17:09:27 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 17:09:27 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-07 17:09:34 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-07 17:09:34 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-07 17:09:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : HowardTan70718552
+2024-06-07 17:09:40 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (HowardTan70718552) ,Role: (STUDENT) login successful.
+2024-06-07 17:09:40 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (HowardTan70718552) to Student Panel.
+2024-06-07 17:09:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 17:09:40 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (HowardTan70718552) authorization passed.
+2024-06-07 17:09:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:09:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 57235498
+2024-06-07 17:09:51 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-07 17:09:51 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-07 17:10:01 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:10:03 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin1@gmail.com) login fail error: Invalid password. Please try again.
+2024-06-07 17:10:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:10:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-07 17:10:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-07 17:10:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 17:10:07 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-07 17:10:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: By - ADMIN 68560653 admin1
+2024-06-07 17:10:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New user registered as STUDENT. 
+2024-06-07 17:10:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: New student registered into APD2F2402SE intake.
+2024-06-07 17:10:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: Module submission slots created for new student.
+2024-06-07 17:10:32 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User Registration: Module presentation slots created for new student.
+2024-06-07 17:10:33 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-07 17:10:33 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-07 17:10:41 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : Test277712748
+2024-06-07 17:10:43 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (Test277712748) login fail error: Invalid password. Please try again.
+2024-06-07 17:10:45 [AWT-EventQueue-0] INFO  c.project.ui.authentication.LoginGui - Project Management System Destroy Successful.
+2024-06-07 17:10:53 [main] INFO  com.project.Main - Project Management System Starting...
+2024-06-07 17:10:53 [main] INFO  com.project.Main - Project Management System Ready.
+2024-06-07 17:13:52 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:13:52 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (admin1@gmail.com) login fail error: Invalid password. Please try again.
+2024-06-07 17:13:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : admin1@gmail.com
+2024-06-07 17:13:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (admin1@gmail.com) ,Role: (ADMIN) login successful.
+2024-06-07 17:13:56 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (admin1@gmail.com) to Admin Panel.
+2024-06-07 17:13:56 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 17:13:56 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (admin1) authorization passed.
+2024-06-07 17:13:58 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:13:58 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:00 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - admin1
+2024-06-07 17:14:00 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:00 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:11 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:11 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:26 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - adsad123123
+2024-06-07 17:14:26 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:26 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:28 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:28 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:28 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:32 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - admin1
+2024-06-07 17:14:32 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:32 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:34 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:34 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:34 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - admin1
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:37 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - admin1
+2024-06-07 17:14:40 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:40 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:41 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:41 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:42 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - admin1
+2024-06-07 17:14:42 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:42 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:43 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:43 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:43 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:47 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:47 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:14:49 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update User Details: By - ADMIN 68560653 admin1
+2024-06-07 17:14:49 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Update Profile: 68560653 - admin1
+2024-06-07 17:14:49 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:49 [AWT-EventQueue-0] INFO  com.project.dao.UserAccountDAO - Error: Field not found in the object.
+2024-06-07 17:14:50 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 update success
+2024-06-07 17:14:50 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:14:50 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:15:46 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User Change Password : 68560653
+2024-06-07 17:17:07 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User 68560653 password update successful.
+2024-06-07 17:17:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get Authenticated User Details.
+2024-06-07 17:17:07 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Get user details: 68560653
+2024-06-07 17:18:29 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User logout.
+2024-06-07 17:18:29 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User authorization destroy successful.
+2024-06-07 17:18:40 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-06-07 17:18:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User (student1@gmail.com) login fail error: Invalid password. Please try again.
+2024-06-07 17:18:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - User login : student1@gmail.com
+2024-06-07 17:18:45 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - User: (student1@gmail.com) ,Role: (STUDENT) login successful.
+2024-06-07 17:18:45 [AWT-EventQueue-0] INFO  c.p.s.Impl.UserAccountServiceImpl - Redirecting (student1@gmail.com) to Student Panel.
+2024-06-07 17:18:45 [AWT-EventQueue-0] INFO  c.p.controller.UserAccountController - Verify user authorization status.
+2024-06-07 17:18:45 [AWT-EventQueue-0] INFO  c.p.s.I.UserAuthenticationServiceImpl - User (student1) authorization passed.
+2024-06-07 17:19:05 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 42258355
+2024-06-07 17:19:06 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Successfully : 42258355
+2024-06-07 17:19:55 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Project Submission : 42258355
+2024-06-07 17:19:55 [AWT-EventQueue-0] INFO  com.project.dao.ReportDAO - PDF File Saved Successfully : src\main\resources\Data\Submission\Report\APD2F2402SE\ENTERPRISE SYSTEMS\fd354122-cc0f-46b1-917e-a4a78890f24c.pdf
+2024-06-07 17:20:06 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 42258355
+2024-06-07 17:20:13 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Cancelled : 42258355
+2024-06-07 17:20:16 [AWT-EventQueue-0] INFO  c.p.controller.SubmissionController - Submission Remove : 42258355
+2024-06-07 17:20:17 [AWT-EventQueue-0] INFO  c.p.s.Impl.SubmissionServiceImpl - Submission Removed Successfully : 42258355
+2024-06-07 17:20:28 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Book Presentation Slot : 29543876
+2024-06-07 17:20:28 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : The presentation slot is already booked.
+2024-06-07 17:21:11 [AWT-EventQueue-0] INFO  c.p.c.PresentationController - Edit Presentation Slot : 29543876
+2024-06-07 17:21:11 [AWT-EventQueue-0] INFO  c.p.s.Impl.PresentationServiceImpl - Presentation Slot Booked Successfully : Presentation Slot Successfully Booked.
+2024-06-07 17:22:10 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Book Consultation: 71021535
+2024-06-07 17:22:10 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Booked Successfully: 71021535 + 59262392
+2024-06-07 17:22:19 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 3268572
+2024-06-07 17:22:19 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 3268572
+2024-06-07 17:22:28 [AWT-EventQueue-0] INFO  c.p.c.ConsultationController - Cancel Booked Consultation: 71021535
+2024-06-07 17:22:28 [AWT-EventQueue-0] INFO  c.p.s.Impl.ConsultationServiceImpl - Consultation Cancelled Successfully: 71021535
+2024-06-07 17:22:37 [AWT-EventQueue-0] INFO  c.p.c.ModuleFeedbackController - Student Submit Feedback : 
+2024-06-07 17:22:41 [AWT-EventQueue-0] INFO  c.p.s.Impl.ModuleFeedbackServiceImpl - Student Feedback Submit Successful : 59262392
+2024-06-07 17:22:43 [AWT-EventQueue-0] INFO  c.p.c.ModuleFeedbackController - Student Submit Feedback : 
+2024-06-07 17:22:43 [AWT-EventQueue-0] INFO  c.p.s.Impl.ModuleFeedbackServiceImpl - Student Feedback Submit Successful : 59262392

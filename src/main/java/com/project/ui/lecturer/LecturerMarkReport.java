@@ -1597,8 +1597,17 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_secondMarkerMarkReportBtnMouseClicked
 
     private void fetchSubmissionBtnInMarkReport1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnInMarkReport1MouseClicked
-        selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem());
-        refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());
+        if (selectModuleComboBoxInMarkReport1.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER))
+        {
+            //When there is no modules assigned to the lecturer
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
+            return;
+        }
+        else
+        {
+            selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport1.getSelectedItem());
+            refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport1.getSelectedItem());            
+        }
     }//GEN-LAST:event_fetchSubmissionBtnInMarkReport1MouseClicked
 
     private void lecturerCommentFieldInMarkReport1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerCommentFieldInMarkReport1MouseClicked
@@ -1756,13 +1765,32 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lecturerCommentFieldInModifyMouseClicked
 
     private void fetchSubmissionBtnInModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnInModifyMouseClicked
-        selectSubmissionComboBoxInModify(selectModuleComboBoxInModify.getSelectedItem());
-        refreshSubmissionDetailsInModify(selectSubmissionComboBoxInModify.getSelectedItem());
+        if (selectModuleComboBoxInModify.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER))
+        {
+            //When there is no modules assigned to the lecturer
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
+            return;
+        }
+        else
+        {
+            selectSubmissionComboBoxInModify(selectModuleComboBoxInModify.getSelectedItem());
+            refreshSubmissionDetailsInModify(selectSubmissionComboBoxInModify.getSelectedItem());         
+        }
+
     }//GEN-LAST:event_fetchSubmissionBtnInModifyMouseClicked
 
     private void fetchSubmissionBtnInMarkReport2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fetchSubmissionBtnInMarkReport2MouseClicked
-        selectSubmissionComboBoxInMarkReport2(selectModuleComboBoxInMarkReport2.getSelectedItem());
-        refreshSubmissionDetailsInMarkReport2(selectSubmissionComboBoxInMarkReport2.getSelectedItem());
+        if (selectModuleComboBoxInMarkReport2.getSelectedItem().equals(MessageConstant.CONDITION_NO_MODULES_UNDER_LECTURER))
+        {
+            //When there is no modules assigned to the lecturer
+            Dialog.ErrorDialog(MessageConstant.ERROR_NO_MODULES_SELECTED);
+            return;
+        }
+        else
+        {
+            selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport2.getSelectedItem());
+            refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport2.getSelectedItem());            
+        }
     }//GEN-LAST:event_fetchSubmissionBtnInMarkReport2MouseClicked
 
     private void lecturerCommentFieldInMarkReport2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerCommentFieldInMarkReport2MouseClicked

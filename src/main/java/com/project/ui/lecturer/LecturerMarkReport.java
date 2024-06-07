@@ -1788,8 +1788,8 @@ public class LecturerMarkReport extends javax.swing.JInternalFrame {
         }
         else
         {
-            selectSubmissionComboBoxInMarkReport1(selectModuleComboBoxInMarkReport2.getSelectedItem());
-            refreshSubmissionDetailsInMarkReport1(selectSubmissionComboBoxInMarkReport2.getSelectedItem());            
+            selectSubmissionComboBoxInMarkReport2(selectModuleComboBoxInMarkReport2.getSelectedItem());
+            refreshSubmissionDetailsInMarkReport2(selectSubmissionComboBoxInMarkReport2.getSelectedItem());
         }
     }//GEN-LAST:event_fetchSubmissionBtnInMarkReport2MouseClicked
 
